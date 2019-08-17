@@ -1,0 +1,73 @@
+//
+//  RepositorySearchRequestClient.swift
+//  iOSLayeredSample
+//
+//  Created by rnishimu on 2019/07/29.
+//  Copyright © 2019 rnishimu22001. All rights reserved.
+//
+
+import Foundation
+
+enum RepositorySearchSortPattern: String {
+    case stars
+    case forks
+}
+
+protocol RepositorySearchRequestClientProtocol {
+    func request(with url: String, sort: RepositorySearchSortPattern, query: String, completion: @escaping (_ result: Result<Repositories, Error>, _ response: HTTPURLResponse?) -> Void)
+    func request(nextURL: String, completion: @escaping (_ result: Result<Repositories, Error>, _ response: HTTPURLResponse?) -> Void)
+}
+
+/// https://developer.github.com/v3/search/#search-users
+struct RepositorySearchRequestClient: APIRequestable, RepositorySearchRequestClientProtocol {
+    
+    let configuration = URLSessionConfiguration.default
+    
+    func request(with url: String, sort: RepositorySearchSortPattern, query: String, completion: @escaping (_ result: Result<Repositories, Error>, _ response: HTTPURLResponse?) -> Void) {
+        
+        guard var components = URLComponents(string: url) else {
+            completion(.failure(RequestError.badURL), nil)
+            return
+        }
+        
+        let parameters = [
+            URLQueryItem(name: "q", value: query),
+            URLQueryItem(name: "sort", value: sort.rawValue),
+            URLQueryItem(name: "order", value: "desc")
+        ]
+        
+        components.queryItems = parameters
+        
+        guard let requestURL = components.url else {
+            completion(.failure(RequestError.badURL), nil)
+            return
+        }
+        let repositorySearchRequest = URLRequest(url: requestURL)
+        request(repositorySearchRequest: repositorySearchRequest, completion: completion)
+    }
+    
+    func request(nextURL: String, completion: @escaping (Result<Repositories, Error>, HTTPURLResponse?) -> Void) {
+        guard
+            let url = URL(string: nextURL) else {
+            completion(.failure(RequestError.badURL), nil)
+            return
+        }
+        request(repositorySearchRequest: URLRequest(url: url), completion: completion)
+    }
+    
+    private func request(repositorySearchRequest: URLRequest, completion: @escaping (_ result: Result<Repositories, Error>, _ response: HTTPURLResponse?) -> Void) {
+        request(with: repositorySearchRequest) { result, response in
+            
+            switch result {
+            case .failure(let error):
+                completion(.failure(error), response)
+            case .success(let data):
+                guard let users = try? JSONDecoder().decode(Repositories.self, from: data) else {
+                    completion(.failure(RequestError.dataEncodeFailed), response)
+                    return
+                }
+                completion(.success(users), response)
+            }
+        }
+    }
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RepositorySearchListPresenter" customModule="iOSLayeredSample" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="lj8-6W-AGo" id="ap2-e2-A16"/>
+                <outlet property="view" destination="sEs-h4-SeL" id="mTj-gf-hpC"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="sEs-h4-SeL">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lj8-6W-AGo">
+                    <rect key="frame" x="0.0" y="39" width="414" height="818"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
+                <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="Wbw-JP-vMk">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IUi-kb-hen">
+                            <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <subviews>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="oFb-l9-t7k">
+                                    <rect key="frame" x="197" y="399" width="20" height="20"/>
+                                </activityIndicatorView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="oFb-l9-t7k" firstAttribute="centerY" secondItem="IUi-kb-hen" secondAttribute="centerY" id="iDN-hZ-VzX"/>
+                                <constraint firstItem="oFb-l9-t7k" firstAttribute="centerX" secondItem="IUi-kb-hen" secondAttribute="centerX" id="sSv-AF-wQl"/>
+                            </constraints>
+                        </view>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qQh-MK-CO0">
+                            <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="IUi-kb-hen" firstAttribute="leading" secondItem="msc-qn-hWo" secondAttribute="leading" id="0wN-ni-Erm"/>
+                        <constraint firstItem="msc-qn-hWo" firstAttribute="trailing" secondItem="IUi-kb-hen" secondAttribute="trailing" id="Czo-4W-Mf5"/>
+                        <constraint firstItem="qQh-MK-CO0" firstAttribute="leading" secondItem="msc-qn-hWo" secondAttribute="leading" id="UUg-IJ-fHP"/>
+                        <constraint firstItem="msc-qn-hWo" firstAttribute="bottom" secondItem="IUi-kb-hen" secondAttribute="bottom" id="Ue7-3w-jHo"/>
+                        <constraint firstItem="qQh-MK-CO0" firstAttribute="top" secondItem="msc-qn-hWo" secondAttribute="top" id="XtG-MR-kiU"/>
+                        <constraint firstItem="msc-qn-hWo" firstAttribute="bottom" secondItem="qQh-MK-CO0" secondAttribute="bottom" id="a0F-ux-x3N"/>
+                        <constraint firstItem="msc-qn-hWo" firstAttribute="trailing" secondItem="qQh-MK-CO0" secondAttribute="trailing" id="bkV-sX-BR9"/>
+                        <constraint firstItem="IUi-kb-hen" firstAttribute="top" secondItem="msc-qn-hWo" secondAttribute="top" id="ctI-NJ-E1u"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="msc-qn-hWo"/>
+                    <viewLayoutGuide key="contentLayoutGuide" id="lJK-dw-Tbz"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="Y7l-GW-ImH"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="ohX-3f-F8b" firstAttribute="trailing" secondItem="lj8-6W-AGo" secondAttribute="trailing" id="0Q7-99-i2u"/>
+                <constraint firstItem="ohX-3f-F8b" firstAttribute="bottom" secondItem="lj8-6W-AGo" secondAttribute="bottom" constant="5" id="HXL-vX-V24"/>
+                <constraint firstItem="ohX-3f-F8b" firstAttribute="top" secondItem="lj8-6W-AGo" secondAttribute="top" constant="5" id="OvE-gx-j42"/>
+                <constraint firstItem="lj8-6W-AGo" firstAttribute="leading" secondItem="ohX-3f-F8b" secondAttribute="leading" id="Ybc-U4-guJ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ohX-3f-F8b"/>
+            <point key="canvasLocation" x="83" y="-195"/>
+        </view>
+    </objects>
+</document>

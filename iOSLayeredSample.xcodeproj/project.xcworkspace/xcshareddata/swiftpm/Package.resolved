@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Nuke",
+        "repositoryURL": "https://github.com/kean/Nuke",
+        "state": {
+          "branch": null,
+          "revision": "cff4c5a8f610dcb297ca9593f57b963dee6d8324",
+          "version": "8.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
