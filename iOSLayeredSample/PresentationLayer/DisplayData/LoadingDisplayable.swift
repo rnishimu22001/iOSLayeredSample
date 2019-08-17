@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct LoadingDisplayable: Displayable {
+struct LoadingDisplayable: TableViewDisplayable {
     static var tableViewCellClass: UITableViewCell.Type {
         return LoadingCell.self
     }

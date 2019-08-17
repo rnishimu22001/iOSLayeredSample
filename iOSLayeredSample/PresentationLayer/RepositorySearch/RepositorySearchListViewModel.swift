@@ -18,9 +18,9 @@ protocol RepositorySearchListViewModelProtocol {
 
 protocol RepositorySearchListViewModelDelegate: class {
     /// データ更新された場合に通知される
-    func repositorySearchListViewModel(_ viewModel: RepositorySearchListViewModelProtocol, shouldShow viewType: ContentsStatus, didLoad contents: [Displayable])
+    func repositorySearchListViewModel(_ viewModel: RepositorySearchListViewModelProtocol, shouldShow viewType: ContentsStatus, didLoad contents: [TableViewDisplayable])
     /// 追加データがあるときに通知される
-    func repositorySearchListViewModel(_ viewModel: RepositorySearchListViewModelProtocol, didUpdate contents: [Displayable])
+    func repositorySearchListViewModel(_ viewModel: RepositorySearchListViewModelProtocol, didUpdate contents: [TableViewDisplayable])
 }
 
 final class RepositorySearchListViewModel: RepositorySearchListViewModelProtocol {
@@ -62,8 +62,8 @@ extension RepositorySearchListViewModel: RepositorySearchListUseCaseDelegate {
         delegate?.repositorySearchListViewModel(self, didUpdate: contents(from: repositoryList, isStalled: isStalled))
     }
     
-    func contents(from repositoryList: [Repository], isStalled: Bool) -> [Displayable] {
-        var contents: [Displayable] = []
+    func contents(from repositoryList: [Repository], isStalled: Bool) -> [TableViewDisplayable] {
+        var contents: [TableViewDisplayable] = []
         contents = repositoryList.map { RepositoryDisplayData(from: $0) }
         if !isStalled {
             contents.append(LoadingDisplayable())

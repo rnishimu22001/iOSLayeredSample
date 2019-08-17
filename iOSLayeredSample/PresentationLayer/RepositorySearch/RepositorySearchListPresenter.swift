@@ -11,8 +11,8 @@ import UIKit
 protocol RepositorySearchListPresenterProtocol {
     init(parentView: UIView, listPresenter: RepositoryListPresenterProtocol)
     var delegate: RepositorySearchListPresenterDelegate? { get set }
-    func reload(status: ContentsStatus, contentsList: [Displayable])
-    func update(contentsList: [Displayable])
+    func reload(status: ContentsStatus, contentsList: [TableViewDisplayable])
+    func update(contentsList: [TableViewDisplayable])
 }
 
 protocol RepositorySearchListPresenterDelegate: class {
@@ -37,12 +37,12 @@ final class RepositorySearchListPresenter: NSObject, RepositorySearchListPresent
         self.listPresenter.register(in: tableView)
     }
     
-    func reload(status: ContentsStatus, contentsList: [Displayable]) {
+    func reload(status: ContentsStatus, contentsList: [TableViewDisplayable]) {
         listPresenter.contentsList = contentsList
         reloadView()
     }
     
-    func update(contentsList: [Displayable]) {
+    func update(contentsList: [TableViewDisplayable]) {
         listPresenter.contentsList = contentsList
         reloadView()
     }

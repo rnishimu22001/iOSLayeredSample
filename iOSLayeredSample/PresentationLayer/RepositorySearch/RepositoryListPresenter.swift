@@ -11,7 +11,7 @@ import Foundation
 
 protocol RepositoryListPresenterProtocol: UITableViewDelegate, UITableViewDataSource {
     /// ユーザーデータ
-    var contentsList: [Displayable] { get set }
+    var contentsList: [TableViewDisplayable] { get set }
     
     var delegate: RepositoryListPresenterDelegate? { get set }
     /// tableViewにセルを登録する
@@ -28,7 +28,7 @@ final class RepositoryListPresenter: NSObject, UITableViewDelegate, UITableViewD
         case repositoryList
     }
     
-    var contentsList: [Displayable] = []
+    var contentsList: [TableViewDisplayable] = []
     weak var delegate: RepositoryListPresenterDelegate?
     
     func register(in tableView: UITableView) {

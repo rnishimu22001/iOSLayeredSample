@@ -20,7 +20,7 @@ struct RepositoryDisplayData: RepositoryDisplayable, Equatable {
         name = repository.fullName
         descpription = repository.itemDescription
         stars = repository.stargazersCount.description
-        if repository.stargazersCount > 50000 {
+        if repository.stargazersCount > 20000 {
             starColor = .red
         } else {
             starColor = .lightGray
@@ -29,7 +29,7 @@ struct RepositoryDisplayData: RepositoryDisplayable, Equatable {
     }
 }
 
-protocol RepositoryDisplayable: Displayable {
+protocol RepositoryDisplayable: TableViewDisplayable {
     var id: Int { get }
     var stars: String { get }
     var starColor: UIColor { get }
