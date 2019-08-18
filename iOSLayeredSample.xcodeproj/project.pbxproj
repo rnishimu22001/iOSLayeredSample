@@ -16,6 +16,8 @@
 		5A4CBEC72308D7F70056E710 /* CommunityProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4CBEC62308D7F70056E710 /* CommunityProfileView.xib */; };
 		5A4CBEC92308E06A0056E710 /* ReleaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4CBEC82308E06A0056E710 /* ReleaseView.xib */; };
 		5A4CBECB2308E0770056E710 /* ReleaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CBECA2308E0770056E710 /* ReleaseView.swift */; };
+		5A4CBECD2308E93E0056E710 /* CollaboratorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4CBECC2308E93E0056E710 /* CollaboratorView.xib */; };
+		5A4CBECF2308E94F0056E710 /* CollaboratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CBECE2308E94F0056E710 /* CollaboratorView.swift */; };
 		5A61EECC22EF207F00054B92 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A61EECB22EF207F00054B92 /* User.swift */; };
 		5A61EECE22EF208B00054B92 /* RepositorySearchListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A61EECD22EF208B00054B92 /* RepositorySearchListUseCase.swift */; };
 		5A61EED222EF265B00054B92 /* RepositorySearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A61EED122EF265B00054B92 /* RepositorySearchRepository.swift */; };
@@ -78,6 +80,8 @@
 		5A4CBEC62308D7F70056E710 /* CommunityProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommunityProfileView.xib; sourceTree = "<group>"; };
 		5A4CBEC82308E06A0056E710 /* ReleaseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReleaseView.xib; sourceTree = "<group>"; };
 		5A4CBECA2308E0770056E710 /* ReleaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseView.swift; sourceTree = "<group>"; };
+		5A4CBECC2308E93E0056E710 /* CollaboratorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollaboratorView.xib; sourceTree = "<group>"; };
+		5A4CBECE2308E94F0056E710 /* CollaboratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorView.swift; sourceTree = "<group>"; };
 		5A61EECB22EF207F00054B92 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5A61EECD22EF208B00054B92 /* RepositorySearchListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchListUseCase.swift; sourceTree = "<group>"; };
 		5A61EED122EF265B00054B92 /* RepositorySearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchRepository.swift; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 				5A4CBEC62308D7F70056E710 /* CommunityProfileView.xib */,
 				5A4CBEC82308E06A0056E710 /* ReleaseView.xib */,
 				5A4CBECA2308E0770056E710 /* ReleaseView.swift */,
+				5A4CBECC2308E93E0056E710 /* CollaboratorView.xib */,
+				5A4CBECE2308E94F0056E710 /* CollaboratorView.swift */,
 			);
 			path = RepositoryDetail;
 			sourceTree = "<group>";
@@ -451,6 +457,7 @@
 				5A9B912D22EBEB0600996712 /* LaunchScreen.storyboard in Resources */,
 				5A4CBEC72308D7F70056E710 /* CommunityProfileView.xib in Resources */,
 				5A4CBEC92308E06A0056E710 /* ReleaseView.xib in Resources */,
+				5A4CBECD2308E93E0056E710 /* CollaboratorView.xib in Resources */,
 				5AADA5FE22EC105D001BA1AD /* RepositorySearchListPresenter.xib in Resources */,
 				5A9B912A22EBEB0600996712 /* Assets.xcassets in Resources */,
 				5A662C5523083DF300BD0403 /* RepositoryDetailPresenter.xib in Resources */,
@@ -496,6 +503,7 @@
 				5A9B912122EBEB0500996712 /* AppDelegate.swift in Sources */,
 				5A662C5323083DA700BD0403 /* RepositoryDetailPresenter.swift in Sources */,
 				5A4CBEC12308D2240056E710 /* ReleaseDisplayable.swift in Sources */,
+				5A4CBECF2308E94F0056E710 /* CollaboratorView.swift in Sources */,
 				5AADA61E22EC33AB001BA1AD /* RepositorySearchListViewModel.swift in Sources */,
 				5A4CBECB2308E0770056E710 /* ReleaseView.swift in Sources */,
 				5AB6D66E22F54106008C3D14 /* LoadingDisplayable.swift in Sources */,

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CollaboratorView" customModule="iOSLayeredSample" customModuleProvider="target">
+            <connections>
+                <outlet property="admin" destination="pX3-e6-ern" id="AEG-w4-IYQ"/>
+                <outlet property="icon" destination="8Ei-ZR-TkH" id="02o-ho-r6M"/>
+                <outlet property="name" destination="d3S-YQ-YLP" id="a5J-Zg-g8n"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="vMN-IZ-ise">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="423"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Ei-ZR-TkH">
+                    <rect key="frame" x="12" y="191.5" width="84" height="84"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="84" id="6G8-b9-0c6"/>
+                        <constraint firstAttribute="width" constant="84" id="wWH-Qy-EXz"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spz-qo-L7x">
+                    <rect key="frame" x="104" y="44" width="298" height="379"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3S-YQ-YLP" userLabel="Name">
+                            <rect key="frame" x="0.0" y="180" width="39.5" height="19.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pX3-e6-ern">
+                            <rect key="frame" x="47.5" y="181" width="41" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="d3S-YQ-YLP" firstAttribute="centerY" secondItem="spz-qo-L7x" secondAttribute="centerY" id="5PB-b7-9Nd"/>
+                        <constraint firstItem="d3S-YQ-YLP" firstAttribute="leading" secondItem="spz-qo-L7x" secondAttribute="leading" id="Tuq-Jq-lD5"/>
+                        <constraint firstItem="pX3-e6-ern" firstAttribute="centerY" secondItem="spz-qo-L7x" secondAttribute="centerY" id="edE-83-dFF"/>
+                        <constraint firstItem="pX3-e6-ern" firstAttribute="leading" secondItem="d3S-YQ-YLP" secondAttribute="trailing" constant="8" id="fOa-h7-FEr"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="8Ei-ZR-TkH" firstAttribute="centerY" secondItem="3Ot-PD-Tel" secondAttribute="centerY" id="B47-zu-z3b"/>
+                <constraint firstItem="3Ot-PD-Tel" firstAttribute="trailing" secondItem="spz-qo-L7x" secondAttribute="trailing" constant="12" id="GGX-SO-Yfx"/>
+                <constraint firstItem="8Ei-ZR-TkH" firstAttribute="leading" secondItem="3Ot-PD-Tel" secondAttribute="leading" constant="12" id="NqE-7P-4fX"/>
+                <constraint firstItem="3Ot-PD-Tel" firstAttribute="bottom" secondItem="spz-qo-L7x" secondAttribute="bottom" id="SAg-ew-WaY"/>
+                <constraint firstItem="spz-qo-L7x" firstAttribute="leading" secondItem="8Ei-ZR-TkH" secondAttribute="trailing" constant="8" id="Zvx-ly-oaT"/>
+                <constraint firstItem="spz-qo-L7x" firstAttribute="top" secondItem="3Ot-PD-Tel" secondAttribute="top" id="l7Q-SO-3Gf"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="3Ot-PD-Tel"/>
+            <point key="canvasLocation" x="-165.21739130434784" y="148.32589285714286"/>
+        </view>
+    </objects>
+</document>
