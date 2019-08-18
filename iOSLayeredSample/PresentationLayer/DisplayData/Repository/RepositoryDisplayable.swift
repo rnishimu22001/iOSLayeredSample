@@ -20,7 +20,7 @@ struct RepositoryDisplayData: RepositoryDisplayable, Equatable {
         name = repository.fullName
         descpription = repository.itemDescription
         stars = repository.stargazersCount.description
-        if repository.stargazersCount > 20000 {
+        if repository.stargazersCount > 10000 {
             starColor = .red
         } else {
             starColor = .lightGray

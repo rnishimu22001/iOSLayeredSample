@@ -17,5 +17,4 @@ final class RepositoryDetailViewController: UIViewController {
             super.viewDidLoad()
 
         }
-    
 }

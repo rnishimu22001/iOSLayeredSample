@@ -13,7 +13,7 @@ struct Collaborator: Codable {
     let login: String
     let id: Int
     let nodeID: String
-    let avatarURL: String
+    let avatarURL: URL
     let gravatarID: String
     let url, htmlURL, followersURL: String
     let followingURL, gistsURL, starredURL: String
