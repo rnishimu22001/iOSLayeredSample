@@ -39,7 +39,9 @@ extension RepositorySearchListViewController: UISearchBarDelegate {
 extension RepositorySearchListViewController: RepositorySearchListViewModelDelegate {
     
     func repositorySearchListViewModel(_ viewModel: RepositorySearchListViewModelProtocol, shouldShow status: ContentsStatus, didLoad contents: [TableViewDisplayable]) {
-        presenter.reload(status: status, contentsList: contents)
+        DispatchQueue.main.async { [weak self] in
+            self?.presenter.reload(status: status, contentsList: contents)
+        }
     }
     
     func repositorySearchListViewModel(_ viewModel: RepositorySearchListViewModelProtocol, didUpdate contents: [TableViewDisplayable]) {

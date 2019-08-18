@@ -10,11 +10,11 @@ import UIKit
 
 final class RepositoryDetailViewController: UIViewController {
        
-        var presenter: RepositoryDetailPresenterProtocol!
-        // var viewModel: RepositorySearchListViewModelProtocol!
-        
-        override func viewDidLoad() {
-            super.viewDidLoad()
-
-        }
+    var presenter: RepositoryDetailPresenterProtocol!
+    // var viewModel: RepositorySearchListViewModelProtocol!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.presenter = RepositoryDetailPresenter(with: view)
+    }
 }

@@ -92,6 +92,13 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEG-EX-Hi3">
+                    <rect key="frame" x="8" y="391.5" width="398" height="0.5"/>
+                    <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="CPw-K1-jM5"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
@@ -99,13 +106,16 @@
                 <constraint firstItem="IQV-ai-aRS" firstAttribute="leading" secondItem="JPz-XC-PHM" secondAttribute="leading" constant="12" id="Cgi-dm-Ql8"/>
                 <constraint firstItem="JPz-XC-PHM" firstAttribute="bottom" secondItem="IQV-ai-aRS" secondAttribute="bottom" constant="12" id="CmI-ka-tUg"/>
                 <constraint firstItem="tRB-2s-tNf" firstAttribute="leading" secondItem="JPz-XC-PHM" secondAttribute="leading" constant="12" id="FQh-ga-lOI"/>
+                <constraint firstItem="JPz-XC-PHM" firstAttribute="bottom" secondItem="kEG-EX-Hi3" secondAttribute="bottom" id="Hqk-wC-kKA"/>
                 <constraint firstItem="tRB-2s-tNf" firstAttribute="top" secondItem="JPz-XC-PHM" secondAttribute="top" constant="12" id="KyH-tP-5qy"/>
                 <constraint firstItem="ZEg-yQ-9cE" firstAttribute="top" secondItem="tRB-2s-tNf" secondAttribute="bottom" constant="12" id="M3x-5f-G1V"/>
                 <constraint firstItem="IQV-ai-aRS" firstAttribute="top" secondItem="6Fk-Xs-qmB" secondAttribute="bottom" constant="12" id="PEl-Vh-wzN"/>
+                <constraint firstItem="kEG-EX-Hi3" firstAttribute="leading" secondItem="JPz-XC-PHM" secondAttribute="leading" constant="8" id="XAs-7x-mtl"/>
                 <constraint firstItem="JPz-XC-PHM" firstAttribute="trailing" secondItem="IQV-ai-aRS" secondAttribute="trailing" constant="12" id="aRo-QY-Tud"/>
                 <constraint firstItem="JPz-XC-PHM" firstAttribute="trailing" secondItem="ZEg-yQ-9cE" secondAttribute="trailing" constant="12" id="bMH-kQ-2kw"/>
                 <constraint firstItem="JPz-XC-PHM" firstAttribute="trailing" secondItem="tRB-2s-tNf" secondAttribute="trailing" constant="12" id="cMZ-85-iwY"/>
                 <constraint firstItem="Tkf-fJ-sw2" firstAttribute="leading" secondItem="JPz-XC-PHM" secondAttribute="leading" constant="12" id="ebU-dj-VIP"/>
+                <constraint firstItem="JPz-XC-PHM" firstAttribute="trailing" secondItem="kEG-EX-Hi3" secondAttribute="trailing" constant="8" id="rA3-Jo-JIN"/>
                 <constraint firstItem="Tkf-fJ-sw2" firstAttribute="top" secondItem="ZEg-yQ-9cE" secondAttribute="bottom" constant="12" id="uIh-zh-BnZ"/>
                 <constraint firstItem="JPz-XC-PHM" firstAttribute="trailing" secondItem="Tkf-fJ-sw2" secondAttribute="trailing" constant="12" id="zqs-pK-ZQ3"/>
             </constraints>

@@ -9,6 +9,8 @@
 import UIKit
 
 final class ReleaseView: UIView {
+    
+    @IBOutlet var view: UIView!
     @IBOutlet weak var tagName: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!

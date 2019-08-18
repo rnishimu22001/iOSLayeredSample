@@ -9,6 +9,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RepositorySearchListPresenter" customModule="iOSLayeredSample" customModuleProvider="target">
             <connections>
+                <outlet property="errorView" destination="qQh-MK-CO0" id="0OP-rl-gnz"/>
+                <outlet property="initalizedView" destination="mUN-5j-8eb" id="Hd3-Bs-FXt"/>
+                <outlet property="loadingIndicator" destination="oFb-l9-t7k" id="F4b-DH-MwQ"/>
+                <outlet property="loadingView" destination="IUi-kb-hen" id="C2W-U5-oVZ"/>
                 <outlet property="tableView" destination="lj8-6W-AGo" id="ap2-e2-A16"/>
                 <outlet property="view" destination="sEs-h4-SeL" id="mTj-gf-hpC"/>
             </connections>
@@ -18,15 +22,30 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lj8-6W-AGo">
-                    <rect key="frame" x="0.0" y="39" width="414" height="818"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                </tableView>
-                <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="Wbw-JP-vMk">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="Wbw-JP-vMk">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IUi-kb-hen">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUN-5j-8eb">
+                            <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="↑ Could you input repository search query on navigation searchbar" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCV-Vu-Ewq">
+                                    <rect key="frame" x="57" y="388.5" width="300" height="41"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="300" id="8uj-of-WZr"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="oCV-Vu-Ewq" firstAttribute="centerY" secondItem="mUN-5j-8eb" secondAttribute="centerY" id="JBv-lZ-T8a"/>
+                                <constraint firstItem="oCV-Vu-Ewq" firstAttribute="centerX" secondItem="mUN-5j-8eb" secondAttribute="centerX" id="jLF-FV-vyN"/>
+                            </constraints>
+                        </view>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IUi-kb-hen">
                             <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             <subviews>
                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="oFb-l9-t7k">
@@ -41,9 +60,22 @@
                         </view>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qQh-MK-CO0">
                             <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opps! something error happened" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6MO-M2-LaL">
+                                    <rect key="frame" x="80" y="398.5" width="254" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="6MO-M2-LaL" firstAttribute="centerY" secondItem="qQh-MK-CO0" secondAttribute="centerY" id="ew9-R2-btC"/>
+                                <constraint firstItem="6MO-M2-LaL" firstAttribute="centerX" secondItem="qQh-MK-CO0" secondAttribute="centerX" id="g6A-jS-GaS"/>
+                            </constraints>
                         </view>
                     </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="IUi-kb-hen" firstAttribute="leading" secondItem="msc-qn-hWo" secondAttribute="leading" id="0wN-ni-Erm"/>
                         <constraint firstItem="msc-qn-hWo" firstAttribute="trailing" secondItem="IUi-kb-hen" secondAttribute="trailing" id="Czo-4W-Mf5"/>
@@ -52,12 +84,20 @@
                         <constraint firstItem="qQh-MK-CO0" firstAttribute="top" secondItem="msc-qn-hWo" secondAttribute="top" id="XtG-MR-kiU"/>
                         <constraint firstItem="msc-qn-hWo" firstAttribute="bottom" secondItem="qQh-MK-CO0" secondAttribute="bottom" id="a0F-ux-x3N"/>
                         <constraint firstItem="msc-qn-hWo" firstAttribute="trailing" secondItem="qQh-MK-CO0" secondAttribute="trailing" id="bkV-sX-BR9"/>
+                        <constraint firstItem="msc-qn-hWo" firstAttribute="trailing" secondItem="mUN-5j-8eb" secondAttribute="trailing" id="c4e-iX-cs9"/>
+                        <constraint firstItem="msc-qn-hWo" firstAttribute="bottom" secondItem="mUN-5j-8eb" secondAttribute="bottom" id="cUf-7A-Lta"/>
                         <constraint firstItem="IUi-kb-hen" firstAttribute="top" secondItem="msc-qn-hWo" secondAttribute="top" id="ctI-NJ-E1u"/>
+                        <constraint firstItem="mUN-5j-8eb" firstAttribute="leading" secondItem="msc-qn-hWo" secondAttribute="leading" id="hAi-WO-yfd"/>
+                        <constraint firstItem="mUN-5j-8eb" firstAttribute="top" secondItem="msc-qn-hWo" secondAttribute="top" id="z4F-B1-uOY"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="msc-qn-hWo"/>
                     <viewLayoutGuide key="contentLayoutGuide" id="lJK-dw-Tbz"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="Y7l-GW-ImH"/>
                 </scrollView>
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lj8-6W-AGo">
+                    <rect key="frame" x="0.0" y="39" width="414" height="818"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>

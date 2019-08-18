@@ -31,8 +31,8 @@ final class CommunityProfileView: UIView, ContentViewInVerticalStack {
     
     func commonInit() {
     Bundle.main.loadNibNamed(type(of: self).className, owner: self, options: nil)
-        addSubview(view)
-        view.frame = self.frame
+        addSubview(contents)
+        contents.frame = self.frame
     }
     
     

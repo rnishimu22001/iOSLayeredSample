@@ -24,11 +24,7 @@ protocol RepositorySearchListViewModelDelegate: class {
 }
 
 final class RepositorySearchListViewModel: RepositorySearchListViewModelProtocol {
-    var status: ContentsStatus = .initalized {
-        didSet {
-            
-        }
-    }
+    var status: ContentsStatus = .initalized
     var delegate: RepositorySearchListViewModelDelegate?
     private(set) var useCase: RepositorySearchListUseCaseProtocol
     
@@ -39,6 +35,7 @@ final class RepositorySearchListViewModel: RepositorySearchListViewModelProtocol
     
     func update(searchQuery: String) {
         status = .loading
+        delegate?.repositorySearchListViewModel(self, shouldShow: status, didLoad: [])
         useCase.update(searchQuery: searchQuery)
     }
     
@@ -52,6 +49,7 @@ extension RepositorySearchListViewModel: RepositorySearchListUseCaseDelegate {
     func repositorySearchListUseCase(_ useCase: RepositorySearchListUseCaseProtocol, didLoad repositoryList: [Repository], isError: Bool, isStalled: Bool) {
         guard !isError else {
             status = .error
+            delegate?.repositorySearchListViewModel(self, shouldShow: status, didLoad: [])
             return
         }
         status = .browsable

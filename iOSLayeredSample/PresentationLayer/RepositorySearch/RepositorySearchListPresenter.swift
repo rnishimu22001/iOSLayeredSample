@@ -21,6 +21,11 @@ protocol RepositorySearchListPresenterDelegate: class {
 
 final class RepositorySearchListPresenter: NSObject, RepositorySearchListPresenterProtocol {
     
+    
+    @IBOutlet weak var initalizedView: UIView!
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var tableView: UITableView!
     weak var delegate: RepositorySearchListPresenterDelegate?
@@ -38,6 +43,32 @@ final class RepositorySearchListPresenter: NSObject, RepositorySearchListPresent
     }
     
     func reload(status: ContentsStatus, contentsList: [TableViewDisplayable]) {
+        switch status {
+        case .browsable:
+            tableView.isHidden = false
+            errorView.isHidden = true
+            loadingView.isHidden = true
+            initalizedView.isHidden = true
+            break
+        case .error:
+            tableView.isHidden = true
+            errorView.isHidden = false
+            loadingView.isHidden = true
+            initalizedView.isHidden = true
+            return
+        case .loading:
+            tableView.isHidden = true
+            errorView.isHidden = true
+            loadingView.isHidden = false
+            initalizedView.isHidden = true
+            return
+        case .initalized:
+            tableView.isHidden = true
+            errorView.isHidden = true
+            loadingView.isHidden = true
+            initalizedView.isHidden = false
+            return
+        }
         listPresenter.contentsList = contentsList
         reloadView()
     }
