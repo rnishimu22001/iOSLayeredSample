@@ -14,6 +14,23 @@ final class ReleaseView: UIView {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var status: UILabel!
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+    
+    func commonInit() {
+    Bundle.main.loadNibNamed(type(of: self).className, owner: self, options: nil)
+        addSubview(view)
+        view.frame = self.frame
+    }
+    
+    
     func setup(_ release: ReleaseDisplayable) {
         tagName.text = release.tagName
         date.text = release.publishedDate

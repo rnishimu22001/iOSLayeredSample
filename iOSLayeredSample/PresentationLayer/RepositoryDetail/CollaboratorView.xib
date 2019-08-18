@@ -12,6 +12,7 @@
                 <outlet property="admin" destination="pX3-e6-ern" id="AEG-w4-IYQ"/>
                 <outlet property="icon" destination="8Ei-ZR-TkH" id="02o-ho-r6M"/>
                 <outlet property="name" destination="d3S-YQ-YLP" id="a5J-Zg-g8n"/>
+                <outlet property="view" destination="vMN-IZ-ise" id="eZF-Nn-hBf"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

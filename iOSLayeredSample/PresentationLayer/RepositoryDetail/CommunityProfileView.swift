@@ -19,10 +19,24 @@ final class CommunityProfileView: UIView, ContentViewInVerticalStack {
     @IBOutlet weak var license: UILabel!
     @IBOutlet weak var communityDescription: UILabel!
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+    
+    func commonInit() {
+    Bundle.main.loadNibNamed(type(of: self).className, owner: self, options: nil)
+        addSubview(view)
+        view.frame = self.frame
+    }
+    
+    
     func setup(_ profile: CommunityProfileDisplayable) {
-        Bundle.main.loadNibNamed(type(of: self).className, owner: self, options: nil)
-        contents.frame = frame
-        addSubview(contents)
         
         communityDescription.text = profile.repositoryDescription
         name.text = profile.name
