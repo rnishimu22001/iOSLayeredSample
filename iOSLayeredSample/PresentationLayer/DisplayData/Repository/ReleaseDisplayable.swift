@@ -6,11 +6,13 @@
 //  Copyright © 2019 rnishimu22001. All rights reserved.
 //
 
-enum ReleaseStatus {
+import UIKit
+
+enum ReleaseStatus: String {
     case draft
     case prerelease
     case release
-    
+    // TODO: move to viewmodel
     init(isDraft: Bool, isPrerelease: Bool) {
         if isDraft {
             self = .draft
@@ -18,6 +20,17 @@ enum ReleaseStatus {
             self = .prerelease
         } else {
             self = .release
+        }
+    }
+    
+    var color: UIColor {
+        switch self {
+        case .draft:
+            return .secondaryLabel
+        case .prerelease:
+            return .black
+        case .release:
+            return .green
         }
     }
 }
@@ -37,10 +50,10 @@ struct ReleaseDisplayData: ReleaseDisplayable {
     let status: ReleaseStatus
     let publishedDate: String
     
-    init(with release: Release) {
+    init(with release: Release, status: ReleaseStatus) {
         tagName = release.name
         releaseDesciption = release.body
-        status = ReleaseStatus(isDraft: release.draft, isPrerelease: release.prerelease)
+        self.status = status
         publishedDate = release.publishedAt.currentLocale
     }
 }
