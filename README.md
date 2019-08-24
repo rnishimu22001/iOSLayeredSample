@@ -18,7 +18,9 @@ iOSのレイヤードアーキテクチャを採用したサンプルアプリ�
 * テストコードを書くことを前提とするので、DIを用いた参照を利用する
 * 独自クラスの継承はせず、protocolとprotocol extensionを利用
 
-## 名称と役割
+## レイヤーと名称と役割
+
+![layerd 001](https://user-images.githubusercontent.com/25366111/63637480-707bff00-c6b7-11e9-8ab2-630f935093ba.jpeg)
 
 ※ 表示状態がない静的な画面など必要がなければPresenterやViewModelはなくて良い
 
