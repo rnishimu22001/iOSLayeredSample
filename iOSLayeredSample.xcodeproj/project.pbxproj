@@ -46,6 +46,8 @@
 		5A9B912D22EBEB0600996712 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A9B912B22EBEB0600996712 /* LaunchScreen.storyboard */; };
 		5A9B913822EBEB0600996712 /* iOSLayeredSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9B913722EBEB0600996712 /* iOSLayeredSampleTests.swift */; };
 		5A9C6D1322EFB5F800C41CB0 /* RequestErrorReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9C6D1222EFB5F800C41CB0 /* RequestErrorReason.swift */; };
+		5A9EFC832311353300490D92 /* UISearchBarDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC822311353300490D92 /* UISearchBarDelegateProxy.swift */; };
+		5A9EFC852311637100490D92 /* DispatchQueue+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC842311637100490D92 /* DispatchQueue+Additions.swift */; };
 		5AADA5FA22EC101A001BA1AD /* RepositorySearchListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AADA5F922EC101A001BA1AD /* RepositorySearchListPresenter.swift */; };
 		5AADA5FE22EC105D001BA1AD /* RepositorySearchListPresenter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AADA5FD22EC105D001BA1AD /* RepositorySearchListPresenter.xib */; };
 		5AADA60822EC16CC001BA1AD /* RepositorySearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AADA60722EC16CC001BA1AD /* RepositorySearchListViewController.swift */; };
@@ -117,6 +119,8 @@
 		5A9B913722EBEB0600996712 /* iOSLayeredSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSLayeredSampleTests.swift; sourceTree = "<group>"; };
 		5A9B913922EBEB0600996712 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A9C6D1222EFB5F800C41CB0 /* RequestErrorReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestErrorReason.swift; sourceTree = "<group>"; };
+		5A9EFC822311353300490D92 /* UISearchBarDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarDelegateProxy.swift; sourceTree = "<group>"; };
+		5A9EFC842311637100490D92 /* DispatchQueue+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Additions.swift"; sourceTree = "<group>"; };
 		5AADA5F922EC101A001BA1AD /* RepositorySearchListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchListPresenter.swift; sourceTree = "<group>"; };
 		5AADA5FD22EC105D001BA1AD /* RepositorySearchListPresenter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositorySearchListPresenter.xib; sourceTree = "<group>"; };
 		5AADA60722EC16CC001BA1AD /* RepositorySearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchListViewController.swift; sourceTree = "<group>"; };
@@ -374,6 +378,8 @@
 				5AADA61B22EC1F47001BA1AD /* NSObject+Additions.swift */,
 				5A9400112301AEDD005A549D /* UIView+Additions.swift */,
 				5A4CBEBE2308D13A0056E710 /* Date+Additions.swift */,
+				5A9EFC822311353300490D92 /* UISearchBarDelegateProxy.swift */,
+				5A9EFC842311637100490D92 /* DispatchQueue+Additions.swift */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -497,6 +503,7 @@
 				5A4CBEBF2308D13A0056E710 /* Date+Additions.swift in Sources */,
 				5A662C5D230841F400BD0403 /* Release.swift in Sources */,
 				5AB6D67622F59D7E008C3D14 /* LoadingCell.swift in Sources */,
+				5A9EFC832311353300490D92 /* UISearchBarDelegateProxy.swift in Sources */,
 				5A940D1A2309349400BD0A08 /* RepositoryDetailUseCase.swift in Sources */,
 				5AADA60C22EC1720001BA1AD /* APISettings.swift in Sources */,
 				5A8957432308279B00A6099E /* RepositoryDisplayable.swift in Sources */,
@@ -523,6 +530,7 @@
 				5AADA61E22EC33AB001BA1AD /* RepositorySearchListViewModel.swift in Sources */,
 				5A4CBECB2308E0770056E710 /* ReleaseView.swift in Sources */,
 				5AB6D66E22F54106008C3D14 /* LoadingDisplayable.swift in Sources */,
+				5A9EFC852311637100490D92 /* DispatchQueue+Additions.swift in Sources */,
 				5AB6D67222F542E1008C3D14 /* ContentsStatus.swift in Sources */,
 				5A9400122301AEDD005A549D /* UIView+Additions.swift in Sources */,
 				5AB6D67022F5419A008C3D14 /* Displayable.swift in Sources */,

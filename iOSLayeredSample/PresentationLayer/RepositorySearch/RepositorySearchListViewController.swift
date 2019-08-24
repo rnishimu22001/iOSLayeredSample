@@ -7,45 +7,44 @@
 //
 
 import UIKit
+import Combine
 
 final class RepositorySearchListViewController: UIViewController {
     
     var presenter: RepositorySearchListPresenterProtocol!
     var viewModel: RepositorySearchListViewModelProtocol!
+    let delegateProxy: UISearchBarDelegateProxyProtocol =  UISearchBarDelegateProxy()
+    private var cancellables: [AnyCancellable] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = RepositorySearchListPresenter(parentView: self.view)
-        presenter.delegate = self
         viewModel = RepositorySearchListViewModel()
+        sink()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.searchController = UISearchController(searchResultsController: nil)
-        navigationItem.searchController?.searchBar.delegate = self
+        navigationItem.searchController?.searchBar.delegate = delegateProxy
         navigationItem.hidesSearchBarWhenScrolling = true
-        viewModel.delegate = self
-    }
-}
-
-extension RepositorySearchListViewController: UISearchBarDelegate {
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text,
-            !text.isEmpty else {
-                return
-        }
-        viewModel.update(searchQuery: text)
-    }
-}
-
-extension RepositorySearchListViewController: RepositorySearchListViewModelDelegate {
-    
-    func repositorySearchListViewModel(_ viewModel: RepositorySearchListViewModelProtocol, shouldShow status: ContentsStatus, didLoad contents: [TableViewDisplayable]) {
-        DispatchQueue.main.async { [weak self] in
-            self?.presenter.reload(status: status, contentsList: contents)
-        }
+        
     }
     
-    func repositorySearchListViewModel(_ viewModel: RepositorySearchListViewModelProtocol, didUpdate contents: [TableViewDisplayable]) {
-        presenter.update(contentsList: contents)
+    private func sink() {
+        let textDidEndEditing = delegateProxy.textDidEndEditing.sink { [weak self] query in
+            self?.viewModel.update(searchQuery: query)
+        }
+        let showLoadingFooter = presenter.showLoadingFooter.sink { [weak self] in
+            self?.viewModel.showLoadingFooter()
+        }
+        let repositoryUpdate = viewModel.repositoryList.sink { [weak self] contents in
+            self?.presenter.update(contentsList: contents)
+        }
+        let statusUpdate = viewModel.status.sink { [weak self] status in
+            self?.presenter.change(status: status)
+        }
+        cancellables.append(textDidEndEditing)
+        cancellables.append(showLoadingFooter)
+        cancellables.append(repositoryUpdate)
+        cancellables.append(statusUpdate)
     }
 }
 

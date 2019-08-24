@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import Combine
 
 protocol RepositorySearchListPresenterProtocol {
     init(parentView: UIView, listPresenter: RepositoryListPresenterProtocol)
-    var delegate: RepositorySearchListPresenterDelegate? { get set }
-    func reload(status: ContentsStatus, contentsList: [TableViewDisplayable])
+    var showLoadingFooter: PassthroughSubject<Void, Never> { get }
+    func change(status: ContentsStatus)
     func update(contentsList: [TableViewDisplayable])
 }
 
@@ -21,6 +22,7 @@ protocol RepositorySearchListPresenterDelegate: class {
 
 final class RepositorySearchListPresenter: NSObject, RepositorySearchListPresenterProtocol {
     
+    let showLoadingFooter: PassthroughSubject<Void, Never> = PassthroughSubject()
     
     @IBOutlet weak var initalizedView: UIView!
     @IBOutlet weak var loadingView: UIView!
@@ -42,58 +44,54 @@ final class RepositorySearchListPresenter: NSObject, RepositorySearchListPresent
         self.listPresenter.register(in: tableView)
     }
     
-    func reload(status: ContentsStatus, contentsList: [TableViewDisplayable]) {
-        switch status {
-        case .browsable:
-            tableView.isHidden = false
-            errorView.isHidden = true
-            loadingView.isHidden = true
-            initalizedView.isHidden = true
-            break
-        case .error:
-            tableView.isHidden = true
-            errorView.isHidden = false
-            loadingView.isHidden = true
-            initalizedView.isHidden = true
-            return
-        case .loading:
-            tableView.isHidden = true
-            errorView.isHidden = true
-            loadingView.isHidden = false
-            initalizedView.isHidden = true
-            return
-        case .initalized:
-            tableView.isHidden = true
-            errorView.isHidden = true
-            loadingView.isHidden = true
-            initalizedView.isHidden = false
-            return
+    func change(status: ContentsStatus) {
+        let change = { [weak self] in
+            switch status {
+            case .browsable:
+                self?.tableView.isHidden = false
+                self?.errorView.isHidden = true
+                self?.loadingView.isHidden = true
+                self?.initalizedView.isHidden = true
+                break
+            case .error:
+                self?.tableView.isHidden = true
+                self?.errorView.isHidden = false
+                self?.loadingView.isHidden = true
+                self?.initalizedView.isHidden = true
+                return
+            case .loading:
+                self?.tableView.isHidden = true
+                self?.errorView.isHidden = true
+                self?.loadingView.isHidden = false
+                self?.initalizedView.isHidden = true
+                return
+            case .initalized:
+                self?.tableView.isHidden = true
+                self?.errorView.isHidden = true
+                self?.loadingView.isHidden = true
+                self?.initalizedView.isHidden = false
+                return
+            }
         }
-        listPresenter.contentsList = contentsList
-        reloadView()
+        DispatchQueue.asyncAtMain {
+            change()
+        }
     }
     
     func update(contentsList: [TableViewDisplayable]) {
         listPresenter.contentsList = contentsList
-        reloadView()
+        self.reloadList()
     }
     
-    private func reloadView() {
-        let reload = { [weak self] in
+    private func reloadList() {
+        DispatchQueue.asyncAtMain { [weak self] in
             self?.tableView.reloadData()
-        }
-        guard !Thread.isMainThread else {
-            reload()
-            return
-        }
-        DispatchQueue.main.async {
-            reload()
         }
     }
 }
 
 extension RepositorySearchListPresenter: RepositoryListPresenterDelegate {
     func repositoryListPresenter(_ presenter: RepositoryListPresenterProtocol, willDisplayLoading cell: UITableViewCell) {
-        self.delegate?.repositorySearchListPresenter(self, willDisplayLoading: cell)
+        showLoadingFooter.send()
     }
 }
