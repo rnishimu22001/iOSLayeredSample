@@ -32,7 +32,9 @@ iOSのレイヤードアーキテクチャを採用したサンプルアプリ�
 * Viewに対するユーザー操作のイベントを受け取り、Presenterへ通知
 * 1画面に複数、UIを構成するモジュール単位で作成
 
-### Presenter
+### Presenter(Deprecated)
+
+**viewと統合予定**
 
 データを元にしたViewの管理
 
