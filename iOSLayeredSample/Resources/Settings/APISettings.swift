@@ -12,14 +12,14 @@ struct APIURLSetting {
     static let repositorySearch = base + "search/repositories"
     
     static func communityProfile(with fullName: String) -> String {
-        return base + "/repos/" + fullName + "/community/profile"
+        return base + "repos/" + fullName + "/community/profile"
     }
     
     static func collaborators(with fullName: String) -> String {
-        return base + "/repos/" + fullName + "/collaborators"
+        return base + "repos/" + fullName + "/collaborators"
     }
     
     static func latestReleases(with fullName: String) -> String {
-        return base + "/repos/" + fullName + "/releases/latest"
+        return base + "repos/" + fullName + "/releases/latest"
     }
 }
