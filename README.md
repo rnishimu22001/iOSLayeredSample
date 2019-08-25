@@ -34,7 +34,7 @@ iOSのレイヤードアーキテクチャを採用したサンプルアプリ�
 
 ### Presenter(Deprecated)
 
-** viewと統合予定 **
+**viewと統合予定**
 
 データを元にしたViewの管理
 
