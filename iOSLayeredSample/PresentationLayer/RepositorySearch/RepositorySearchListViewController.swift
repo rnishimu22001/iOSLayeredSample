@@ -11,16 +11,16 @@ import Combine
 
 final class RepositorySearchListViewController: UIViewController {
     
-    var repositorySearchListView: RepositorySearchListViewProtocol!
+    var presenter: RepositorySearchListPresenterProtocol!
     var viewModel: RepositorySearchListViewModelProtocol!
     let delegateProxy: UISearchBarDelegateProxyProtocol =  UISearchBarDelegateProxy()
     private var cancellables: [AnyCancellable] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        repositorySearchListView = RepositorySearchListView(parentView: self.view)
+        presenter = RepositorySearchListPresenter(parentView: self.view)
         viewModel = RepositorySearchListViewModel()
-        repositorySearchListView.delegate = self
+        presenter.delegate = self
         sink()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.searchController = UISearchController(searchResultsController: nil)
@@ -33,14 +33,14 @@ final class RepositorySearchListViewController: UIViewController {
         let textDidEndEditing = delegateProxy.textDidEndEditing.sink { [weak self] query in
             self?.viewModel.update(searchQuery: query)
         }
-        let showLoadingFooter = repositorySearchListView.showLoadingFooter.sink { [weak self] in
+        let showLoadingFooter = presenter.showLoadingFooter.sink { [weak self] in
             self?.viewModel.showLoadingFooter()
         }
         let repositoryUpdate = viewModel.repositoryList.sink { [weak self] contents in
-            self?.repositorySearchListView.update(contentsList: contents)
+            self?.presenter.update(contentsList: contents)
         }
         let statusUpdate = viewModel.status.sink { [weak self] status in
-            self?.repositorySearchListView.change(status: status)
+            self?.presenter.change(status: status)
         }
         cancellables.append(textDidEndEditing)
         cancellables.append(showLoadingFooter)
@@ -49,9 +49,9 @@ final class RepositorySearchListViewController: UIViewController {
     }
 }
 
-extension RepositorySearchListViewController: RepositorySearchListViewDelegate {
+extension RepositorySearchListViewController: RepositorySearchListPresenterDelegate {
     
-    func repositorySearchListView(_ presenter: RepositorySearchListViewProtocol, didSelectRepositoryListAt index: Int) {
+    func repositorySearchListPresenter(_ presenter: RepositorySearchListPresenterProtocol, didSelectRepositoryListAt index: Int) {
         guard let repository = viewModel.repositoryInList(at: index) else {
             return
         }

@@ -9,19 +9,19 @@
 import UIKit
 import Combine
 
-protocol RepositorySearchListViewProtocol {
-    init(parentView: UIView, listPresenter: RepositoryListViewProtocol)
+protocol RepositorySearchListPresenterProtocol {
+    init(parentView: UIView, listPresenter: RepositoryListPresenterProtocol)
     var showLoadingFooter: PassthroughSubject<Void, Never> { get }
-    var delegate: RepositorySearchListViewDelegate? { get set }
+    var delegate: RepositorySearchListPresenterDelegate? { get set }
     func change(status: ContentsStatus)
     func update(contentsList: [TableViewDisplayable])
 }
 
-protocol RepositorySearchListViewDelegate: class {
-    func repositorySearchListView(_ view: RepositorySearchListViewProtocol, didSelectRepositoryListAt index: Int)
+protocol RepositorySearchListPresenterDelegate: class {
+    func repositorySearchListPresenter(_ presenter: RepositorySearchListPresenterProtocol, didSelectRepositoryListAt index: Int)
 }
 
-final class RepositorySearchListView: NSObject, RepositorySearchListViewProtocol {
+final class RepositorySearchListPresenter: NSObject, RepositorySearchListPresenterProtocol {
     
     let showLoadingFooter: PassthroughSubject<Void, Never> = PassthroughSubject()
     @IBOutlet weak var initalizedView: UIView!
@@ -30,10 +30,10 @@ final class RepositorySearchListView: NSObject, RepositorySearchListViewProtocol
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var tableView: UITableView!
-    weak var delegate: RepositorySearchListViewDelegate?
-    private(set) var listPresenter: RepositoryListViewProtocol
+    weak var delegate: RepositorySearchListPresenterDelegate?
+    private(set) var listPresenter: RepositoryListPresenterProtocol
     
-    required init(parentView: UIView, listPresenter: RepositoryListViewProtocol = RepositoryListPresenter()) {
+    required init(parentView: UIView, listPresenter: RepositoryListPresenterProtocol = RepositoryListPresenter()) {
         self.listPresenter = listPresenter
         super.init()
         Bundle.main.loadNibNamed(type(of: self).className, owner: self, options: nil)
@@ -90,11 +90,11 @@ final class RepositorySearchListView: NSObject, RepositorySearchListViewProtocol
     }
 }
 
-extension RepositorySearchListView: RepositoryListViewDelegate {
-    func repositoryListView(_ view: RepositoryListViewProtocol, willDisplayLoading cell: UITableViewCell) {
+extension RepositorySearchListPresenter: RepositoryListPresenterDelegate {
+    func repositoryListPresenter(_ presenter: RepositoryListPresenterProtocol, willDisplayLoading cell: UITableViewCell) {
         showLoadingFooter.send()
     }
-    func repositoryListView(_ view: RepositoryListViewProtocol, didSelectRepositoryListAt index: Int) {
-        self.delegate?.repositorySearchListView(self, didSelectRepositoryListAt: index)
+    func repositoryListPresenter(_ presenter: RepositoryListPresenterProtocol, didSelectRepositoryListAt index: Int) {
+        self.delegate?.repositorySearchListPresenter(self, didSelectRepositoryListAt: index)
     }
 }
