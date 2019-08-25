@@ -14,13 +14,34 @@ protocol RepositoryDetailPresenterProtocol {
 }
 
 final class RepositoryDetailPresenter: NSObject, RepositoryDetailPresenterProtocol {
+    
+    @IBOutlet var view: UIView!
     @IBOutlet var contentsView: UIStackView!
+    @IBOutlet weak var error: UIView!
+    @IBOutlet weak var loading: LoadingView!
     
     init(with superView: UIView) {
         superView.addSubview(contentsView)
         contentsView.frame = superView.frame
         let loadingView = LoadingView(frame: contentsView.frame)
         contentsView.addArrangedSubview(loadingView)
+    }
+    
+    func update(status: ContentsStatus) {
+        switch status {
+        case .browsable:
+            contentsView.isHidden = false
+            error.isHidden = true
+            loading.isHidden = true
+        case .initalized, .loading:
+            contentsView.isHidden = true
+            error.isHidden = true
+            loading.isHidden = false
+        case .error:
+            contentsView.isHidden = true
+            error.isHidden = false
+            loading.isHidden = true
+        }
     }
     
     func update(contents: [Displayable]) {
@@ -41,7 +62,7 @@ final class RepositoryDetailPresenter: NSObject, RepositoryDetailPresenterProtoc
             addContentView(for: profile)
         case let release as ReleaseDisplayable:
             addContentView(for: release)
-        case let collaborators as CollaboratorsDisplayable:
+        case let collaborators as CollaboratorsDisplayData:
             addContentView(for: collaborators)
         default:
             assert(true, "予期していないデータ型です")
@@ -75,7 +96,7 @@ final class RepositoryDetailPresenter: NSObject, RepositoryDetailPresenterProtoc
         contentsView.addArrangedSubview(releaseView)
     }
     
-    private func addContentView(for collaborators: CollaboratorsDisplayable) {
+    private func addContentView(for collaborators: CollaboratorsDisplayData) {
         collaborators.collaborators.forEach {
             let size = CGSize(width: contentsView.frame.size.width, height: 100)
             let frame = CGRect(origin: .zero, size: size)

@@ -34,7 +34,7 @@ final class RepositorySearchListUseCase: RepositorySearchListUseCaseProtocol {
     
     weak var delegate: RepositorySearchListUseCaseDelegate?
     
-    private let repository: RepositorySearchRepositoryProtocol = RepositorySearchRepository()
+    private let repository: GithubRepositorySearchRepositoryProtocol = GithubRepositorySearchRepository()
     
     func update(searchQuery: String) {
         repository.reload(with: searchQuery) { [weak self] result in

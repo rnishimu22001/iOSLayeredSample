@@ -8,7 +8,11 @@
 
 import Foundation
 
-final class RepositoryCollaboratorsClient: APIRequestable {
+protocol RepositoryCollaboratorsClientProtocol {
+    func requestCollaborators(repository fullName: String, completion: @escaping ((Result<[Collaborator], Error>, URLResponse?) -> Void))
+}
+
+final class RepositoryCollaboratorsClient: RepositoryCollaboratorsClientProtocol, APIRequestable {
     let configuration: URLSessionConfiguration = .default
     
     func requestCollaborators(repository fullName: String, completion: @escaping ((Result<[Collaborator], Error>, URLResponse?) -> Void)) {

@@ -14,8 +14,8 @@ enum RepositorySearchSortPattern: String {
 }
 
 protocol RepositorySearchRequestClientProtocol {
-    func request(with url: String, sort: RepositorySearchSortPattern, query: String, completion: @escaping (_ result: Result<Repositories, Error>, _ response: HTTPURLResponse?) -> Void)
-    func request(nextURL: String, completion: @escaping (_ result: Result<Repositories, Error>, _ response: HTTPURLResponse?) -> Void)
+    func request(with url: String, sort: RepositorySearchSortPattern, query: String, completion: @escaping (_ result: Result<Repositories, Error>, _ response: GitHubAPIResponseHeader?) -> Void)
+    func request(nextURL: String, completion: @escaping (_ result: Result<Repositories, Error>, _ response: GitHubAPIResponseHeader?) -> Void)
 }
 
 /// https://developer.github.com/v3/search/#search-users
@@ -23,7 +23,7 @@ struct RepositorySearchRequestClient: APIRequestable, RepositorySearchRequestCli
     
     let configuration = URLSessionConfiguration.default
     
-    func request(with url: String, sort: RepositorySearchSortPattern, query: String, completion: @escaping (_ result: Result<Repositories, Error>, _ response: HTTPURLResponse?) -> Void) {
+    func request(with url: String, sort: RepositorySearchSortPattern, query: String, completion: @escaping (_ result: Result<Repositories, Error>, _ response: GitHubAPIResponseHeader?) -> Void) {
         
         guard var components = URLComponents(string: url) else {
             completion(.failure(RequestError.badURL), nil)
@@ -46,7 +46,7 @@ struct RepositorySearchRequestClient: APIRequestable, RepositorySearchRequestCli
         request(repositorySearchRequest: repositorySearchRequest, completion: completion)
     }
     
-    func request(nextURL: String, completion: @escaping (Result<Repositories, Error>, HTTPURLResponse?) -> Void) {
+    func request(nextURL: String, completion: @escaping (Result<Repositories, Error>, GitHubAPIResponseHeader?) -> Void) {
         guard
             let url = URL(string: nextURL) else {
             completion(.failure(RequestError.badURL), nil)
@@ -55,18 +55,21 @@ struct RepositorySearchRequestClient: APIRequestable, RepositorySearchRequestCli
         request(repositorySearchRequest: URLRequest(url: url), completion: completion)
     }
     
-    private func request(repositorySearchRequest: URLRequest, completion: @escaping (_ result: Result<Repositories, Error>, _ response: HTTPURLResponse?) -> Void) {
+    private func request(repositorySearchRequest: URLRequest, completion: @escaping (_ result: Result<Repositories, Error>, _ response: GitHubAPIResponseHeader?) -> Void) {
         request(with: repositorySearchRequest) { result, response in
-            
+            var responseHeader: GitHubAPIResponseHeader?
+            if let header = response?.allHeaderFields {
+                responseHeader = GitHubAPIResponseHeader(with: header)
+            }
             switch result {
             case .failure(let error):
-                completion(.failure(error), response)
+                completion(.failure(error), nil)
             case .success(let data):
                 guard let users = try? JSONDecoder().decode(Repositories.self, from: data) else {
-                    completion(.failure(RequestError.dataEncodeFailed), response)
+                    completion(.failure(RequestError.dataEncodeFailed), responseHeader)
                     return
                 }
-                completion(.success(users), response)
+                completion(.success(users), responseHeader)
             }
         }
     }

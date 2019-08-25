@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol CommunityProfileDisplayable {
+protocol CommunityProfileDisplayable: Displayable {
     var name: String { get }
     var repositoryDescription: String { get }
     var license: String { get }

@@ -35,9 +35,7 @@ final class CommunityProfileView: UIView, ContentViewInVerticalStack {
         contents.frame = self.frame
     }
     
-    
     func setup(_ profile: CommunityProfileDisplayable) {
-        
         communityDescription.text = profile.repositoryDescription
         name.text = profile.name
         lastUpdateDate.text = profile.lastUpdate

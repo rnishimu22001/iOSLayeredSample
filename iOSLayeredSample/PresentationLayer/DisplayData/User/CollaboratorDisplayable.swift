@@ -27,6 +27,6 @@ protocol CollaboratorDisplayable: Displayable {
     var hasAdminBadge: Bool { get }
 }
 
-struct CollaboratorsDisplayable: Displayable {
+struct CollaboratorsDisplayData: Displayable {
     let collaborators: [CollaboratorDisplayable]
 }

@@ -37,7 +37,7 @@ enum ReleaseStatus: String {
 
 import Foundation
 
-protocol ReleaseDisplayable {
+protocol ReleaseDisplayable: Displayable {
     var tagName: String { get }
     var releaseDesciption: String { get }
     var status: ReleaseStatus { get }

@@ -8,7 +8,11 @@
 
 import Foundation
 
-final class RepositoryCommunityProfileClient: APIRequestable {
+protocol RepositoryCommunityProfileClientProtocol {
+    func requestProfile(repository fullName: String, completion: @escaping ((Result<CommunityProfile, Error>, URLResponse?) -> Void))
+}
+
+final class RepositoryCommunityProfileClient: RepositoryCommunityProfileClientProtocol, APIRequestable {
     let configuration: URLSessionConfiguration = .default
     
     func requestProfile(repository fullName: String, completion: @escaping ((Result<CommunityProfile, Error>, URLResponse?) -> Void)) {

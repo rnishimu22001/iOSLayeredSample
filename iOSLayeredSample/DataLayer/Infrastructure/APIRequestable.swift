@@ -19,6 +19,7 @@ enum RequestError: Error {
 
 protocol APIRequestable {
     var configuration: URLSessionConfiguration { get }
+    func request(with request: URLRequest, completion: @escaping (Result<Data, Error>, HTTPURLResponse?) -> Void)
 }
 
 extension APIRequestable {

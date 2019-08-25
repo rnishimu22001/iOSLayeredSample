@@ -1,5 +1,5 @@
 //
-//  RepositorySearchRepository.swift
+//  GithubRepositorySSearchRepository.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/07/29.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RepositorySearchRepositoryProtocol {
+protocol GithubRepositorySearchRepositoryProtocol {
     /// Githubリポジトリのデータリスト
     var repositories: [Repository] { get }
     var hasNextURL: Bool { get }
@@ -28,11 +28,12 @@ protocol RepositorySearchRepositoryProtocol {
     func loadNext(with completion: @escaping ((Result<Void, Error>) -> Void))
 }
 
-final class RepositorySearchRepository: RepositorySearchRepositoryProtocol {
+final class GithubRepositorySearchRepository: GithubRepositorySearchRepositoryProtocol {
     
     private(set) var repositories: [Repository] = []
     private(set) var nextURL: String?
     private(set) var error: Error?
+    private var responseHeader: GitHubAPIResponseHeader?
     
     let entryPoint = APIURLSetting.repositorySearch
     
@@ -60,10 +61,7 @@ final class RepositorySearchRepository: RepositorySearchRepositoryProtocol {
         self.error = nil
         self.nextURL = nil
         requestClient.request(with: entryPoint, sort: sort, query: query) { [weak self] result, response in
-            if let header = response?.allHeaderFields {
-                let res = GitHubAPIResponseHeader(with: header)
-                self?.nextURL = res.nextURL
-            }
+            self?.responseHeader = response
             switch result {
             case .success(let repositories):
                 self?.repositories = repositories.items
@@ -83,10 +81,7 @@ final class RepositorySearchRepository: RepositorySearchRepositoryProtocol {
         self.error = nil
         self.nextURL = nil
         requestClient.request(nextURL: nextURL) { [weak self] result, response in
-            if let header = response?.allHeaderFields {
-                let res = GitHubAPIResponseHeader(with: header)
-                self?.nextURL = res.nextURL
-            }
+            self?.responseHeader = response
             switch result {
             case .success(let repositories):
                 self?.repositories.append(contentsOf: repositories.items)
