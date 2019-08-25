@@ -14,10 +14,10 @@ protocol RepositoryDetailViewProtocol {
     func update(status: ContentsStatus)
 }
 
-final class RepositoryDetailView: NSObject, RepositoryDetailViewProtocol {
+final class RepositoryDetailPresenter: NSObject, RepositoryDetailViewProtocol {
     
     @IBOutlet var view: UIView!
-    @IBOutlet var contentsView: UIStackView!
+    @IBOutlet var contents: UIStackView!
     @IBOutlet weak var error: UIView!
     @IBOutlet weak var loading: LoadingView!
     
@@ -32,22 +32,22 @@ final class RepositoryDetailView: NSObject, RepositoryDetailViewProtocol {
     func update(status: ContentsStatus) {
         switch status {
         case .browsable:
-            contentsView.isHidden = false
+            contents.isHidden = false
             error.isHidden = true
             loading.isHidden = true
         case .initalized, .loading:
-            contentsView.isHidden = true
+            contents.isHidden = true
             error.isHidden = true
             loading.isHidden = false
         case .error:
-            contentsView.isHidden = true
+            contents.isHidden = true
             error.isHidden = false
             loading.isHidden = true
         }
     }
     
     func update(contents: [Displayable]) {
-        contentsView.subviews.filter({ $0 is LoadingView }).forEach { $0.removeFromSuperview() }
+        self.contents.subviews.filter({ $0 is LoadingView }).forEach { $0.removeFromSuperview() }
         contents.forEach {
             setupContentView(content: $0)
         }
@@ -56,10 +56,10 @@ final class RepositoryDetailView: NSObject, RepositoryDetailViewProtocol {
     private func setupContentView(content: Displayable) {
         switch content {
         case is LoadingDisplayable:
-            let size = CGSize(width: self.contentsView.frame.size.width, height: LoadingView.height)
+            let size = CGSize(width: self.contents.frame.size.width, height: LoadingView.height)
             let frame = CGRect(origin: .zero, size: size)
             let loading = LoadingView(frame: frame)
-            contentsView.addArrangedSubview(loading)
+            contents.addArrangedSubview(loading)
         case let profile as CommunityProfileDisplayable:
             addContentView(for: profile)
         case let release as ReleaseDisplayable:
@@ -74,37 +74,37 @@ final class RepositoryDetailView: NSObject, RepositoryDetailViewProtocol {
     private func addContentView(for profile: CommunityProfileDisplayable) {
         var profileView: CommunityProfileView
         // if already exist profileview
-        if let currentView = contentsView.subviews.filter({ $0 is CommunityProfileView }).first as? CommunityProfileView {
+        if let currentView = contents.subviews.filter({ $0 is CommunityProfileView }).first as? CommunityProfileView {
             profileView = currentView
         } else {
-            let size = CGSize(width: contentsView.frame.size.width, height: 200)
+            let size = CGSize(width: contents.frame.size.width, height: 200)
             let frame = CGRect(origin: .zero, size: size)
             profileView = CommunityProfileView(frame: frame)
             profileView.setup(profile)
         }
-        contentsView.addArrangedSubview(profileView)
+        contents.addArrangedSubview(profileView)
     }
     
     private func addContentView(for release: ReleaseDisplayable) {
         var releaseView: ReleaseView
-        if let currentView = contentsView.subviews.filter({ $0 is ReleaseView }).first as? ReleaseView {
+        if let currentView = contents.subviews.filter({ $0 is ReleaseView }).first as? ReleaseView {
             releaseView = currentView
         } else {
-            let size = CGSize(width: contentsView.frame.size.width, height: 150)
+            let size = CGSize(width: contents.frame.size.width, height: 150)
             let frame = CGRect(origin: .zero, size: size)
             releaseView = ReleaseView(frame: frame)
             releaseView.setup(release)
         }
-        contentsView.addArrangedSubview(releaseView)
+        contents.addArrangedSubview(releaseView)
     }
     
     private func addContentView(for collaborators: CollaboratorsDisplayData) {
         collaborators.collaborators.forEach {
-            let size = CGSize(width: contentsView.frame.size.width, height: 100)
+            let size = CGSize(width: contents.frame.size.width, height: 100)
             let frame = CGRect(origin: .zero, size: size)
             let collaboratorView = CollaboratorView(frame: frame)
             collaboratorView.setup($0)
-            contentsView.addArrangedSubview(collaboratorView)
+            contents.addArrangedSubview(collaboratorView)
         }
     }
 }

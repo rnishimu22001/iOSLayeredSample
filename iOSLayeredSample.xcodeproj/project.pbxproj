@@ -25,7 +25,7 @@
 		5A61EED622EF2C8A00054B92 /* RepositorySearchRequestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A61EED522EF2C8A00054B92 /* RepositorySearchRequestClient.swift */; };
 		5A662C5123083D2E00BD0403 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A662C5023083D2E00BD0403 /* RepositoryDetailViewController.swift */; };
 		5A662C5323083DA700BD0403 /* RepositoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A662C5223083DA700BD0403 /* RepositoryDetailView.swift */; };
-		5A662C5523083DF300BD0403 /* RepositoryDetailPresenter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A662C5423083DF300BD0403 /* RepositoryDetailPresenter.xib */; };
+		5A662C5523083DF300BD0403 /* RepositoryDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A662C5423083DF300BD0403 /* RepositoryDetailView.xib */; };
 		5A662C5723083F6A00BD0403 /* RepositoryReleaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A662C5623083F6A00BD0403 /* RepositoryReleaseClient.swift */; };
 		5A662C5923083F9500BD0403 /* RepositoryCollaboratorsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A662C5823083F9500BD0403 /* RepositoryCollaboratorsClient.swift */; };
 		5A662C5B23083FC200BD0403 /* RepositoryCommunityProfileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A662C5A23083FC200BD0403 /* RepositoryCommunityProfileClient.swift */; };
@@ -100,7 +100,7 @@
 		5A61EED522EF2C8A00054B92 /* RepositorySearchRequestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchRequestClient.swift; sourceTree = "<group>"; };
 		5A662C5023083D2E00BD0403 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		5A662C5223083DA700BD0403 /* RepositoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailView.swift; sourceTree = "<group>"; };
-		5A662C5423083DF300BD0403 /* RepositoryDetailPresenter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoryDetailPresenter.xib; sourceTree = "<group>"; };
+		5A662C5423083DF300BD0403 /* RepositoryDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoryDetailView.xib; sourceTree = "<group>"; };
 		5A662C5623083F6A00BD0403 /* RepositoryReleaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryReleaseClient.swift; sourceTree = "<group>"; };
 		5A662C5823083F9500BD0403 /* RepositoryCollaboratorsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCollaboratorsClient.swift; sourceTree = "<group>"; };
 		5A662C5A23083FC200BD0403 /* RepositoryCommunityProfileClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCommunityProfileClient.swift; sourceTree = "<group>"; };
@@ -221,7 +221,7 @@
 				5A940D17230933ED00BD0A08 /* RepositoryDetailViewModel.swift */,
 				5A662C5023083D2E00BD0403 /* RepositoryDetailViewController.swift */,
 				5A662C5223083DA700BD0403 /* RepositoryDetailView.swift */,
-				5A662C5423083DF300BD0403 /* RepositoryDetailPresenter.xib */,
+				5A662C5423083DF300BD0403 /* RepositoryDetailView.xib */,
 				5A4CBEC22308D4810056E710 /* CommunityProfileView.swift */,
 				5A4CBEC62308D7F70056E710 /* CommunityProfileView.xib */,
 				5A4CBEC82308E06A0056E710 /* ReleaseView.xib */,
@@ -517,7 +517,7 @@
 				5A4CBECD2308E93E0056E710 /* CollaboratorView.xib in Resources */,
 				5AADA5FE22EC105D001BA1AD /* RepositorySearchListView.xib in Resources */,
 				5A9B912A22EBEB0600996712 /* Assets.xcassets in Resources */,
-				5A662C5523083DF300BD0403 /* RepositoryDetailPresenter.xib in Resources */,
+				5A662C5523083DF300BD0403 /* RepositoryDetailView.xib in Resources */,
 				5AADA61722EC1D58001BA1AD /* RepositoryTableViewCell.xib in Resources */,
 				5ABB0BDF2308FE520072660A /* LoadingView.xib in Resources */,
 				5A9B912822EBEB0500996712 /* Main.storyboard in Resources */,
