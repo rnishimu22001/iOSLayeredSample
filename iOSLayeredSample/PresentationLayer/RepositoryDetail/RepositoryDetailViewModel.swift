@@ -6,18 +6,15 @@
 //  Copyright © 2019 rnishimu22001. All rights reserved.
 //
 
-protocol RepositoryDetailViewModelProtocol {
-    var delegate: RepositoryDetailViewModelDelegate? { get set }
-    var status: ContentsStatus { get set }
-}
+import Combine
 
-protocol RepositoryDetailViewModelDelegate: class {
-    func repositoryDetailViewModel(_ viewModel: RepositoryDetailViewModelProtocol, didUpdate status: ContentsStatus, contens: [Displayable])
+protocol RepositoryDetailViewModelProtocol {
+    var status: CurrentValueSubject<ContentsStatus, Never> { get set }
+    
 }
 
 final class RepositoryDetailViewModel: RepositoryDetailViewModelProtocol {
-    var status: ContentsStatus = .initalized
-    weak var delegate: RepositoryDetailViewModelDelegate?
+    var status: CurrentValueSubject<ContentsStatus, Never> = .init(.initalized)
     let useCase: RepositoryDetailUseCaseProtocol
     
     private var collaborators: CollaboratorsDisplayable?
@@ -41,6 +38,7 @@ final class RepositoryDetailViewModel: RepositoryDetailViewModelProtocol {
         
     }
 }
+
 extension RepositoryDetailViewModel: RepositoryDetailUseCaseDelegate {
     func repositoryDetailUseCase(_ useCase: RepositoryDetailUseCaseProtocol, didLoad profile: CommunityProfile) {
         

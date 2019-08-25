@@ -23,8 +23,8 @@ final class RepositoryTableViewCell: UITableViewCell, RepositoryTableViewCellPro
     func setup(with repository: RepositoryDisplayable) {
         name.text = repository.name
         descriptionLabel.text = repository.descpription
-        star.tintColor = repository.starColor
-        starCount.text = repository.stars
-        starCount.textColor = repository.starColor
+        star.tintColor = repository.starColor.color
+        starCount.text = repository.starCount
+        starCount.textColor = repository.starColor.color
     }
 }

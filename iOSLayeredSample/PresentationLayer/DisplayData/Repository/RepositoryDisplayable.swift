@@ -8,10 +8,10 @@
 
 import UIKit
 
-struct RepositoryDisplayData: RepositoryDisplayable, Equatable {
+struct RepositoryDisplayData: RepositoryDisplayable {
     
-    let stars: String
-    let starColor: UIColor
+    let starCount: String
+    let starColor: StarColor
     let name: String
     let descpription: String
     let id: Int
@@ -19,21 +19,16 @@ struct RepositoryDisplayData: RepositoryDisplayable, Equatable {
     init(from repository: Repository) {
         name = repository.fullName
         descpription = repository.itemDescription
-        stars = repository.stargazersCount.description
-        // TODO: ここレビュー
-        if repository.stargazersCount > 10000 {
-            starColor = .red
-        } else {
-            starColor = .lightGray
-        }
+        starCount = repository.stargazersCount.description
+        starColor = StarColor(with: repository.stargazersCount)
         id = repository.id
     }
 }
 
 protocol RepositoryDisplayable: TableViewDisplayable {
     var id: Int { get }
-    var stars: String { get }
-    var starColor: UIColor { get }
+    var starCount: String { get }
+    var starColor: StarColor { get }
     var name: String { get }
     var descpription: String { get }
 }

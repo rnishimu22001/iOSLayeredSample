@@ -48,6 +48,8 @@
 		5A9C6D1322EFB5F800C41CB0 /* RequestErrorReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9C6D1222EFB5F800C41CB0 /* RequestErrorReason.swift */; };
 		5A9EFC832311353300490D92 /* UISearchBarDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC822311353300490D92 /* UISearchBarDelegateProxy.swift */; };
 		5A9EFC852311637100490D92 /* DispatchQueue+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC842311637100490D92 /* DispatchQueue+Additions.swift */; };
+		5A9EFC8823123F5500490D92 /* StarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC8723123F5500490D92 /* StarColor.swift */; };
+		5A9EFC8B2312409400490D92 /* StarCoor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC8A2312409400490D92 /* StarCoor+Extension.swift */; };
 		5AADA5FA22EC101A001BA1AD /* RepositorySearchListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AADA5F922EC101A001BA1AD /* RepositorySearchListPresenter.swift */; };
 		5AADA5FE22EC105D001BA1AD /* RepositorySearchListPresenter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AADA5FD22EC105D001BA1AD /* RepositorySearchListPresenter.xib */; };
 		5AADA60822EC16CC001BA1AD /* RepositorySearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AADA60722EC16CC001BA1AD /* RepositorySearchListViewController.swift */; };
@@ -121,6 +123,8 @@
 		5A9C6D1222EFB5F800C41CB0 /* RequestErrorReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestErrorReason.swift; sourceTree = "<group>"; };
 		5A9EFC822311353300490D92 /* UISearchBarDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarDelegateProxy.swift; sourceTree = "<group>"; };
 		5A9EFC842311637100490D92 /* DispatchQueue+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Additions.swift"; sourceTree = "<group>"; };
+		5A9EFC8723123F5500490D92 /* StarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarColor.swift; sourceTree = "<group>"; };
+		5A9EFC8A2312409400490D92 /* StarCoor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StarCoor+Extension.swift"; sourceTree = "<group>"; };
 		5AADA5F922EC101A001BA1AD /* RepositorySearchListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchListPresenter.swift; sourceTree = "<group>"; };
 		5AADA5FD22EC105D001BA1AD /* RepositorySearchListPresenter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositorySearchListPresenter.xib; sourceTree = "<group>"; };
 		5AADA60722EC16CC001BA1AD /* RepositorySearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchListViewController.swift; sourceTree = "<group>"; };
@@ -307,6 +311,22 @@
 			path = Infrastructure;
 			sourceTree = "<group>";
 		};
+		5A9EFC8623123F4000490D92 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				5A9EFC8723123F5500490D92 /* StarColor.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		5A9EFC892312407A00490D92 /* PresentaitionExtension */ = {
+			isa = PBXGroup;
+			children = (
+				5A9EFC8A2312409400490D92 /* StarCoor+Extension.swift */,
+			);
+			path = PresentaitionExtension;
+			sourceTree = "<group>";
+		};
 		5AADA60222EC1687001BA1AD /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,6 +366,8 @@
 		5AADA60E22EC19B6001BA1AD /* DisplayData */ = {
 			isa = PBXGroup;
 			children = (
+				5A9EFC892312407A00490D92 /* PresentaitionExtension */,
+				5A9EFC8623123F4000490D92 /* Common */,
 				5A8957412308278300A6099E /* Repository */,
 				5AADA61022EC1AB9001BA1AD /* User */,
 				5AB6D66D22F54106008C3D14 /* LoadingDisplayable.swift */,
@@ -499,6 +521,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A9EFC8823123F5500490D92 /* StarColor.swift in Sources */,
 				5A61EECC22EF207F00054B92 /* User.swift in Sources */,
 				5A4CBEBF2308D13A0056E710 /* Date+Additions.swift in Sources */,
 				5A662C5D230841F400BD0403 /* Release.swift in Sources */,
@@ -536,6 +559,7 @@
 				5AB6D67022F5419A008C3D14 /* Displayable.swift in Sources */,
 				5A4CBEBB2308CAA30056E710 /* CollaboratorDisplayable.swift in Sources */,
 				5AADA61C22EC1F47001BA1AD /* NSObject+Additions.swift in Sources */,
+				5A9EFC8B2312409400490D92 /* StarCoor+Extension.swift in Sources */,
 				5A4CBEBD2308CEAF0056E710 /* CommunityProfileDisplayable.swift in Sources */,
 				5A9B912322EBEB0500996712 /* SceneDelegate.swift in Sources */,
 				5A61EED222EF265B00054B92 /* RepositorySearchRepository.swift in Sources */,
