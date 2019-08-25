@@ -18,7 +18,7 @@ final class RepositorySearchListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        repositorySearchListView = RepositorySearchListView(parentView: view)
+        repositorySearchListView = RepositorySearchListView(parentView: self.view)
         viewModel = RepositorySearchListViewModel()
         repositorySearchListView.delegate = self
         sink()

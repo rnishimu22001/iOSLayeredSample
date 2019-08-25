@@ -18,7 +18,7 @@ final class RepositoryDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        repositoryDetailView = RepositoryDetailPresenter(with: view)
+        repositoryDetailView = RepositoryDetailView(with: view)
         viewModel = RepositoryDetailViewModel(repositoryFullName: repositoryFullName)
         self.sink()
         viewModel.reload()
