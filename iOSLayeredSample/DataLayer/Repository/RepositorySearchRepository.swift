@@ -9,6 +9,7 @@
 import Foundation
 
 protocol RepositorySearchRepositoryProtocol {
+    /// Githubリポジトリのデータリスト
     var repositories: [Repository] { get }
     var hasNextURL: Bool { get }
     var isError: Bool { get }

@@ -9,7 +9,7 @@
 import Foundation
 
 protocol RepositorySearchListUseCaseProtocol {
-    /// repositoryのリストデータ
+    /// Githubrepositoryのリストデータ
     var repositoryList: [Repository] { get }
     /// データ更新の通先
     var delegate: RepositorySearchListUseCaseDelegate? { get set }

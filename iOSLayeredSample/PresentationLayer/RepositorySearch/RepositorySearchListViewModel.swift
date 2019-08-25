@@ -9,11 +9,13 @@
 import Combine
 
 protocol RepositorySearchListViewModelProtocol {
+    /// 表示状態
     var status: CurrentValueSubject<ContentsStatus, Never> { get }
+    /// Githubリポジトリリストのデータ
     var repositoryList: CurrentValueSubject<[TableViewDisplayable], Never> { get }
     /// クエリのアップデート
     func update(searchQuery: String?)
-    /// ローディングのフッターの表示のsubscribe
+    /// ローディングのフッターの表示を通知
     func showLoadingFooter()
 }
 
