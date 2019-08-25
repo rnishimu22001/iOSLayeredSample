@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol RepositoryDetailPresenterProtocol {
+protocol RepositoryDetailViewProtocol {
     init(with superView: UIView)
     func update(contents: [Displayable])
     func update(status: ContentsStatus)
 }
 
-final class RepositoryDetailPresenter: NSObject, RepositoryDetailPresenterProtocol {
+final class RepositoryDetailView: NSObject, RepositoryDetailViewProtocol {
     
     @IBOutlet var view: UIView!
     @IBOutlet var contentsView: UIStackView!
