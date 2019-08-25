@@ -12,18 +12,18 @@ import Combine
 protocol RepositorySearchListPresenterProtocol {
     init(parentView: UIView, listPresenter: RepositoryListPresenterProtocol)
     var showLoadingFooter: PassthroughSubject<Void, Never> { get }
+    var delegate: RepositorySearchListPresenterDelegate? { get set }
     func change(status: ContentsStatus)
     func update(contentsList: [TableViewDisplayable])
 }
 
 protocol RepositorySearchListPresenterDelegate: class {
-    func repositorySearchListPresenter(_ presenter: RepositorySearchListPresenterProtocol, willDisplayLoading cell: UITableViewCell)
+    func repositorySearchListPresenter(_ presenter: RepositorySearchListPresenterProtocol, didSelectRepositoryListAt index: Int)
 }
 
 final class RepositorySearchListPresenter: NSObject, RepositorySearchListPresenterProtocol {
     
     let showLoadingFooter: PassthroughSubject<Void, Never> = PassthroughSubject()
-    
     @IBOutlet weak var initalizedView: UIView!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -93,5 +93,8 @@ final class RepositorySearchListPresenter: NSObject, RepositorySearchListPresent
 extension RepositorySearchListPresenter: RepositoryListPresenterDelegate {
     func repositoryListPresenter(_ presenter: RepositoryListPresenterProtocol, willDisplayLoading cell: UITableViewCell) {
         showLoadingFooter.send()
+    }
+    func repositoryListPresenter(_ presenter: RepositoryListPresenterProtocol, didSelectRepositoryListAt index: Int) {
+        self.delegate?.repositorySearchListPresenter(self, didSelectRepositoryListAt: index)
     }
 }

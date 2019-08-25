@@ -20,6 +20,7 @@ protocol RepositoryListPresenterProtocol: UITableViewDelegate, UITableViewDataSo
 
 protocol RepositoryListPresenterDelegate: class {
     func repositoryListPresenter(_ presenter: RepositoryListPresenterProtocol, willDisplayLoading cell: UITableViewCell)
+    func repositoryListPresenter(_ presenter: RepositoryListPresenterProtocol, didSelectRepositoryListAt index: Int)
 }
 
 final class RepositoryListPresenter: NSObject, UITableViewDelegate, UITableViewDataSource, RepositoryListPresenterProtocol {
@@ -104,6 +105,15 @@ final class RepositoryListPresenter: NSObject, UITableViewDelegate, UITableViewD
             self.delegate?.repositoryListPresenter(self, willDisplayLoading: cell)
         default:
             break
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch Sections(rawValue: indexPath.section) {
+        case .none:
+            return
+        case .some(.repositoryList):
+            self.delegate?.repositoryListPresenter(self, didSelectRepositoryListAt: indexPath.row)
         }
     }
 }

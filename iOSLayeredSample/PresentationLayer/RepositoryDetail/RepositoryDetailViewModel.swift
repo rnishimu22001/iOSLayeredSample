@@ -12,12 +12,13 @@ protocol RepositoryDetailViewModelProtocol {
     var status: CurrentValueSubject<ContentsStatus, Never> { get }
     var contents: CurrentValueSubject<[Displayable], Never> { get }
     var repositoryFullName: String { get }
+    func reload()
 }
 
 final class RepositoryDetailViewModel: RepositoryDetailViewModelProtocol {
     let status: CurrentValueSubject<ContentsStatus, Never> = .init(.initalized)
     let contents: CurrentValueSubject<[Displayable], Never> = .init([])
-    let useCase: RepositoryDetailUseCaseProtocol
+    private(set) var useCase: RepositoryDetailUseCaseProtocol
     
     let repositoryFullName: String
     
@@ -25,6 +26,7 @@ final class RepositoryDetailViewModel: RepositoryDetailViewModelProtocol {
          useCase: RepositoryDetailUseCaseProtocol = RepositoryDetailUseCase()) {
         self.repositoryFullName = repositoryFullName
         self.useCase = useCase
+        self.useCase.delegate = self
     }
     
     func reload() {

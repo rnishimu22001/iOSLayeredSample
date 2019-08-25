@@ -20,6 +20,7 @@ final class RepositorySearchListViewController: UIViewController {
         super.viewDidLoad()
         presenter = RepositorySearchListPresenter(parentView: self.view)
         viewModel = RepositorySearchListViewModel()
+        presenter.delegate = self
         sink()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.searchController = UISearchController(searchResultsController: nil)
@@ -49,7 +50,13 @@ final class RepositorySearchListViewController: UIViewController {
 }
 
 extension RepositorySearchListViewController: RepositorySearchListPresenterDelegate {
-    func repositorySearchListPresenter(_ presenter: RepositorySearchListPresenterProtocol, willDisplayLoading cell: UITableViewCell) {
-        self.viewModel.showLoadingFooter()
+    
+    func repositorySearchListPresenter(_ presenter: RepositorySearchListPresenterProtocol, didSelectRepositoryListAt index: Int) {
+        guard let repository = viewModel.repositoryInList(at: index) else {
+            return
+        }
+        let viewController = RepositoryDetailViewController()
+        viewController.repositoryFullName = repository.name
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

@@ -11,6 +11,7 @@ import UIKit
 protocol RepositoryDetailPresenterProtocol {
     init(with superView: UIView)
     func update(contents: [Displayable])
+    func update(status: ContentsStatus)
 }
 
 final class RepositoryDetailPresenter: NSObject, RepositoryDetailPresenterProtocol {
@@ -21,10 +22,11 @@ final class RepositoryDetailPresenter: NSObject, RepositoryDetailPresenterProtoc
     @IBOutlet weak var loading: LoadingView!
     
     init(with superView: UIView) {
-        superView.addSubview(contentsView)
-        contentsView.frame = superView.frame
-        let loadingView = LoadingView(frame: contentsView.frame)
-        contentsView.addArrangedSubview(loadingView)
+        super.init()
+        Bundle.main.loadNibNamed(type(of: self).className, owner: self, options: nil)
+        superView.addSubview(view)
+        view.frame = superView.frame
+        // self.loading.indicator.startAnimating()
     }
     
     func update(status: ContentsStatus) {

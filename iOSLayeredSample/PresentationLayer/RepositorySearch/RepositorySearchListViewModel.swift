@@ -17,6 +17,8 @@ protocol RepositorySearchListViewModelProtocol {
     func update(searchQuery: String?)
     /// ローディングのフッターの表示を通知
     func showLoadingFooter()
+    /// リスト内にあるリポジトリの値を返す
+    func repositoryInList(at index: Int) -> RepositoryDisplayable?
 }
 
 final class RepositorySearchListViewModel: RepositorySearchListViewModelProtocol {
@@ -38,6 +40,17 @@ final class RepositorySearchListViewModel: RepositorySearchListViewModelProtocol
     
     func showLoadingFooter() {
         useCase.showLoadingFooter()
+    }
+    
+    func repositoryInList(at index: Int) -> RepositoryDisplayable? {
+        let list = self.repositoryList.value
+        guard list.indices.contains(index) else { return nil }
+        switch list[index] {
+        case let repository as RepositoryDisplayable:
+            return repository
+        default:
+            return nil
+        }
     }
 }
 
