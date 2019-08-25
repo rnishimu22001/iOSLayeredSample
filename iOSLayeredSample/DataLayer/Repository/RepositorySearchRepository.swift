@@ -13,9 +13,17 @@ protocol RepositorySearchRepositoryProtocol {
     var hasNextURL: Bool { get }
     var isError: Bool { get }
     var error: Error? { get }
-    
+    /**
+     * すべてのプロパティをリセットして、1からデータ取得を行う
+     * 追加読み込みできるURLがある場合はnextURLの情報が更新される
+    **/
     func reload(with query: String,
                 completion: @escaping ((Result<Void, Error>) -> Void))
+    /**
+     * 保持しているnextURLを利用してリクエストを実行する
+     * 新規取得したRepositoryデータはrepositoresの配列に追加される
+     * 追加読み込みできるURLがある場合はnextURLの情報が更新される
+    **/
     func loadNext(with completion: @escaping ((Result<Void, Error>) -> Void))
 }
 

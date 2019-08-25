@@ -49,7 +49,7 @@
 		5A9EFC832311353300490D92 /* UISearchBarDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC822311353300490D92 /* UISearchBarDelegateProxy.swift */; };
 		5A9EFC852311637100490D92 /* DispatchQueue+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC842311637100490D92 /* DispatchQueue+Additions.swift */; };
 		5A9EFC8823123F5500490D92 /* StarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC8723123F5500490D92 /* StarColor.swift */; };
-		5A9EFC8B2312409400490D92 /* StarCoor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC8A2312409400490D92 /* StarCoor+Extension.swift */; };
+		5A9EFC8B2312409400490D92 /* StarColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC8A2312409400490D92 /* StarColor+Extension.swift */; };
 		5AADA5FA22EC101A001BA1AD /* RepositorySearchListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AADA5F922EC101A001BA1AD /* RepositorySearchListPresenter.swift */; };
 		5AADA5FE22EC105D001BA1AD /* RepositorySearchListPresenter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AADA5FD22EC105D001BA1AD /* RepositorySearchListPresenter.xib */; };
 		5AADA60822EC16CC001BA1AD /* RepositorySearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AADA60722EC16CC001BA1AD /* RepositorySearchListViewController.swift */; };
@@ -124,7 +124,7 @@
 		5A9EFC822311353300490D92 /* UISearchBarDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarDelegateProxy.swift; sourceTree = "<group>"; };
 		5A9EFC842311637100490D92 /* DispatchQueue+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Additions.swift"; sourceTree = "<group>"; };
 		5A9EFC8723123F5500490D92 /* StarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarColor.swift; sourceTree = "<group>"; };
-		5A9EFC8A2312409400490D92 /* StarCoor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StarCoor+Extension.swift"; sourceTree = "<group>"; };
+		5A9EFC8A2312409400490D92 /* StarColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StarColor+Extension.swift"; sourceTree = "<group>"; };
 		5AADA5F922EC101A001BA1AD /* RepositorySearchListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchListPresenter.swift; sourceTree = "<group>"; };
 		5AADA5FD22EC105D001BA1AD /* RepositorySearchListPresenter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositorySearchListPresenter.xib; sourceTree = "<group>"; };
 		5AADA60722EC16CC001BA1AD /* RepositorySearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchListViewController.swift; sourceTree = "<group>"; };
@@ -294,7 +294,7 @@
 				5A662C4F23083D1000BD0403 /* RepositoryDetail */,
 				5A662C4E23083CBE00BD0403 /* RepositorySearch */,
 				5AADA60E22EC19B6001BA1AD /* DisplayData */,
-				5AADA60D22EC199B001BA1AD /* Interface */,
+				5AADA60D22EC199B001BA1AD /* Common */,
 			);
 			path = PresentationLayer;
 			sourceTree = "<group>";
@@ -322,12 +322,12 @@
 		5A9EFC892312407A00490D92 /* PresentaitionExtension */ = {
 			isa = PBXGroup;
 			children = (
-				5A9EFC8A2312409400490D92 /* StarCoor+Extension.swift */,
+				5A9EFC8A2312409400490D92 /* StarColor+Extension.swift */,
 			);
 			path = PresentaitionExtension;
 			sourceTree = "<group>";
 		};
-		5AADA60222EC1687001BA1AD /* Common */ = {
+		5A9EFC8C231257A300490D92 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				5AB6D67322F59D46008C3D14 /* LoadingCell.xib */,
@@ -336,7 +336,7 @@
 				5ABB0BDC2308FE470072660A /* LoadingView.swift */,
 				5ABB0BDE2308FE520072660A /* LoadingView.xib */,
 			);
-			path = Common;
+			path = View;
 			sourceTree = "<group>";
 		};
 		5AADA60922EC1708001BA1AD /* Resources */ = {
@@ -355,12 +355,12 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		5AADA60D22EC199B001BA1AD /* Interface */ = {
+		5AADA60D22EC199B001BA1AD /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				5AADA60222EC1687001BA1AD /* Common */,
+				5A9EFC8C231257A300490D92 /* View */,
 			);
-			path = Interface;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		5AADA60E22EC19B6001BA1AD /* DisplayData */ = {
@@ -559,7 +559,7 @@
 				5AB6D67022F5419A008C3D14 /* Displayable.swift in Sources */,
 				5A4CBEBB2308CAA30056E710 /* CollaboratorDisplayable.swift in Sources */,
 				5AADA61C22EC1F47001BA1AD /* NSObject+Additions.swift in Sources */,
-				5A9EFC8B2312409400490D92 /* StarCoor+Extension.swift in Sources */,
+				5A9EFC8B2312409400490D92 /* StarColor+Extension.swift in Sources */,
 				5A4CBEBD2308CEAF0056E710 /* CommunityProfileDisplayable.swift in Sources */,
 				5A9B912322EBEB0500996712 /* SceneDelegate.swift in Sources */,
 				5A61EED222EF265B00054B92 /* RepositorySearchRepository.swift in Sources */,

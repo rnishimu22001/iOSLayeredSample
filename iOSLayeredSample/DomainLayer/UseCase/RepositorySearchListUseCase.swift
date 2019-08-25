@@ -9,15 +9,13 @@
 import Foundation
 
 protocol RepositorySearchListUseCaseProtocol {
-    /// repositoryのデータクラス
+    /// repositoryのリストデータ
     var repositoryList: [Repository] { get }
-    /// エラー時に表示するタイトル、errorでないときはnil
-    var errorTitle: String? { get }
     /// データ更新の通先
     var delegate: RepositorySearchListUseCaseDelegate? { get set }
-    /// クエリがアップデートされた
+    /// 検索クエリをアップデートする
     func update(searchQuery: String)
-    /// ローディングのフッターが表示された時
+    /// ローディングのフッターが表示されたことを通知する
     func showLoadingFooter()
 }
 
@@ -33,8 +31,6 @@ final class RepositorySearchListUseCase: RepositorySearchListUseCaseProtocol {
     var repositoryList: [Repository] {
         repository.repositories
     }
-    
-    var errorTitle: String?
     
     weak var delegate: RepositorySearchListUseCaseDelegate?
     
