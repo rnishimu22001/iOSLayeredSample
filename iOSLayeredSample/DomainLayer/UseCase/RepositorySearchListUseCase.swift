@@ -32,6 +32,10 @@ final class SearchListUseCase: SearchListUseCaseProtocol {
         repository.repositories
     }
     
+    var hasNextURL: Bool {
+        return repository.nextURL != nil
+    }
+    
     weak var delegate: SearchListUseCaseDelegate?
     
     private let repository: SearchRepositoryProtocol = SearchRepository()
@@ -41,9 +45,9 @@ final class SearchListUseCase: SearchListUseCaseProtocol {
             guard let self = self else { return }
             switch result {
             case .failure:
-                self.delegate?.searchListUseCase(self, didLoad: [], isError: true, isStalled: !self.repository.hasNextURL)
+                self.delegate?.searchListUseCase(self, didLoad: [], isError: true, isStalled: !self.hasNextURL)
             case .success:
-                self.delegate?.searchListUseCase(self, didLoad: self.repositoryList, isError: false, isStalled: !self.repository.hasNextURL)
+                self.delegate?.searchListUseCase(self, didLoad: self.repositoryList, isError: false, isStalled: !self.hasNextURL)
             }
         }
     }
@@ -51,12 +55,12 @@ final class SearchListUseCase: SearchListUseCaseProtocol {
     private func loadNext() {
         repository.loadNext { [weak self] _ in
             guard let self = self else { return }
-            self.delegate?.searchListUseCase(self, didUpdate: self.repositoryList, isStalled: !self.repository.hasNextURL)
+            self.delegate?.searchListUseCase(self, didUpdate: self.repositoryList, isStalled: !self.hasNextURL)
         }
     }
     
     func showLoadingFooter() {
-        guard self.repository.hasNextURL else {
+        guard hasNextURL else {
             delegate?.searchListUseCase(self, didUpdate: self.repositoryList, isStalled: true)
             return
         }

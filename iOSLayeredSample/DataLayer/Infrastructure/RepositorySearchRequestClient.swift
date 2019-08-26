@@ -63,7 +63,7 @@ struct RepositorySearchRequestClient: APIRequestable, RepositorySearchRequestCli
             }
             switch result {
             case .failure(let error):
-                completion(.failure(error), nil)
+                completion(.failure(error), responseHeader)
             case .success(let data):
                 guard let users = try? JSONDecoder().decode(Repositories.self, from: data) else {
                     completion(.failure(RequestError.dataEncodeFailed), responseHeader)
