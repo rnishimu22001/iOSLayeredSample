@@ -1,5 +1,5 @@
 //
-//  RepositorySearchListUseCase.swift
+//  SearchListUseCase.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/07/29.
@@ -8,42 +8,42 @@
 
 import Foundation
 
-protocol RepositorySearchListUseCaseProtocol {
+protocol SearchListUseCaseProtocol {
     /// Githubrepositoryのリストデータ
     var repositoryList: [Repository] { get }
     /// データ更新の通先
-    var delegate: RepositorySearchListUseCaseDelegate? { get set }
+    var delegate: SearchListUseCaseDelegate? { get set }
     /// 検索クエリをアップデートする
     func update(searchQuery: String)
     /// ローディングのフッターが表示されたことを通知する
     func showLoadingFooter()
 }
 
-protocol RepositorySearchListUseCaseDelegate: class {
+protocol SearchListUseCaseDelegate: class {
     /// データ更新された場合に通知される
-    func repositorySearchListUseCase(_ useCase: RepositorySearchListUseCaseProtocol, didLoad repositoryList: [Repository], isError: Bool, isStalled: Bool)
+    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, didLoad repositoryList: [Repository], isError: Bool, isStalled: Bool)
     /// 追加データがあるときに通知される、追加データがないならisStalledがtrue
-    func repositorySearchListUseCase(_ useCase: RepositorySearchListUseCaseProtocol, didUpdate repositoryList: [Repository], isStalled: Bool)
+    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, didUpdate repositoryList: [Repository], isStalled: Bool)
 }
 
-final class RepositorySearchListUseCase: RepositorySearchListUseCaseProtocol {
+final class SearchListUseCase: SearchListUseCaseProtocol {
     
     var repositoryList: [Repository] {
         repository.repositories
     }
     
-    weak var delegate: RepositorySearchListUseCaseDelegate?
+    weak var delegate: SearchListUseCaseDelegate?
     
-    private let repository: GithubRepositorySearchRepositoryProtocol = GithubRepositorySearchRepository()
+    private let repository: SearchRepositoryProtocol = SearchRepository()
     
     func update(searchQuery: String) {
         repository.reload(with: searchQuery) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .failure:
-                self.delegate?.repositorySearchListUseCase(self, didLoad: [], isError: true, isStalled: !self.repository.hasNextURL)
+                self.delegate?.searchListUseCase(self, didLoad: [], isError: true, isStalled: !self.repository.hasNextURL)
             case .success:
-                self.delegate?.repositorySearchListUseCase(self, didLoad: self.repositoryList, isError: false, isStalled: !self.repository.hasNextURL)
+                self.delegate?.searchListUseCase(self, didLoad: self.repositoryList, isError: false, isStalled: !self.repository.hasNextURL)
             }
         }
     }
@@ -51,13 +51,13 @@ final class RepositorySearchListUseCase: RepositorySearchListUseCaseProtocol {
     private func loadNext() {
         repository.loadNext { [weak self] _ in
             guard let self = self else { return }
-            self.delegate?.repositorySearchListUseCase(self, didUpdate: self.repositoryList, isStalled: !self.repository.hasNextURL)
+            self.delegate?.searchListUseCase(self, didUpdate: self.repositoryList, isStalled: !self.repository.hasNextURL)
         }
     }
     
     func showLoadingFooter() {
         guard self.repository.hasNextURL else {
-            delegate?.repositorySearchListUseCase(self, didUpdate: self.repositoryList, isStalled: true)
+            delegate?.searchListUseCase(self, didUpdate: self.repositoryList, isStalled: true)
             return
         }
         loadNext()

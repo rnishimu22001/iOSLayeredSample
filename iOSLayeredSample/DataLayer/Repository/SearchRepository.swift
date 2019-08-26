@@ -1,5 +1,5 @@
 //
-//  GithubRepositorySSearchRepository.swift
+//  SearchRepository.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/07/29.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol GithubRepositorySearchRepositoryProtocol {
+protocol SearchRepositoryProtocol {
     /// Githubリポジトリのデータリスト
     var repositories: [Repository] { get }
     var hasNextURL: Bool { get }
@@ -28,7 +28,7 @@ protocol GithubRepositorySearchRepositoryProtocol {
     func loadNext(with completion: @escaping ((Result<Void, Error>) -> Void))
 }
 
-final class GithubRepositorySearchRepository: GithubRepositorySearchRepositoryProtocol {
+final class SearchRepository: SearchRepositoryProtocol {
     
     private(set) var repositories: [Repository] = []
     private(set) var nextURL: String?

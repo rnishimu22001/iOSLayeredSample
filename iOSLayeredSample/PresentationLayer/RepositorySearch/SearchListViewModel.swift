@@ -1,5 +1,5 @@
 //
-//  RepositorySearchListViewModel.swift
+//  SearchListViewModel.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/07/27.
@@ -8,7 +8,7 @@
 
 import Combine
 
-protocol RepositorySearchListViewModelProtocol {
+protocol SearchListViewModelProtocol {
     /// 表示状態
     var status: CurrentValueSubject<ContentsStatus, Never> { get }
     /// Githubリポジトリリストのデータ
@@ -21,13 +21,13 @@ protocol RepositorySearchListViewModelProtocol {
     func repositoryInList(at index: Int) -> RepositoryDisplayable?
 }
 
-final class RepositorySearchListViewModel: RepositorySearchListViewModelProtocol {
+final class SearchListViewModel: SearchListViewModelProtocol {
     
     let status: CurrentValueSubject<ContentsStatus, Never> = .init(.initalized)
     let repositoryList: CurrentValueSubject<[TableViewDisplayable], Never> = .init([])
-    private(set) var useCase: RepositorySearchListUseCaseProtocol
+    private(set) var useCase: SearchListUseCaseProtocol
     
-    init(useCase: RepositorySearchListUseCaseProtocol = RepositorySearchListUseCase()) {
+    init(useCase: SearchListUseCaseProtocol = SearchListUseCase()) {
         self.useCase = useCase
         self.useCase.delegate = self
     }
@@ -54,9 +54,9 @@ final class RepositorySearchListViewModel: RepositorySearchListViewModelProtocol
     }
 }
 
-extension RepositorySearchListViewModel: RepositorySearchListUseCaseDelegate {
+extension SearchListViewModel: SearchListUseCaseDelegate {
     
-    func repositorySearchListUseCase(_ useCase: RepositorySearchListUseCaseProtocol, didLoad repositoryList: [Repository], isError: Bool, isStalled: Bool) {
+    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, didLoad repositoryList: [Repository], isError: Bool, isStalled: Bool) {
         guard !isError else {
             status.value = .error
             return
@@ -65,7 +65,7 @@ extension RepositorySearchListViewModel: RepositorySearchListUseCaseDelegate {
         status.value = .browsable
     }
     
-    func repositorySearchListUseCase(_ useCase: RepositorySearchListUseCaseProtocol, didUpdate repositoryList: [Repository], isStalled: Bool) {
+    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, didUpdate repositoryList: [Repository], isStalled: Bool) {
         self.repositoryList.value = (contents(from: repositoryList, isStalled: isStalled))
     }
     

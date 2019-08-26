@@ -1,5 +1,5 @@
 //
-//  RepositorySearchListViewController.swift
+//  SearchListViewController.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/07/27.
@@ -9,17 +9,17 @@
 import UIKit
 import Combine
 
-final class RepositorySearchListViewController: UIViewController {
+final class SearchListViewController: UIViewController {
     
-    var presenter: RepositorySearchListPresenterProtocol!
-    var viewModel: RepositorySearchListViewModelProtocol!
+    var presenter: SearchListPresenterProtocol!
+    var viewModel: SearchListViewModelProtocol!
     let delegateProxy: UISearchBarDelegateProxyProtocol =  UISearchBarDelegateProxy()
     private var cancellables: [AnyCancellable] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = RepositorySearchListPresenter(parentView: self.view)
-        viewModel = RepositorySearchListViewModel()
+        presenter = SearchListPresenter(parentView: self.view)
+        viewModel = SearchListViewModel()
         presenter.delegate = self
         sink()
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -49,9 +49,9 @@ final class RepositorySearchListViewController: UIViewController {
     }
 }
 
-extension RepositorySearchListViewController: RepositorySearchListPresenterDelegate {
+extension SearchListViewController: SearchListPresenterDelegate {
     
-    func repositorySearchListPresenter(_ presenter: RepositorySearchListPresenterProtocol, didSelectRepositoryListAt index: Int) {
+    func searchListPresenter(_ presenter: SearchListPresenterProtocol, didSelectRepositoryListAt index: Int) {
         guard let repository = viewModel.repositoryInList(at: index) else {
             return
         }

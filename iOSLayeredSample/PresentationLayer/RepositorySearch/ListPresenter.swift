@@ -1,5 +1,5 @@
 //
-//  RepositorySearchListViewModel.swift
+//  SearchListViewModel.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/07/27.
