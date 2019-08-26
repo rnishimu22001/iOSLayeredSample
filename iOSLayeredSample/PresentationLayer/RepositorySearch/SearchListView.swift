@@ -1,5 +1,5 @@
 //
-//  SearchListPresenter.swift
+//  SearchListView.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/07/27.
@@ -9,19 +9,19 @@
 import UIKit
 import Combine
 
-protocol SearchListPresenterProtocol {
+protocol SearchListViewProtocol {
     init(parentView: UIView, listPresenter: RepositoryListPresenterProtocol)
     var showLoadingFooter: PassthroughSubject<Void, Never> { get }
-    var delegate: SearchListPresenterDelegate? { get set }
+    var delegate: SearchListViewDelegate? { get set }
     func change(status: ContentsStatus)
     func update(contentsList: [TableViewDisplayable])
 }
 
-protocol SearchListPresenterDelegate: class {
-    func searchListPresenter(_ presenter: SearchListPresenterProtocol, didSelectRepositoryListAt index: Int)
+protocol SearchListViewDelegate: class {
+    func searchListView(_ presenter: SearchListViewProtocol, didSelectRepositoryListAt index: Int)
 }
 
-final class SearchListPresenter: NSObject, SearchListPresenterProtocol {
+final class SearchListView: NSObject, SearchListViewProtocol {
     
     let showLoadingFooter: PassthroughSubject<Void, Never> = PassthroughSubject()
     @IBOutlet weak var initalizedView: UIView!
@@ -30,7 +30,7 @@ final class SearchListPresenter: NSObject, SearchListPresenterProtocol {
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var tableView: UITableView!
-    weak var delegate: SearchListPresenterDelegate?
+    weak var delegate: SearchListViewDelegate?
     private(set) var listPresenter: RepositoryListPresenterProtocol
     
     required init(parentView: UIView, listPresenter: RepositoryListPresenterProtocol = RepositoryListPresenter()) {
@@ -90,11 +90,11 @@ final class SearchListPresenter: NSObject, SearchListPresenterProtocol {
     }
 }
 
-extension SearchListPresenter: RepositoryListPresenterDelegate {
+extension SearchListView: RepositoryListPresenterDelegate {
     func repositoryListPresenter(_ presenter: RepositoryListPresenterProtocol, willDisplayLoading cell: UITableViewCell) {
         showLoadingFooter.send()
     }
     func repositoryListPresenter(_ presenter: RepositoryListPresenterProtocol, didSelectRepositoryListAt index: Int) {
-        self.delegate?.searchListPresenter(self, didSelectRepositoryListAt: index)
+        self.delegate?.searchListView(self, didSelectRepositoryListAt: index)
     }
 }

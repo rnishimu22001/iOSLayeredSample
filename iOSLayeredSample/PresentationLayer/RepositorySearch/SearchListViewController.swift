@@ -11,14 +11,14 @@ import Combine
 
 final class SearchListViewController: UIViewController {
     
-    var presenter: SearchListPresenterProtocol!
+    var presenter: SearchListViewProtocol!
     var viewModel: SearchListViewModelProtocol!
     let delegateProxy: UISearchBarDelegateProxyProtocol =  UISearchBarDelegateProxy()
     private var cancellables: [AnyCancellable] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = SearchListPresenter(parentView: self.view)
+        presenter = SearchListView(parentView: self.view)
         viewModel = SearchListViewModel()
         presenter.delegate = self
         sink()
@@ -49,9 +49,9 @@ final class SearchListViewController: UIViewController {
     }
 }
 
-extension SearchListViewController: SearchListPresenterDelegate {
+extension SearchListViewController: SearchListViewDelegate {
     
-    func searchListPresenter(_ presenter: SearchListPresenterProtocol, didSelectRepositoryListAt index: Int) {
+    func searchListView(_ presenter: SearchListViewProtocol, didSelectRepositoryListAt index: Int) {
         guard let repository = viewModel.repositoryInList(at: index) else {
             return
         }

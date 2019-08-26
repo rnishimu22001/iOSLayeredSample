@@ -53,8 +53,8 @@
 		5A9EFC852311637100490D92 /* DispatchQueue+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC842311637100490D92 /* DispatchQueue+Additions.swift */; };
 		5A9EFC8823123F5500490D92 /* StarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC8723123F5500490D92 /* StarColor.swift */; };
 		5A9EFC8B2312409400490D92 /* StarColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC8A2312409400490D92 /* StarColor+Extension.swift */; };
-		5AADA5FA22EC101A001BA1AD /* SearchListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AADA5F922EC101A001BA1AD /* SearchListPresenter.swift */; };
-		5AADA5FE22EC105D001BA1AD /* SearchListPresenter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AADA5FD22EC105D001BA1AD /* SearchListPresenter.xib */; };
+		5AADA5FA22EC101A001BA1AD /* SearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AADA5F922EC101A001BA1AD /* SearchListView.swift */; };
+		5AADA5FE22EC105D001BA1AD /* SearchListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AADA5FD22EC105D001BA1AD /* SearchListView.xib */; };
 		5AADA60822EC16CC001BA1AD /* SearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AADA60722EC16CC001BA1AD /* SearchListViewController.swift */; };
 		5AADA60C22EC1720001BA1AD /* APISettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AADA60B22EC1720001BA1AD /* APISettings.swift */; };
 		5AADA61322EC1B66001BA1AD /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AADA61222EC1B66001BA1AD /* ListPresenter.swift */; };
@@ -131,8 +131,8 @@
 		5A9EFC842311637100490D92 /* DispatchQueue+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Additions.swift"; sourceTree = "<group>"; };
 		5A9EFC8723123F5500490D92 /* StarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarColor.swift; sourceTree = "<group>"; };
 		5A9EFC8A2312409400490D92 /* StarColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StarColor+Extension.swift"; sourceTree = "<group>"; };
-		5AADA5F922EC101A001BA1AD /* SearchListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListPresenter.swift; sourceTree = "<group>"; };
-		5AADA5FD22EC105D001BA1AD /* SearchListPresenter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchListPresenter.xib; sourceTree = "<group>"; };
+		5AADA5F922EC101A001BA1AD /* SearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListView.swift; sourceTree = "<group>"; };
+		5AADA5FD22EC105D001BA1AD /* SearchListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchListView.xib; sourceTree = "<group>"; };
 		5AADA60722EC16CC001BA1AD /* SearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewController.swift; sourceTree = "<group>"; };
 		5AADA60B22EC1720001BA1AD /* APISettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISettings.swift; sourceTree = "<group>"; };
 		5AADA61222EC1B66001BA1AD /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
@@ -206,8 +206,8 @@
 			children = (
 				5AADA60722EC16CC001BA1AD /* SearchListViewController.swift */,
 				5AADA61D22EC33AB001BA1AD /* SearchListViewModel.swift */,
-				5AADA5F922EC101A001BA1AD /* SearchListPresenter.swift */,
-				5AADA5FD22EC105D001BA1AD /* SearchListPresenter.xib */,
+				5AADA5F922EC101A001BA1AD /* SearchListView.swift */,
+				5AADA5FD22EC105D001BA1AD /* SearchListView.xib */,
 				5AADA61222EC1B66001BA1AD /* ListPresenter.swift */,
 				5AADA61622EC1D58001BA1AD /* RepositoryTableViewCell.xib */,
 				5AADA61822EC1D64001BA1AD /* RepositoryTableViewCell.swift */,
@@ -515,7 +515,7 @@
 				5A4CBEC72308D7F70056E710 /* CommunityProfileView.xib in Resources */,
 				5A4CBEC92308E06A0056E710 /* ReleaseView.xib in Resources */,
 				5A4CBECD2308E93E0056E710 /* CollaboratorView.xib in Resources */,
-				5AADA5FE22EC105D001BA1AD /* SearchListPresenter.xib in Resources */,
+				5AADA5FE22EC105D001BA1AD /* SearchListView.xib in Resources */,
 				5A9B912A22EBEB0600996712 /* Assets.xcassets in Resources */,
 				5A662C5523083DF300BD0403 /* RepositoryDetailPresenter.xib in Resources */,
 				5AADA61722EC1D58001BA1AD /* RepositoryTableViewCell.xib in Resources */,
@@ -557,7 +557,7 @@
 				5ABB0BDD2308FE470072660A /* LoadingView.swift in Sources */,
 				5AADA61922EC1D64001BA1AD /* RepositoryTableViewCell.swift in Sources */,
 				5A4CBEC32308D4810056E710 /* CommunityProfileView.swift in Sources */,
-				5AADA5FA22EC101A001BA1AD /* SearchListPresenter.swift in Sources */,
+				5AADA5FA22EC101A001BA1AD /* SearchListView.swift in Sources */,
 				5A74E1662307F20600EFEA7C /* Repository.swift in Sources */,
 				5A662C5B23083FC200BD0403 /* RepositoryCommunityProfileClient.swift in Sources */,
 				5A940D18230933ED00BD0A08 /* RepositoryDetailViewModel.swift in Sources */,
