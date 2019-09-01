@@ -17,12 +17,16 @@ enum RequestError: Error {
     case dataEncodeFailed
 }
 
-protocol APIRequestable {
+protocol HTTPRequestable {
     var configuration: URLSessionConfiguration { get }
     func request(with request: URLRequest, completion: @escaping (Result<Data, Error>, HTTPURLResponse?) -> Void)
 }
 
-extension APIRequestable {
+struct HTTPRequester: HTTPRequestable {
+    let configuration: URLSessionConfiguration = .default
+}
+
+extension HTTPRequestable {
     
     func request(with request: URLRequest, completion: @escaping (Result<Data, Error>, HTTPURLResponse?) -> Void) {
         

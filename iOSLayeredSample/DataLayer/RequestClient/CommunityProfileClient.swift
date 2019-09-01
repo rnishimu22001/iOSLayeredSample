@@ -12,8 +12,12 @@ protocol CommunityProfileClientProtocol {
     func requestProfile(repository fullName: String, completion: @escaping ((Result<CommunityProfile, Error>, URLResponse?) -> Void))
 }
 
-final class CommunityProfileClient: CommunityProfileClientProtocol, APIRequestable {
-    let configuration: URLSessionConfiguration = .default
+struct CommunityProfileClient: CommunityProfileClientProtocol {
+    let requester: HTTPRequestable
+    
+    init(requester: HTTPRequestable = HTTPRequester()) {
+        self.requester = requester
+    }
     
     func requestProfile(repository fullName: String, completion: @escaping ((Result<CommunityProfile, Error>, URLResponse?) -> Void)) {
         let url = APIURLSetting.communityProfile(with: fullName)
@@ -27,7 +31,7 @@ final class CommunityProfileClient: CommunityProfileClientProtocol, APIRequestab
             return
         }
         
-        request(with: URLRequest(url: requestURL)) { result, response in
+        requester.request(with: URLRequest(url: requestURL)) { result, response in
             switch result {
             case .failure(let error):
                 completion(.failure(error), response)

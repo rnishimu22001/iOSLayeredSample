@@ -12,8 +12,13 @@ protocol ReleaseClientProtocol {
     func requestLatestRelease(repository fullName: String, completion: @escaping ((Result<Release, Error>, URLResponse?) -> Void))
 }
 
-final class ReleaseClient: ReleaseClientProtocol, APIRequestable {
-    let configuration: URLSessionConfiguration = .default
+struct ReleaseClient: ReleaseClientProtocol {
+    
+    let requester: HTTPRequestable
+    
+    init(requester: HTTPRequestable = HTTPRequester()) {
+        self.requester = requester
+    }
     
     func requestLatestRelease(repository fullName: String, completion: @escaping ((Result<Release, Error>, URLResponse?) -> Void)) {
         let url = APIURLSetting.collaborators(with: fullName)
@@ -27,7 +32,7 @@ final class ReleaseClient: ReleaseClientProtocol, APIRequestable {
             return
         }
         
-        request(with: URLRequest(url: requestURL)) { result, response in
+        requester.request(with: URLRequest(url: requestURL)) { result, response in
             switch result {
             case .failure(let error):
                 completion(.failure(error), response)

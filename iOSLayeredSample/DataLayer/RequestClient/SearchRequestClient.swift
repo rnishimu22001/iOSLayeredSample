@@ -19,9 +19,13 @@ protocol SearchRequestClientProtocol {
 }
 
 /// https://developer.github.com/v3/search/#search-users
-struct SearchRequestClient: APIRequestable, SearchRequestClientProtocol {
+struct SearchRequestClient: SearchRequestClientProtocol {
     
-    let configuration = URLSessionConfiguration.default
+    let requester: HTTPRequestable
+    
+    init(requester: HTTPRequestable = HTTPRequester()) {
+        self.requester = requester
+    }
     
     func request(with url: String, sort: SearchSortPattern, query: String, completion: @escaping (_ result: Result<Repositories, Error>, _ response: GitHubAPIResponseHeader?) -> Void) {
         
@@ -56,7 +60,7 @@ struct SearchRequestClient: APIRequestable, SearchRequestClientProtocol {
     }
     
     private func request(repositorySearchRequest: URLRequest, completion: @escaping (_ result: Result<Repositories, Error>, _ response: GitHubAPIResponseHeader?) -> Void) {
-        request(with: repositorySearchRequest) { result, response in
+        requester.request(with: repositorySearchRequest) { result, response in
             var responseHeader: GitHubAPIResponseHeader?
             if let header = response?.allHeaderFields {
                 responseHeader = GitHubAPIResponseHeader(with: header)

@@ -17,7 +17,7 @@ struct Release: Codable {
     let tarballURL, zipballURL: String
     let id: Int
     let nodeID, tagName, targetCommitish, name: String
-    let body: String
+    let body: String?
     let draft, prerelease: Bool
     let createdAt, publishedAt: Date
     let author: Author

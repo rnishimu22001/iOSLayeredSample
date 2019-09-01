@@ -7,7 +7,6 @@
 //
 
 protocol CollaboratorRepositoryProtocol {
-    var client: CollaboratorsClientProtocol { get }
     var collaborators: [Collaborator] { get }
     var isLoading: Bool { get }
     var error: Error? { get }

@@ -9,7 +9,6 @@
 import Foundation
 
 protocol ReleaseRepositoryProtocol {
-    var client: ReleaseClientProtocol { get }
     var latestRelease: Release? { get }
     var isLoading: Bool { get }
     var error: Error? { get }

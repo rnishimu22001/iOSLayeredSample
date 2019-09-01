@@ -12,8 +12,13 @@ protocol CollaboratorsClientProtocol {
     func requestCollaborators(repository fullName: String, completion: @escaping ((Result<[Collaborator], Error>, URLResponse?) -> Void))
 }
 
-final class CollaboratorsClient: CollaboratorsClientProtocol, APIRequestable {
-    let configuration: URLSessionConfiguration = .default
+struct CollaboratorsClient: CollaboratorsClientProtocol {
+    
+    let requester: HTTPRequestable
+    
+    init(requester: HTTPRequestable = HTTPRequester()) {
+        self.requester = requester
+    }
     
     func requestCollaborators(repository fullName: String, completion: @escaping ((Result<[Collaborator], Error>, URLResponse?) -> Void)) {
         let url = APIURLSetting.collaborators(with: fullName)
@@ -27,7 +32,7 @@ final class CollaboratorsClient: CollaboratorsClientProtocol, APIRequestable {
             return
         }
         
-        request(with: URLRequest(url: requestURL)) { result, response in
+        requester.request(with: URLRequest(url: requestURL)) { result, response in
             switch result {
             case .failure(let error):
                 completion(.failure(error), response)
