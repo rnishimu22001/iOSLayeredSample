@@ -1,5 +1,5 @@
 //
-//  RepositoryCommunityProfileClient.swift
+//  CommunityProfileClient.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/08/17.

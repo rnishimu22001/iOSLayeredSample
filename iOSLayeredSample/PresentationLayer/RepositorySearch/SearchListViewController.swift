@@ -55,7 +55,7 @@ extension SearchListViewController: SearchListViewDelegate {
         guard let repository = viewModel.repositoryInList(at: index) else {
             return
         }
-        let viewController = RepositoryDetailViewController()
+        let viewController = DetailViewController()
         viewController.repositoryFullName = repository.name
         self.navigationController?.pushViewController(viewController, animated: true)
     }

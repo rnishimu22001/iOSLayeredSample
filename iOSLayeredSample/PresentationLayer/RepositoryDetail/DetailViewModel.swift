@@ -1,5 +1,5 @@
 //
-//  RepositoryDetailViewModel.swift
+//  DetailViewModel.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/08/18.
@@ -8,22 +8,22 @@
 
 import Combine
 
-protocol RepositoryDetailViewModelProtocol {
+protocol DetailViewModelProtocol {
     var status: CurrentValueSubject<ContentsStatus, Never> { get }
     var contents: CurrentValueSubject<[Any], Never> { get }
     var repositoryFullName: String { get }
     func reload()
 }
 
-final class RepositoryDetailViewModel: RepositoryDetailViewModelProtocol {
+final class DetailViewModel: DetailViewModelProtocol {
     let status: CurrentValueSubject<ContentsStatus, Never> = .init(.initalized)
     let contents: CurrentValueSubject<[Any], Never> = .init([])
-    private(set) var useCase: RepositoryDetailUseCaseProtocol
+    private(set) var useCase: DetailUseCaseProtocol
     
     let repositoryFullName: String
     
     init(repositoryFullName: String,
-         useCase: RepositoryDetailUseCaseProtocol = RepositoryDetailUseCase()) {
+         useCase: DetailUseCaseProtocol = DetailUseCase()) {
         self.repositoryFullName = repositoryFullName
         self.useCase = useCase
         self.useCase.delegate = self
@@ -80,12 +80,12 @@ final class RepositoryDetailViewModel: RepositoryDetailViewModelProtocol {
     }
 }
 
-extension RepositoryDetailViewModel: RepositoryDetailUseCaseDelegate {
-    func repositoryDetailUseCase(_ useCase: RepositoryDetailUseCaseProtocol, didLoad latestRelease: Release?, collaborators: [Collaborator]) {
+extension DetailViewModel: DetailUseCaseDelegate {
+    func detailUseCase(_ useCase: DetailUseCaseProtocol, didLoad latestRelease: Release?, collaborators: [Collaborator]) {
         self.update()
     }
     
-    func repositoryDetailUseCase(_ useCase: RepositoryDetailUseCaseProtocol, didLoad profile: CommunityProfile?) {
+    func detailUseCase(_ useCase: DetailUseCaseProtocol, didLoad profile: CommunityProfile?) {
         
         self.update()
     }

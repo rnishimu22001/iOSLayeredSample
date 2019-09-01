@@ -1,5 +1,5 @@
 //
-//  RepositorySearchRequestClient.swift
+//  SearchRequestClient.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/07/29.

@@ -1,5 +1,5 @@
 //
-//  RepositoryDetailUseCase.swift
+//  DetailUseCase.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/08/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RepositoryDetailUseCaseProtocol {
+protocol DetailUseCaseProtocol {
     var profile: CommunityProfile? { get }
     var latestRelease: Release? { get }
     var collaborators: [Collaborator] { get }
@@ -22,19 +22,19 @@ protocol RepositoryDetailUseCaseProtocol {
     /// CommunityProfile以下がリクエスト中ならロードフッター表示
     var shouldShowLoadingFooter: Bool { get }
     /// データ更新の通知先
-    var delegate: RepositoryDetailUseCaseDelegate? { get set }
+    var delegate: DetailUseCaseDelegate? { get set }
     /// ページの再読み込み時に呼ばれる
     func reload(repository fullName: String)
 }
 
-protocol RepositoryDetailUseCaseDelegate: class {
+protocol DetailUseCaseDelegate: class {
     /// profileのロード完了時に呼ばれる
-    func repositoryDetailUseCase(_ useCase: RepositoryDetailUseCaseProtocol, didLoad profile: CommunityProfile?)
+    func detailUseCase(_ useCase: DetailUseCaseProtocol, didLoad profile: CommunityProfile?)
     /// リリース情報とCollaborator情報のロード完了時に呼ばれる
-    func repositoryDetailUseCase(_ useCase: RepositoryDetailUseCaseProtocol, didLoad latestRelease: Release?, collaborators: [Collaborator])
+    func detailUseCase(_ useCase: DetailUseCaseProtocol, didLoad latestRelease: Release?, collaborators: [Collaborator])
 }
 
-final class RepositoryDetailUseCase: RepositoryDetailUseCaseProtocol {
+final class DetailUseCase: DetailUseCaseProtocol {
     
     var collaborators: [Collaborator] {
         return collaboratorRepository.collaborators
@@ -62,7 +62,7 @@ final class RepositoryDetailUseCase: RepositoryDetailUseCaseProtocol {
 
     let queue = DispatchQueue(label: "RepositoryDetailUseCase")
     
-    weak var delegate: RepositoryDetailUseCaseDelegate?
+    weak var delegate: DetailUseCaseDelegate?
     
     let profileRepository: CommunityProfileRepositoryProtocol = CommunityProfileRepository()
     let releaseRepository: ReleaseRepositoryProtocol = ReleaseRepository()
@@ -72,7 +72,7 @@ final class RepositoryDetailUseCase: RepositoryDetailUseCaseProtocol {
         
         profileRepository.reload(repository: fullName) { [weak self] _ in
             guard let self = self else { return }
-            self.delegate?.repositoryDetailUseCase(self, didLoad: self.profile)
+            self.delegate?.detailUseCase(self, didLoad: self.profile)
         }
         
         let group = DispatchGroup()
@@ -93,7 +93,7 @@ final class RepositoryDetailUseCase: RepositoryDetailUseCaseProtocol {
         
         group.notify(queue: queue) { [weak self] in
             guard let self = self else { return }
-            self.delegate?.repositoryDetailUseCase(self, didLoad: self.latestRelease, collaborators: self.collaborators)
+            self.delegate?.detailUseCase(self, didLoad: self.latestRelease, collaborators: self.collaborators)
         }
     }
 }

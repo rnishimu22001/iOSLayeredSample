@@ -1,5 +1,5 @@
 //
-//  RepositoryDetailPresenter.swift
+//  DetailPresenter.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/08/17.

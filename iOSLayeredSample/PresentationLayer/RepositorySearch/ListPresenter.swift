@@ -9,28 +9,28 @@
 import UIKit
 import Foundation
 
-protocol RepositoryListPresenterProtocol: UITableViewDelegate, UITableViewDataSource {
+protocol ListDataSourceProtocol: UITableViewDelegate, UITableViewDataSource {
     /// ユーザーデータ
     var contentsList: [TableViewDisplayable] { get set }
     
-    var delegate: RepositoryListPresenterDelegate? { get set }
+    var delegate: ListDataSourceDelegate? { get set }
     /// tableViewにセルを登録する
     func register(in tableView: UITableView)
 }
 
-protocol RepositoryListPresenterDelegate: class {
-    func repositoryListPresenter(_ presenter: RepositoryListPresenterProtocol, willDisplayLoading cell: UITableViewCell)
-    func repositoryListPresenter(_ presenter: RepositoryListPresenterProtocol, didSelectRepositoryListAt index: Int)
+protocol ListDataSourceDelegate: class {
+    func listDataSource(_ dataSource: ListDataSourceProtocol, willDisplayLoading cell: UITableViewCell)
+    func listDataSource(_ dataSource: ListDataSourceProtocol, didSelectRepositoryListAt index: Int)
 }
 
-final class RepositoryListPresenter: NSObject, UITableViewDelegate, UITableViewDataSource, RepositoryListPresenterProtocol {
+final class RepositoryListPresenter: NSObject, UITableViewDelegate, UITableViewDataSource, ListDataSourceProtocol {
     
     enum Sections: Int, CaseIterable {
         case repositoryList
     }
     
     var contentsList: [TableViewDisplayable] = []
-    weak var delegate: RepositoryListPresenterDelegate?
+    weak var delegate: ListDataSourceDelegate?
     
     func register(in tableView: UITableView) {
         tableView.register(RepositoryTableViewCell.nib, forCellReuseIdentifier: RepositoryDisplayData.tableViewCellClass.className)
@@ -102,7 +102,7 @@ final class RepositoryListPresenter: NSObject, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         switch cell {
         case is LoadingCell:
-            self.delegate?.repositoryListPresenter(self, willDisplayLoading: cell)
+            self.delegate?.listDataSource(self, willDisplayLoading: cell)
         default:
             break
         }
@@ -113,7 +113,7 @@ final class RepositoryListPresenter: NSObject, UITableViewDelegate, UITableViewD
         case .none:
             return
         case .some(.repositoryList):
-            self.delegate?.repositoryListPresenter(self, didSelectRepositoryListAt: indexPath.row)
+            self.delegate?.listDataSource(self, didSelectRepositoryListAt: indexPath.row)
         }
     }
 }

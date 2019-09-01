@@ -10,7 +10,6 @@ import UIKit
 import Combine
 
 protocol SearchListViewProtocol {
-    init(parentView: UIView, listPresenter: RepositoryListPresenterProtocol)
     var showLoadingFooter: PassthroughSubject<Void, Never> { get }
     var delegate: SearchListViewDelegate? { get set }
     func change(status: ContentsStatus)
@@ -31,16 +30,16 @@ final class SearchListView: NSObject, SearchListViewProtocol {
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var tableView: UITableView!
     weak var delegate: SearchListViewDelegate?
-    private(set) var listPresenter: RepositoryListPresenterProtocol
+    private(set) var listPresenter: ListDataSourceProtocol
     
-    required init(parentView: UIView, listPresenter: RepositoryListPresenterProtocol = RepositoryListPresenter()) {
-        self.listPresenter = listPresenter
+    required init(parentView: UIView, dataSource: ListDataSourceProtocol = RepositoryListPresenter()) {
+        self.listPresenter = dataSource
         super.init()
         Bundle.main.loadNibNamed(type(of: self).className, owner: self, options: nil)
         self.listPresenter.delegate = self
         parentView.addSubview(view)
-        tableView.delegate = listPresenter
-        tableView.dataSource = listPresenter
+        tableView.delegate = dataSource
+        tableView.dataSource = dataSource
         self.listPresenter.register(in: tableView)
     }
     
@@ -90,11 +89,11 @@ final class SearchListView: NSObject, SearchListViewProtocol {
     }
 }
 
-extension SearchListView: RepositoryListPresenterDelegate {
-    func repositoryListPresenter(_ presenter: RepositoryListPresenterProtocol, willDisplayLoading cell: UITableViewCell) {
+extension SearchListView: ListDataSourceDelegate {
+    func listDataSource(_ dataSource: ListDataSourceProtocol, willDisplayLoading cell: UITableViewCell) {
         showLoadingFooter.send()
     }
-    func repositoryListPresenter(_ presenter: RepositoryListPresenterProtocol, didSelectRepositoryListAt index: Int) {
+    func listDataSource(_ dataSource: ListDataSourceProtocol, didSelectRepositoryListAt index: Int) {
         self.delegate?.searchListView(self, didSelectRepositoryListAt: index)
     }
 }

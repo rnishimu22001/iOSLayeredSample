@@ -1,5 +1,5 @@
 //
-//  RepositoryCollaboratorsClient.swift
+//  CollaboratorsClient.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/08/17.

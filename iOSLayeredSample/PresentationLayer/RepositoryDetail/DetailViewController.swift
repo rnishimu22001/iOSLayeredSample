@@ -1,5 +1,5 @@
 //
-//  RepositoryDetailViewController.swift
+//  DetailViewController.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/08/17.
@@ -9,17 +9,17 @@
 import UIKit
 import Combine
 
-final class RepositoryDetailViewController: UIViewController {
+final class DetailViewController: UIViewController {
        
     var detailView: RepositoryDetailPresenterProtocol!
-    var viewModel: RepositoryDetailViewModelProtocol!
+    var viewModel: DetailViewModelProtocol!
     var repositoryFullName: String = ""
     private var cancellables: [AnyCancellable] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         detailView = RepositoryDetailPresenter(with: view)
-        viewModel = RepositoryDetailViewModel(repositoryFullName: repositoryFullName)
+        viewModel = DetailViewModel(repositoryFullName: repositoryFullName)
         self.sink()
         viewModel.reload()
     }
