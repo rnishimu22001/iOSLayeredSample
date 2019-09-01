@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol RepositoryReleaseClientProtocol {
+protocol ReleaseClientProtocol {
     func requestLatestRelease(repository fullName: String, completion: @escaping ((Result<Release, Error>, URLResponse?) -> Void))
 }
 
-final class RepositoryReleaseClient: RepositoryReleaseClientProtocol, APIRequestable {
+final class ReleaseClient: ReleaseClientProtocol, APIRequestable {
     let configuration: URLSessionConfiguration = .default
     
     func requestLatestRelease(repository fullName: String, completion: @escaping ((Result<Release, Error>, URLResponse?) -> Void)) {

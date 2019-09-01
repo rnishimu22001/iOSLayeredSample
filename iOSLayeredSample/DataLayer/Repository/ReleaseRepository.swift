@@ -8,18 +8,18 @@
 
 import Foundation
 
-protocol GithubRepositoryReleaseRepositoryProtocol {
-    var client: RepositoryReleaseClientProtocol { get }
+protocol ReleaseRepositoryProtocol {
+    var client: ReleaseClientProtocol { get }
     var latestRelease: Release? { get }
     var isLoading: Bool { get }
     var error: Error? { get }
     func reload(repository fullName: String, completion: @escaping ((Result<Void, Error>) -> Void))
 }
 
-final class GithubRepositoryReleaseRepository: GithubRepositoryReleaseRepositoryProtocol {
+final class ReleaseRepository: ReleaseRepositoryProtocol {
     private(set) var isLoading: Bool = false
     private(set) var error: Error? = nil
-    let client: RepositoryReleaseClientProtocol = RepositoryReleaseClient()
+    let client: ReleaseClientProtocol = ReleaseClient()
     
     private(set) var latestRelease: Release?
     

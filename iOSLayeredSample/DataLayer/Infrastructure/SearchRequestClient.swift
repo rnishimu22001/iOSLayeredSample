@@ -8,22 +8,22 @@
 
 import Foundation
 
-enum RepositorySearchSortPattern: String {
+enum SearchSortPattern: String {
     case stars
     case forks
 }
 
-protocol RepositorySearchRequestClientProtocol {
-    func request(with url: String, sort: RepositorySearchSortPattern, query: String, completion: @escaping (_ result: Result<Repositories, Error>, _ response: GitHubAPIResponseHeader?) -> Void)
+protocol SearchRequestClientProtocol {
+    func request(with url: String, sort: SearchSortPattern, query: String, completion: @escaping (_ result: Result<Repositories, Error>, _ response: GitHubAPIResponseHeader?) -> Void)
     func request(nextURL: String, completion: @escaping (_ result: Result<Repositories, Error>, _ response: GitHubAPIResponseHeader?) -> Void)
 }
 
 /// https://developer.github.com/v3/search/#search-users
-struct RepositorySearchRequestClient: APIRequestable, RepositorySearchRequestClientProtocol {
+struct SearchRequestClient: APIRequestable, SearchRequestClientProtocol {
     
     let configuration = URLSessionConfiguration.default
     
-    func request(with url: String, sort: RepositorySearchSortPattern, query: String, completion: @escaping (_ result: Result<Repositories, Error>, _ response: GitHubAPIResponseHeader?) -> Void) {
+    func request(with url: String, sort: SearchSortPattern, query: String, completion: @escaping (_ result: Result<Repositories, Error>, _ response: GitHubAPIResponseHeader?) -> Void) {
         
         guard var components = URLComponents(string: url) else {
             completion(.failure(RequestError.badURL), nil)

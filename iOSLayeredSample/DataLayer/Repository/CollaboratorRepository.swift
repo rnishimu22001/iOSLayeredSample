@@ -6,16 +6,16 @@
 //  Copyright © 2019 rnishimu22001. All rights reserved.
 //
 
-protocol GithubRepositoryCollaboratorRepositoryProtocol {
-    var client: RepositoryCollaboratorsClientProtocol { get }
+protocol CollaboratorRepositoryProtocol {
+    var client: CollaboratorsClientProtocol { get }
     var collaborators: [Collaborator] { get }
     var isLoading: Bool { get }
     var error: Error? { get }
     func reload(repositoy fullName: String, completion: @escaping ((Result<Void, Error>) -> Void))
 }
 
-final class GithubRepositoryCollaboratorRepository: GithubRepositoryCollaboratorRepositoryProtocol {
-    let client: RepositoryCollaboratorsClientProtocol = RepositoryCollaboratorsClient()
+final class CollaboratorRepository: CollaboratorRepositoryProtocol {
+    let client: CollaboratorsClientProtocol = CollaboratorsClient()
     private(set) var isLoading: Bool = false
     private(set) var error: Error? = nil
     

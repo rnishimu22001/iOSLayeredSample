@@ -39,11 +39,11 @@ final class SearchRepository: SearchRepositoryProtocol {
         return self.responseHeader?.nextURL
     }
     
-    let requestClient: RepositorySearchRequestClientProtocol
-    let sort: RepositorySearchSortPattern
+    let requestClient: SearchRequestClientProtocol
+    let sort: SearchSortPattern
     
-    init(requestClient: RepositorySearchRequestClientProtocol = RepositorySearchRequestClient(),
-        sortPattern: RepositorySearchSortPattern = .stars) {
+    init(requestClient: SearchRequestClientProtocol = SearchRequestClient(),
+        sortPattern: SearchSortPattern = .stars) {
         self.requestClient = requestClient
         self.sort = sortPattern
     }

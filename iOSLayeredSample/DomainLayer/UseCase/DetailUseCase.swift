@@ -12,7 +12,6 @@ protocol RepositoryDetailUseCaseProtocol {
     var profile: CommunityProfile? { get }
     var latestRelease: Release? { get }
     var collaborators: [Collaborator] { get }
-    var profileRepository: GithubRepositoryCommunityProfileRepositoryProtocol { get }
     /// エラーの場合はtrue
     /// CommunityProfileがエラーならエラー表示にする
     var isError: Bool { get }
@@ -65,9 +64,9 @@ final class RepositoryDetailUseCase: RepositoryDetailUseCaseProtocol {
     
     weak var delegate: RepositoryDetailUseCaseDelegate?
     
-    let profileRepository: GithubRepositoryCommunityProfileRepositoryProtocol = GithubRepositoryCommunityProfileRepository()
-    let releaseRepository: GithubRepositoryReleaseRepositoryProtocol = GithubRepositoryReleaseRepository()
-    let collaboratorRepository: GithubRepositoryCollaboratorRepository = GithubRepositoryCollaboratorRepository()
+    let profileRepository: CommunityProfileRepositoryProtocol = CommunityProfileRepository()
+    let releaseRepository: ReleaseRepositoryProtocol = ReleaseRepository()
+    let collaboratorRepository: CollaboratorRepository = CollaboratorRepository()
     
     func reload(repository fullName: String) {
         
