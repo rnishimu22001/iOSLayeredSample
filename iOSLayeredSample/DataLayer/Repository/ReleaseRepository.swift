@@ -1,5 +1,5 @@
 //
-//  GithubRepositoryReleaseRepository.swift
+//  ReleaseRepository.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/08/25.

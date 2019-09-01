@@ -1,5 +1,5 @@
 //
-//  GithubRepositoryCollaboratorRepository.swift
+//  CollaboratorRepository.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/08/25.

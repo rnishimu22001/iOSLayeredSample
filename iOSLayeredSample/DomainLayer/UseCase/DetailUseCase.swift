@@ -64,9 +64,17 @@ final class DetailUseCase: DetailUseCaseProtocol {
     
     weak var delegate: DetailUseCaseDelegate?
     
-    let profileRepository: CommunityProfileRepositoryProtocol = CommunityProfileRepository()
-    let releaseRepository: ReleaseRepositoryProtocol = ReleaseRepository()
-    let collaboratorRepository: CollaboratorRepository = CollaboratorRepository()
+    let profileRepository: CommunityProfileRepositoryProtocol
+    let releaseRepository: ReleaseRepositoryProtocol
+    let collaboratorRepository: CollaboratorRepository
+    
+    init(profileRepository: CommunityProfileRepositoryProtocol = CommunityProfileRepository(),
+         releaseRepository: ReleaseRepositoryProtocol = ReleaseRepository(),
+         collaboratorRepository: CollaboratorRepository = CollaboratorRepository()) {
+        self.profileRepository = profileRepository
+        self.releaseRepository = releaseRepository
+        self.collaboratorRepository = collaboratorRepository
+    }
     
     func reload(repository fullName: String) {
         
