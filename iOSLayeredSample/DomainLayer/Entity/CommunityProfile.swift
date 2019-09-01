@@ -11,7 +11,7 @@ import Foundation
 // MARK: - CommunityProfile
 struct CommunityProfile: Codable {
     let healthPercentage: Int
-    let communityProfileDescription: String
+    let communityProfileDescription: String?
     let documentation: Bool
     let files: Files
     let updatedAt: Date

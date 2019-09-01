@@ -16,7 +16,7 @@ struct CommunityProfileDisplayData {
     
     init(with profile: CommunityProfile) {
         name = profile.files.codeOfConduct.name
-        repositoryDescription = profile.communityProfileDescription
+        repositoryDescription = profile.communityProfileDescription ?? ""
         license = profile.files.license.name
         lastUpdate = profile.updatedAt.currentLocale
     }

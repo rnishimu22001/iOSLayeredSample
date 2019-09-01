@@ -18,7 +18,7 @@ struct RepositoryDisplayData: TableViewDisplayable {
     
     init(from repository: Repository) {
         name = repository.fullName
-        descpription = repository.itemDescription
+        descpription = repository.itemDescription ?? ""
         starCount = repository.stargazersCount.description
         starColor = StarColor(with: repository.stargazersCount)
         id = repository.id

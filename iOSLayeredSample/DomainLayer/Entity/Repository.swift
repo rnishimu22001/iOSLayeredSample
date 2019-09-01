@@ -28,7 +28,7 @@ struct Repository: Codable {
     let owner: Owner
     let itemPrivate: Bool
     let htmlURL: String
-    let itemDescription: String
+    let itemDescription: String?
     let fork: Bool
     let url: String
     let stargazersCount, watchersCount: Int
