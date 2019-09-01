@@ -18,73 +18,73 @@ iOSのレイヤードアーキテクチャを採用したサンプルアプリ�
 * テストコードを書くことを前提とするので、DIを用いた参照を利用する
 * 独自クラスの継承はせず、protocolとprotocol extensionを利用
 
-## レイヤーと名称と役割
+## レイヤーと役割
 
-![layerd 001](https://user-images.githubusercontent.com/25366111/63637480-707bff00-c6b7-11e9-8ab2-630f935093ba.jpeg)
+* 左が各レイヤーで右が実際のクラスの依存関係
+* 角丸枠線に黒字がクラスInterface(Protocolで実装)
+* 角丸塗りつぶしが実装クラス
 
-※ 表示状態がない静的な画面など必要がなければPresenterやViewModelはなくて良い
+![layerd 001](https://user-images.githubusercontent.com/25366111/64076458-2a9ae880-cd00-11e9-95e0-08e992a032f9.jpeg)
 
-### View
 
-表示とユーザーイベントの通知
+### PresentationLayer
 
-* 値オブジェクトを受け取って対応するViewにデータを代入する
-* Viewに対するユーザー操作のイベントを受け取り、Presenterへ通知
-* 1画面に複数、UIを構成するモジュール単位で作成
+#### この層で解決したいこと
 
-### Presenter(Deprecated)
+UIKitなどのOSが提供する表示に関する処理をこの層にとどめる
 
-**viewと統合予定**
+#### 責務
 
-データを元にしたViewの管理
+* OSからのイベントとユーザーイベントをApplicationLayerに通知する
+* ApplicationLayerに通知された更新データを元にUIの表示更新
 
-* 対応するViewに値オブジェクトを振り分ける
-* Viewの追加や整形、非表示などを行う
-* Viewのイベントを受け取り、ViewControllerへ通知
-* 1画面に一つ、コンポジットパターンによる分割は可能
+#### 役割
+UIの表示とユーザーイベントの通知
 
-### ViewController
+### ApplicationLayer
 
-画面遷移、OSイベントの通知
+#### この層で解決したいこと
 
-* 画面のエントリーポイント
-* OS、画面のライフサイクルを受け取る
-* 画面遷移を行う
-* イベントをViewModelへ通知
-* 更新データをPresenterに通知する
-* 1画面に一つ
+DomainLayerからシステムの表示の関心を切り離す
 
-### ViewModel
+#### 責務
 
-画面の状態管理、表示データの整形
+* DomainLayerのメソッドの実行結果に応じて画面の状態を判断する
+* PresentationLayerで利用するデータ型にデータを加工する
+* 更新をPresentationLayerに通知する
 
-* 保持している値オブジェクトを元に表示する画面の種類(エラー、ロードなど)を決定する
-* データを表示用のデータに整形、追加、並び替えを行う
-* 表示用データの更新完了通知をViewControllerに通知する
-* イベントをUseCaseに通知
-* 1画面に一つ
+#### 役割
+* アプリケーション動作の抽象化を提供し、対応するDomainLayerの処理を実行する
+* DomainLayerの戻り値から画面全体の状態を判断する
+* DomainLayerの戻り値から表示用のデータ加工する
+* データの更新をPrensetationLayerに通知する
 
-### UseCase
+### DomainLayer
 
-ワークフローとルールの集合体
+#### この層で解決したいこと
 
-* 複数のRepositoryを保持
-* Repositoryの状態とイベントの組み合わせで任意のRepositoryに対して更新通知を出す
-* 任意のRepository同士の更新を待ち合わせる
-* 1ワークフローにつき一つ?
+アプリケーションのもつビジネスロジックの複雑さのみを分離して、システムの複雑さと切り離す
 
-### Repository
+#### 責務
 
-データの取得、更新の保存する場所の選定
+ApplicationLayer、DataLayerから渡されるデータを元に、ビジネスルールに基づいて適切な処理の実行、DataLayerへのルーティングを行う
 
-* DBキャッシュ利用、API通信の必要可否を判断してデータをUseCaseに通知
-* DB、APIなどのデータ更新の保存先を選定
-* 一つの値オブジェクトにつき一つ
+#### 役割
 
-### Client
+* 抽象化したビジネスロジックのインターフェースを提供する
+* ビジネスルールに基づいてDataLayerのインターフェースにルーティングする
+* DataLayerからの戻り値を元にビジネスルールに基づいて適切な処理を実行する
 
-データの取得、更新の実行
+### DataLayer
 
-* API、DBとの接続
-* Queryの生成
-* DB、API、UserDefaultsなどにつき一つ
+#### この層で解決したいこと
+
+データの取得、永続化などOSが提供するデータに関する処理をこの層にとどめる
+
+####  責務
+
+実行された処理を元にAPI、DBなどデータの取得、保存先を適切にルーティングする
+
+#### 役割
+
+API、データベースなどデータの取得先をDomainLayerが意識せずデータを取得できるInterfaceを提供する
