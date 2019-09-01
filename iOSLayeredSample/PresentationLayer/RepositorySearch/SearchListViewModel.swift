@@ -73,7 +73,7 @@ extension SearchListViewModel: SearchListUseCaseDelegate {
         var contents: [TableViewDisplayable] = []
         contents = repositoryList.map { RepositoryDisplayData(from: $0) }
         if !isStalled {
-            contents.append(LoadingDisplayable())
+            contents.append(LoadingDisplayData())
         }
         return contents
     }

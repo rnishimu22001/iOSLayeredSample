@@ -15,9 +15,9 @@ struct CommunityProfileDisplayData {
     let lastUpdate: String
     
     init(with profile: CommunityProfile) {
-        name = profile.files.codeOfConduct.name
+        name = profile.files?.codeOfConduct.name ?? ""
         repositoryDescription = profile.communityProfileDescription ?? ""
-        license = profile.files.license.name
+        license = profile.files?.license.name ?? ""
         lastUpdate = profile.updatedAt.currentLocale
     }
 }

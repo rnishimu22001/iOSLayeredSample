@@ -1,5 +1,5 @@
 //
-//  RepositoryCommunityProfileClient.swift
+//  RepositoryCollaboratorsClient.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/08/17.
@@ -8,19 +8,20 @@
 
 import Foundation
 
-protocol CommunityProfileClientProtocol {
-    func requestProfile(repository fullName: String, completion: @escaping ((Result<CommunityProfile, Error>, URLResponse?) -> Void))
+protocol CollaboratorsClientProtocol {
+    func requestCollaborators(repository fullName: String, completion: @escaping ((Result<[Collaborator], Error>, URLResponse?) -> Void))
 }
 
-struct CommunityProfileClient: CommunityProfileClientProtocol {
+struct CollaboratorsClient: CollaboratorsClientProtocol, GitHubAPIRequestable {
+    
     let requester: HTTPRequestable
     
     init(requester: HTTPRequestable = HTTPRequester()) {
         self.requester = requester
     }
     
-    func requestProfile(repository fullName: String, completion: @escaping ((Result<CommunityProfile, Error>, URLResponse?) -> Void)) {
-        let url = APIURLSetting.communityProfile(with: fullName)
+    func requestCollaborators(repository fullName: String, completion: @escaping ((Result<[Collaborator], Error>, URLResponse?) -> Void)) {
+        let url = APIURLSetting.collaborators(with: fullName)
         guard let components = URLComponents(string: url) else {
             completion(.failure(RequestError.badURL), nil)
             return
@@ -31,12 +32,14 @@ struct CommunityProfileClient: CommunityProfileClientProtocol {
             return
         }
         
-        requester.request(with: URLRequest(url: requestURL)) { result, response in
+        let request = addAccept(request: URLRequest(url: requestURL))
+        
+        requester.request(with: request) { result, response in
             switch result {
             case .failure(let error):
                 completion(.failure(error), response)
             case .success(let data):
-                guard let users = try? JSONDecoder().decode(CommunityProfile.self, from: data) else {
+                guard let users = try? JSONDecoder().decode([Collaborator].self, from: data) else {
                     completion(.failure(RequestError.dataEncodeFailed), response)
                     return
                 }

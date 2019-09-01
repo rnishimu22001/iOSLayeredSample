@@ -34,7 +34,7 @@ final class RepositoryListPresenter: NSObject, UITableViewDelegate, UITableViewD
     
     func register(in tableView: UITableView) {
         tableView.register(RepositoryTableViewCell.nib, forCellReuseIdentifier: RepositoryDisplayData.tableViewCellClass.className)
-        tableView.register(LoadingCell.nib, forCellReuseIdentifier: LoadingDisplayable.tableViewCellClass.className)
+        tableView.register(LoadingCell.nib, forCellReuseIdentifier: LoadingDisplayData.tableViewCellClass.className)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -71,7 +71,7 @@ final class RepositoryListPresenter: NSObject, UITableViewDelegate, UITableViewD
         switch contentsList[indexPath.row] {
         case is RepositoryDisplayData:
             return 100
-        case is LoadingDisplayable:
+        case is LoadingDisplayData:
             return 80
         default:
             return 0

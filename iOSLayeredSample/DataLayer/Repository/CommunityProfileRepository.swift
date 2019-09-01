@@ -8,7 +8,6 @@
 
 protocol CommunityProfileRepositoryProtocol {
     var profile: CommunityProfile? { get }
-    var client: CommunityProfileClientProtocol { get }
     var isLoading: Bool { get }
     var error: Error? { get }
     func reload(repository fullName: String, completion: @escaping ((Result<Void, Error>) -> Void))

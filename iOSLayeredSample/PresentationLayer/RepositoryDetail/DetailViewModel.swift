@@ -54,7 +54,7 @@ final class RepositoryDetailViewModel: RepositoryDetailViewModelProtocol {
             contents.append(CollaboratorsDisplayData(collaborators: collaboratorList))
         }
         if useCase.shouldShowLoadingFooter {
-            contents.append(LoadingDisplayable())
+            contents.append(LoadingDisplayData())
         }
         guard !contents.isEmpty else { return }
         self.contents.value = contents

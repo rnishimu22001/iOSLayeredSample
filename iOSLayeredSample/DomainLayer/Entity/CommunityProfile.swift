@@ -10,10 +10,10 @@ import Foundation
 
 // MARK: - CommunityProfile
 struct CommunityProfile: Codable {
-    let healthPercentage: Int
+    let healthPercentage: Int?
     let communityProfileDescription: String?
-    let documentation: Bool
-    let files: Files
+    let documentation: Bool?
+    let files: Files?
     let updatedAt: Date
 
     enum CodingKeys: String, CodingKey {

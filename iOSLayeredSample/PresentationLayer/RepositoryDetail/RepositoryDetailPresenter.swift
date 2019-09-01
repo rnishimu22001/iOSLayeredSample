@@ -55,7 +55,7 @@ final class RepositoryDetailPresenter: NSObject, RepositoryDetailPresenterProtoc
     
     private func setupContentView(content: Any) {
         switch content {
-        case is LoadingDisplayable:
+        case is LoadingDisplayData:
             let size = CGSize(width: self.contentsView.frame.size.width, height: LoadingView.height)
             let frame = CGRect(origin: .zero, size: size)
             let loading = LoadingView(frame: frame)

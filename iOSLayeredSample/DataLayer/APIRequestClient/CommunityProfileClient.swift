@@ -1,5 +1,5 @@
 //
-//  RepositoryReleaseClient.swift
+//  RepositoryCommunityProfileClient.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/08/17.
@@ -8,20 +8,19 @@
 
 import Foundation
 
-protocol ReleaseClientProtocol {
-    func requestLatestRelease(repository fullName: String, completion: @escaping ((Result<Release, Error>, URLResponse?) -> Void))
+protocol CommunityProfileClientProtocol {
+    func requestProfile(repository fullName: String, completion: @escaping ((Result<CommunityProfile, Error>, URLResponse?) -> Void))
 }
 
-struct ReleaseClient: ReleaseClientProtocol {
-    
+struct CommunityProfileClient: CommunityProfileClientProtocol, GitHubAPIRequestable {
     let requester: HTTPRequestable
     
     init(requester: HTTPRequestable = HTTPRequester()) {
         self.requester = requester
     }
     
-    func requestLatestRelease(repository fullName: String, completion: @escaping ((Result<Release, Error>, URLResponse?) -> Void)) {
-        let url = APIURLSetting.collaborators(with: fullName)
+    func requestProfile(repository fullName: String, completion: @escaping ((Result<CommunityProfile, Error>, URLResponse?) -> Void)) {
+        let url = APIURLSetting.communityProfile(with: fullName)
         guard let components = URLComponents(string: url) else {
             completion(.failure(RequestError.badURL), nil)
             return
@@ -31,17 +30,19 @@ struct ReleaseClient: ReleaseClientProtocol {
             completion(.failure(RequestError.badURL), nil)
             return
         }
+        let request = addAccept(request: URLRequest(url: requestURL))
         
-        requester.request(with: URLRequest(url: requestURL)) { result, response in
+        requester.request(with: request) { result, response in
             switch result {
             case .failure(let error):
                 completion(.failure(error), response)
             case .success(let data):
-                guard let release = try? JSONDecoder().decode(Release.self, from: data) else {
+                do {
+                    let profile = try JSONDecoder().decode(CommunityProfile.self, from: data)
+                    completion(.success(profile), response)
+                } catch {
                     completion(.failure(RequestError.dataEncodeFailed), response)
-                    return
                 }
-                completion(.success(release), response)
             }
         }
     }

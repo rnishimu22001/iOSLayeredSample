@@ -1,5 +1,5 @@
 //
-//  RepositoryCollaboratorsClient.swift
+//  RepositoryReleaseClient.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/08/17.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol CollaboratorsClientProtocol {
-    func requestCollaborators(repository fullName: String, completion: @escaping ((Result<[Collaborator], Error>, URLResponse?) -> Void))
+protocol ReleaseClientProtocol {
+    func requestLatestRelease(repository fullName: String, completion: @escaping ((Result<Release, Error>, URLResponse?) -> Void))
 }
 
-struct CollaboratorsClient: CollaboratorsClientProtocol {
+struct ReleaseClient: ReleaseClientProtocol, GitHubAPIRequestable {
     
     let requester: HTTPRequestable
     
@@ -20,7 +20,7 @@ struct CollaboratorsClient: CollaboratorsClientProtocol {
         self.requester = requester
     }
     
-    func requestCollaborators(repository fullName: String, completion: @escaping ((Result<[Collaborator], Error>, URLResponse?) -> Void)) {
+    func requestLatestRelease(repository fullName: String, completion: @escaping ((Result<Release, Error>, URLResponse?) -> Void)) {
         let url = APIURLSetting.collaborators(with: fullName)
         guard let components = URLComponents(string: url) else {
             completion(.failure(RequestError.badURL), nil)
@@ -32,16 +32,20 @@ struct CollaboratorsClient: CollaboratorsClientProtocol {
             return
         }
         
-        requester.request(with: URLRequest(url: requestURL)) { result, response in
+        let request = addAccept(request: URLRequest(url: requestURL))
+        
+        requester.request(with: request) { result, response in
             switch result {
             case .failure(let error):
                 completion(.failure(error), response)
             case .success(let data):
-                guard let users = try? JSONDecoder().decode([Collaborator].self, from: data) else {
+                
+                do {
+                    let release = try JSONDecoder().decode(Release.self, from: data)
+                    completion(.success(release), response)
+                } catch(let error) {
                     completion(.failure(RequestError.dataEncodeFailed), response)
-                    return
                 }
-                completion(.success(users), response)
             }
         }
     }
