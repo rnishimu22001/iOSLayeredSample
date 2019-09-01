@@ -11,14 +11,14 @@ import Combine
 
 final class RepositoryDetailViewController: UIViewController {
        
-    var presenter: RepositoryDetailPresenterProtocol!
+    var detailView: RepositoryDetailPresenterProtocol!
     var viewModel: RepositoryDetailViewModelProtocol!
     var repositoryFullName: String = ""
     private var cancellables: [AnyCancellable] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = RepositoryDetailPresenter(with: view)
+        detailView = RepositoryDetailPresenter(with: view)
         viewModel = RepositoryDetailViewModel(repositoryFullName: repositoryFullName)
         self.sink()
         viewModel.reload()
@@ -27,12 +27,12 @@ final class RepositoryDetailViewController: UIViewController {
     private func sink() {
         let statusCancellable = viewModel.status.sink { [weak self] status in
             DispatchQueue.asyncAtMain {
-                self?.presenter.update(status: status)
+                self?.detailView.update(status: status)
             }
         }
         let contentsCancellable = viewModel.contents.sink { [weak self] contents in
             DispatchQueue.asyncAtMain {
-                self?.presenter.update(contents: contents)
+                self?.detailView.update(contents: contents)
             }
         }
         cancellables.append(statusCancellable)

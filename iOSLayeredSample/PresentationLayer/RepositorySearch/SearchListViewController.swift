@@ -11,16 +11,16 @@ import Combine
 
 final class SearchListViewController: UIViewController {
     
-    var presenter: SearchListViewProtocol!
+    var searchListView: SearchListViewProtocol!
     var viewModel: SearchListViewModelProtocol!
     let delegateProxy: UISearchBarDelegateProxyProtocol =  UISearchBarDelegateProxy()
     private var cancellables: [AnyCancellable] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = SearchListView(parentView: self.view)
+        searchListView = SearchListView(parentView: self.view)
         viewModel = SearchListViewModel()
-        presenter.delegate = self
+        searchListView.delegate = self
         sink()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.searchController = UISearchController(searchResultsController: nil)
@@ -33,14 +33,14 @@ final class SearchListViewController: UIViewController {
         let textDidEndEditing = delegateProxy.textDidEndEditing.sink { [weak self] query in
             self?.viewModel.update(searchQuery: query)
         }
-        let showLoadingFooter = presenter.showLoadingFooter.sink { [weak self] in
+        let showLoadingFooter = searchListView.showLoadingFooter.sink { [weak self] in
             self?.viewModel.showLoadingFooter()
         }
         let repositoryUpdate = viewModel.repositoryList.sink { [weak self] contents in
-            self?.presenter.update(contentsList: contents)
+            self?.searchListView.update(contentsList: contents)
         }
         let statusUpdate = viewModel.status.sink { [weak self] status in
-            self?.presenter.change(status: status)
+            self?.searchListView.change(status: status)
         }
         cancellables.append(textDidEndEditing)
         cancellables.append(showLoadingFooter)
