@@ -6,18 +6,18 @@
 //  Copyright © 2019 rnishimu22001. All rights reserved.
 //
 
-protocol CommunityProfileRepositoryProtocol {
+protocol CommunityProfileRepositoryInterface {
     var profile: CommunityProfile? { get }
     var isLoading: Bool { get }
     var error: Error? { get }
     func reload(repository fullName: String, completion: @escaping ((Result<Void, Error>) -> Void))
 }
 
-final class CommunityProfileRepository: CommunityProfileRepositoryProtocol {
+final class CommunityProfileRepository: CommunityProfileRepositoryInterface {
     private(set) var isLoading: Bool = false
     private(set) var error: Error? = nil
     private(set) var profile: CommunityProfile?
-    let client: CommunityProfileClientProtocol = CommunityProfileClient()
+    let client: CommunityProfileClientInterface = CommunityProfileClient()
     
     func reload(repository fullName: String, completion: @escaping ((Result<Void, Error>) -> Void)) {
         self.isLoading = true

@@ -8,7 +8,7 @@
 
 import Combine
 
-protocol SearchListViewModelProtocol {
+protocol SearchListViewModelInterface {
     /// 表示状態
     var status: CurrentValueSubject<ContentsStatus, Never> { get }
     /// Githubリポジトリリストのデータ
@@ -21,13 +21,13 @@ protocol SearchListViewModelProtocol {
     func repositoryInList(at index: Int) -> RepositoryDisplayData?
 }
 
-final class SearchListViewModel: SearchListViewModelProtocol {
+final class SearchListViewModel: SearchListViewModelInterface {
     
     let status: CurrentValueSubject<ContentsStatus, Never> = .init(.initalized)
     let repositoryList: CurrentValueSubject<[TableViewDisplayable], Never> = .init([])
-    private(set) var useCase: SearchListUseCaseProtocol
+    private(set) var useCase: SearchListUseCaseInterface
     
-    init(useCase: SearchListUseCaseProtocol = SearchListUseCase()) {
+    init(useCase: SearchListUseCaseInterface = SearchListUseCase()) {
         self.useCase = useCase
         self.useCase.delegate = self
     }
@@ -56,7 +56,7 @@ final class SearchListViewModel: SearchListViewModelProtocol {
 
 extension SearchListViewModel: SearchListUseCaseDelegate {
     
-    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, didLoad repositoryList: [Repository], isError: Bool, isStalled: Bool) {
+    func searchListUseCase(_ useCase: SearchListUseCaseInterface, didLoad repositoryList: [Repository], isError: Bool, isStalled: Bool) {
         guard !isError else {
             status.value = .error
             return
@@ -65,7 +65,7 @@ extension SearchListViewModel: SearchListUseCaseDelegate {
         status.value = .browsable
     }
     
-    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, didUpdate repositoryList: [Repository], isStalled: Bool) {
+    func searchListUseCase(_ useCase: SearchListUseCaseInterface, didUpdate repositoryList: [Repository], isStalled: Bool) {
         self.repositoryList.value = (contents(from: repositoryList, isStalled: isStalled))
     }
     

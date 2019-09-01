@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-protocol ListDataSourceProtocol: UITableViewDelegate, UITableViewDataSource {
+protocol ListDataSourceInterface: UITableViewDelegate, UITableViewDataSource {
     /// ユーザーデータ
     var contentsList: [TableViewDisplayable] { get set }
     
@@ -19,11 +19,11 @@ protocol ListDataSourceProtocol: UITableViewDelegate, UITableViewDataSource {
 }
 
 protocol ListDataSourceDelegate: class {
-    func listDataSource(_ dataSource: ListDataSourceProtocol, willDisplayLoading cell: UITableViewCell)
-    func listDataSource(_ dataSource: ListDataSourceProtocol, didSelectRepositoryListAt index: Int)
+    func listDataSource(_ dataSource: ListDataSourceInterface, willDisplayLoading cell: UITableViewCell)
+    func listDataSource(_ dataSource: ListDataSourceInterface, didSelectRepositoryListAt index: Int)
 }
 
-final class RepositoryListPresenter: NSObject, UITableViewDelegate, UITableViewDataSource, ListDataSourceProtocol {
+final class ListDataSource: NSObject, UITableViewDelegate, UITableViewDataSource, ListDataSourceInterface {
     
     enum Sections: Int, CaseIterable {
         case repositoryList
@@ -86,7 +86,7 @@ final class RepositoryListPresenter: NSObject, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: type(of: data).tableViewCellClass.className, for: indexPath)
         
         switch cell {
-        case let repositoryCell as RepositoryTableViewCellProtocol:
+        case let repositoryCell as RepositoryTableViewCellInterface:
             guard let repository = data as? RepositoryDisplayData else {
                 break
             }

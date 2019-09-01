@@ -9,7 +9,7 @@
 import UIKit
 import Combine
 
-protocol SearchListViewProtocol {
+protocol SearchListViewInterface {
     var showLoadingFooter: PassthroughSubject<Void, Never> { get }
     var delegate: SearchListViewDelegate? { get set }
     func change(status: ContentsStatus)
@@ -17,10 +17,10 @@ protocol SearchListViewProtocol {
 }
 
 protocol SearchListViewDelegate: class {
-    func searchListView(_ presenter: SearchListViewProtocol, didSelectRepositoryListAt index: Int)
+    func searchListView(_ presenter: SearchListViewInterface, didSelectRepositoryListAt index: Int)
 }
 
-final class SearchListView: NSObject, SearchListViewProtocol {
+final class SearchListView: NSObject, SearchListViewInterface {
     
     let showLoadingFooter: PassthroughSubject<Void, Never> = PassthroughSubject()
     @IBOutlet weak var initalizedView: UIView!
@@ -30,9 +30,9 @@ final class SearchListView: NSObject, SearchListViewProtocol {
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var tableView: UITableView!
     weak var delegate: SearchListViewDelegate?
-    private(set) var listPresenter: ListDataSourceProtocol
+    private(set) var listPresenter: ListDataSourceInterface
     
-    required init(parentView: UIView, dataSource: ListDataSourceProtocol = RepositoryListPresenter()) {
+    required init(parentView: UIView, dataSource: ListDataSourceInterface = ListDataSource()) {
         self.listPresenter = dataSource
         super.init()
         Bundle.main.loadNibNamed(type(of: self).className, owner: self, options: nil)
@@ -90,10 +90,10 @@ final class SearchListView: NSObject, SearchListViewProtocol {
 }
 
 extension SearchListView: ListDataSourceDelegate {
-    func listDataSource(_ dataSource: ListDataSourceProtocol, willDisplayLoading cell: UITableViewCell) {
+    func listDataSource(_ dataSource: ListDataSourceInterface, willDisplayLoading cell: UITableViewCell) {
         showLoadingFooter.send()
     }
-    func listDataSource(_ dataSource: ListDataSourceProtocol, didSelectRepositoryListAt index: Int) {
+    func listDataSource(_ dataSource: ListDataSourceInterface, didSelectRepositoryListAt index: Int) {
         self.delegate?.searchListView(self, didSelectRepositoryListAt: index)
     }
 }

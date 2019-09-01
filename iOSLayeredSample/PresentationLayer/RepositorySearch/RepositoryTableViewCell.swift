@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol RepositoryTableViewCellProtocol {
+protocol RepositoryTableViewCellInterface {
     func setup(with repository: RepositoryDisplayData)
 }
 
-final class RepositoryTableViewCell: UITableViewCell, RepositoryTableViewCellProtocol {
+final class RepositoryTableViewCell: UITableViewCell, RepositoryTableViewCellInterface {
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
