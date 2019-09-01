@@ -33,7 +33,7 @@ final class ReleaseView: UIView {
     }
     
     
-    func setup(_ release: ReleaseDisplayable) {
+    func setup(_ release: ReleaseDisplayData) {
         tagName.text = release.tagName
         date.text = release.publishedDate
         descriptionLabel.text = release.releaseDesciption

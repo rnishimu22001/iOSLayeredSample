@@ -8,8 +8,6 @@
 
 import UIKit
 
-protocol Displayable { }
-
-protocol TableViewDisplayable: Displayable {
+protocol TableViewDisplayable {
     static var tableViewCellClass: UITableViewCell.Type { get }
 }

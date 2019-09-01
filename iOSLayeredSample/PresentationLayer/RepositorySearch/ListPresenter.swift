@@ -87,7 +87,7 @@ final class RepositoryListPresenter: NSObject, UITableViewDelegate, UITableViewD
         
         switch cell {
         case let repositoryCell as RepositoryTableViewCellProtocol:
-            guard let repository = data as? RepositoryDisplayable else {
+            guard let repository = data as? RepositoryDisplayData else {
                 break
             }
             repositoryCell.setup(with: repository)

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol RepositoryTableViewCellProtocol {
-    func setup(with repository: RepositoryDisplayable)
+    func setup(with repository: RepositoryDisplayData)
 }
 
 final class RepositoryTableViewCell: UITableViewCell, RepositoryTableViewCellProtocol {
@@ -20,7 +20,7 @@ final class RepositoryTableViewCell: UITableViewCell, RepositoryTableViewCellPro
     @IBOutlet weak var star: UIImageView!
     @IBOutlet weak var starCount: UILabel!
     
-    func setup(with repository: RepositoryDisplayable) {
+    func setup(with repository: RepositoryDisplayData) {
         name.text = repository.name
         descriptionLabel.text = repository.descpription
         star.tintColor = repository.starColor.color

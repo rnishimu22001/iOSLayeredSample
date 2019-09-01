@@ -1,5 +1,5 @@
 //
-//  CommunityProfileDisplayable.swift
+//  CommunityProfileDisplayData.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/08/18.
@@ -8,14 +8,7 @@
 
 import Foundation
 
-protocol CommunityProfileDisplayable: Displayable {
-    var name: String { get }
-    var repositoryDescription: String { get }
-    var license: String { get }
-    var lastUpdate: String { get }
-}
-
-struct CommunityProfileDisplayData: CommunityProfileDisplayable {
+struct CommunityProfileDisplayData {
     let name: String
     let license: String
     let repositoryDescription: String

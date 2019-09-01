@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CollaboratorDisplayData: CollaboratorDisplayable {
+struct CollaboratorDisplayData {
     
     let hasAdminBadge: Bool
     let icon: URL
@@ -21,12 +21,6 @@ struct CollaboratorDisplayData: CollaboratorDisplayable {
     }
 }
 
-protocol CollaboratorDisplayable: Displayable {
-    var icon: URL { get }
-    var name: String { get }
-    var hasAdminBadge: Bool { get }
-}
-
-struct CollaboratorsDisplayData: Displayable {
-    let collaborators: [CollaboratorDisplayable]
+struct CollaboratorsDisplayData {
+    let collaborators: [CollaboratorDisplayData]
 }

@@ -1,5 +1,5 @@
 //
-//  RepositoryDisplayable.swift
+//  RepositoryDisplayData.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/08/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct RepositoryDisplayData: RepositoryDisplayable {
+struct RepositoryDisplayData: TableViewDisplayable {
     
     let starCount: String
     let starColor: StarColor
@@ -23,14 +23,6 @@ struct RepositoryDisplayData: RepositoryDisplayable {
         starColor = StarColor(with: repository.stargazersCount)
         id = repository.id
     }
-}
-
-protocol RepositoryDisplayable: TableViewDisplayable {
-    var id: Int { get }
-    var starCount: String { get }
-    var starColor: StarColor { get }
-    var name: String { get }
-    var descpription: String { get }
 }
 
 extension RepositoryDisplayData {

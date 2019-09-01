@@ -10,14 +10,14 @@ import Combine
 
 protocol RepositoryDetailViewModelProtocol {
     var status: CurrentValueSubject<ContentsStatus, Never> { get }
-    var contents: CurrentValueSubject<[Displayable], Never> { get }
+    var contents: CurrentValueSubject<[Any], Never> { get }
     var repositoryFullName: String { get }
     func reload()
 }
 
 final class RepositoryDetailViewModel: RepositoryDetailViewModelProtocol {
     let status: CurrentValueSubject<ContentsStatus, Never> = .init(.initalized)
-    let contents: CurrentValueSubject<[Displayable], Never> = .init([])
+    let contents: CurrentValueSubject<[Any], Never> = .init([])
     private(set) var useCase: RepositoryDetailUseCaseProtocol
     
     let repositoryFullName: String
@@ -41,7 +41,7 @@ final class RepositoryDetailViewModel: RepositoryDetailViewModelProtocol {
     
     /// コンテンツのステータスの更新状態を見て通知が必要か、どのデータを更新させるかを決める
     func contentsUpdate() {
-        var contents: [Displayable] = []
+        var contents: [Any] = []
         if let profile = useCase.profile {
             contents.append(CommunityProfileDisplayData(with: profile))
         }

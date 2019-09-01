@@ -32,7 +32,7 @@ final class CollaboratorView: UIView {
         view.frame = self.frame
     }
     
-    func setup(_ colloaborator: CollaboratorDisplayable) {
+    func setup(_ colloaborator: CollaboratorDisplayData) {
         Nuke.loadImage(with: colloaborator.icon, into: icon)
         name.text = colloaborator.name
         admin.isHidden = !colloaborator.hasAdminBadge

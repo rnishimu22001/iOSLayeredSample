@@ -10,7 +10,7 @@ import UIKit
 
 protocol RepositoryDetailPresenterProtocol {
     init(with superView: UIView)
-    func update(contents: [Displayable])
+    func update(contents: [Any])
     func update(status: ContentsStatus)
 }
 
@@ -46,23 +46,23 @@ final class RepositoryDetailPresenter: NSObject, RepositoryDetailPresenterProtoc
         }
     }
     
-    func update(contents: [Displayable]) {
+    func update(contents: [Any]) {
         contentsView.subviews.filter({ $0 is LoadingView }).forEach { $0.removeFromSuperview() }
         contents.forEach {
             setupContentView(content: $0)
         }
     }
     
-    private func setupContentView(content: Displayable) {
+    private func setupContentView(content: Any) {
         switch content {
         case is LoadingDisplayable:
             let size = CGSize(width: self.contentsView.frame.size.width, height: LoadingView.height)
             let frame = CGRect(origin: .zero, size: size)
             let loading = LoadingView(frame: frame)
             contentsView.addArrangedSubview(loading)
-        case let profile as CommunityProfileDisplayable:
+        case let profile as CommunityProfileDisplayData:
             addContentView(for: profile)
-        case let release as ReleaseDisplayable:
+        case let release as ReleaseDisplayData:
             addContentView(for: release)
         case let collaborators as CollaboratorsDisplayData:
             addContentView(for: collaborators)
@@ -71,7 +71,7 @@ final class RepositoryDetailPresenter: NSObject, RepositoryDetailPresenterProtoc
         }
     }
     
-    private func addContentView(for profile: CommunityProfileDisplayable) {
+    private func addContentView(for profile: CommunityProfileDisplayData) {
         var profileView: CommunityProfileView
         // if already exist profileview
         if let currentView = contentsView.subviews.filter({ $0 is CommunityProfileView }).first as? CommunityProfileView {
@@ -85,7 +85,7 @@ final class RepositoryDetailPresenter: NSObject, RepositoryDetailPresenterProtoc
         contentsView.addArrangedSubview(profileView)
     }
     
-    private func addContentView(for release: ReleaseDisplayable) {
+    private func addContentView(for release: ReleaseDisplayData) {
         var releaseView: ReleaseView
         if let currentView = contentsView.subviews.filter({ $0 is ReleaseView }).first as? ReleaseView {
             releaseView = currentView

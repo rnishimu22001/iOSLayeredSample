@@ -35,16 +35,7 @@ enum ReleaseStatus: String {
     }
 }
 
-import Foundation
-
-protocol ReleaseDisplayable: Displayable {
-    var tagName: String { get }
-    var releaseDesciption: String { get }
-    var status: ReleaseStatus { get }
-    var publishedDate: String { get }
-}
-
-struct ReleaseDisplayData: ReleaseDisplayable {
+struct ReleaseDisplayData {
     let tagName: String
     let releaseDesciption: String
     let status: ReleaseStatus
