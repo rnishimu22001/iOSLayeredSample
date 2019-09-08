@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ReleaseClientInterface {
-    func requestLatestRelease(repository fullName: String, completion: @escaping ((Result<Release, Error>, URLResponse?) -> Void))
+    func requestLatestRelease(repository fullName: String, completion: @escaping ((Result<Release, Error>, GitHubAPIResponseHeader?) -> Void))
 }
 
 struct ReleaseClient: ReleaseClientInterface, GitHubAPIRequestable {
@@ -20,33 +20,17 @@ struct ReleaseClient: ReleaseClientInterface, GitHubAPIRequestable {
         self.requester = requester
     }
     
-    func requestLatestRelease(repository fullName: String, completion: @escaping ((Result<Release, Error>, URLResponse?) -> Void)) {
+    func requestLatestRelease(repository fullName: String, completion: @escaping ((Result<Release, Error>, GitHubAPIResponseHeader?) -> Void)) {
         let url = APIURLSetting.collaborators(with: fullName)
         guard let components = URLComponents(string: url) else {
             completion(.failure(RequestError.badURL), nil)
             return
         }
-        
         guard let requestURL = components.url else {
             completion(.failure(RequestError.badURL), nil)
             return
         }
-        
-        let request = addAccept(request: URLRequest(url: requestURL))
-        
-        requester.request(with: request) { result, response in
-            switch result {
-            case .failure(let error):
-                completion(.failure(error), response)
-            case .success(let data):
-                
-                do {
-                    let release = try JSONDecoder().decode(Release.self, from: data)
-                    completion(.success(release), response)
-                } catch(let error) {
-                    completion(.failure(RequestError.dataEncodeFailed), response)
-                }
-            }
-        }
+        let apiRequest = addAccept(request: URLRequest(url: requestURL))
+        request(apiRequest, completion: completion)
     }
 }

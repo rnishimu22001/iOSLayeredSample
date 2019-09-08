@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CollaboratorsClientInterface {
-    func requestCollaborators(repository fullName: String, completion: @escaping ((Result<[Collaborator], Error>, URLResponse?) -> Void))
+    func requestCollaborators(repository fullName: String, completion: @escaping ((Result<[Collaborator], Error>, GitHubAPIResponseHeader?) -> Void))
 }
 
 struct CollaboratorsClient: CollaboratorsClientInterface, GitHubAPIRequestable {
@@ -20,31 +20,17 @@ struct CollaboratorsClient: CollaboratorsClientInterface, GitHubAPIRequestable {
         self.requester = requester
     }
     
-    func requestCollaborators(repository fullName: String, completion: @escaping ((Result<[Collaborator], Error>, URLResponse?) -> Void)) {
+    func requestCollaborators(repository fullName: String, completion: @escaping ((Result<[Collaborator], Error>, GitHubAPIResponseHeader?) -> Void)) {
         let url = APIURLSetting.collaborators(with: fullName)
         guard let components = URLComponents(string: url) else {
             completion(.failure(RequestError.badURL), nil)
             return
         }
-        
         guard let requestURL = components.url else {
             completion(.failure(RequestError.badURL), nil)
             return
         }
-        
-        let request = addAccept(request: URLRequest(url: requestURL))
-        
-        requester.request(with: request) { result, response in
-            switch result {
-            case .failure(let error):
-                completion(.failure(error), response)
-            case .success(let data):
-                guard let users = try? JSONDecoder().decode([Collaborator].self, from: data) else {
-                    completion(.failure(RequestError.dataEncodeFailed), response)
-                    return
-                }
-                completion(.success(users), response)
-            }
-        }
+        let apiRequest = addAccept(request: URLRequest(url: requestURL))
+        request(apiRequest, completion: completion)
     }
 }

@@ -8,14 +8,34 @@
 
 import Foundation
 
-
-
-protocol GitHubAPIRequestable { }
+protocol GitHubAPIRequestable {
+    var requester: HTTPRequestable { get }
+}
 
 extension GitHubAPIRequestable {
     func addAccept(request: URLRequest) ->URLRequest {
         var mutable = request
         mutable.addValue("application/vnd.github.v3+json", forHTTPHeaderField: "Accept")
         return  mutable
+    }
+    
+    func request<T: Codable>(_ request: URLRequest, completion: @escaping ((Result<T, Error>, GitHubAPIResponseHeader?) -> Void)) {
+        requester.request(with: request) { result, response in
+            var header: GitHubAPIResponseHeader?
+            if let headerFiled = response?.allHeaderFields {
+                header = GitHubAPIResponseHeader(with: headerFiled)
+            }
+            switch result {
+            case .failure(let error):
+                completion(.failure(error), header)
+            case .success(let data):
+                do {
+                    let profile = try JSONDecoder().decode(T.self, from: data)
+                    completion(.success(profile), header)
+                } catch {
+                    completion(.failure(RequestError.dataEncodeFailed), header)
+                }
+            }
+        }
     }
 }

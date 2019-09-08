@@ -431,8 +431,8 @@
 			isa = PBXGroup;
 			children = (
 				5A667EA1231298DA00C8E190 /* Value */,
-				5AA7671D231B975E002BDFDE /* APIRequestClient */,
 				5A61EECA22EF200400054B92 /* Repository */,
+				5AA7671D231B975E002BDFDE /* APIRequestClient */,
 				5A9B914522EBEB2900996712 /* Infrastructure */,
 			);
 			path = DataLayer;

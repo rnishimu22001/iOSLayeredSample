@@ -14,12 +14,11 @@ enum SearchSortPattern: String {
 }
 
 protocol SearchRequestClientInterface {
-    func request(with url: String, sort: SearchSortPattern, query: String, completion: @escaping (_ result: Result<Repositories, Error>, _ response: GitHubAPIResponseHeader?) -> Void)
-    func request(nextURL: String, completion: @escaping (_ result: Result<Repositories, Error>, _ response: GitHubAPIResponseHeader?) -> Void)
+    func request(url: URL?, sort: SearchSortPattern?, query: String?, completion: @escaping (Result<Repositories, Error>, GitHubAPIResponseHeader?) -> Void)
 }
 
 /// https://developer.github.com/v3/search/#search-users
-struct SearchRequestClient: SearchRequestClientInterface {
+struct SearchRequestClient: SearchRequestClientInterface, GitHubAPIRequestable {
     
     let requester: HTTPRequestable
     
@@ -27,54 +26,34 @@ struct SearchRequestClient: SearchRequestClientInterface {
         self.requester = requester
     }
     
-    func request(with url: String, sort: SearchSortPattern, query: String, completion: @escaping (_ result: Result<Repositories, Error>, _ response: GitHubAPIResponseHeader?) -> Void) {
-        
-        guard var components = URLComponents(string: url) else {
-            completion(.failure(RequestError.badURL), nil)
+    func request(url: URL? = nil, sort: SearchSortPattern?, query: String?, completion: @escaping (Result<Repositories, Error>, GitHubAPIResponseHeader?) -> Void) {
+        var requestBaseURL: URL
+        if let nextURL = url {
+            requestBaseURL = nextURL
+        } else if let entryPoint = URL(string: APIURLSetting.repositorySearch) {
+            requestBaseURL = entryPoint
+        } else {
             return
         }
         
-        let parameters = [
-            URLQueryItem(name: "q", value: query),
-            URLQueryItem(name: "sort", value: sort.rawValue),
-            URLQueryItem(name: "order", value: "desc")
-        ]
-        
-        components.queryItems = parameters
+        guard var components = URLComponents(url: requestBaseURL, resolvingAgainstBaseURL: true) else {
+            completion(.failure(RequestError.badURL), nil)
+            return
+        }
+        if let searchQuery = query, let sortPattern = sort {
+            let parameters = [
+                URLQueryItem(name: "q", value: searchQuery),
+                URLQueryItem(name: "sort", value: sortPattern.rawValue),
+                URLQueryItem(name: "order", value: "desc")
+            ]
+            components.queryItems = parameters
+        }
         
         guard let requestURL = components.url else {
             completion(.failure(RequestError.badURL), nil)
             return
         }
         let repositorySearchRequest = URLRequest(url: requestURL)
-        request(repositorySearchRequest: repositorySearchRequest, completion: completion)
-    }
-    
-    func request(nextURL: String, completion: @escaping (Result<Repositories, Error>, GitHubAPIResponseHeader?) -> Void) {
-        guard
-            let url = URL(string: nextURL) else {
-            completion(.failure(RequestError.badURL), nil)
-            return
-        }
-        request(repositorySearchRequest: URLRequest(url: url), completion: completion)
-    }
-    
-    private func request(repositorySearchRequest: URLRequest, completion: @escaping (_ result: Result<Repositories, Error>, _ response: GitHubAPIResponseHeader?) -> Void) {
-        requester.request(with: repositorySearchRequest) { result, response in
-            var responseHeader: GitHubAPIResponseHeader?
-            if let header = response?.allHeaderFields {
-                responseHeader = GitHubAPIResponseHeader(with: header)
-            }
-            switch result {
-            case .failure(let error):
-                completion(.failure(error), responseHeader)
-            case .success(let data):
-                guard let users = try? JSONDecoder().decode(Repositories.self, from: data) else {
-                    completion(.failure(RequestError.dataEncodeFailed), responseHeader)
-                    return
-                }
-                completion(.success(users), responseHeader)
-            }
-        }
+        request(repositorySearchRequest, completion: completion)
     }
 }

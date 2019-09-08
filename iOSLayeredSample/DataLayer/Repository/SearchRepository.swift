@@ -11,7 +11,7 @@ import Foundation
 protocol SearchRepositoryInterface {
     /// Githubリポジトリのデータリスト
     var repositories: [Repository] { get }
-    var nextURL: String? { get }
+    var nextURL: URL? { get }
     var error: Error? { get }
     /**
      * すべてのプロパティをリセットして、1からデータ取得を行う
@@ -33,9 +33,7 @@ final class SearchRepository: SearchRepositoryInterface {
     private(set) var error: Error?
     private var responseHeader: GitHubAPIResponseHeader?
     
-    let entryPoint = APIURLSetting.repositorySearch
-    
-    var nextURL: String? {
+    var nextURL: URL? {
         return self.responseHeader?.nextURL
     }
     
@@ -54,7 +52,7 @@ final class SearchRepository: SearchRepositoryInterface {
         self.repositories = []
         self.error = nil
         self.responseHeader = nil
-        requestClient.request(with: entryPoint, sort: sort, query: query) { [weak self] result, response in
+        requestClient.request(url: nil, sort: sort, query: query) { [weak self] result, response in
             self?.responseHeader = response
             switch result {
             case .success(let repositories):
@@ -74,16 +72,15 @@ final class SearchRepository: SearchRepositoryInterface {
         }
         self.error = nil
         self.responseHeader = nil
-        requestClient.request(nextURL: nextURL) { [weak self] result, response in
+        requestClient.request(url: self.nextURL, sort: nil, query: nil) { [weak self] result, response in
             self?.responseHeader = response
             switch result {
             case .success(let repositories):
-                self?.repositories.append(contentsOf: repositories.items)
+                self?.repositories = repositories.items
                 completion(.success(()))
             case .failure(let error):
                 completion(.failure(error))
             }
         }
-        
     }
 }

@@ -14,8 +14,8 @@ struct GitHubAPIResponseHeader {
         static let link = "Link"
     }
     
-    private(set) var nextURL: String?
-    private(set) var lastURL: String?
+    private(set) var nextURL: URL?
+    private(set) var lastURL: URL?
     
     init(with responseHeader: [AnyHashable: Any]) {
         guard let header = responseHeader as? [String: Any] else {
@@ -32,9 +32,9 @@ struct GitHubAPIResponseHeader {
                 }
                 
                 if $0.contains("rel=\"next\"") {
-                    self.nextURL = String($0[startIndex..<endIndex])
+                    self.nextURL = URL(string: String($0[startIndex..<endIndex]))
                 } else if $0.contains("rel=\"last\"") {
-                    self.lastURL = String($0[startIndex..<endIndex])
+                    self.lastURL = URL(string: String($0[startIndex..<endIndex]))
                 }
             }
         }
