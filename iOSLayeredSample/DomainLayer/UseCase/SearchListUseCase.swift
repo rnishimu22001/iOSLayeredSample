@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SearchListUseCaseInterface {
+protocol SearchListUseCaseProtocol {
     /// Githubrepositoryのリストデータ
     var repositoryList: [Repository] { get }
     /// データ更新の通先
@@ -21,12 +21,12 @@ protocol SearchListUseCaseInterface {
 
 protocol SearchListUseCaseDelegate: class {
     /// データ更新された場合に通知される
-    func searchListUseCase(_ useCase: SearchListUseCaseInterface, didLoad repositoryList: [Repository], isError: Bool, isStalled: Bool)
+    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, didLoad repositoryList: [Repository], isError: Bool, isStalled: Bool)
     /// 追加データがあるときに通知される、追加データがないならisStalledがtrue
-    func searchListUseCase(_ useCase: SearchListUseCaseInterface, didUpdate repositoryList: [Repository], isStalled: Bool)
+    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, didUpdate repositoryList: [Repository], isStalled: Bool)
 }
 
-final class SearchListUseCase: SearchListUseCaseInterface {
+final class SearchListUseCase: SearchListUseCaseProtocol {
     
     var repositoryList: [Repository] {
         repository.repositories
@@ -38,9 +38,9 @@ final class SearchListUseCase: SearchListUseCaseInterface {
     
     weak var delegate: SearchListUseCaseDelegate?
     
-    private let repository: SearchRepositoryInterface
+    private let repository: SearchRepositoryProtocol
     
-    init(repository: SearchRepositoryInterface = SearchRepository()) {
+    init(repository: SearchRepositoryProtocol = SearchRepository()) {
         self.repository = repository
     }
     

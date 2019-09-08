@@ -11,9 +11,9 @@ import Combine
 
 final class SearchListViewController: UIViewController {
     
-    var searchListView: SearchListViewInterface!
-    var viewModel: SearchListViewModelInterface!
-    let delegateProxy: UISearchBarDelegateProxyInterface =  UISearchBarDelegateProxy()
+    var searchListView: SearchListViewProtocol!
+    var viewModel: SearchListViewModelProtocol!
+    let delegateProxy: UISearchBarDelegateProxyProtocol =  UISearchBarDelegateProxy()
     private var cancellables: [AnyCancellable] = []
     
     override func viewDidLoad() {
@@ -51,7 +51,7 @@ final class SearchListViewController: UIViewController {
 
 extension SearchListViewController: SearchListViewDelegate {
     
-    func searchListView(_ presenter: SearchListViewInterface, didSelectRepositoryListAt index: Int) {
+    func searchListView(_ presenter: SearchListViewProtocol, didSelectRepositoryListAt index: Int) {
         guard let repository = viewModel.repositoryInList(at: index) else {
             return
         }

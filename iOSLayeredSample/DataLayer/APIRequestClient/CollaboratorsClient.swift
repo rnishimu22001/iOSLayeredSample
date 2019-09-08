@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol CollaboratorsClientInterface {
+protocol CollaboratorsClientProtocol {
     func requestCollaborators(repository fullName: String, completion: @escaping ((Result<[Collaborator], Error>, GitHubAPIResponseHeader?) -> Void))
 }
 
-struct CollaboratorsClient: CollaboratorsClientInterface, GitHubAPIRequestable {
+struct CollaboratorsClient: CollaboratorsClientProtocol, GitHubAPIRequestable {
     
     let requester: HTTPRequestable
     

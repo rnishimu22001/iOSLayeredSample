@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol CommunityProfileClientInterface {
+protocol CommunityProfileClientProtocol {
     func requestProfile(repository fullName: String, completion: @escaping ((Result<CommunityProfile, Error>, GitHubAPIResponseHeader?) -> Void))
 }
 
-struct CommunityProfileClient: CommunityProfileClientInterface, GitHubAPIRequestable {
+struct CommunityProfileClient: CommunityProfileClientProtocol, GitHubAPIRequestable {
     let requester: HTTPRequestable
     
     init(requester: HTTPRequestable = HTTPRequester()) {

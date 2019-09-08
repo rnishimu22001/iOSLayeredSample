@@ -13,12 +13,12 @@ enum SearchSortPattern: String {
     case forks
 }
 
-protocol SearchRequestClientInterface {
+protocol SearchRequestClientProtocol {
     func request(url: URL?, sort: SearchSortPattern?, query: String?, completion: @escaping (Result<Repositories, Error>, GitHubAPIResponseHeader?) -> Void)
 }
 
 /// https://developer.github.com/v3/search/#search-users
-struct SearchRequestClient: SearchRequestClientInterface, GitHubAPIRequestable {
+struct SearchRequestClient: SearchRequestClientProtocol, GitHubAPIRequestable {
     
     let requester: HTTPRequestable
     

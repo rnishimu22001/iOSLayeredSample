@@ -8,22 +8,22 @@
 
 import Combine
 
-protocol DetailViewModelInterface {
+protocol DetailViewModelProtocol {
     var status: CurrentValueSubject<ContentsStatus, Never> { get }
     var contents: CurrentValueSubject<[Any], Never> { get }
     var repositoryFullName: String { get }
     func reload()
 }
 
-final class DetailViewModel: DetailViewModelInterface {
+final class DetailViewModel: DetailViewModelProtocol {
     let status: CurrentValueSubject<ContentsStatus, Never> = .init(.initalized)
     let contents: CurrentValueSubject<[Any], Never> = .init([])
-    private(set) var useCase: DetailUseCaseInterface
+    private(set) var useCase: DetailUseCaseProtocol
     
     let repositoryFullName: String
     
     init(repositoryFullName: String,
-         useCase: DetailUseCaseInterface = DetailUseCase()) {
+         useCase: DetailUseCaseProtocol = DetailUseCase()) {
         self.repositoryFullName = repositoryFullName
         self.useCase = useCase
         self.useCase.delegate = self
@@ -81,11 +81,11 @@ final class DetailViewModel: DetailViewModelInterface {
 }
 
 extension DetailViewModel: DetailUseCaseDelegate {
-    func detailUseCase(_ useCase: DetailUseCaseInterface, didLoad latestRelease: Release?, collaborators: [Collaborator]) {
+    func detailUseCase(_ useCase: DetailUseCaseProtocol, didLoad latestRelease: Release?, collaborators: [Collaborator]) {
         self.update()
     }
     
-    func detailUseCase(_ useCase: DetailUseCaseInterface, didLoad profile: CommunityProfile?) {
+    func detailUseCase(_ useCase: DetailUseCaseProtocol, didLoad profile: CommunityProfile?) {
         
         self.update()
     }

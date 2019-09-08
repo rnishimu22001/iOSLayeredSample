@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SearchRepositoryInterface {
+protocol SearchRepositoryProtocol {
     /// Githubリポジトリのデータリスト
     var repositories: [Repository] { get }
     var nextURL: URL? { get }
@@ -27,7 +27,7 @@ protocol SearchRepositoryInterface {
     func loadNext(with completion: @escaping ((Result<Void, Error>) -> Void))
 }
 
-final class SearchRepository: SearchRepositoryInterface {
+final class SearchRepository: SearchRepositoryProtocol {
     
     private(set) var repositories: [Repository] = []
     private(set) var error: Error?
@@ -37,10 +37,10 @@ final class SearchRepository: SearchRepositoryInterface {
         return self.responseHeader?.nextURL
     }
     
-    let requestClient: SearchRequestClientInterface
+    let requestClient: SearchRequestClientProtocol
     let sort: SearchSortPattern
     
-    init(requestClient: SearchRequestClientInterface = SearchRequestClient(),
+    init(requestClient: SearchRequestClientProtocol = SearchRequestClient(),
         sortPattern: SearchSortPattern = .stars) {
         self.requestClient = requestClient
         self.sort = sortPattern

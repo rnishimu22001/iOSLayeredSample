@@ -6,15 +6,15 @@
 //  Copyright © 2019 rnishimu22001. All rights reserved.
 //
 
-protocol CollaboratorRepositoryInterface {
+protocol CollaboratorRepositoryProtocol {
     var collaborators: [Collaborator] { get }
     var isLoading: Bool { get }
     var error: Error? { get }
     func reload(repositoy fullName: String, completion: @escaping ((Result<Void, Error>) -> Void))
 }
 
-final class CollaboratorRepository: CollaboratorRepositoryInterface {
-    let client: CollaboratorsClientInterface = CollaboratorsClient()
+final class CollaboratorRepository: CollaboratorRepositoryProtocol {
+    let client: CollaboratorsClientProtocol = CollaboratorsClient()
     private(set) var isLoading: Bool = false
     private(set) var error: Error? = nil
     

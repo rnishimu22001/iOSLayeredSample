@@ -10,11 +10,11 @@ import UIKit
 import Combine
 import Foundation
 
-protocol UISearchBarDelegateProxyInterface: UISearchBarDelegate {
+protocol UISearchBarDelegateProxyProtocol: UISearchBarDelegate {
     var textDidEndEditing: CurrentValueSubject<String?, Never> { get }
 }
 
-final class UISearchBarDelegateProxy: NSObject, UISearchBarDelegateProxyInterface {
+final class UISearchBarDelegateProxy: NSObject, UISearchBarDelegateProxyProtocol {
     let textDidEndEditing: CurrentValueSubject<String?, Never> = .init(nil)
 }
 extension UISearchBarDelegateProxy: UISearchBarDelegate {

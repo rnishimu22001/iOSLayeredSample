@@ -8,17 +8,17 @@
 
 import Foundation
 
-protocol ReleaseRepositoryInterface {
+protocol ReleaseRepositoryProtocol {
     var latestRelease: Release? { get }
     var isLoading: Bool { get }
     var error: Error? { get }
     func reload(repository fullName: String, completion: @escaping ((Result<Void, Error>) -> Void))
 }
 
-final class ReleaseRepository: ReleaseRepositoryInterface {
+final class ReleaseRepository: ReleaseRepositoryProtocol {
     private(set) var isLoading: Bool = false
     private(set) var error: Error? = nil
-    let client: ReleaseClientInterface = ReleaseClient()
+    let client: ReleaseClientProtocol = ReleaseClient()
     
     private(set) var latestRelease: Release?
     

@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol ReleaseClientInterface {
+protocol ReleaseClientProtocol {
     func requestLatestRelease(repository fullName: String, completion: @escaping ((Result<Release, Error>, GitHubAPIResponseHeader?) -> Void))
 }
 
-struct ReleaseClient: ReleaseClientInterface, GitHubAPIRequestable {
+struct ReleaseClient: ReleaseClientProtocol, GitHubAPIRequestable {
     
     let requester: HTTPRequestable
     

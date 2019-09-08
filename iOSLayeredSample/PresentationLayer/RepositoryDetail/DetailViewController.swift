@@ -11,8 +11,8 @@ import Combine
 
 final class DetailViewController: UIViewController {
        
-    var detailView: RepositoryDetailPresenterInterface!
-    var viewModel: DetailViewModelInterface!
+    var detailView: RepositoryDetailPresenterProtocol!
+    var viewModel: DetailViewModelProtocol!
     var repositoryFullName: String = ""
     private var cancellables: [AnyCancellable] = []
     

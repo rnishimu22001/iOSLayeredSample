@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol DetailUseCaseInterface {
+protocol DetailUseCaseProtocol {
     var profile: CommunityProfile? { get }
     var latestRelease: Release? { get }
     var collaborators: [Collaborator] { get }
@@ -29,12 +29,12 @@ protocol DetailUseCaseInterface {
 
 protocol DetailUseCaseDelegate: class {
     /// profileのロード完了時に呼ばれる
-    func detailUseCase(_ useCase: DetailUseCaseInterface, didLoad profile: CommunityProfile?)
+    func detailUseCase(_ useCase: DetailUseCaseProtocol, didLoad profile: CommunityProfile?)
     /// リリース情報とCollaborator情報のロード完了時に呼ばれる
-    func detailUseCase(_ useCase: DetailUseCaseInterface, didLoad latestRelease: Release?, collaborators: [Collaborator])
+    func detailUseCase(_ useCase: DetailUseCaseProtocol, didLoad latestRelease: Release?, collaborators: [Collaborator])
 }
 
-final class DetailUseCase: DetailUseCaseInterface {
+final class DetailUseCase: DetailUseCaseProtocol {
     
     var collaborators: [Collaborator] {
         return collaboratorRepository.collaborators
@@ -64,12 +64,12 @@ final class DetailUseCase: DetailUseCaseInterface {
     
     weak var delegate: DetailUseCaseDelegate?
     
-    let profileRepository: CommunityProfileRepositoryInterface
-    let releaseRepository: ReleaseRepositoryInterface
+    let profileRepository: CommunityProfileRepositoryProtocol
+    let releaseRepository: ReleaseRepositoryProtocol
     let collaboratorRepository: CollaboratorRepository
     
-    init(profileRepository: CommunityProfileRepositoryInterface = CommunityProfileRepository(),
-         releaseRepository: ReleaseRepositoryInterface = ReleaseRepository(),
+    init(profileRepository: CommunityProfileRepositoryProtocol = CommunityProfileRepository(),
+         releaseRepository: ReleaseRepositoryProtocol = ReleaseRepository(),
          collaboratorRepository: CollaboratorRepository = CollaboratorRepository()) {
         self.profileRepository = profileRepository
         self.releaseRepository = releaseRepository
