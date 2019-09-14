@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ReleaseClientProtocol {
-    func requestLatestRelease(repository fullName: String, completion: @escaping ((Result<Release, Error>, GitHubAPIResponseHeader?) -> Void))
+    func requestLatestRelease(repository fullName: String, completion: @escaping ((Result<ReleaseData, Error>, GitHubAPIResponseHeader?) -> Void))
 }
 
 struct ReleaseClient: ReleaseClientProtocol, GitHubAPIRequestable {
@@ -20,7 +20,7 @@ struct ReleaseClient: ReleaseClientProtocol, GitHubAPIRequestable {
         self.requester = requester
     }
     
-    func requestLatestRelease(repository fullName: String, completion: @escaping ((Result<Release, Error>, GitHubAPIResponseHeader?) -> Void)) {
+    func requestLatestRelease(repository fullName: String, completion: @escaping ((Result<ReleaseData, Error>, GitHubAPIResponseHeader?) -> Void)) {
         let url = APIURLSetting.collaborators(with: fullName)
         guard let components = URLComponents(string: url) else {
             completion(.failure(RequestError.badURL), nil)

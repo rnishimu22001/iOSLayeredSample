@@ -14,7 +14,7 @@ enum SearchSortPattern: String {
 }
 
 protocol SearchRequestClientProtocol {
-    func request(url: URL?, sort: SearchSortPattern?, query: String?, completion: @escaping (Result<Repositories, Error>, GitHubAPIResponseHeader?) -> Void)
+    func request(url: URL?, sort: SearchSortPattern?, query: String?, completion: @escaping (Result<RepositoriesData, Error>, GitHubAPIResponseHeader?) -> Void)
 }
 
 /// https://developer.github.com/v3/search/#search-users
@@ -26,7 +26,7 @@ struct SearchRequestClient: SearchRequestClientProtocol, GitHubAPIRequestable {
         self.requester = requester
     }
     
-    func request(url: URL? = nil, sort: SearchSortPattern?, query: String?, completion: @escaping (Result<Repositories, Error>, GitHubAPIResponseHeader?) -> Void) {
+    func request(url: URL? = nil, sort: SearchSortPattern?, query: String?, completion: @escaping (Result<RepositoriesData, Error>, GitHubAPIResponseHeader?) -> Void) {
         var requestBaseURL: URL
         if let nextURL = url {
             requestBaseURL = nextURL

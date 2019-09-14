@@ -15,7 +15,7 @@ protocol SearchRepositoryProtocol {
     **/
     func load(with query: String?,
               url: URL?,
-              completion: @escaping ((_ result: Result<[Repository], Error>, _ nextURL: URL?) -> Void))
+              completion: @escaping ((_ result: Result<[RepositoryData], Error>, _ nextURL: URL?) -> Void))
 }
 
 struct SearchRepository: SearchRepositoryProtocol {
@@ -31,7 +31,7 @@ struct SearchRepository: SearchRepositoryProtocol {
     
     func load(with query: String?,
               url: URL?,
-              completion: @escaping ((_ result: Result<[Repository], Error>, _ nextURL: URL?) -> Void)) {
+              completion: @escaping ((_ result: Result<[RepositoryData], Error>, _ nextURL: URL?) -> Void)) {
         requestClient.request(url: url, sort: sort, query: query) { result, response in
             switch result {
             case .success(let repositories):

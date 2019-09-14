@@ -60,7 +60,7 @@ final class SearchListViewModel: SearchListViewModelProtocol {
 }
 
 extension SearchListViewModel: SearchListUseCaseDelegate {
-    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, didLoad repositoryList: [Repository], isError: Bool, nextURL: URL?) {
+    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, didLoad repositoryList: [RepositoryData], isError: Bool, nextURL: URL?) {
         guard !isError else {
             status.value = .error
             return
@@ -69,14 +69,14 @@ extension SearchListViewModel: SearchListUseCaseDelegate {
         status.value = .browsable
     }
     
-    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, shouldAdditional repositoryList: [Repository], nextURL: URL?) {
+    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, shouldAdditional repositoryList: [RepositoryData], nextURL: URL?) {
         var filterd = contents.value.filter { !($0 is LoadingDisplayData) }
         isNextContentsLoading = false
         filterd.append(contentsOf: converting(from: repositoryList, nextURL: nextURL))
         contents.value = filterd
     }
     
-    func converting(from repositoryList: [Repository], nextURL: URL?) -> [TableViewDisplayable] {
+    func converting(from repositoryList: [RepositoryData], nextURL: URL?) -> [TableViewDisplayable] {
         var contents: [TableViewDisplayable] = []
         contents = repositoryList.map { RepositoryDisplayData(from: $0) }
         if let url = nextURL {

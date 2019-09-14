@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - CommunityProfile
-struct CommunityProfile: Codable {
+struct CommunityProfileData: Codable {
     let healthPercentage: Int?
     let communityProfileDescription: String?
     let documentation: Bool?

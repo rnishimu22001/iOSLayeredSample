@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CommunityProfileClientProtocol {
-    func requestProfile(repository fullName: String, completion: @escaping ((Result<CommunityProfile, Error>, GitHubAPIResponseHeader?) -> Void))
+    func requestProfile(repository fullName: String, completion: @escaping ((Result<CommunityProfileData, Error>, GitHubAPIResponseHeader?) -> Void))
 }
 
 struct CommunityProfileClient: CommunityProfileClientProtocol, GitHubAPIRequestable {
@@ -19,7 +19,7 @@ struct CommunityProfileClient: CommunityProfileClientProtocol, GitHubAPIRequesta
         self.requester = requester
     }
     
-    func requestProfile(repository fullName: String, completion: @escaping ((Result<CommunityProfile, Error>, GitHubAPIResponseHeader?) -> Void)) {
+    func requestProfile(repository fullName: String, completion: @escaping ((Result<CommunityProfileData, Error>, GitHubAPIResponseHeader?) -> Void)) {
         let url = APIURLSetting.communityProfile(with: fullName)
         guard let components = URLComponents(string: url) else {
             completion(.failure(RequestError.badURL), nil)

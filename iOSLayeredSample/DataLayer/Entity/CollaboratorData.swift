@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - Collaborator
-struct Collaborator: Codable {
+struct CollaboratorData: Codable {
     let login: String
     let id: Int
     let nodeID: String

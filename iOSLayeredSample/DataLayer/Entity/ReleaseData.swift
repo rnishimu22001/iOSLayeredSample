@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - Release
-struct Release: Codable {
+struct ReleaseData: Codable {
     let url: String
     let htmlURL: String
     let assetsURL: String

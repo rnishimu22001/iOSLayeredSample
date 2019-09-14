@@ -9,10 +9,10 @@
 import Foundation
 
 // MARK: - Repositories
-struct Repositories: Codable {
+struct RepositoriesData: Codable {
     let totalCount: Int
     let incompleteResults: Bool
-    let items: [Repository]
+    let items: [RepositoryData]
 
     enum CodingKeys: String, CodingKey {
         case totalCount = "total_count"
@@ -22,7 +22,7 @@ struct Repositories: Codable {
 }
 
 // MARK: - Repository
-struct Repository: Codable {
+struct RepositoryData: Codable {
     let id: Int
     let nodeID, name, fullName: String
     let owner: Owner

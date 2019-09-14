@@ -19,9 +19,9 @@ protocol SearchListUseCaseProtocol {
 
 protocol SearchListUseCaseDelegate: class {
     /// データ更新された場合に通知される
-    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, didLoad repositoryList: [Repository], isError: Bool, nextURL: URL?)
+    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, didLoad repositoryList: [RepositoryData], isError: Bool, nextURL: URL?)
     /// 追加データがあるときに通知される、追加データがないならnextURLがnil
-    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, shouldAdditional repositoryList: [Repository], nextURL: URL?)
+    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, shouldAdditional repositoryList: [RepositoryData], nextURL: URL?)
 }
 
 final class SearchListUseCase: SearchListUseCaseProtocol {

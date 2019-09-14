@@ -16,7 +16,7 @@ struct RepositoryDisplayData: TableViewDisplayable {
     let descpription: String
     let id: Int
     
-    init(from repository: Repository) {
+    init(from repository: RepositoryData) {
         name = repository.fullName
         descpription = repository.itemDescription ?? ""
         starCount = repository.stargazersCount.description

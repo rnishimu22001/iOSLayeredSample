@@ -41,7 +41,7 @@ struct ReleaseDisplayData {
     let status: ReleaseStatus
     let publishedDate: String
     
-    init(with release: Release, status: ReleaseStatus) {
+    init(with release: ReleaseData, status: ReleaseStatus) {
         tagName = release.name
         releaseDesciption = release.body ?? ""
         self.status = status

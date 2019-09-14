@@ -14,7 +14,7 @@ struct CollaboratorDisplayData {
     let icon: URL
     let name: String
     
-    init(with collaborator: Collaborator) {
+    init(with collaborator: CollaboratorData) {
         hasAdminBadge = collaborator.siteAdmin
         icon = collaborator.avatarURL
         name = collaborator.login
@@ -23,7 +23,7 @@ struct CollaboratorDisplayData {
 
 struct CollaboratorsDisplayData {
     let collaborators: [CollaboratorDisplayData]
-    init(with collaborators: [Collaborator]) {
+    init(with collaborators: [CollaboratorData]) {
         self.collaborators = collaborators.map { CollaboratorDisplayData(with: $0) }
     }
 }

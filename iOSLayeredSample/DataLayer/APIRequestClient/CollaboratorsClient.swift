@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CollaboratorsClientProtocol {
-    func requestCollaborators(repository fullName: String, completion: @escaping ((Result<[Collaborator], Error>, GitHubAPIResponseHeader?) -> Void))
+    func requestCollaborators(repository fullName: String, completion: @escaping ((Result<[CollaboratorData], Error>, GitHubAPIResponseHeader?) -> Void))
 }
 
 struct CollaboratorsClient: CollaboratorsClientProtocol, GitHubAPIRequestable {
@@ -20,7 +20,7 @@ struct CollaboratorsClient: CollaboratorsClientProtocol, GitHubAPIRequestable {
         self.requester = requester
     }
     
-    func requestCollaborators(repository fullName: String, completion: @escaping ((Result<[Collaborator], Error>, GitHubAPIResponseHeader?) -> Void)) {
+    func requestCollaborators(repository fullName: String, completion: @escaping ((Result<[CollaboratorData], Error>, GitHubAPIResponseHeader?) -> Void)) {
         let url = APIURLSetting.collaborators(with: fullName)
         guard let components = URLComponents(string: url) else {
             completion(.failure(RequestError.badURL), nil)
