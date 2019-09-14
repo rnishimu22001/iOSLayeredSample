@@ -9,18 +9,6 @@
 import Foundation
 
 protocol DetailUseCaseProtocol {
-    var profile: CommunityProfile? { get }
-    var latestRelease: Release? { get }
-    var collaborators: [Collaborator] { get }
-    /// エラーの場合はtrue
-    /// CommunityProfileがエラーならエラー表示にする
-    var isError: Bool { get }
-    /// ロード中の場合はtrue
-    /// CommunityProfileがロード中ならロードにする
-    var isLoading: Bool { get }
-    /// ロードフッター表示が必要な場合はtrue
-    /// CommunityProfile以下がリクエスト中ならロードフッター表示
-    var shouldShowLoadingFooter: Bool { get }
     /// データ更新の通知先
     var delegate: DetailUseCaseDelegate? { get set }
     /// ページの再読み込み時に呼ばれる
@@ -35,30 +23,6 @@ protocol DetailUseCaseDelegate: class {
 }
 
 final class DetailUseCase: DetailUseCaseProtocol {
-    
-    var collaborators: [Collaborator] {
-        return collaboratorRepository.collaborators
-    }
-    
-    var profile: CommunityProfile? {
-        return profileRepository.profile
-    }
-    
-    var latestRelease: Release? {
-        return releaseRepository.latestRelease
-    }
-    
-    var isLoading: Bool {
-        return self.profileRepository.isLoading
-    }
-    
-    var isError: Bool {
-        return self.profileRepository.error != nil
-    }
-    
-    var shouldShowLoadingFooter: Bool {
-        return self.releaseRepository.isLoading || self.collaboratorRepository.isLoading
-    }
 
     let queue = DispatchQueue(label: "RepositoryDetailUseCase")
     
@@ -78,30 +42,48 @@ final class DetailUseCase: DetailUseCaseProtocol {
     
     func reload(repository fullName: String) {
         
-        profileRepository.reload(repository: fullName) { [weak self] _ in
+        profileRepository.reload(repository: fullName) { [weak self] result in
             guard let self = self else { return }
-            self.delegate?.detailUseCase(self, didLoad: self.profile)
+            switch result {
+            case .success(let profile):
+                self.delegate?.detailUseCase(self, didLoad: profile)
+            case .failure:
+                self.delegate?.detailUseCase(self, didLoad: nil)
+            }
         }
         
         let group = DispatchGroup()
-        
+        var latestRelease: Release?
+        var collaborators: [Collaborator] = []
         queue.async(group: group) { [weak self] in
             group.enter()
-            self?.releaseRepository.reload(repository: fullName) { _ in
+            self?.releaseRepository.reload(repository: fullName) { result in
+                switch result {
+                 case .success(let data):
+                     latestRelease = data
+                 case .failure:
+                     break
+                 }
                 group.leave()
             }
         }
         
         queue.async(group: group) { [weak self] in
             group.enter()
-            self?.collaboratorRepository.reload(repositoy: fullName) { _ in
+            self?.collaboratorRepository.reload(repositoy: fullName) { result in
+                switch result {
+                case .success(let data):
+                    collaborators = data
+                case .failure:
+                    break
+                }
                 group.leave()
             }
         }
         
         group.notify(queue: queue) { [weak self] in
             guard let self = self else { return }
-            self.delegate?.detailUseCase(self, didLoad: self.latestRelease, collaborators: self.collaborators)
+            self.delegate?.detailUseCase(self, didLoad: latestRelease, collaborators: collaborators)
         }
     }
 }

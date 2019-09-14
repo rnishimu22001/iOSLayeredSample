@@ -23,4 +23,7 @@ struct CollaboratorDisplayData {
 
 struct CollaboratorsDisplayData {
     let collaborators: [CollaboratorDisplayData]
+    init(with collaborators: [Collaborator]) {
+        self.collaborators = collaborators.map { CollaboratorDisplayData(with: $0) }
+    }
 }

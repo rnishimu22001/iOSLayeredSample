@@ -19,7 +19,8 @@ final class DetailViewModel: DetailViewModelProtocol {
     let status: CurrentValueSubject<ContentsStatus, Never> = .init(.initalized)
     let contents: CurrentValueSubject<[Any], Never> = .init([])
     private(set) var useCase: DetailUseCaseProtocol
-    
+    private(set) var isLoadingOtherModule: Bool = false
+     
     let repositoryFullName: String
     
     init(repositoryFullName: String,
@@ -33,60 +34,30 @@ final class DetailViewModel: DetailViewModelProtocol {
         status.value = .loading
         useCase.reload(repository: repositoryFullName)
     }
-    
-    private func update() {
-        self.contentsUpdate()
-        self.updateStatus()
-    }
-    
-    /// コンテンツのステータスの更新状態を見て通知が必要か、どのデータを更新させるかを決める
-    func contentsUpdate() {
-        var contents: [Any] = []
-        if let profile = useCase.profile {
-            contents.append(CommunityProfileDisplayData(with: profile))
-        }
-        if let release = useCase.latestRelease {
-            let status = ReleaseStatus(isDraft: release.draft, isPrerelease: release.prerelease)
-            contents.append(ReleaseDisplayData(with: release, status: status))
-        }
-        if !useCase.collaborators.isEmpty {
-            let collaboratorList = useCase.collaborators.map { CollaboratorDisplayData(with: $0) }
-            contents.append(CollaboratorsDisplayData(collaborators: collaboratorList))
-        }
-        if useCase.shouldShowLoadingFooter {
-            contents.append(LoadingDisplayData())
-        }
-        guard !contents.isEmpty else { return }
-        self.contents.value = contents
-    }
-    
-    func updateStatus() {
-        var status: ContentsStatus
-        defer {
-            // 同値の場合は更新なし
-            if self.status.value != status {
-                self.status.value = status
-            }
-        }
-        guard !self.useCase.isLoading else {
-            status = .loading
-            return
-        }
-        guard !self.useCase.isError else {
-            status = .error
-            return
-        }
-        status = .browsable
-    }
 }
 
 extension DetailViewModel: DetailUseCaseDelegate {
     func detailUseCase(_ useCase: DetailUseCaseProtocol, didLoad latestRelease: Release?, collaborators: [Collaborator]) {
-        self.update()
+        var filterd = contents.value.filter { !($0 is LoadingDisplayData) }
+        if let release = latestRelease {
+            filterd.append(ReleaseDisplayData(with: release, status: ReleaseStatus(isDraft: release.draft, isPrerelease: release.prerelease)))
+        }
+        if !collaborators.isEmpty {
+            filterd.append(CollaboratorsDisplayData(with: collaborators))
+        }
+        contents.value = filterd
     }
     
     func detailUseCase(_ useCase: DetailUseCaseProtocol, didLoad profile: CommunityProfile?) {
-        
-        self.update()
+        guard let communityProfile = profile else {
+            status.value = .error
+            return
+        }
+        let display = CommunityProfileDisplayData(with: communityProfile)
+        contents.value.insert(display, at: contents.value.startIndex)
+        if isLoadingOtherModule {
+            contents.value.append(LoadingDisplayData(nextLink: nil))
+        }
+        status.value = .browsable
     }
 }

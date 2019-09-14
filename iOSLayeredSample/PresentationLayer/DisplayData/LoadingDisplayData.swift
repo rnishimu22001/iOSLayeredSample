@@ -9,6 +9,7 @@
 import UIKit
 
 struct LoadingDisplayData: TableViewDisplayable {
+    let nextLink: URL?
     static var tableViewCellClass: UITableViewCell.Type {
         return LoadingCell.self
     }

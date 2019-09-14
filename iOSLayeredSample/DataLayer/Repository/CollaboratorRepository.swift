@@ -7,32 +7,19 @@
 //
 
 protocol CollaboratorRepositoryProtocol {
-    var collaborators: [Collaborator] { get }
-    var isLoading: Bool { get }
-    var error: Error? { get }
-    func reload(repositoy fullName: String, completion: @escaping ((Result<Void, Error>) -> Void))
+    func reload(repositoy fullName: String, completion: @escaping ((Result<[Collaborator], Error>) -> Void))
 }
 
-final class CollaboratorRepository: CollaboratorRepositoryProtocol {
-    let client: CollaboratorsClientProtocol = CollaboratorsClient()
-    private(set) var isLoading: Bool = false
-    private(set) var error: Error? = nil
+struct CollaboratorRepository: CollaboratorRepositoryProtocol {
+    let client: CollaboratorsClientProtocol
     
-    private(set) var collaborators: [Collaborator] = []
+    init(client: CollaboratorsClientProtocol = CollaboratorsClient()) {
+        self.client = client
+    }
     
-    func reload(repositoy fullName: String, completion: @escaping ((Result<Void, Error>) -> Void)) {
-        self.isLoading = true
-        self.error = nil
-        client.requestCollaborators(repository: fullName) { [weak self] result, _ in
-            self?.isLoading = false
-            switch result {
-            case .success(let collaborators):
-                self?.collaborators = collaborators
-                completion(.success(()))
-            case .failure(let error):
-                self?.error = error
-                completion(.failure(error))
-            }
+    func reload(repositoy fullName: String, completion: @escaping ((Result<[Collaborator], Error>) -> Void)) {
+        client.requestCollaborators(repository: fullName) { result, response in
+            completion(result)
         }
     }
 }

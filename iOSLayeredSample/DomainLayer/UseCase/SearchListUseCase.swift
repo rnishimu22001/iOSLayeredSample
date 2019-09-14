@@ -9,32 +9,22 @@
 import Foundation
 
 protocol SearchListUseCaseProtocol {
-    /// Githubrepositoryのリストデータ
-    var repositoryList: [Repository] { get }
     /// データ更新の通先
     var delegate: SearchListUseCaseDelegate? { get set }
     /// 検索クエリをアップデートする
     func update(searchQuery: String)
-    /// ローディングのフッターが表示されたことを通知する
-    func showLoadingFooter()
+    /// 次のデータを読み込む
+    func load(next url: URL)
 }
 
 protocol SearchListUseCaseDelegate: class {
     /// データ更新された場合に通知される
-    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, didLoad repositoryList: [Repository], isError: Bool, isStalled: Bool)
-    /// 追加データがあるときに通知される、追加データがないならisStalledがtrue
-    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, didUpdate repositoryList: [Repository], isStalled: Bool)
+    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, didLoad repositoryList: [Repository], isError: Bool, nextURL: URL?)
+    /// 追加データがあるときに通知される、追加データがないならnextURLがnil
+    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, shouldAdditional repositoryList: [Repository], nextURL: URL?)
 }
 
 final class SearchListUseCase: SearchListUseCaseProtocol {
-    
-    var repositoryList: [Repository] {
-        repository.repositories
-    }
-    
-    var hasNextURL: Bool {
-        return repository.nextURL != nil
-    }
     
     weak var delegate: SearchListUseCaseDelegate?
     
@@ -45,29 +35,26 @@ final class SearchListUseCase: SearchListUseCaseProtocol {
     }
     
     func update(searchQuery: String) {
-        repository.reload(with: searchQuery) { [weak self] result in
+        repository.load(with: searchQuery, url: nil) { [weak self] result ,nextURL in
             guard let self = self else { return }
             switch result {
             case .failure:
-                self.delegate?.searchListUseCase(self, didLoad: [], isError: true, isStalled: !self.hasNextURL)
-            case .success:
-                self.delegate?.searchListUseCase(self, didLoad: self.repositoryList, isError: false, isStalled: !self.hasNextURL)
+                self.delegate?.searchListUseCase(self, didLoad: [], isError: true, nextURL: nextURL)
+            case .success(let repositories):
+                self.delegate?.searchListUseCase(self, didLoad: repositories, isError: false, nextURL: nextURL)
             }
         }
     }
     
-    private func loadNext() {
-        repository.loadNext { [weak self] _ in
+    func load(next url: URL) {
+         repository.load(with: nil, url: url) { [weak self] result ,nextURL in
             guard let self = self else { return }
-            self.delegate?.searchListUseCase(self, didUpdate: self.repositoryList, isStalled: !self.hasNextURL)
+            switch result {
+            case .failure:
+                self.delegate?.searchListUseCase(self, shouldAdditional: [], nextURL: nil)
+            case .success(let repositories):
+                self.delegate?.searchListUseCase(self, shouldAdditional: repositories, nextURL: nextURL)
+            }
         }
-    }
-    
-    func showLoadingFooter() {
-        guard hasNextURL else {
-            delegate?.searchListUseCase(self, didUpdate: self.repositoryList, isStalled: true)
-            return
-        }
-        loadNext()
     }
 }
