@@ -195,12 +195,15 @@
 			path = UseCase;
 			sourceTree = "<group>";
 		};
-		5A61EEC922EF1FF500054B92 /* Entity */ = {
+		5A61EEC922EF1FF500054B92 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				5A662C5C230841F400BD0403 /* ReleaseData.swift */,
+				5A662C5E2308423800BD0403 /* CommunityProfileData.swift */,
+				5A662C60230842BB00BD0403 /* CollaboratorData.swift */,
 				5A74E1652307F20600EFEA7C /* RepositoryData.swift */,
 			);
-			path = Entity;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		5A61EECA22EF200400054B92 /* Repository */ = {
@@ -246,9 +249,6 @@
 		5A667EA1231298DA00C8E190 /* Value */ = {
 			isa = PBXGroup;
 			children = (
-				5A662C5C230841F400BD0403 /* ReleaseData.swift */,
-				5A662C5E2308423800BD0403 /* CommunityProfileData.swift */,
-				5A662C60230842BB00BD0403 /* CollaboratorData.swift */,
 				5A9C6D1222EFB5F800C41CB0 /* RequestErrorReason.swift */,
 				5A94000F2301A32D005A549D /* GitHubAPIResponseHeader.swift */,
 			);
@@ -258,6 +258,7 @@
 		5A7AAB46231BF4F1000BCD35 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				5AADA60E22EC19B6001BA1AD /* DisplayData */,
 				5A7AAB48231BF51B000BCD35 /* List */,
 				5A7AAB47231BF514000BCD35 /* Detail */,
 			);
@@ -359,7 +360,6 @@
 			children = (
 				5A662C4F23083D1000BD0403 /* RepositoryDetail */,
 				5A662C4E23083CBE00BD0403 /* RepositorySearch */,
-				5AADA60E22EC19B6001BA1AD /* DisplayData */,
 				5AADA60D22EC199B001BA1AD /* Common */,
 			);
 			path = PresentationLayer;
@@ -454,7 +454,7 @@
 		5AADA60F22EC19DE001BA1AD /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
-				5A61EEC922EF1FF500054B92 /* Entity */,
+				5A61EEC922EF1FF500054B92 /* Data */,
 				5A667EA1231298DA00C8E190 /* Value */,
 				5A61EECA22EF200400054B92 /* Repository */,
 				5AA7671D231B975E002BDFDE /* APIRequestClient */,
