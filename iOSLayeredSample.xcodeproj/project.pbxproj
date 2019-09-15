@@ -176,6 +176,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A172984232E2E5000A9B6A1 /* Value */ = {
+			isa = PBXGroup;
+			children = (
+				5A923505232CEF86001E5735 /* Release.swift */,
+				5A923507232CEF91001E5735 /* CommunityProfile.swift */,
+				5A923509232CEF9B001E5735 /* Collaborator.swift */,
+			);
+			path = Value;
+			sourceTree = "<group>";
+		};
 		5A61EEC822EF1FEA00054B92 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,9 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				5A74E1652307F20600EFEA7C /* RepositoryData.swift */,
-				5A662C5C230841F400BD0403 /* ReleaseData.swift */,
-				5A662C5E2308423800BD0403 /* CommunityProfileData.swift */,
-				5A662C60230842BB00BD0403 /* CollaboratorData.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -239,6 +246,9 @@
 		5A667EA1231298DA00C8E190 /* Value */ = {
 			isa = PBXGroup;
 			children = (
+				5A662C5C230841F400BD0403 /* ReleaseData.swift */,
+				5A662C5E2308423800BD0403 /* CommunityProfileData.swift */,
+				5A662C60230842BB00BD0403 /* CollaboratorData.swift */,
 				5A9C6D1222EFB5F800C41CB0 /* RequestErrorReason.swift */,
 				5A94000F2301A32D005A549D /* GitHubAPIResponseHeader.swift */,
 			);
@@ -284,9 +294,6 @@
 			isa = PBXGroup;
 			children = (
 				5A923503232CEF7A001E5735 /* Repository.swift */,
-				5A923505232CEF86001E5735 /* Release.swift */,
-				5A923507232CEF91001E5735 /* CommunityProfile.swift */,
-				5A923509232CEF9B001E5735 /* Collaborator.swift */,
 			);
 			path = Entitiy;
 			sourceTree = "<group>";
@@ -340,6 +347,7 @@
 		5A9B914222EBEB0C00996712 /* DomainLayer */ = {
 			isa = PBXGroup;
 			children = (
+				5A172984232E2E5000A9B6A1 /* Value */,
 				5A923502232CEF6D001E5735 /* Entitiy */,
 				5A61EEC822EF1FEA00054B92 /* UseCase */,
 			);
