@@ -16,7 +16,7 @@ protocol SearchListViewModelProtocol {
     var contents: CurrentValueSubject<[TableViewDisplayable], Never> { get }
     /// クエリのアップデート
     func update(searchQuery: String?)
-    /// ローディングのフッターの表示を通知
+    /// ページングによる次のコンテンツのロード
     func nextContentsLoad()
     /// リスト内にあるリポジトリの値を返す
     func repositoryInList(at index: Int) -> RepositoryDisplayData?
