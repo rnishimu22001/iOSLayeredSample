@@ -53,6 +53,14 @@ struct RepositoryData: Codable {
     }
 }
 
+extension RepositoryData {
+    var converted: Repository {
+        Repository(fullName: self.fullName,
+                   description: self.itemDescription,
+                   starCount: self.stargazersCount)
+    }
+}
+
 // MARK: - Owner
 struct Owner: Codable {
     let login: String

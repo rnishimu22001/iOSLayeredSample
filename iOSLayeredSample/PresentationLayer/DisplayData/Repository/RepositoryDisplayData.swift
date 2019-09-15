@@ -14,14 +14,12 @@ struct RepositoryDisplayData: TableViewDisplayable {
     let starColor: StarColor
     let name: String
     let descpription: String
-    let id: Int
     
-    init(from repository: RepositoryData) {
+    init(from repository: Repository) {
         name = repository.fullName
-        descpription = repository.itemDescription ?? ""
-        starCount = repository.stargazersCount.description
-        starColor = StarColor(with: repository.stargazersCount)
-        id = repository.id
+        descpription = repository.description ?? ""
+        starCount = repository.starCount.description
+        starColor = StarColor(with: repository.starCount)
     }
 }
 

@@ -41,10 +41,10 @@ struct ReleaseDisplayData {
     let status: ReleaseStatus
     let publishedDate: String
     
-    init(with release: ReleaseData, status: ReleaseStatus) {
-        tagName = release.name
-        releaseDesciption = release.body ?? ""
+    init(with release: Release, status: ReleaseStatus) {
+        tagName = release.tagName
+        releaseDesciption = release.releaseDesciption ?? ""
         self.status = status
-        publishedDate = release.publishedAt.currentLocale
+        publishedDate = release.publishedDate.currentLocale
     }
 }

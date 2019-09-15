@@ -6,6 +6,10 @@
 //  Copyright © 2019 rnishimu22001. All rights reserved.
 //
 
-// protocol Collaborator {
-    
-// }
+import Foundation
+
+struct Collaborator {
+    let isAdmin: Bool
+    let icon: URL
+    let name: String
+}

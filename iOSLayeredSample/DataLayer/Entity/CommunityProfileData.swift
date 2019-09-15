@@ -24,6 +24,15 @@ struct CommunityProfileData: Codable {
     }
 }
 
+extension CommunityProfileData {
+    var converted: CommunityProfile {
+        return CommunityProfile(name: self.files?.codeOfConduct.name ?? "",
+                                license: self.files?.license.name,
+                                repositoryDescription: self.communityProfileDescription,
+                                lastUpdate: self.updatedAt)
+    }
+}
+
 // MARK: - Files
 struct Files: Codable {
     let codeOfConduct: CodeOfConduct

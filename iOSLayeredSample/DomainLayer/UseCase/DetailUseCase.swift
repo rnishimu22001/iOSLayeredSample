@@ -17,9 +17,9 @@ protocol DetailUseCaseProtocol {
 
 protocol DetailUseCaseDelegate: class {
     /// profileのロード完了時に呼ばれる
-    func detailUseCase(_ useCase: DetailUseCaseProtocol, didLoad profile: CommunityProfileData?)
+    func detailUseCase(_ useCase: DetailUseCaseProtocol, didLoad profile: CommunityProfile?)
     /// リリース情報とCollaborator情報のロード完了時に呼ばれる
-    func detailUseCase(_ useCase: DetailUseCaseProtocol, didLoad latestRelease: ReleaseData?, collaborators: [CollaboratorData])
+    func detailUseCase(_ useCase: DetailUseCaseProtocol, didLoad latestRelease: Release?, collaborators: [Collaborator])
 }
 
 final class DetailUseCase: DetailUseCaseProtocol {
@@ -53,8 +53,8 @@ final class DetailUseCase: DetailUseCaseProtocol {
         }
         
         let group = DispatchGroup()
-        var latestRelease: ReleaseData?
-        var collaborators: [CollaboratorData] = []
+        var latestRelease: Release?
+        var collaborators: [Collaborator] = []
         queue.async(group: group) { [weak self] in
             group.enter()
             self?.releaseRepository.reload(repository: fullName) { result in

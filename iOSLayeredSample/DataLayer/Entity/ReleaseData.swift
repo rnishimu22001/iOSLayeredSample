@@ -41,6 +41,16 @@ struct ReleaseData: Codable {
     }
 }
 
+extension ReleaseData {
+    var converted: Release {
+        return Release(tagName: self.tagName,
+                       releaseDesciption: self.body,
+                       publishedDate: self.publishedAt,
+                       isDraft: self.draft,
+                       isPreRelease: self.prerelease)
+    }
+}
+
 // MARK: - Asset
 struct Asset: Codable {
     let url: String

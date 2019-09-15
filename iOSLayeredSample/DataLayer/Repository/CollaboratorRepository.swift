@@ -7,7 +7,7 @@
 //
 
 protocol CollaboratorRepositoryProtocol {
-    func reload(repositoy fullName: String, completion: @escaping ((Result<[CollaboratorData], Error>) -> Void))
+    func reload(repositoy fullName: String, completion: @escaping ((Result<[Collaborator], Error>) -> Void))
 }
 
 struct CollaboratorRepository: CollaboratorRepositoryProtocol {
@@ -17,9 +17,14 @@ struct CollaboratorRepository: CollaboratorRepositoryProtocol {
         self.client = client
     }
     
-    func reload(repositoy fullName: String, completion: @escaping ((Result<[CollaboratorData], Error>) -> Void)) {
+    func reload(repositoy fullName: String, completion: @escaping ((Result<[Collaborator], Error>) -> Void)) {
         client.requestCollaborators(repository: fullName) { result, response in
-            completion(result)
+            switch result {
+            case .success(let data):
+                completion(.success(data.map { $0.converted }))
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
     }
 }

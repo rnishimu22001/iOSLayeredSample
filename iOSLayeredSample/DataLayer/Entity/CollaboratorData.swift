@@ -46,6 +46,12 @@ struct CollaboratorData: Codable {
     }
 }
 
+extension CollaboratorData {
+    var converted: Collaborator {
+        return Collaborator(isAdmin: self.siteAdmin, icon: self.avatarURL, name: self.login)
+    }
+}
+
 // MARK: - Permissions
 struct Permissions: Codable {
     let pull, push, admin: Bool

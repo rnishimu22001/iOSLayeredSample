@@ -14,16 +14,16 @@ struct CollaboratorDisplayData {
     let icon: URL
     let name: String
     
-    init(with collaborator: CollaboratorData) {
-        hasAdminBadge = collaborator.siteAdmin
-        icon = collaborator.avatarURL
-        name = collaborator.login
+    init(with collaborator: Collaborator) {
+        hasAdminBadge = collaborator.isAdmin
+        icon = collaborator.icon
+        name = collaborator.name
     }
 }
 
 struct CollaboratorsDisplayData {
     let collaborators: [CollaboratorDisplayData]
-    init(with collaborators: [CollaboratorData]) {
+    init(with collaborators: [Collaborator]) {
         self.collaborators = collaborators.map { CollaboratorDisplayData(with: $0) }
     }
 }

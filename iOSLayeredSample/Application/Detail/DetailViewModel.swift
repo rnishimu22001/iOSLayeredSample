@@ -37,10 +37,10 @@ final class DetailViewModel: DetailViewModelProtocol {
 }
 
 extension DetailViewModel: DetailUseCaseDelegate {
-    func detailUseCase(_ useCase: DetailUseCaseProtocol, didLoad latestRelease: ReleaseData?, collaborators: [CollaboratorData]) {
+    func detailUseCase(_ useCase: DetailUseCaseProtocol, didLoad latestRelease: Release?, collaborators: [Collaborator]) {
         var filterd = contents.value.filter { !($0 is LoadingDisplayData) }
         if let release = latestRelease {
-            filterd.append(ReleaseDisplayData(with: release, status: ReleaseStatus(isDraft: release.draft, isPrerelease: release.prerelease)))
+            filterd.append(ReleaseDisplayData(with: release, status: ReleaseStatus(isDraft: release.isDraft, isPrerelease: release.isPreRelease)))
         }
         if !collaborators.isEmpty {
             filterd.append(CollaboratorsDisplayData(with: collaborators))
@@ -48,7 +48,7 @@ extension DetailViewModel: DetailUseCaseDelegate {
         contents.value = filterd
     }
     
-    func detailUseCase(_ useCase: DetailUseCaseProtocol, didLoad profile: CommunityProfileData?) {
+    func detailUseCase(_ useCase: DetailUseCaseProtocol, didLoad profile: CommunityProfile?) {
         guard let communityProfile = profile else {
             status.value = .error
             return

@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+struct Release {
+    let tagName: String
+    let releaseDesciption: String?
+    let publishedDate: Date
+    let isDraft: Bool
+    let isPreRelease: Bool
+}

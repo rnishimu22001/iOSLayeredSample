@@ -6,4 +6,11 @@
 //  Copyright © 2019 rnishimu22001. All rights reserved.
 //
 
-// protocol CommunityProfi
+import Foundation
+
+struct CommunityProfile {
+    let name: String
+    let license: String?
+    let repositoryDescription: String?
+    let lastUpdate: Date
+}

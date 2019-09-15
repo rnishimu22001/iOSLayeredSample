@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ReleaseRepositoryProtocol {
-    func reload(repository fullName: String, completion: @escaping ((Result<ReleaseData, Error>) -> Void))
+    func reload(repository fullName: String, completion: @escaping ((Result<Release, Error>) -> Void))
 }
 
 struct ReleaseRepository: ReleaseRepositoryProtocol {
@@ -19,11 +19,14 @@ struct ReleaseRepository: ReleaseRepositoryProtocol {
         self.client = client
     }
     
-    private(set) var latestRelease: ReleaseData?
-    
-    func reload(repository fullName: String, completion: @escaping ((Result<ReleaseData, Error>) -> Void)) {
+    func reload(repository fullName: String, completion: @escaping ((Result<Release, Error>) -> Void)) {
         client.requestLatestRelease(repository: fullName) { result, _ in
-            completion(result)
+            switch result {
+            case .success(let data):
+                completion(.success(data.converted))
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
     }
 }

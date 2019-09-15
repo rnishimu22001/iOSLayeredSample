@@ -7,15 +7,20 @@
 //
 
 protocol CommunityProfileRepositoryProtocol {
-    func reload(repository fullName: String, completion: @escaping ((Result<CommunityProfileData, Error>) -> Void))
+    func reload(repository fullName: String, completion: @escaping ((Result<CommunityProfile, Error>) -> Void))
 }
 
 struct CommunityProfileRepository: CommunityProfileRepositoryProtocol {
     let client: CommunityProfileClientProtocol = CommunityProfileClient()
     
-    func reload(repository fullName: String, completion: @escaping ((Result<CommunityProfileData, Error>) -> Void)) {
+    func reload(repository fullName: String, completion: @escaping ((Result<CommunityProfile, Error>) -> Void)) {
         client.requestProfile(repository: fullName) { result, _ in
-            completion(result)
+            switch result {
+            case .success(let data):
+                completion(.success(data.converted))
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
     }
 }

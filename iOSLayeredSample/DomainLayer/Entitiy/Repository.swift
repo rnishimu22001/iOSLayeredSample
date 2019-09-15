@@ -6,4 +6,8 @@
 //  Copyright © 2019 rnishimu22001. All rights reserved.
 //
 
-import Foundation
+struct Repository {
+    let fullName: String
+    let description: String?
+    let starCount: Int
+}
