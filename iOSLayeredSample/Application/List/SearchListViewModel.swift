@@ -26,25 +26,41 @@ final class SearchListViewModel: SearchListViewModelProtocol {
     
     let status: CurrentValueSubject<ContentsStatus, Never> = .init(.initalized)
     let contents: CurrentValueSubject<[TableViewDisplayable], Never> = .init([])
+    
     private(set) var useCase: SearchListUseCaseProtocol
-    private(set) var isNextContentsLoading: Bool = false
+    private(set) var currentLoadingCancelable: AnyCancellable?
     
     init(useCase: SearchListUseCaseProtocol = SearchListUseCase()) {
         self.useCase = useCase
-        self.useCase.delegate = self
     }
     
     func update(searchQuery: String?) {
         guard let query = searchQuery, !query.isEmpty else { return }
         status.value = .loading
-        useCase.update(searchQuery: query)
+        currentLoadingCancelable = useCase.update(searchQuery: query).sink(receiveCompletion: { [weak self] result in
+            switch result {
+            case .finished:
+                self?.status.value = .browsable
+            case .failure:
+                self?.status.value = .error
+            }
+        }, receiveValue: { [weak self] contents in
+            guard let self = self else { return }
+            self.contents.value = self.converting(from: contents.result, nextURL: contents.nextURL)
+        })
     }
     
     func nextContentsLoad() {
-        guard let loading = contents.value.last as? LoadingDisplayData,
-            let url = loading.nextLink else { return }
-        isNextContentsLoading = true
-        useCase.load(next: url)
+        guard
+            let loading = contents.value.last as? LoadingDisplayData,
+            let url = loading.nextLink,
+            currentLoadingCancelable == nil else { return }
+        
+        currentLoadingCancelable = useCase.load(next: url).sink(receiveCompletion: { [weak self] _ in
+            self?.currentLoadingCancelable = nil
+        }, receiveValue: { [weak self] contents in
+            self?.didLoad(additional: contents.result, nextURL: contents.nextURL)
+        })
     }
     
     func repositoryInList(at index: Int) -> RepositoryDisplayData? {
@@ -59,19 +75,10 @@ final class SearchListViewModel: SearchListViewModelProtocol {
     }
 }
 
-extension SearchListViewModel: SearchListUseCaseDelegate {
-    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, didLoad repositoryList: [Repository], isError: Bool, nextURL: URL?) {
-        guard !isError else {
-            status.value = .error
-            return
-        }
-        contents.value = converting(from: repositoryList, nextURL: nextURL)
-        status.value = .browsable
-    }
+extension SearchListViewModel {
     
-    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, shouldAdditional repositoryList: [Repository], nextURL: URL?) {
+    func didLoad(additional repositoryList: [Repository], nextURL: URL?) {
         var filterd = contents.value.filter { !($0 is LoadingDisplayData) }
-        isNextContentsLoading = false
         filterd.append(contentsOf: converting(from: repositoryList, nextURL: nextURL))
         contents.value = filterd
     }

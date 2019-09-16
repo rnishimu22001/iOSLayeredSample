@@ -7,26 +7,16 @@
 //
 
 import Foundation
+import Combine
 
 protocol SearchListUseCaseProtocol {
-    /// データ更新の通先
-    var delegate: SearchListUseCaseDelegate? { get set }
     /// 検索クエリをアップデートする
-    func update(searchQuery: String)
+    func update(searchQuery: String) -> PassthroughSubject<(result: [Repository], nextURL: URL?), Error>
     /// 次のデータを読み込む
-    func load(next url: URL)
-}
-
-protocol SearchListUseCaseDelegate: class {
-    /// データ更新された場合に通知される
-    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, didLoad repositoryList: [Repository], isError: Bool, nextURL: URL?)
-    /// 追加データがあるときに通知される、追加データがないならnextURLがnil
-    func searchListUseCase(_ useCase: SearchListUseCaseProtocol, shouldAdditional repositoryList: [Repository], nextURL: URL?)
+    func load(next url: URL) -> PassthroughSubject<(result: [Repository], nextURL: URL?), Error>
 }
 
 final class SearchListUseCase: SearchListUseCaseProtocol {
-    
-    weak var delegate: SearchListUseCaseDelegate?
     
     private let repository: SearchRepositoryProtocol
     
@@ -34,27 +24,11 @@ final class SearchListUseCase: SearchListUseCaseProtocol {
         self.repository = repository
     }
     
-    func update(searchQuery: String) {
-        repository.load(with: searchQuery, url: nil) { [weak self] result ,nextURL in
-            guard let self = self else { return }
-            switch result {
-            case .failure:
-                self.delegate?.searchListUseCase(self, didLoad: [], isError: true, nextURL: nextURL)
-            case .success(let repositories):
-                self.delegate?.searchListUseCase(self, didLoad: repositories, isError: false, nextURL: nextURL)
-            }
-        }
+    func update(searchQuery: String) -> PassthroughSubject<(result: [Repository], nextURL: URL?), Error> {
+        return repository.load(with: searchQuery, url: nil)
     }
     
-    func load(next url: URL) {
-         repository.load(with: nil, url: url) { [weak self] result ,nextURL in
-            guard let self = self else { return }
-            switch result {
-            case .failure:
-                self.delegate?.searchListUseCase(self, shouldAdditional: [], nextURL: nil)
-            case .success(let repositories):
-                self.delegate?.searchListUseCase(self, shouldAdditional: repositories, nextURL: nextURL)
-            }
-        }
+    func load(next url: URL) -> PassthroughSubject<(result: [Repository], nextURL: URL?), Error> {
+         return repository.load(with: nil, url: url)
     }
 }
