@@ -23,7 +23,7 @@
 		5A61EED422EF271B00054B92 /* HTTPRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A61EED322EF271B00054B92 /* HTTPRequestable.swift */; };
 		5A61EED622EF2C8A00054B92 /* SearchRequestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A61EED522EF2C8A00054B92 /* SearchRequestClient.swift */; };
 		5A662C5123083D2E00BD0403 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A662C5023083D2E00BD0403 /* DetailViewController.swift */; };
-		5A662C5323083DA700BD0403 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A662C5223083DA700BD0403 /* DetailView.swift */; };
+		5A662C5323083DA700BD0403 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A662C5223083DA700BD0403 /* DetailPresenter.swift */; };
 		5A662C5523083DF300BD0403 /* DetailPresenter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A662C5423083DF300BD0403 /* DetailPresenter.xib */; };
 		5A662C5723083F6A00BD0403 /* ReleaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A662C5623083F6A00BD0403 /* ReleaseClient.swift */; };
 		5A662C5923083F9500BD0403 /* CollaboratorsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A662C5823083F9500BD0403 /* CollaboratorsClient.swift */; };
@@ -102,7 +102,7 @@
 		5A61EED322EF271B00054B92 /* HTTPRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestable.swift; sourceTree = "<group>"; };
 		5A61EED522EF2C8A00054B92 /* SearchRequestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequestClient.swift; sourceTree = "<group>"; };
 		5A662C5023083D2E00BD0403 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		5A662C5223083DA700BD0403 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		5A662C5223083DA700BD0403 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		5A662C5423083DF300BD0403 /* DetailPresenter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailPresenter.xib; sourceTree = "<group>"; };
 		5A662C5623083F6A00BD0403 /* ReleaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseClient.swift; sourceTree = "<group>"; };
 		5A662C5823083F9500BD0403 /* CollaboratorsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorsClient.swift; sourceTree = "<group>"; };
@@ -234,7 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				5A662C5023083D2E00BD0403 /* DetailViewController.swift */,
-				5A662C5223083DA700BD0403 /* DetailView.swift */,
+				5A662C5223083DA700BD0403 /* DetailPresenter.swift */,
 				5A662C5423083DF300BD0403 /* DetailPresenter.xib */,
 				5A4CBEC22308D4810056E710 /* CommunityProfileView.swift */,
 				5A4CBEC62308D7F70056E710 /* CommunityProfileView.xib */,
@@ -626,7 +626,7 @@
 				5A662C61230842BB00BD0403 /* CollaboratorData.swift in Sources */,
 				5A61EECE22EF208B00054B92 /* SearchListUseCase.swift in Sources */,
 				5A9B912122EBEB0500996712 /* AppDelegate.swift in Sources */,
-				5A662C5323083DA700BD0403 /* DetailView.swift in Sources */,
+				5A662C5323083DA700BD0403 /* DetailPresenter.swift in Sources */,
 				5A4CBEC12308D2240056E710 /* ReleaseDisplayData.swift in Sources */,
 				5A4CBECF2308E94F0056E710 /* CollaboratorView.swift in Sources */,
 				5AADA61E22EC33AB001BA1AD /* SearchListViewModel.swift in Sources */,

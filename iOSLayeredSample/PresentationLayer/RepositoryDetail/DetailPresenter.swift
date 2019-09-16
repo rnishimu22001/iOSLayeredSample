@@ -14,7 +14,7 @@ protocol DetailViewProtocol {
     func update(status: ContentsStatus)
 }
 
-final class DetailView: NSObject, DetailViewProtocol {
+final class DetailPresenter: NSObject, DetailViewProtocol {
     
     @IBOutlet var view: UIView!
     @IBOutlet var contentsView: UIStackView!
