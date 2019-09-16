@@ -34,7 +34,7 @@ final class SearchListViewController: UIViewController {
             self?.viewModel.update(searchQuery: query)
         }
         let showLoadingFooter = searchListView.showLoadingFooter.sink { [weak self] in
-            self?.viewModel.nextContentsLoad()
+            self?.viewModel.loadNextContents()
         }
         let repositoryUpdate = viewModel.contents.sink { [weak self] contents in
             self?.searchListView.update(contentsList: contents)

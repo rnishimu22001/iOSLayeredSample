@@ -17,7 +17,7 @@ protocol SearchListViewModelProtocol {
     /// クエリのアップデート
     func update(searchQuery: String?)
     /// ページングによる次のコンテンツのロード
-    func nextContentsLoad()
+    func loadNextContents()
     /// リスト内にあるリポジトリの値を返す
     func repositoryInList(at index: Int) -> RepositoryDisplayData?
 }
@@ -50,7 +50,7 @@ final class SearchListViewModel: SearchListViewModelProtocol {
         })
     }
     
-    func nextContentsLoad() {
+    func loadNextContents() {
         guard
             let loading = contents.value.last as? LoadingDisplayData,
             let url = loading.nextLink,
