@@ -35,14 +35,18 @@ final class DetailViewModel: DetailViewModelProtocol {
         status.value = .loading
         let publishers = useCase.reload(repository: repositoryFullName)
         otherModulesCancellable = publishers.otherModules.sink(receiveCompletion: { [weak self] _ in
-            self?.otherModulesCancellable?.cancel()
             self?.otherModulesCancellable = nil
         }, receiveValue: { [weak self] others in
             self?.didLoad(latestRelease: others.0, collaborators: others.1)
         })
         
-        profileCancellable = publishers.profile.sink(receiveCompletion: { [weak self] _ in
-            self?.profileCancellable?.cancel()
+        profileCancellable = publishers.profile.sink(receiveCompletion: { [weak self] result in
+            switch result {
+            case .failure:
+                self?.status.value = .error
+            case .finished:
+                self?.status.value = .browsable
+            }
             self?.profileCancellable = nil
         }, receiveValue: { [weak self] profile in
             self?.didLoad(profile: profile)
@@ -62,12 +66,8 @@ extension DetailViewModel {
         contents.value = filterd
     }
     
-    func didLoad(profile: CommunityProfile?) {
-        guard let communityProfile = profile else {
-            status.value = .error
-            return
-        }
-        let display = CommunityProfileDisplayData(with: communityProfile)
+    func didLoad(profile: CommunityProfile) {
+        let display = CommunityProfileDisplayData(with: profile)
         contents.value.insert(display, at: contents.value.startIndex)
         if self.otherModulesCancellable != nil {
             contents.value.append(LoadingDisplayData(nextLink: nil))
