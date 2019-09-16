@@ -7,15 +7,14 @@
 //
 
 import Foundation
+import Combine
 
 protocol SearchRepositoryProtocol {
     /**
      * repositoryのデータ取得を行う
      * 追加読み込みできるURLを指定しない場合はデフォルトのURLが適用される
     **/
-    func load(with query: String?,
-              url: URL?,
-              completion: @escaping ((_ result: Result<[Repository], Error>, _ nextURL: URL?) -> Void))
+    func load(with query: String?, url: URL?) -> PassthroughSubject<(result: [Repository], nextURL: URL?), Error>
 }
 
 struct SearchRepository: SearchRepositoryProtocol {
@@ -29,16 +28,17 @@ struct SearchRepository: SearchRepositoryProtocol {
         self.sort = sortPattern
     }
     
-    func load(with query: String?,
-              url: URL?,
-              completion: @escaping ((_ result: Result<[Repository], Error>, _ nextURL: URL?) -> Void)) {
+    func load(with query: String?, url: URL?) -> PassthroughSubject<(result: [Repository], nextURL: URL?), Error> {
+        let subject = PassthroughSubject<(result: [Repository], nextURL: URL?), Error>()
         requestClient.request(url: url, sort: sort, query: query) { result, response in
             switch result {
             case .success(let repositories):
-                completion(.success(repositories.items.map { $0.converted }), response?.nextURL)
+                subject.send((repositories.items.map { $0.converted }, response?.nextURL))
+                subject.send(completion: .finished)
             case .failure(let error):
-                completion(.failure(error), response?.nextURL)
+                subject.send(completion: .failure(error))
             }
         }
+        return subject
     }
 }

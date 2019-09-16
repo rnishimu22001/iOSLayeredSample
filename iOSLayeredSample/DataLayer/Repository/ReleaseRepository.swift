@@ -7,26 +7,32 @@
 //
 
 import Foundation
+import Combine
 
 protocol ReleaseRepositoryProtocol {
-    func reload(repository fullName: String, completion: @escaping ((Result<Release, Error>) -> Void))
+    func reload(repository fullName: String) -> PassthroughSubject<Release, Error>
 }
 
 struct ReleaseRepository: ReleaseRepositoryProtocol {
+    
     private let client: ReleaseClientProtocol
         
     init(client: ReleaseClientProtocol = ReleaseClient()) {
         self.client = client
     }
     
-    func reload(repository fullName: String, completion: @escaping ((Result<Release, Error>) -> Void)) {
+    func reload(repository fullName: String) -> PassthroughSubject<Release, Error> {
+        let subject = PassthroughSubject<Release, Error>()
         client.requestLatestRelease(repository: fullName) { result, _ in
             switch result {
             case .success(let data):
-                completion(.success(data.converted))
+                subject.send(data.converted)
+                subject.send(completion: .finished)
             case .failure(let error):
-                completion(.failure(error))
+                subject.send(completion: .failure(error))
             }
+            
         }
+        return subject
     }
 }

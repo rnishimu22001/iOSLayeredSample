@@ -6,21 +6,31 @@
 //  Copyright © 2019 rnishimu22001. All rights reserved.
 //
 
+import Combine
+
 protocol CommunityProfileRepositoryProtocol {
-    func reload(repository fullName: String, completion: @escaping ((Result<CommunityProfile, Error>) -> Void))
+    func reload(repository fullName: String) -> PassthroughSubject<CommunityProfile, Error>
 }
 
 struct CommunityProfileRepository: CommunityProfileRepositoryProtocol {
-    let client: CommunityProfileClientProtocol = CommunityProfileClient()
     
-    func reload(repository fullName: String, completion: @escaping ((Result<CommunityProfile, Error>) -> Void)) {
+    private let client: CommunityProfileClientProtocol
+    
+    init(client: CommunityProfileClientProtocol = CommunityProfileClient()) {
+        self.client = client
+    }
+    
+    func reload(repository fullName: String) -> PassthroughSubject<CommunityProfile, Error> {
+        let subject = PassthroughSubject<CommunityProfile, Error>()
         client.requestProfile(repository: fullName) { result, _ in
             switch result {
             case .success(let data):
-                completion(.success(data.converted))
+                subject.send(data.converted)
+                subject.send(completion: .finished)
             case .failure(let error):
-                completion(.failure(error))
+                subject.send(completion: .failure(error))
             }
         }
+        return subject
     }
 }
