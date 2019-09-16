@@ -51,7 +51,7 @@ final class SearchListViewController: UIViewController {
 
 extension SearchListViewController: SearchListViewDelegate {
     
-    func searchListView(_ presenter: SearchListViewProtocol, didSelectRepositoryListAt index: Int) {
+    func searchListView(_ view: SearchListViewProtocol, didSelectRepositoryListAt index: Int) {
         guard let repository = viewModel.repositoryInList(at: index) else {
             return
         }

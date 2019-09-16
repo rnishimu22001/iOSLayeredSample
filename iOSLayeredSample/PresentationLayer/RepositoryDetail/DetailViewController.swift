@@ -11,14 +11,14 @@ import Combine
 
 final class DetailViewController: UIViewController {
        
-    var detailView: RepositoryDetailPresenterProtocol!
+    var detailView: DetailViewProtocol!
     var viewModel: DetailViewModelProtocol!
     var repositoryFullName: String = ""
     private var cancellables: [AnyCancellable] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        detailView = RepositoryDetailPresenter(with: view)
+        detailView = DetailView(with: view)
         viewModel = DetailViewModel(repositoryFullName: repositoryFullName)
         self.sink()
         viewModel.reload()

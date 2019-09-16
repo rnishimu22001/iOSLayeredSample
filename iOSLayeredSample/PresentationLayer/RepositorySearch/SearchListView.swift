@@ -17,7 +17,7 @@ protocol SearchListViewProtocol {
 }
 
 protocol SearchListViewDelegate: class {
-    func searchListView(_ presenter: SearchListViewProtocol, didSelectRepositoryListAt index: Int)
+    func searchListView(_ view: SearchListViewProtocol, didSelectRepositoryListAt index: Int)
 }
 
 final class SearchListView: NSObject, SearchListViewProtocol {
@@ -30,17 +30,17 @@ final class SearchListView: NSObject, SearchListViewProtocol {
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var tableView: UITableView!
     weak var delegate: SearchListViewDelegate?
-    private(set) var listPresenter: ListDataSourceProtocol
+    private(set) var listDataSource: ListDataSourceProtocol
     
     required init(parentView: UIView, dataSource: ListDataSourceProtocol = ListDataSource()) {
-        self.listPresenter = dataSource
+        self.listDataSource = dataSource
         super.init()
         Bundle.main.loadNibNamed(type(of: self).className, owner: self, options: nil)
-        self.listPresenter.delegate = self
+        self.listDataSource.delegate = self
         parentView.addSubview(view)
         tableView.delegate = dataSource
         tableView.dataSource = dataSource
-        self.listPresenter.register(in: tableView)
+        self.listDataSource.register(in: tableView)
     }
     
     func change(status: ContentsStatus) {
@@ -78,7 +78,7 @@ final class SearchListView: NSObject, SearchListViewProtocol {
     }
     
     func update(contentsList: [TableViewDisplayable]) {
-        listPresenter.contentsList = contentsList
+        listDataSource.contentsList = contentsList
         self.reloadList()
     }
     

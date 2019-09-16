@@ -1,5 +1,5 @@
 //
-//  DetailPresenter.swift
+//  DetailView.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/08/17.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol RepositoryDetailPresenterProtocol {
+protocol DetailViewProtocol {
     init(with superView: UIView)
     func update(contents: [Any])
     func update(status: ContentsStatus)
 }
 
-final class RepositoryDetailPresenter: NSObject, RepositoryDetailPresenterProtocol {
+final class DetailView: NSObject, DetailViewProtocol {
     
     @IBOutlet var view: UIView!
     @IBOutlet var contentsView: UIStackView!
