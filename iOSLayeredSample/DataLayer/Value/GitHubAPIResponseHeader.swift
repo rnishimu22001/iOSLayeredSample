@@ -21,7 +21,6 @@ struct GitHubAPIResponseHeader {
         guard let header = responseHeader as? [String: Any] else {
             fatalError()
         }
-        
         if let linksString = header[Key.link] as? String {
             let links = linksString.split(separator: ",")
             links.forEach {

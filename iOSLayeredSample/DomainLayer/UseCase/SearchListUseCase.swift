@@ -12,7 +12,7 @@ import Combine
 protocol SearchListUseCaseProtocol {
     /// 検索クエリをアップデートする
     func update(searchQuery: String) -> PassthroughSubject<(result: [Repository], nextURL: URL?), Error>
-    /// 次のデータを読み込む
+    /// 指定された次のページのURLのデータを読み込む
     func load(next url: URL) -> PassthroughSubject<(result: [Repository], nextURL: URL?), Error>
 }
 

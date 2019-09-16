@@ -35,8 +35,10 @@ final class SearchListViewModel: SearchListViewModelProtocol {
     }
     
     func update(searchQuery: String?) {
+        // クエリがあればリロード、リクエスト状態によらずキャンセル
         guard let query = searchQuery, !query.isEmpty else { return }
         status.value = .loading
+        currentLoadingCancelable?.cancel()
         currentLoadingCancelable = useCase.update(searchQuery: query).sink(receiveCompletion: { [weak self] result in
             switch result {
             case .finished:
@@ -51,6 +53,8 @@ final class SearchListViewModel: SearchListViewModelProtocol {
     }
     
     func loadNextContents() {
+        // 保持している次のURLからデータを取得
+        // すでにリクエスト中ならな何もしない
         guard
             let loading = contents.value.last as? LoadingDisplayData,
             let url = loading.nextLink,

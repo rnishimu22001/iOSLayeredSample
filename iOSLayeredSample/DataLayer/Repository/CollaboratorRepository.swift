@@ -9,6 +9,7 @@
 import Combine
 
 protocol CollaboratorRepositoryProtocol {
+    /// リポジトリのコラボレーターを取得する
     func reload(repositoy fullName: String) -> PassthroughSubject<[Collaborator], Error>
 }
 

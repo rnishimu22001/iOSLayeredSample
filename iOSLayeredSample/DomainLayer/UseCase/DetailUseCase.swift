@@ -37,7 +37,7 @@ final class DetailUseCase: DetailUseCaseProtocol {
         otherModules: Publishers.Zip<PassthroughSubject<Release, Error>, PassthroughSubject<[Collaborator], Error>>) {
        
         let profileSubject = profileRepository.reload(repository: fullName)
-        let releaseSubject = releaseRepository.reload(repository: fullName)
+        let releaseSubject = releaseRepository.reloadLatestRelease(repository: fullName)
         let collaboratorSubject = collaboratorRepository.reload(repositoy: fullName)
         let otherModulesSubject =  releaseSubject.zip(collaboratorSubject)
             

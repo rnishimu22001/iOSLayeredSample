@@ -9,6 +9,7 @@
 import Combine
 
 protocol CommunityProfileRepositoryProtocol {
+    /// リポジトリの名前からコミュニティの情報を取得する
     func reload(repository fullName: String) -> PassthroughSubject<CommunityProfile, Error>
 }
 

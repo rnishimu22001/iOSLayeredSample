@@ -9,9 +9,11 @@
 import Combine
 
 protocol DetailViewModelProtocol {
+    /// 表示状態
     var status: CurrentValueSubject<ContentsStatus, Never> { get }
+    /// 表示するコンテンツ
     var contents: CurrentValueSubject<[Any], Never> { get }
-    var repositoryFullName: String { get }
+    /// 表示のリロード
     func reload()
 }
 

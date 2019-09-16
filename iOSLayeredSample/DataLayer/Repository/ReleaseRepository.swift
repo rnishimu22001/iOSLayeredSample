@@ -10,7 +10,8 @@ import Foundation
 import Combine
 
 protocol ReleaseRepositoryProtocol {
-    func reload(repository fullName: String) -> PassthroughSubject<Release, Error>
+    /// リポジトリの最終リリースのデータを取得する
+    func reloadLatestRelease(repository fullName: String) -> PassthroughSubject<Release, Error>
 }
 
 struct ReleaseRepository: ReleaseRepositoryProtocol {
@@ -21,7 +22,7 @@ struct ReleaseRepository: ReleaseRepositoryProtocol {
         self.client = client
     }
     
-    func reload(repository fullName: String) -> PassthroughSubject<Release, Error> {
+    func reloadLatestRelease(repository fullName: String) -> PassthroughSubject<Release, Error> {
         let subject = PassthroughSubject<Release, Error>()
         client.requestLatestRelease(repository: fullName) { result, _ in
             switch result {
