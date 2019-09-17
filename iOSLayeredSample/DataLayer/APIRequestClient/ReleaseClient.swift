@@ -21,7 +21,7 @@ struct ReleaseClient: ReleaseClientProtocol, GitHubAPIRequestable {
     }
     
     func requestLatestRelease(repository fullName: String, completion: @escaping ((Result<ReleaseData, Error>, GitHubAPIResponseHeader?) -> Void)) {
-        let url = APIURLSetting.collaborators(with: fullName)
+        let url = APIURLSetting.latestReleases(with: fullName)
         guard let components = URLComponents(string: url) else {
             completion(.failure(RequestError.badURL), nil)
             return
