@@ -32,14 +32,8 @@ struct APIURLSetting {
     
     struct Collaborators {
         
-        static func addAccept(request: URLRequest) -> URLRequest {
-            var mutable = request
-            mutable.addValue("application/vnd.github.hellcat-preview+json", forHTTPHeaderField: HeaderKey.accept)
-            return  mutable
-        }
-        
         static func url(with fullName: String) -> String {
-            return base + "repos/" + fullName + "/collaborators"
+            return base + "repos/" + fullName + "/stats/contributors"
         }
     }
     

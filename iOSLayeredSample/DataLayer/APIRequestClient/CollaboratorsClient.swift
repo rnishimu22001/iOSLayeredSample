@@ -32,7 +32,6 @@ struct CollaboratorsClient: CollaboratorsClientProtocol, GitHubAPIRequestable {
             completion(.failure(RequestError.badURL), nil)
             return
         }
-        let apiRequest = APIURLSetting.Collaborators.addAccept(request: URLRequest(url: requestURL))
-        request(apiRequest, completion: completion)
+        request(URLRequest(url: requestURL), completion: completion)
     }
 }
