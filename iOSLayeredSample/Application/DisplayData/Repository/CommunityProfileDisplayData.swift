@@ -18,6 +18,6 @@ struct CommunityProfileDisplayData {
         name = profile.name
         repositoryDescription = profile.repositoryDescription ?? ""
         license = profile.license ?? ""
-        lastUpdate = profile.lastUpdate.currentLocale
+        lastUpdate = profile.lastUpdate
     }
 }

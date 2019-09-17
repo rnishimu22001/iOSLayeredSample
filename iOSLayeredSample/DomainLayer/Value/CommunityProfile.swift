@@ -12,5 +12,5 @@ struct CommunityProfile {
     let name: String
     let license: String?
     let repositoryDescription: String?
-    let lastUpdate: Date
+    let lastUpdate: String
 }

@@ -12,9 +12,9 @@ import Foundation
 struct CommunityProfileData: Codable {
     let healthPercentage: Int?
     let communityProfileDescription: String?
-    let documentation: Bool?
+    let documentation: String?
     let files: Files?
-    let updatedAt: Date
+    let updatedAt: String
 
     enum CodingKeys: String, CodingKey {
         case healthPercentage = "health_percentage"
@@ -26,7 +26,7 @@ struct CommunityProfileData: Codable {
 
 extension CommunityProfileData {
     var converted: CommunityProfile {
-        return CommunityProfile(name: self.files?.codeOfConduct.name ?? "",
+        return CommunityProfile(name: self.files?.codeOfConduct?.name ?? "",
                                 license: self.files?.license.name,
                                 repositoryDescription: self.communityProfileDescription,
                                 lastUpdate: self.updatedAt)
@@ -35,8 +35,8 @@ extension CommunityProfileData {
 
 // MARK: - Files
 struct Files: Codable {
-    let codeOfConduct: CodeOfConduct
-    let contributing, issueTemplate, pullRequestTemplate: Contributing
+    let codeOfConduct: CodeOfConduct?
+    let contributing, issueTemplate, pullRequestTemplate: Contributing?
     let license: CodeOfConduct
     let readme: Contributing
 

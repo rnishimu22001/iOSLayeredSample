@@ -45,6 +45,6 @@ struct ReleaseDisplayData {
         tagName = release.tagName
         releaseDesciption = release.releaseDesciption ?? ""
         self.status = status
-        publishedDate = release.publishedDate.currentLocale
+        publishedDate = release.publishedDate
     }
 }
