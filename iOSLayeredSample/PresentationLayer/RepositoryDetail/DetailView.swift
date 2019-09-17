@@ -47,13 +47,15 @@ final class DetailPresenter: NSObject, DetailViewProtocol {
     }
     
     func update(contents: [Any]) {
-        contentsView.subviews.filter({ $0 is LoadingView }).forEach { $0.removeFromSuperview() }
+        // contentsView.subviews.filter({ $0 is LoadingView }).forEach { $0.removeFromSuperview() }
+        contentsView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         contents.forEach {
             setupContentView(content: $0)
         }
     }
     
     private func setupContentView(content: Any) {
+       
         switch content {
         case is LoadingDisplayData:
             let size = CGSize(width: self.contentsView.frame.size.width, height: LoadingView.height)
@@ -73,37 +75,35 @@ final class DetailPresenter: NSObject, DetailViewProtocol {
     
     private func addContentView(for profile: CommunityProfileDisplayData) {
         var profileView: CommunityProfileView
-        // if already exist profileview
-        if let currentView = contentsView.subviews.filter({ $0 is CommunityProfileView }).first as? CommunityProfileView {
-            profileView = currentView
-        } else {
-            let size = CGSize(width: contentsView.frame.size.width, height: 200)
-            let frame = CGRect(origin: .zero, size: size)
-            profileView = CommunityProfileView(frame: frame)
-            profileView.setup(profile)
-        }
+        
+        let size = CGSize(width: contentsView.frame.size.width, height: 150)
+        let frame = CGRect(origin: .zero, size: size)
+        profileView = CommunityProfileView(frame: frame)
+        profileView.setup(profile)
+        profileView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        
         contentsView.addArrangedSubview(profileView)
     }
     
     private func addContentView(for release: ReleaseDisplayData) {
         var releaseView: ReleaseView
-        if let currentView = contentsView.subviews.filter({ $0 is ReleaseView }).first as? ReleaseView {
-            releaseView = currentView
-        } else {
-            let size = CGSize(width: contentsView.frame.size.width, height: 150)
-            let frame = CGRect(origin: .zero, size: size)
-            releaseView = ReleaseView(frame: frame)
-            releaseView.setup(release)
-        }
+
+        let size = CGSize(width: contentsView.frame.size.width, height: 100)
+        let frame = CGRect(origin: .zero, size: size)
+        releaseView = ReleaseView(frame: frame)
+        releaseView.setup(release)
+        releaseView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+
         contentsView.addArrangedSubview(releaseView)
     }
     
     private func addContentView(for collaborators: CollaboratorsDisplayData) {
         collaborators.collaborators.forEach {
-            let size = CGSize(width: contentsView.frame.size.width, height: 100)
+            let size = CGSize(width: contentsView.frame.size.width, height: 50)
             let frame = CGRect(origin: .zero, size: size)
             let collaboratorView = CollaboratorView(frame: frame)
             collaboratorView.setup($0)
+            collaboratorView.heightAnchor.constraint(equalToConstant: 50).isActive = true
             contentsView.addArrangedSubview(collaboratorView)
         }
     }
