@@ -13,11 +13,6 @@ protocol GitHubAPIRequestable {
 }
 
 extension GitHubAPIRequestable {
-    func addAccept(request: URLRequest) ->URLRequest {
-        var mutable = request
-        mutable.addValue("application/vnd.github.v3+json", forHTTPHeaderField: "Accept")
-        return  mutable
-    }
     
     func request<T: Codable>(_ request: URLRequest, completion: @escaping ((Result<T, Error>, GitHubAPIResponseHeader?) -> Void)) {
         requester.request(with: request) { result, response in

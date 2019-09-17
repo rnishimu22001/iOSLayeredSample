@@ -20,7 +20,7 @@ struct CommunityProfileClient: CommunityProfileClientProtocol, GitHubAPIRequesta
     }
     
     func requestProfile(repository fullName: String, completion: @escaping ((Result<CommunityProfileData, Error>, GitHubAPIResponseHeader?) -> Void)) {
-        let url = APIURLSetting.communityProfile(with: fullName)
+        let url = APIURLSetting.CommunityProfile.url(with: fullName)
         guard let components = URLComponents(string: url) else {
             completion(.failure(RequestError.badURL), nil)
             return
@@ -29,7 +29,7 @@ struct CommunityProfileClient: CommunityProfileClientProtocol, GitHubAPIRequesta
             completion(.failure(RequestError.badURL), nil)
             return
         }
-        let apiRequest = addAccept(request: URLRequest(url: requestURL))
+        let apiRequest = APIURLSetting.CommunityProfile.addAccept(request: URLRequest(url: requestURL))
         request(apiRequest, completion: completion)
     }
 }

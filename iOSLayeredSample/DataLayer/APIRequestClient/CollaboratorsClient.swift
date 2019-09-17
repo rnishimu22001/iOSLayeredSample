@@ -21,7 +21,7 @@ struct CollaboratorsClient: CollaboratorsClientProtocol, GitHubAPIRequestable {
     }
     
     func requestCollaborators(repository fullName: String, completion: @escaping ((Result<[CollaboratorData], Error>, GitHubAPIResponseHeader?) -> Void)) {
-        let url = APIURLSetting.collaborators(with: fullName)
+        let url = APIURLSetting.Collaborators.url(with: fullName)
         guard let components = URLComponents(string: url) else {
             completion(.failure(RequestError.badURL), nil)
             return
@@ -30,7 +30,7 @@ struct CollaboratorsClient: CollaboratorsClientProtocol, GitHubAPIRequestable {
             completion(.failure(RequestError.badURL), nil)
             return
         }
-        let apiRequest = addAccept(request: URLRequest(url: requestURL))
+        let apiRequest = APIURLSetting.Collaborators.addAccept(request: URLRequest(url: requestURL))
         request(apiRequest, completion: completion)
     }
 }
