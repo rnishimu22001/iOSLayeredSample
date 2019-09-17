@@ -11,6 +11,8 @@ import Nuke
 
 final class CollaboratorView: UIView {
     
+    static let height: CGFloat = 100
+    
     @IBOutlet var view: UIView!
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var name: UILabel!

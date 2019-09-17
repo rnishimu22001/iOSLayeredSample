@@ -76,11 +76,11 @@ final class DetailPresenter: NSObject, DetailViewProtocol {
     private func addContentView(for profile: CommunityProfileDisplayData) {
         var profileView: CommunityProfileView
         
-        let size = CGSize(width: contentsView.frame.size.width, height: 150)
+        let size = CGSize(width: contentsView.frame.size.width, height: CommunityProfileView.height)
         let frame = CGRect(origin: .zero, size: size)
         profileView = CommunityProfileView(frame: frame)
         profileView.setup(profile)
-        profileView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        profileView.heightAnchor.constraint(equalToConstant: CommunityProfileView.height).isActive = true
         
         contentsView.addArrangedSubview(profileView)
     }
@@ -88,22 +88,22 @@ final class DetailPresenter: NSObject, DetailViewProtocol {
     private func addContentView(for release: ReleaseDisplayData) {
         var releaseView: ReleaseView
 
-        let size = CGSize(width: contentsView.frame.size.width, height: 100)
+        let size = CGSize(width: contentsView.frame.size.width, height: ReleaseView.height)
         let frame = CGRect(origin: .zero, size: size)
         releaseView = ReleaseView(frame: frame)
         releaseView.setup(release)
-        releaseView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        releaseView.heightAnchor.constraint(equalToConstant: ReleaseView.height).isActive = true
 
         contentsView.addArrangedSubview(releaseView)
     }
     
     private func addContentView(for collaborators: CollaboratorsDisplayData) {
         collaborators.collaborators.forEach {
-            let size = CGSize(width: contentsView.frame.size.width, height: 50)
+            let size = CGSize(width: contentsView.frame.size.width, height: CollaboratorView.height)
             let frame = CGRect(origin: .zero, size: size)
             let collaboratorView = CollaboratorView(frame: frame)
             collaboratorView.setup($0)
-            collaboratorView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            collaboratorView.heightAnchor.constraint(equalToConstant: CollaboratorView.height).isActive = true
             contentsView.addArrangedSubview(collaboratorView)
         }
     }

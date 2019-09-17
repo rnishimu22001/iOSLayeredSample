@@ -24,11 +24,14 @@ final class DetailViewModel: DetailViewModelProtocol {
     
     private(set) var otherModulesCancellable: AnyCancellable?
     private(set) var profileCancellable: AnyCancellable?
-     
+    /// Collaboratorの表示数
+    let displayCollaboratorsCount: Int
     let repositoryFullName: String
     
     init(repositoryFullName: String,
+         maxCollaboratorsCount: Int = 3,
          useCase: DetailUseCaseProtocol = DetailUseCase()) {
+        self.displayCollaboratorsCount = maxCollaboratorsCount
         self.repositoryFullName = repositoryFullName
         self.useCase = useCase
     }
@@ -61,7 +64,8 @@ extension DetailViewModel {
             filterd.append(ReleaseDisplayData(with: release, status: ReleaseStatus(isDraft: release.isDraft, isPrerelease: release.isPreRelease)))
         }
         if !collaborators.isEmpty {
-            filterd.append(CollaboratorsDisplayData(with: collaborators))
+            let filterdCollaborators = collaborators.prefix(displayCollaboratorsCount)
+            filterd.append(CollaboratorsDisplayData(with: Array(filterdCollaborators)))
         }
         contents.value = filterd
     }

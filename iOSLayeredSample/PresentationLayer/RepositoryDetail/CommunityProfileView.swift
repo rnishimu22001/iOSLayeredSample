@@ -8,10 +8,9 @@
 
 import UIKit
 
-final class CommunityProfileView: UIView, ContentViewInVerticalStack {
-    var height: CGFloat {
-        return 0
-    }
+final class CommunityProfileView: UIView {
+    
+    static let height: CGFloat = 150
     
     @IBOutlet var contents: UIView!
     @IBOutlet weak var name: UILabel!

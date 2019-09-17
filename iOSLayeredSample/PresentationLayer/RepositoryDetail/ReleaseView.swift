@@ -10,6 +10,8 @@ import UIKit
 
 final class ReleaseView: UIView {
     
+    static let height: CGFloat = 100
+    
     @IBOutlet var view: UIView!
     @IBOutlet weak var tagName: UILabel!
     @IBOutlet weak var date: UILabel!
