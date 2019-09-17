@@ -22,10 +22,12 @@ struct CollaboratorsClient: CollaboratorsClientProtocol, GitHubAPIRequestable {
     
     func requestCollaborators(repository fullName: String, completion: @escaping ((Result<[CollaboratorData], Error>, GitHubAPIResponseHeader?) -> Void)) {
         let url = APIURLSetting.Collaborators.url(with: fullName)
-        guard let components = URLComponents(string: url) else {
+        guard var components = URLComponents(string: url) else {
             completion(.failure(RequestError.badURL), nil)
             return
         }
+        let affiliation = URLQueryItem(name: "affiliation", value: "outside")
+        components.queryItems?.append(affiliation)
         guard let requestURL = components.url else {
             completion(.failure(RequestError.badURL), nil)
             return

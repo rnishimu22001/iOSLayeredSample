@@ -13,7 +13,7 @@ protocol DetailUseCaseProtocol {
     /// ページの再読み込み時に呼ばれる
     func reload(repository fullName: String) ->
         (profile: PassthroughSubject<CommunityProfile, Error>,
-        otherModules: Publishers.Zip<PassthroughSubject<Release, Error>, PassthroughSubject<[Collaborator], Error>>)
+        otherModules: Publishers.Zip<Publishers.Catch<Publishers.Map<PassthroughSubject<Release, Error>, Release?>, Just<Release?>>, Publishers.Catch<PassthroughSubject<[Collaborator], Error>, Just<[Collaborator]>>>)
 }
 
 final class DetailUseCase: DetailUseCaseProtocol {
@@ -34,11 +34,18 @@ final class DetailUseCase: DetailUseCaseProtocol {
     
     func reload(repository fullName: String) ->
         (profile: PassthroughSubject<CommunityProfile, Error>,
-        otherModules: Publishers.Zip<PassthroughSubject<Release, Error>, PassthroughSubject<[Collaborator], Error>>) {
+        otherModules: Publishers.Zip<Publishers.Catch<Publishers.Map<PassthroughSubject<Release, Error>, Release?>, Just<Release?>>, Publishers.Catch<PassthroughSubject<[Collaborator], Error>, Just<[Collaborator]>>>) {
        
         let profileSubject = profileRepository.reload(repository: fullName)
-        let releaseSubject = releaseRepository.reloadLatestRelease(repository: fullName)
-        let collaboratorSubject = collaboratorRepository.reload(repositoy: fullName)
+            let releaseSubject = releaseRepository.reloadLatestRelease(repository: fullName).map({ (release) -> Release? in
+                return release
+            }).catch({ (_) -> Just<Release?> in
+                return Just(nil)
+            })
+            
+            let collaboratorSubject = collaboratorRepository.reload(repositoy: fullName).catch({ (_) -> Just<[Collaborator]> in
+                return Just([])
+            })
         let otherModulesSubject =  releaseSubject.zip(collaboratorSubject)
             
         return (profile: profileSubject, otherModules: otherModulesSubject)

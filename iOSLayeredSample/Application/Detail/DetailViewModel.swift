@@ -36,9 +36,7 @@ final class DetailViewModel: DetailViewModelProtocol {
     func reload() {
         status.value = .loading
         let publishers = useCase.reload(repository: repositoryFullName)
-        otherModulesCancellable = publishers.otherModules.sink(receiveCompletion: { [weak self] _ in
-            self?.otherModulesCancellable = nil
-        }, receiveValue: { [weak self] others in
+        otherModulesCancellable = publishers.otherModules.sink(receiveValue: { [weak self] others in
             self?.didLoad(latestRelease: others.0, collaborators: others.1)
         })
         
