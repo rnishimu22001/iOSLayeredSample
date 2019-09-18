@@ -17,6 +17,7 @@ final class ReleaseView: UIView {
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var status: UILabel!
+    @IBOutlet weak var statusBackground: UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,6 +41,6 @@ final class ReleaseView: UIView {
         date.text = release.publishedDate
         descriptionLabel.text = release.releaseDesciption
         status.text = release.status.rawValue
-        status.backgroundColor = release.status.color
+        statusBackground.backgroundColor = release.status.color
     }
 }

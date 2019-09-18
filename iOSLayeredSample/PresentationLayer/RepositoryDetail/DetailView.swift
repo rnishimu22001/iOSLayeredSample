@@ -47,7 +47,6 @@ final class DetailPresenter: NSObject, DetailViewProtocol {
     }
     
     func update(contents: [Any]) {
-        // contentsView.subviews.filter({ $0 is LoadingView }).forEach { $0.removeFromSuperview() }
         contentsView.arrangedSubviews.forEach {
             self.contentsView.removeArrangedSubview($0)
             $0.removeFromSuperview()
