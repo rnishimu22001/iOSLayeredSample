@@ -9,6 +9,25 @@
 import UIKit
 
 final class LoadingView: UIView {
+    
+    @IBOutlet var view: UIView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     static let height: CGFloat = 100
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.commonInit()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.commonInit()
+    }
+    
+    func commonInit() {
+        Bundle.main.loadNibNamed(type(of: self).className, owner: self, options: nil)
+        self.addSubview(view)
+        view.frame.origin = .zero
+        view.frame.size = self.frame.size
+    }
 }

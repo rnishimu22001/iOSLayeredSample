@@ -54,6 +54,7 @@ final class DetailPresenter: NSObject, DetailViewProtocol {
         contents.forEach {
             setupContentView(content: $0)
         }
+        contentsView.layoutIfNeeded()
     }
     
     private func setupContentView(content: Any) {
@@ -63,6 +64,7 @@ final class DetailPresenter: NSObject, DetailViewProtocol {
             let size = CGSize(width: self.contentsView.frame.size.width, height: LoadingView.height)
             let frame = CGRect(origin: .zero, size: size)
             let loading = LoadingView(frame: frame)
+            loading.indicator.startAnimating()
             contentsView.addArrangedSubview(loading)
         case let profile as CommunityProfileDisplayData:
             addContentView(for: profile)
