@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommunityProfileView" customModule="iOSLayeredSample" customModuleProvider="target">
             <connections>
-                <outlet property="communityDescription" destination="IQV-ai-aRS" id="i5N-TC-tAn"/>
+                <outlet property="communityDescription" destination="b8x-sa-7dP" id="Bep-a9-Kdt"/>
                 <outlet property="contents" destination="AT2-I1-Nic" id="Dvt-ZA-Taw"/>
                 <outlet property="lastUpdateDate" destination="URM-cs-OdJ" id="0zL-xO-cc6"/>
                 <outlet property="license" destination="onr-eb-5DX" id="xaK-pt-QQ6"/>
@@ -93,12 +93,14 @@
                         <constraint firstAttribute="height" constant="12" id="wvI-La-SVt"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQV-ai-aRS" userLabel="Description">
-                    <rect key="frame" x="12" y="101.5" width="390" height="278.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8x-sa-7dP">
+                    <rect key="frame" x="8" y="96" width="398" height="288"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEG-EX-Hi3">
                     <rect key="frame" x="8" y="391.5" width="398" height="0.5"/>
                     <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
@@ -110,17 +112,17 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="ZEg-yQ-9cE" firstAttribute="leading" secondItem="JPz-XC-PHM" secondAttribute="leading" constant="12" id="3Qo-03-KYY"/>
-                <constraint firstItem="IQV-ai-aRS" firstAttribute="leading" secondItem="JPz-XC-PHM" secondAttribute="leading" constant="12" id="Cgi-dm-Ql8"/>
-                <constraint firstItem="JPz-XC-PHM" firstAttribute="bottom" secondItem="IQV-ai-aRS" secondAttribute="bottom" constant="12" id="CmI-ka-tUg"/>
+                <constraint firstItem="JPz-XC-PHM" firstAttribute="trailing" secondItem="b8x-sa-7dP" secondAttribute="trailing" constant="8" id="AE0-du-0UM"/>
+                <constraint firstItem="b8x-sa-7dP" firstAttribute="top" secondItem="Tkf-fJ-sw2" secondAttribute="bottom" constant="8" id="BeP-HW-lQW"/>
                 <constraint firstItem="JPz-XC-PHM" firstAttribute="bottom" secondItem="kEG-EX-Hi3" secondAttribute="bottom" id="Hqk-wC-kKA"/>
-                <constraint firstItem="IQV-ai-aRS" firstAttribute="top" secondItem="6Fk-Xs-qmB" secondAttribute="bottom" constant="12" id="PEl-Vh-wzN"/>
                 <constraint firstItem="kEG-EX-Hi3" firstAttribute="leading" secondItem="JPz-XC-PHM" secondAttribute="leading" constant="8" id="XAs-7x-mtl"/>
-                <constraint firstItem="JPz-XC-PHM" firstAttribute="trailing" secondItem="IQV-ai-aRS" secondAttribute="trailing" constant="12" id="aRo-QY-Tud"/>
                 <constraint firstItem="JPz-XC-PHM" firstAttribute="trailing" secondItem="ZEg-yQ-9cE" secondAttribute="trailing" constant="12" id="bMH-kQ-2kw"/>
                 <constraint firstItem="Tkf-fJ-sw2" firstAttribute="leading" secondItem="JPz-XC-PHM" secondAttribute="leading" constant="12" id="ebU-dj-VIP"/>
+                <constraint firstItem="JPz-XC-PHM" firstAttribute="bottom" secondItem="b8x-sa-7dP" secondAttribute="bottom" constant="8" id="oje-rk-Qzk"/>
                 <constraint firstItem="JPz-XC-PHM" firstAttribute="trailing" secondItem="kEG-EX-Hi3" secondAttribute="trailing" constant="8" id="rA3-Jo-JIN"/>
                 <constraint firstItem="Tkf-fJ-sw2" firstAttribute="top" secondItem="ZEg-yQ-9cE" secondAttribute="bottom" constant="12" id="uIh-zh-BnZ"/>
                 <constraint firstItem="ZEg-yQ-9cE" firstAttribute="top" secondItem="JPz-XC-PHM" secondAttribute="top" constant="8" id="uei-ge-vZP"/>
+                <constraint firstItem="b8x-sa-7dP" firstAttribute="leading" secondItem="JPz-XC-PHM" secondAttribute="leading" constant="8" id="xNJ-HV-9uq"/>
                 <constraint firstItem="JPz-XC-PHM" firstAttribute="trailing" secondItem="Tkf-fJ-sw2" secondAttribute="trailing" constant="12" id="zqs-pK-ZQ3"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

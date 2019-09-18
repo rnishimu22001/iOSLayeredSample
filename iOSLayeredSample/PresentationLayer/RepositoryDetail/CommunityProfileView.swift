@@ -15,7 +15,7 @@ final class CommunityProfileView: UIView {
     @IBOutlet var contents: UIView!
     @IBOutlet weak var lastUpdateDate: UILabel!
     @IBOutlet weak var license: UILabel!
-    @IBOutlet weak var communityDescription: UILabel!
+    @IBOutlet weak var communityDescription: UITextView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
