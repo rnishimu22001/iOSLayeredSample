@@ -29,7 +29,7 @@ final class DetailViewModel: DetailViewModelProtocol {
     let repositoryFullName: String
     
     init(repositoryFullName: String,
-         maxCollaboratorsCount: Int = 3,
+         maxCollaboratorsCount: Int = 5,
          useCase: DetailUseCaseProtocol = DetailUseCase()) {
         self.displayCollaboratorsCount = maxCollaboratorsCount
         self.repositoryFullName = repositoryFullName
