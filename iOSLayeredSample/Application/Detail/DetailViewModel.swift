@@ -64,6 +64,7 @@ extension DetailViewModel {
             filterd.append(ReleaseDisplayData(with: release, status: ReleaseStatus(isDraft: release.isDraft, isPrerelease: release.isPreRelease)))
         }
         if !collaborators.isEmpty {
+            filterd.append(DetailContributorTitleDisplayData())
             let filterdCollaborators = collaborators.prefix(displayCollaboratorsCount)
             filterd.append(CollaboratorsDisplayData(with: Array(filterdCollaborators)))
         }
