@@ -13,7 +13,6 @@ final class CommunityProfileView: UIView {
     static let height: CGFloat = 150
     
     @IBOutlet var contents: UIView!
-    @IBOutlet weak var name: UILabel!
     @IBOutlet weak var lastUpdateDate: UILabel!
     @IBOutlet weak var license: UILabel!
     @IBOutlet weak var communityDescription: UILabel!
@@ -36,7 +35,6 @@ final class CommunityProfileView: UIView {
     
     func setup(_ profile: CommunityProfileDisplayData) {
         communityDescription.text = profile.repositoryDescription
-        name.text = profile.name
         lastUpdateDate.text = profile.lastUpdate
         license.text = profile.license
     }

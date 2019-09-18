@@ -18,6 +18,8 @@ final class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = repositoryFullName
+        navigationItem.backBarButtonItem?.title = ""
         detailView = DetailPresenter(with: view)
         viewModel = DetailViewModel(repositoryFullName: repositoryFullName)
         self.sink()
