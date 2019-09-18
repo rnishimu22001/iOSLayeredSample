@@ -10,7 +10,7 @@ import UIKit
 
 final class CommunityProfileView: UIView {
     
-    static let height: CGFloat = 100
+    static let height: CGFloat = 110
     
     @IBOutlet var contents: UIView!
     @IBOutlet weak var lastUpdateDate: UILabel!
