@@ -55,6 +55,8 @@
 		5A9EFC852311637100490D92 /* DispatchQueue+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC842311637100490D92 /* DispatchQueue+Additions.swift */; };
 		5A9EFC8823123F5500490D92 /* StarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC8723123F5500490D92 /* StarColor.swift */; };
 		5A9EFC8B2312409400490D92 /* StarColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC8A2312409400490D92 /* StarColor+Extension.swift */; };
+		5AA7E3E02331E45A0011CE1B /* CollaboratorTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AA7E3DF2331E45A0011CE1B /* CollaboratorTitleView.xib */; };
+		5AA7E3E22331E4690011CE1B /* CollaboratorTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7E3E12331E4690011CE1B /* CollaboratorTitleView.swift */; };
 		5AADA5FA22EC101A001BA1AD /* SearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AADA5F922EC101A001BA1AD /* SearchListView.swift */; };
 		5AADA5FE22EC105D001BA1AD /* SearchListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AADA5FD22EC105D001BA1AD /* SearchListView.xib */; };
 		5AADA60822EC16CC001BA1AD /* SearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AADA60722EC16CC001BA1AD /* SearchListViewController.swift */; };
@@ -136,6 +138,8 @@
 		5A9EFC842311637100490D92 /* DispatchQueue+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Additions.swift"; sourceTree = "<group>"; };
 		5A9EFC8723123F5500490D92 /* StarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarColor.swift; sourceTree = "<group>"; };
 		5A9EFC8A2312409400490D92 /* StarColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StarColor+Extension.swift"; sourceTree = "<group>"; };
+		5AA7E3DF2331E45A0011CE1B /* CollaboratorTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollaboratorTitleView.xib; sourceTree = "<group>"; };
+		5AA7E3E12331E4690011CE1B /* CollaboratorTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorTitleView.swift; sourceTree = "<group>"; };
 		5AADA5F922EC101A001BA1AD /* SearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListView.swift; sourceTree = "<group>"; };
 		5AADA5FD22EC105D001BA1AD /* SearchListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchListView.xib; sourceTree = "<group>"; };
 		5AADA60722EC16CC001BA1AD /* SearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewController.swift; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 				5A4CBECA2308E0770056E710 /* ReleaseView.swift */,
 				5A4CBECC2308E93E0056E710 /* CollaboratorView.xib */,
 				5A4CBECE2308E94F0056E710 /* CollaboratorView.swift */,
+				5AA7E3DF2331E45A0011CE1B /* CollaboratorTitleView.xib */,
+				5AA7E3E12331E4690011CE1B /* CollaboratorTitleView.swift */,
 			);
 			path = RepositoryDetail;
 			sourceTree = "<group>";
@@ -574,6 +580,7 @@
 				5A4CBECD2308E93E0056E710 /* CollaboratorView.xib in Resources */,
 				5AADA5FE22EC105D001BA1AD /* SearchListView.xib in Resources */,
 				5A9B912A22EBEB0600996712 /* Assets.xcassets in Resources */,
+				5AA7E3E02331E45A0011CE1B /* CollaboratorTitleView.xib in Resources */,
 				5A662C5523083DF300BD0403 /* DetailPresenter.xib in Resources */,
 				5AADA61722EC1D58001BA1AD /* RepositoryTableViewCell.xib in Resources */,
 				5ABB0BDF2308FE520072660A /* LoadingView.xib in Resources */,
@@ -597,6 +604,7 @@
 			files = (
 				5A9EFC8823123F5500490D92 /* StarColor.swift in Sources */,
 				5A4CBEBF2308D13A0056E710 /* Date+Additions.swift in Sources */,
+				5AA7E3E22331E4690011CE1B /* CollaboratorTitleView.swift in Sources */,
 				5A662C5D230841F400BD0403 /* ReleaseData.swift in Sources */,
 				5AB6D67622F59D7E008C3D14 /* LoadingCell.swift in Sources */,
 				5A9EFC832311353300490D92 /* UISearchBarDelegateProxy.swift in Sources */,

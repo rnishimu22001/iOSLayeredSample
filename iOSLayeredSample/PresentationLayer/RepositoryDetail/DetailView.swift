@@ -102,6 +102,14 @@ final class DetailPresenter: NSObject, DetailViewProtocol {
     }
     
     private func addContentView(for collaborators: CollaboratorsDisplayData) {
+        guard !collaborators.collaborators.isEmpty else { return }
+        // add title
+        let size = CGSize(width: contentsView.frame.size.width, height: CollaboratorTitleView.height)
+        let frame = CGRect(origin: .zero, size: size)
+        let title = CollaboratorTitleView(frame: frame)
+        title.heightAnchor.constraint(equalToConstant: CollaboratorTitleView.height).isActive = true
+        contentsView.addArrangedSubview(title)
+        // add collaborators
         collaborators.collaborators.forEach {
             let size = CGSize(width: contentsView.frame.size.width, height: CollaboratorView.height)
             let frame = CGRect(origin: .zero, size: size)
