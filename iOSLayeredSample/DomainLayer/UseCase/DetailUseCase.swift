@@ -22,14 +22,17 @@ final class DetailUseCase: DetailUseCaseProtocol {
    
     let profileRepository: CommunityProfileRepositoryProtocol
     let releaseRepository: ReleaseRepositoryProtocol
-    let collaboratorRepository: CollaboratorRepository
-    
+    let collaboratorRepository: CollaboratorRepositoryProtocol
+    let branchRepository: BranchesRepositoryProtocol
+
     init(profileRepository: CommunityProfileRepositoryProtocol = CommunityProfileRepository(),
          releaseRepository: ReleaseRepositoryProtocol = ReleaseRepository(),
-         collaboratorRepository: CollaboratorRepository = CollaboratorRepository()) {
+         collaboratorRepository: CollaboratorRepositoryProtocol = CollaboratorRepository(),
+         branchRepository: BranchesRepositoryProtocol = BranchesRepository()) {
         self.profileRepository = profileRepository
         self.releaseRepository = releaseRepository
         self.collaboratorRepository = collaboratorRepository
+        self.branchRepository = branchRepository
     }
     
     func reload(repository fullName: String) ->

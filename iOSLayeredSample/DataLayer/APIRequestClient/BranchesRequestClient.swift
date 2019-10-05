@@ -9,7 +9,7 @@
 import Foundation
 
 protocol BranchesRequestClientProtocol {
-    func requestBranch(inRepository fullName: String, completion: @escaping ((Result<Branches, Error>, GitHubAPIResponseHeader?) -> Void))
+    func requestBranch(inRepository fullName: String, completion: @escaping ((Result<BranchesData, Error>, GitHubAPIResponseHeader?) -> Void))
 }
 
 struct BranchesRequestClient: BranchesRequestClientProtocol, GitHubAPIRequestable {
@@ -19,7 +19,7 @@ struct BranchesRequestClient: BranchesRequestClientProtocol, GitHubAPIRequestabl
         self.requester = requester
     }
     
-    func requestBranch(inRepository fullName: String, completion: @escaping ((Result<Branches, Error>, GitHubAPIResponseHeader?) -> Void)) {
+    func requestBranch(inRepository fullName: String, completion: @escaping ((Result<BranchesData, Error>, GitHubAPIResponseHeader?) -> Void)) {
         guard var urlComponents = URLComponents(string: APIURLSetting.BranchList.url(with: fullName)) else {
             completion(.failure(RequestError.badURL), nil)
             return

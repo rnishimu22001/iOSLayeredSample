@@ -13,7 +13,7 @@
 import Foundation
 
 // MARK: - Branch
-struct Branch: Codable {
+struct BranchData: Codable {
     let name: String
     let commit: Commit
     let protected: Bool
@@ -23,6 +23,12 @@ struct Branch: Codable {
     enum CodingKeys: String, CodingKey {
         case name, commit, protected, protection
         case protectionURL = "protection_url"
+    }
+}
+
+extension BranchData {
+    var converted: Branch {
+        return Branch(name: self.name, isProtected: self.protected)
     }
 }
 
@@ -54,4 +60,4 @@ struct RequiredStatusChecks: Codable {
     }
 }
 
-typealias Branches = [Branch]
+typealias BranchesData = [BranchData]

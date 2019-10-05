@@ -77,6 +77,8 @@
 		5ABB0BDF2308FE520072660A /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ABB0BDE2308FE520072660A /* LoadingView.xib */; };
 		5ACA090A234880E8001B4D73 /* BranchesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA0909234880E8001B4D73 /* BranchesData.swift */; };
 		5ACA090C2348836F001B4D73 /* BranchesRequestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA090B2348836F001B4D73 /* BranchesRequestClient.swift */; };
+		5ACA090E23488614001B4D73 /* BranchesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA090D23488614001B4D73 /* BranchesRepository.swift */; };
+		5ACA0910234886DF001B4D73 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA090F234886DF001B4D73 /* Branch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +165,8 @@
 		5ABB0BDE2308FE520072660A /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		5ACA0909234880E8001B4D73 /* BranchesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchesData.swift; sourceTree = "<group>"; };
 		5ACA090B2348836F001B4D73 /* BranchesRequestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchesRequestClient.swift; sourceTree = "<group>"; };
+		5ACA090D23488614001B4D73 /* BranchesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchesRepository.swift; sourceTree = "<group>"; };
+		5ACA090F234886DF001B4D73 /* Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +194,7 @@
 				5A923505232CEF86001E5735 /* Release.swift */,
 				5A923507232CEF91001E5735 /* CommunityProfile.swift */,
 				5A923509232CEF9B001E5735 /* Collaborator.swift */,
+				5ACA090F234886DF001B4D73 /* Branch.swift */,
 			);
 			path = Value;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 				5A667E9F2312858E00C8E190 /* CommunityProfileRepository.swift */,
 				5A667EA423129C3E00C8E190 /* ReleaseRepository.swift */,
 				5A667EA623129FF900C8E190 /* CollaboratorRepository.swift */,
+				5ACA090D23488614001B4D73 /* BranchesRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -640,6 +646,7 @@
 				5A940D18230933ED00BD0A08 /* DetailViewModel.swift in Sources */,
 				5A662C61230842BB00BD0403 /* CollaboratorData.swift in Sources */,
 				5A61EECE22EF208B00054B92 /* SearchListUseCase.swift in Sources */,
+				5ACA0910234886DF001B4D73 /* Branch.swift in Sources */,
 				5A9B912122EBEB0500996712 /* AppDelegate.swift in Sources */,
 				5A662C5323083DA700BD0403 /* DetailView.swift in Sources */,
 				5A4CBEC12308D2240056E710 /* ReleaseDisplayData.swift in Sources */,
@@ -661,6 +668,7 @@
 				5A92350A232CEF9B001E5735 /* Collaborator.swift in Sources */,
 				5A9EFC8B2312409400490D92 /* StarColor+Extension.swift in Sources */,
 				5A4CBEBD2308CEAF0056E710 /* CommunityProfileDisplayData.swift in Sources */,
+				5ACA090E23488614001B4D73 /* BranchesRepository.swift in Sources */,
 				5A9B912322EBEB0500996712 /* SceneDelegate.swift in Sources */,
 				5A61EED222EF265B00054B92 /* SearchRepository.swift in Sources */,
 				5A923508232CEF91001E5735 /* CommunityProfile.swift in Sources */,
