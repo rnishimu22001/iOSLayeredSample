@@ -18,7 +18,6 @@ struct APIURLSetting {
     }
     
     struct CommunityProfile {
-        
         static func addAccept(request: URLRequest) -> URLRequest {
             var mutable = request
             mutable.addValue("application/vnd.github.black-panther-preview+json", forHTTPHeaderField: HeaderKey.accept)
@@ -37,14 +36,12 @@ struct APIURLSetting {
     }
     
     struct Collaborators {
-        
         static func url(with fullName: String) -> String {
             return base + "repos/" + fullName + "/stats/contributors"
         }
     }
     
     struct Release {
-        
         static func latestReleasesURL(with fullName: String) -> String {
             return base + "repos/" + fullName + "/releases/latest"
         }
