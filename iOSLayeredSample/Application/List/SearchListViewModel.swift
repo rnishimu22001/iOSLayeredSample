@@ -46,6 +46,7 @@ final class SearchListViewModel: SearchListViewModelProtocol {
             case .failure:
                 self?.status.value = .error
             }
+            self?.currentLoadingCancelable = nil
         }, receiveValue: { [weak self] contents in
             guard let self = self else { return }
             self.contents.value = self.converting(from: contents.result, nextURL: contents.nextURL)
