@@ -24,7 +24,7 @@ iOSのレイヤードアーキテクチャを採用したサンプルアプリ�
 * 角丸枠線に黒字がProtocol
 * 角丸塗りつぶしが実装クラス
 
-![layerd 001](https://user-images.githubusercontent.com/25366111/64076458-2a9ae880-cd00-11e9-95e0-08e992a032f9.jpeg)
+![layerd 001](https://user-images.githubusercontent.com/25366111/65311994-902a1880-dbcc-11e9-9498-178cc815de1f.jpeg)
 
 
 ### PresentationLayer
