@@ -76,6 +76,7 @@
 		5ABB0BDD2308FE470072660A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB0BDC2308FE470072660A /* LoadingView.swift */; };
 		5ABB0BDF2308FE520072660A /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ABB0BDE2308FE520072660A /* LoadingView.xib */; };
 		5ACA090A234880E8001B4D73 /* BranchesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA0909234880E8001B4D73 /* BranchesData.swift */; };
+		5ACA090C2348836F001B4D73 /* BranchesRequestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA090B2348836F001B4D73 /* BranchesRequestClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +162,7 @@
 		5ABB0BDC2308FE470072660A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		5ABB0BDE2308FE520072660A /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		5ACA0909234880E8001B4D73 /* BranchesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchesData.swift; sourceTree = "<group>"; };
+		5ACA090B2348836F001B4D73 /* BranchesRequestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchesRequestClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -418,6 +420,7 @@
 				5A662C5823083F9500BD0403 /* CollaboratorsClient.swift */,
 				5A662C5A23083FC200BD0403 /* CommunityProfileClient.swift */,
 				5ABAAC10231B9B9000AF76A7 /* GitHubAPIRequestable.swift */,
+				5ACA090B2348836F001B4D73 /* BranchesRequestClient.swift */,
 			);
 			path = APIRequestClient;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 				5AB6D67022F5419A008C3D14 /* Displayable.swift in Sources */,
 				5A4CBEBB2308CAA30056E710 /* CollaboratorDisplayData.swift in Sources */,
 				5AADA61C22EC1F47001BA1AD /* NSObject+Additions.swift in Sources */,
+				5ACA090C2348836F001B4D73 /* BranchesRequestClient.swift in Sources */,
 				5A667EA723129FF900C8E190 /* CollaboratorRepository.swift in Sources */,
 				5A667EA523129C3E00C8E190 /* ReleaseRepository.swift in Sources */,
 				5A92350A232CEF9B001E5735 /* Collaborator.swift in Sources */,
