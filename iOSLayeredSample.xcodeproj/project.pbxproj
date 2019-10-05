@@ -75,6 +75,7 @@
 		5ABAAC11231B9B9000AF76A7 /* GitHubAPIRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABAAC10231B9B9000AF76A7 /* GitHubAPIRequestable.swift */; };
 		5ABB0BDD2308FE470072660A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB0BDC2308FE470072660A /* LoadingView.swift */; };
 		5ABB0BDF2308FE520072660A /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ABB0BDE2308FE520072660A /* LoadingView.xib */; };
+		5ACA090A234880E8001B4D73 /* BranchesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA0909234880E8001B4D73 /* BranchesData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +160,7 @@
 		5ABAAC10231B9B9000AF76A7 /* GitHubAPIRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIRequestable.swift; sourceTree = "<group>"; };
 		5ABB0BDC2308FE470072660A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		5ABB0BDE2308FE520072660A /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		5ACA0909234880E8001B4D73 /* BranchesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchesData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 				5A662C5E2308423800BD0403 /* CommunityProfileData.swift */,
 				5A662C60230842BB00BD0403 /* CollaboratorData.swift */,
 				5A74E1652307F20600EFEA7C /* RepositoryData.swift */,
+				5ACA0909234880E8001B4D73 /* BranchesData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ACA090A234880E8001B4D73 /* BranchesData.swift in Sources */,
 				5A9EFC8823123F5500490D92 /* StarColor.swift in Sources */,
 				5A4CBEBF2308D13A0056E710 /* Date+Additions.swift in Sources */,
 				5AA7E3E22331E4690011CE1B /* CollaboratorTitleView.swift in Sources */,
