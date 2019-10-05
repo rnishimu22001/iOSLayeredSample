@@ -40,7 +40,7 @@ final class DetailViewModel: DetailViewModelProtocol {
         status.value = .loading
         let publishers = useCase.reload(repository: repositoryFullName)
         otherModulesCancellable = publishers.otherModules.sink(receiveValue: { [weak self] others in
-            self?.didLoad(latestRelease: others.0, collaborators: others.1)
+            self?.didLoad(latestRelease: others.0, collaborators: others.1, branches: others.2)
         })
         
         profileCancellable = publishers.profile.sink(receiveCompletion: { [weak self] result in
@@ -58,8 +58,13 @@ final class DetailViewModel: DetailViewModelProtocol {
 }
 
 extension DetailViewModel {
-    func didLoad(latestRelease: Release?, collaborators: [Collaborator]) {
+    func didLoad(latestRelease: Release?, collaborators: [Collaborator], branches: [Branch]) {
         var filterd = contents.value.filter { !($0 is LoadingDisplayData) }
+        
+        if let first = branches.first {
+            filterd.append(BranchDisplayData(with: first))
+        }
+        
         if let release = latestRelease {
             filterd.append(ReleaseDisplayData(with: release, status: ReleaseStatus(isDraft: release.isDraft, isPrerelease: release.isPreRelease)))
         }
@@ -68,6 +73,7 @@ extension DetailViewModel {
             let filterdCollaborators = collaborators.prefix(displayCollaboratorsCount)
             filterd.append(CollaboratorsDisplayData(with: Array(filterdCollaborators)))
         }
+        
         contents.value = filterd
     }
     
