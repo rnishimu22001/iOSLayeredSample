@@ -20,12 +20,10 @@ struct BranchesRequestClient: BranchesRequestClientProtocol, GitHubAPIRequestabl
     }
     
     func requestBranch(inRepository fullName: String, completion: @escaping ((Result<BranchesData, Error>, GitHubAPIResponseHeader?) -> Void)) {
-        guard var urlComponents = URLComponents(string: APIURLSetting.BranchList.url(with: fullName)) else {
+        guard let urlComponents = URLComponents(string: APIURLSetting.BranchList.url(with: fullName)) else {
             completion(.failure(RequestError.badURL), nil)
             return
         }
-        let query = URLQueryItem(name: "protected", value: "true")
-        urlComponents.queryItems = [query]
         guard let url = urlComponents.url else {
             completion(.failure(RequestError.badURL), nil)
             return

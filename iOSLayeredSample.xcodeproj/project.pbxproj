@@ -80,6 +80,8 @@
 		5ACA090E23488614001B4D73 /* BranchesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA090D23488614001B4D73 /* BranchesRepository.swift */; };
 		5ACA0910234886DF001B4D73 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA090F234886DF001B4D73 /* Branch.swift */; };
 		5ACA091223488C65001B4D73 /* BranchDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA091123488C65001B4D73 /* BranchDisplayData.swift */; };
+		5ACA091423488D40001B4D73 /* BranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA091323488D40001B4D73 /* BranchView.swift */; };
+		5ACA091623488D49001B4D73 /* BranchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ACA091523488D49001B4D73 /* BranchView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +171,8 @@
 		5ACA090D23488614001B4D73 /* BranchesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchesRepository.swift; sourceTree = "<group>"; };
 		5ACA090F234886DF001B4D73 /* Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
 		5ACA091123488C65001B4D73 /* BranchDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchDisplayData.swift; sourceTree = "<group>"; };
+		5ACA091323488D40001B4D73 /* BranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchView.swift; sourceTree = "<group>"; };
+		5ACA091523488D49001B4D73 /* BranchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BranchView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +265,8 @@
 				5A4CBECE2308E94F0056E710 /* CollaboratorView.swift */,
 				5AA7E3DF2331E45A0011CE1B /* CollaboratorTitleView.xib */,
 				5AA7E3E12331E4690011CE1B /* CollaboratorTitleView.swift */,
+				5ACA091323488D40001B4D73 /* BranchView.swift */,
+				5ACA091523488D49001B4D73 /* BranchView.xib */,
 			);
 			path = RepositoryDetail;
 			sourceTree = "<group>";
@@ -591,6 +597,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ACA091623488D49001B4D73 /* BranchView.xib in Resources */,
 				5AB6D67422F59D46008C3D14 /* LoadingCell.xib in Resources */,
 				5A9B912D22EBEB0600996712 /* LaunchScreen.storyboard in Resources */,
 				5A4CBEC72308D7F70056E710 /* CommunityProfileView.xib in Resources */,
@@ -668,6 +675,7 @@
 				5AADA61C22EC1F47001BA1AD /* NSObject+Additions.swift in Sources */,
 				5ACA090C2348836F001B4D73 /* BranchesRequestClient.swift in Sources */,
 				5A667EA723129FF900C8E190 /* CollaboratorRepository.swift in Sources */,
+				5ACA091423488D40001B4D73 /* BranchView.swift in Sources */,
 				5A667EA523129C3E00C8E190 /* ReleaseRepository.swift in Sources */,
 				5A92350A232CEF9B001E5735 /* Collaborator.swift in Sources */,
 				5A9EFC8B2312409400490D92 /* StarColor+Extension.swift in Sources */,

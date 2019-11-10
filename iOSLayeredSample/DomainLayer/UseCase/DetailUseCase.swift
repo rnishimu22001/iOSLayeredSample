@@ -40,6 +40,7 @@ final class DetailUseCase: DetailUseCaseProtocol {
         otherModules: Publishers.Zip3<Publishers.Catch<Publishers.Map<PassthroughSubject<Release, Error>, Release?>, Just<Release?>>, Publishers.Catch<PassthroughSubject<[Collaborator], Error>, Just<[Collaborator]>>, Publishers.Catch<PassthroughSubject<[Branch], Error>, Just<[Branch]>>>) {
        
         let profileSubject = profileRepository.reload(repository: fullName)
+           
             let releaseSubject = releaseRepository.reloadLatestRelease(repository: fullName).map({ (release) -> Release? in
                 return release
             }).catch({ (_) -> Just<Release?> in

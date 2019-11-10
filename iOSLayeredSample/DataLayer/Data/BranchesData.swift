@@ -17,8 +17,8 @@ struct BranchData: Codable {
     let name: String
     let commit: Commit
     let protected: Bool
-    let protection: Protection
-    let protectionURL: String
+    let protection: Protection?
+    let protectionURL: String?
 
     enum CodingKeys: String, CodingKey {
         case name, commit, protected, protection
