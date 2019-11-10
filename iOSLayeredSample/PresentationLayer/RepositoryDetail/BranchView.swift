@@ -10,7 +10,7 @@ import UIKit
 
 final class BranchView: UIView {
     
-    static let height: CGFloat = 20
+    static let height: CGFloat = 30
     
     @IBOutlet var view: UIView!
     @IBOutlet weak var name: UILabel!

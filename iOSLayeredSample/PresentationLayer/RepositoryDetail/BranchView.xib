@@ -54,15 +54,26 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZXc-wV-de6" userLabel="Separator">
+                    <rect key="frame" x="8" y="468.5" width="398" height="0.5"/>
+                    <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="f7u-29-vW3"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="hIz-eh-gPv"/>
+                </view>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="ZXc-wV-de6" firstAttribute="leading" secondItem="Aqm-ps-7JU" secondAttribute="leading" constant="8" id="H8e-ZP-X6h"/>
                 <constraint firstItem="qKh-rz-y28" firstAttribute="leading" secondItem="voQ-Wu-HeE" secondAttribute="trailing" constant="12" id="J11-5f-zVc"/>
                 <constraint firstItem="voQ-Wu-HeE" firstAttribute="leading" secondItem="Aqm-ps-7JU" secondAttribute="leading" constant="12" id="Mcm-dk-zpo"/>
                 <constraint firstItem="qKh-rz-y28" firstAttribute="centerY" secondItem="Aqm-ps-7JU" secondAttribute="centerY" id="NX4-Zs-Pdt"/>
                 <constraint firstItem="dTd-UH-xqz" firstAttribute="leading" secondItem="qKh-rz-y28" secondAttribute="trailing" constant="8" id="WY2-OO-phG"/>
                 <constraint firstItem="voQ-Wu-HeE" firstAttribute="centerY" secondItem="Aqm-ps-7JU" secondAttribute="centerY" id="YAO-ZW-8En"/>
                 <constraint firstItem="dTd-UH-xqz" firstAttribute="centerY" secondItem="Aqm-ps-7JU" secondAttribute="centerY" id="ZeO-70-cUE"/>
+                <constraint firstItem="ZXc-wV-de6" firstAttribute="bottom" secondItem="Aqm-ps-7JU" secondAttribute="bottom" id="uZI-5e-FFs"/>
+                <constraint firstItem="Aqm-ps-7JU" firstAttribute="trailing" secondItem="ZXc-wV-de6" secondAttribute="trailing" constant="8" id="y4R-U3-vjj"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="Aqm-ps-7JU"/>
