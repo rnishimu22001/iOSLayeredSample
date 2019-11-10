@@ -14,7 +14,7 @@ final class BranchView: UIView {
     
     @IBOutlet var view: UIView!
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var protected: UILabel!
+    @IBOutlet weak var protected: UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

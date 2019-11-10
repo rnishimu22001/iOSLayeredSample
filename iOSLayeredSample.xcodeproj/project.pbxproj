@@ -58,6 +58,7 @@
 		5AA7E3E02331E45A0011CE1B /* CollaboratorTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AA7E3DF2331E45A0011CE1B /* CollaboratorTitleView.xib */; };
 		5AA7E3E22331E4690011CE1B /* CollaboratorTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7E3E12331E4690011CE1B /* CollaboratorTitleView.swift */; };
 		5AA7E3E423320BD00011CE1B /* DetailContributorTitleDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7E3E323320BD00011CE1B /* DetailContributorTitleDisplayData.swift */; };
+		5AA8374D237819FE00B059DC /* BranchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AA8374C237819FE00B059DC /* BranchView.xib */; };
 		5AADA5FA22EC101A001BA1AD /* SearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AADA5F922EC101A001BA1AD /* SearchListView.swift */; };
 		5AADA5FE22EC105D001BA1AD /* SearchListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AADA5FD22EC105D001BA1AD /* SearchListView.xib */; };
 		5AADA60822EC16CC001BA1AD /* SearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AADA60722EC16CC001BA1AD /* SearchListViewController.swift */; };
@@ -81,7 +82,6 @@
 		5ACA0910234886DF001B4D73 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA090F234886DF001B4D73 /* Branch.swift */; };
 		5ACA091223488C65001B4D73 /* BranchDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA091123488C65001B4D73 /* BranchDisplayData.swift */; };
 		5ACA091423488D40001B4D73 /* BranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA091323488D40001B4D73 /* BranchView.swift */; };
-		5ACA091623488D49001B4D73 /* BranchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ACA091523488D49001B4D73 /* BranchView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +149,7 @@
 		5AA7E3DF2331E45A0011CE1B /* CollaboratorTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollaboratorTitleView.xib; sourceTree = "<group>"; };
 		5AA7E3E12331E4690011CE1B /* CollaboratorTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorTitleView.swift; sourceTree = "<group>"; };
 		5AA7E3E323320BD00011CE1B /* DetailContributorTitleDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContributorTitleDisplayData.swift; sourceTree = "<group>"; };
+		5AA8374C237819FE00B059DC /* BranchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BranchView.xib; sourceTree = "<group>"; };
 		5AADA5F922EC101A001BA1AD /* SearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListView.swift; sourceTree = "<group>"; };
 		5AADA5FD22EC105D001BA1AD /* SearchListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchListView.xib; sourceTree = "<group>"; };
 		5AADA60722EC16CC001BA1AD /* SearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewController.swift; sourceTree = "<group>"; };
@@ -172,7 +173,6 @@
 		5ACA090F234886DF001B4D73 /* Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
 		5ACA091123488C65001B4D73 /* BranchDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchDisplayData.swift; sourceTree = "<group>"; };
 		5ACA091323488D40001B4D73 /* BranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchView.swift; sourceTree = "<group>"; };
-		5ACA091523488D49001B4D73 /* BranchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BranchView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,7 +266,7 @@
 				5AA7E3DF2331E45A0011CE1B /* CollaboratorTitleView.xib */,
 				5AA7E3E12331E4690011CE1B /* CollaboratorTitleView.swift */,
 				5ACA091323488D40001B4D73 /* BranchView.swift */,
-				5ACA091523488D49001B4D73 /* BranchView.xib */,
+				5AA8374C237819FE00B059DC /* BranchView.xib */,
 			);
 			path = RepositoryDetail;
 			sourceTree = "<group>";
@@ -597,7 +597,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5ACA091623488D49001B4D73 /* BranchView.xib in Resources */,
+				5AA8374D237819FE00B059DC /* BranchView.xib in Resources */,
 				5AB6D67422F59D46008C3D14 /* LoadingCell.xib in Resources */,
 				5A9B912D22EBEB0600996712 /* LaunchScreen.storyboard in Resources */,
 				5A4CBEC72308D7F70056E710 /* CommunityProfileView.xib in Resources */,

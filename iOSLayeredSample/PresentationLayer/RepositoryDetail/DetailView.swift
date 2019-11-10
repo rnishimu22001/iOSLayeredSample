@@ -72,6 +72,7 @@ final class DetailPresenter: NSObject, DetailViewProtocol {
             addContentView(for: release)
         case let collaborators as CollaboratorsDisplayData:
             addContentView(for: collaborators)
+        case let
         case is DetailContributorTitleDisplayData:
             // add title
             let size = CGSize(width: contentsView.frame.size.width, height: CollaboratorTitleView.height)
