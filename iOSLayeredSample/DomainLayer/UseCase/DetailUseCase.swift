@@ -35,16 +35,15 @@ final class DetailUseCase: DetailUseCaseProtocol {
         otherModules: Publishers.Zip<Publishers.Catch<Publishers.Map<PassthroughSubject<Release, Error>, Release?>, Just<Release?>>, Publishers.Catch<PassthroughSubject<[Collaborator], Error>, Just<[Collaborator]>>>) {
        
         let profileSubject = profileRepository.reload(repository: fullName)
-            let releaseSubject = releaseRepository.reloadLatestRelease(repository: fullName).map({ (release) -> Release? in
-                return release
-            }).catch({ (_) -> Just<Release?> in
-                return Just(nil)
-            })
-            
-            let collaboratorSubject = collaboratorRepository.reload(repositoy: fullName).catch({ (_) -> Just<[Collaborator]> in
-                return Just([])
-            })
-        let otherModulesSubject =  releaseSubject.zip(collaboratorSubject)
+        let releaseSubject = releaseRepository.reloadLatestRelease(repository: fullName).map({ (release) -> Release? in
+            return release
+        }).catch({ (_) -> Just<Release?> in
+            return Just(nil)
+        })
+        let collaboratorSubject = collaboratorRepository.reload(repositoy: fullName).catch({ (_) -> Just<[Collaborator]> in
+            return Just([])
+        })
+        let otherModulesSubject = releaseSubject.zip(collaboratorSubject)
             
         return (profile: profileSubject, otherModules: otherModulesSubject)
     }
