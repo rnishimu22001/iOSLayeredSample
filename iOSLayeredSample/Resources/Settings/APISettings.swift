@@ -29,6 +29,12 @@ struct APIURLSetting {
         }
     }
     
+    struct BranchList {
+        static func url(with fullName: String) -> String {
+            return base + "repos/" + fullName + "/branches"
+        }
+    }
+    
     struct Collaborators {
         static func url(with fullName: String) -> String {
             return base + "repos/" + fullName + "/stats/contributors"

@@ -58,6 +58,7 @@
 		5AA7E3E02331E45A0011CE1B /* CollaboratorTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AA7E3DF2331E45A0011CE1B /* CollaboratorTitleView.xib */; };
 		5AA7E3E22331E4690011CE1B /* CollaboratorTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7E3E12331E4690011CE1B /* CollaboratorTitleView.swift */; };
 		5AA7E3E423320BD00011CE1B /* DetailContributorTitleDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7E3E323320BD00011CE1B /* DetailContributorTitleDisplayData.swift */; };
+		5AA8374D237819FE00B059DC /* BranchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AA8374C237819FE00B059DC /* BranchView.xib */; };
 		5AADA5FA22EC101A001BA1AD /* SearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AADA5F922EC101A001BA1AD /* SearchListView.swift */; };
 		5AADA5FE22EC105D001BA1AD /* SearchListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AADA5FD22EC105D001BA1AD /* SearchListView.xib */; };
 		5AADA60822EC16CC001BA1AD /* SearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AADA60722EC16CC001BA1AD /* SearchListViewController.swift */; };
@@ -75,6 +76,12 @@
 		5ABAAC11231B9B9000AF76A7 /* GitHubAPIRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABAAC10231B9B9000AF76A7 /* GitHubAPIRequestable.swift */; };
 		5ABB0BDD2308FE470072660A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB0BDC2308FE470072660A /* LoadingView.swift */; };
 		5ABB0BDF2308FE520072660A /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ABB0BDE2308FE520072660A /* LoadingView.xib */; };
+		5ACA090A234880E8001B4D73 /* BranchesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA0909234880E8001B4D73 /* BranchesData.swift */; };
+		5ACA090C2348836F001B4D73 /* BranchesRequestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA090B2348836F001B4D73 /* BranchesRequestClient.swift */; };
+		5ACA090E23488614001B4D73 /* BranchesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA090D23488614001B4D73 /* BranchesRepository.swift */; };
+		5ACA0910234886DF001B4D73 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA090F234886DF001B4D73 /* Branch.swift */; };
+		5ACA091223488C65001B4D73 /* BranchDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA091123488C65001B4D73 /* BranchDisplayData.swift */; };
+		5ACA091423488D40001B4D73 /* BranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA091323488D40001B4D73 /* BranchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +149,7 @@
 		5AA7E3DF2331E45A0011CE1B /* CollaboratorTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollaboratorTitleView.xib; sourceTree = "<group>"; };
 		5AA7E3E12331E4690011CE1B /* CollaboratorTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorTitleView.swift; sourceTree = "<group>"; };
 		5AA7E3E323320BD00011CE1B /* DetailContributorTitleDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContributorTitleDisplayData.swift; sourceTree = "<group>"; };
+		5AA8374C237819FE00B059DC /* BranchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BranchView.xib; sourceTree = "<group>"; };
 		5AADA5F922EC101A001BA1AD /* SearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListView.swift; sourceTree = "<group>"; };
 		5AADA5FD22EC105D001BA1AD /* SearchListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchListView.xib; sourceTree = "<group>"; };
 		5AADA60722EC16CC001BA1AD /* SearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +167,12 @@
 		5ABAAC10231B9B9000AF76A7 /* GitHubAPIRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIRequestable.swift; sourceTree = "<group>"; };
 		5ABB0BDC2308FE470072660A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		5ABB0BDE2308FE520072660A /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		5ACA0909234880E8001B4D73 /* BranchesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchesData.swift; sourceTree = "<group>"; };
+		5ACA090B2348836F001B4D73 /* BranchesRequestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchesRequestClient.swift; sourceTree = "<group>"; };
+		5ACA090D23488614001B4D73 /* BranchesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchesRepository.swift; sourceTree = "<group>"; };
+		5ACA090F234886DF001B4D73 /* Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
+		5ACA091123488C65001B4D73 /* BranchDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchDisplayData.swift; sourceTree = "<group>"; };
+		5ACA091323488D40001B4D73 /* BranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +200,7 @@
 				5A923505232CEF86001E5735 /* Release.swift */,
 				5A923507232CEF91001E5735 /* CommunityProfile.swift */,
 				5A923509232CEF9B001E5735 /* Collaborator.swift */,
+				5ACA090F234886DF001B4D73 /* Branch.swift */,
 			);
 			path = Value;
 			sourceTree = "<group>";
@@ -206,6 +221,7 @@
 				5A662C5E2308423800BD0403 /* CommunityProfileData.swift */,
 				5A662C60230842BB00BD0403 /* CollaboratorData.swift */,
 				5A74E1652307F20600EFEA7C /* RepositoryData.swift */,
+				5ACA0909234880E8001B4D73 /* BranchesData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -217,6 +233,7 @@
 				5A667E9F2312858E00C8E190 /* CommunityProfileRepository.swift */,
 				5A667EA423129C3E00C8E190 /* ReleaseRepository.swift */,
 				5A667EA623129FF900C8E190 /* CollaboratorRepository.swift */,
+				5ACA090D23488614001B4D73 /* BranchesRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -248,6 +265,8 @@
 				5A4CBECE2308E94F0056E710 /* CollaboratorView.swift */,
 				5AA7E3DF2331E45A0011CE1B /* CollaboratorTitleView.xib */,
 				5AA7E3E12331E4690011CE1B /* CollaboratorTitleView.swift */,
+				5ACA091323488D40001B4D73 /* BranchView.swift */,
+				5AA8374C237819FE00B059DC /* BranchView.xib */,
 			);
 			path = RepositoryDetail;
 			sourceTree = "<group>";
@@ -293,6 +312,7 @@
 				5A8957422308279B00A6099E /* RepositoryDisplayData.swift */,
 				5A4CBEBC2308CEAF0056E710 /* CommunityProfileDisplayData.swift */,
 				5A4CBEC02308D2240056E710 /* ReleaseDisplayData.swift */,
+				5ACA091123488C65001B4D73 /* BranchDisplayData.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -415,6 +435,7 @@
 				5A662C5823083F9500BD0403 /* CollaboratorsClient.swift */,
 				5A662C5A23083FC200BD0403 /* CommunityProfileClient.swift */,
 				5ABAAC10231B9B9000AF76A7 /* GitHubAPIRequestable.swift */,
+				5ACA090B2348836F001B4D73 /* BranchesRequestClient.swift */,
 			);
 			path = APIRequestClient;
 			sourceTree = "<group>";
@@ -576,6 +597,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AA8374D237819FE00B059DC /* BranchView.xib in Resources */,
 				5AB6D67422F59D46008C3D14 /* LoadingCell.xib in Resources */,
 				5A9B912D22EBEB0600996712 /* LaunchScreen.storyboard in Resources */,
 				5A4CBEC72308D7F70056E710 /* CommunityProfileView.xib in Resources */,
@@ -605,6 +627,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ACA090A234880E8001B4D73 /* BranchesData.swift in Sources */,
 				5A9EFC8823123F5500490D92 /* StarColor.swift in Sources */,
 				5A4CBEBF2308D13A0056E710 /* Date+Additions.swift in Sources */,
 				5AA7E3E22331E4690011CE1B /* CollaboratorTitleView.swift in Sources */,
@@ -613,6 +636,7 @@
 				5A9EFC832311353300490D92 /* UISearchBarDelegateProxy.swift in Sources */,
 				5A940D1A2309349400BD0A08 /* DetailUseCase.swift in Sources */,
 				5AADA60C22EC1720001BA1AD /* APISettings.swift in Sources */,
+				5ACA091223488C65001B4D73 /* BranchDisplayData.swift in Sources */,
 				5A923504232CEF7A001E5735 /* Repository.swift in Sources */,
 				5A8957432308279B00A6099E /* RepositoryDisplayData.swift in Sources */,
 				5A662C5923083F9500BD0403 /* CollaboratorsClient.swift in Sources */,
@@ -633,6 +657,7 @@
 				5A940D18230933ED00BD0A08 /* DetailViewModel.swift in Sources */,
 				5A662C61230842BB00BD0403 /* CollaboratorData.swift in Sources */,
 				5A61EECE22EF208B00054B92 /* SearchListUseCase.swift in Sources */,
+				5ACA0910234886DF001B4D73 /* Branch.swift in Sources */,
 				5A9B912122EBEB0500996712 /* AppDelegate.swift in Sources */,
 				5A662C5323083DA700BD0403 /* DetailView.swift in Sources */,
 				5A4CBEC12308D2240056E710 /* ReleaseDisplayData.swift in Sources */,
@@ -648,11 +673,14 @@
 				5AB6D67022F5419A008C3D14 /* Displayable.swift in Sources */,
 				5A4CBEBB2308CAA30056E710 /* CollaboratorDisplayData.swift in Sources */,
 				5AADA61C22EC1F47001BA1AD /* NSObject+Additions.swift in Sources */,
+				5ACA090C2348836F001B4D73 /* BranchesRequestClient.swift in Sources */,
 				5A667EA723129FF900C8E190 /* CollaboratorRepository.swift in Sources */,
+				5ACA091423488D40001B4D73 /* BranchView.swift in Sources */,
 				5A667EA523129C3E00C8E190 /* ReleaseRepository.swift in Sources */,
 				5A92350A232CEF9B001E5735 /* Collaborator.swift in Sources */,
 				5A9EFC8B2312409400490D92 /* StarColor+Extension.swift in Sources */,
 				5A4CBEBD2308CEAF0056E710 /* CommunityProfileDisplayData.swift in Sources */,
+				5ACA090E23488614001B4D73 /* BranchesRepository.swift in Sources */,
 				5A9B912322EBEB0500996712 /* SceneDelegate.swift in Sources */,
 				5A61EED222EF265B00054B92 /* SearchRepository.swift in Sources */,
 				5A923508232CEF91001E5735 /* CommunityProfile.swift in Sources */,

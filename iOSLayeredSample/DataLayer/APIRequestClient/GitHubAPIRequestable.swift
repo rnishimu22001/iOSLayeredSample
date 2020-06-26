@@ -27,8 +27,8 @@ extension GitHubAPIRequestable {
                 do {
                     let profile = try JSONDecoder().decode(T.self, from: data)
                     completion(.success(profile), header)
-                } catch {
-                    completion(.failure(RequestError.dataEncodeFailed), header)
+                } catch(let error) {
+                    completion(.failure(error), header)
                 }
             }
         }

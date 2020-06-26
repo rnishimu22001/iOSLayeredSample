@@ -72,6 +72,8 @@ final class DetailPresenter: NSObject, DetailViewProtocol {
             addContentView(for: release)
         case let collaborators as CollaboratorsDisplayData:
             addContentView(for: collaborators)
+        case let branch as BranchDisplayData:
+            addContentView(for: branch)
         case is DetailContributorTitleDisplayData:
             // add title
             let size = CGSize(width: contentsView.frame.size.width, height: CollaboratorTitleView.height)
@@ -118,5 +120,17 @@ final class DetailPresenter: NSObject, DetailViewProtocol {
             collaboratorView.heightAnchor.constraint(equalToConstant: CollaboratorView.height).isActive = true
             contentsView.addArrangedSubview(collaboratorView)
         }
+    }
+    
+    private func addContentView(for branch: BranchDisplayData) {
+        // add branch
+
+        let size = CGSize(width: contentsView.frame.size.width, height: BranchView.height)
+        let frame = CGRect(origin: .zero, size: size)
+        let branchView = BranchView(frame: frame)
+        branchView.setup(branch)
+        branchView.heightAnchor.constraint(equalToConstant: BranchView.height).isActive = true
+        contentsView.addArrangedSubview(branchView)
+        
     }
 }

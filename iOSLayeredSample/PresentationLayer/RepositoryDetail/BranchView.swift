@@ -1,22 +1,20 @@
 //
-//  CollaboratorView.swift
+//  BranchView.swift
 //  iOSLayeredSample
 //
-//  Created by rnishimu on 2019/08/18.
+//  Created by rnishimu on 2019/10/05.
 //  Copyright © 2019 rnishimu22001. All rights reserved.
 //
 
 import UIKit
-import Nuke
 
-final class CollaboratorView: UIView {
+final class BranchView: UIView {
     
-    static let height: CGFloat = 100
+    static let height: CGFloat = 30
     
     @IBOutlet var view: UIView!
-    @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var admin: UILabel!
+    @IBOutlet weak var protected: UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,9 +32,8 @@ final class CollaboratorView: UIView {
         view.frame = self.frame
     }
     
-    func setup(_ colloaborator: CollaboratorDisplayData) {
-        Nuke.loadImage(with: colloaborator.icon, into: icon)
-        name.text = colloaborator.name
-        admin.isHidden = !colloaborator.hasAdminBadge
+    func setup(_ branch: BranchDisplayData) {
+        name.text = branch.name
+        protected.isHidden = branch.shouldHiddenProtected
     }
 }
