@@ -49,7 +49,7 @@ final class SearchListViewModel: SearchListViewModelProtocol {
             self?.currentLoadingCancelable = nil
         }, receiveValue: { [weak self] contents in
             guard let self = self else { return }
-            self.contents.value = self.converting(from: contents.result, nextURL: contents.nextURL)
+            self.contents.value = self.convert(from: contents.result, nextURL: contents.nextURL)
         })
     }
     
@@ -84,11 +84,11 @@ extension SearchListViewModel {
     
     func didLoad(additional repositoryList: [Repository], nextURL: URL?) {
         var filterd = contents.value.filter { !($0 is LoadingDisplayData) }
-        filterd.append(contentsOf: converting(from: repositoryList, nextURL: nextURL))
+        filterd.append(contentsOf: convert(from: repositoryList, nextURL: nextURL))
         contents.value = filterd
     }
     
-    func converting(from repositoryList: [Repository], nextURL: URL?) -> [TableViewDisplayable] {
+    func convert(from repositoryList: [Repository], nextURL: URL?) -> [TableViewDisplayable] {
         var contents: [TableViewDisplayable] = []
         contents = repositoryList.map { RepositoryDisplayData(from: $0) }
         if let url = nextURL {
