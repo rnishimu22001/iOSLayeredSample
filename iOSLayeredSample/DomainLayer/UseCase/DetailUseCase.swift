@@ -17,8 +17,6 @@ protocol DetailUseCaseProtocol {
 }
 
 final class DetailUseCase: DetailUseCaseProtocol {
-
-    let queue = DispatchQueue(label: "RepositoryDetailUseCase")
    
     let profileRepository: CommunityProfileRepositoryProtocol
     let releaseRepository: ReleaseRepositoryProtocol
