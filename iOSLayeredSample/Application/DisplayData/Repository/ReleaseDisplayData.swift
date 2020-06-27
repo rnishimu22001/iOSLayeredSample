@@ -8,20 +8,7 @@
 
 import UIKit
 
-enum ReleaseStatus: String {
-    case draft
-    case prerelease
-    case release
-    // TODO: move to viewmodel
-    init(isDraft: Bool, isPrerelease: Bool) {
-        if isDraft {
-            self = .draft
-        } else if isPrerelease {
-            self = .prerelease
-        } else {
-            self = .release
-        }
-    }
+extension ReleaseStatus {
     
     var color: UIColor {
         switch self {
