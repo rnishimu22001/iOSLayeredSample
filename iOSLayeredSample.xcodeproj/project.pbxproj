@@ -199,6 +199,7 @@
 		5A172984232E2E5000A9B6A1 /* Value */ = {
 			isa = PBXGroup;
 			children = (
+				5A9EFC8723123F5500490D92 /* StarColor.swift */,
 				5A923505232CEF86001E5735 /* Release.swift */,
 				5A923507232CEF91001E5735 /* CommunityProfile.swift */,
 				5A923509232CEF9B001E5735 /* Collaborator.swift */,
@@ -405,7 +406,6 @@
 		5A9EFC8623123F4000490D92 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				5A9EFC8723123F5500490D92 /* StarColor.swift */,
 				5AA7E3E323320BD00011CE1B /* DetailContributorTitleDisplayData.swift */,
 			);
 			path = Common;
