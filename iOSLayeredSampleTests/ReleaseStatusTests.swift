@@ -11,13 +11,13 @@ import XCTest
 
 final class ReleaseStatusTests: XCTestCase {
     
-    func testColor() {
+    func testReleaseStatusColor() {
         XCTAssertEqual(ReleaseStatus.draft.color, .secondaryLabel)
         XCTAssertEqual(ReleaseStatus.prerelease.color, .black)
         XCTAssertEqual(ReleaseStatus.release.color, .green)
     }
     
-    func testStatus() {
+    func testStatusInit() {
         XCTContext.runActivity(named: "draftかつ、prereleaseの場合", block: { _ in
             XCTAssertEqual(ReleaseStatus(isDraft: true, isPrerelease: true), .draft, "prereleaseよりもdraftが優先される")
         })
