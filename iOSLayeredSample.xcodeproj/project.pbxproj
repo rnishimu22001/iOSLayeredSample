@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A373E8824A6DCCA00FCDBDE /* ReleaseStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A373E8724A6DCCA00FCDBDE /* ReleaseStatusTests.swift */; };
 		5A4CBEBB2308CAA30056E710 /* CollaboratorDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CBEBA2308CAA30056E710 /* CollaboratorDisplayData.swift */; };
 		5A4CBEBD2308CEAF0056E710 /* CommunityProfileDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CBEBC2308CEAF0056E710 /* CommunityProfileDisplayData.swift */; };
 		5A4CBEBF2308D13A0056E710 /* Date+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CBEBE2308D13A0056E710 /* Date+Additions.swift */; };
@@ -95,6 +96,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A373E8724A6DCCA00FCDBDE /* ReleaseStatusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseStatusTests.swift; sourceTree = "<group>"; };
 		5A4CBEBA2308CAA30056E710 /* CollaboratorDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorDisplayData.swift; sourceTree = "<group>"; };
 		5A4CBEBC2308CEAF0056E710 /* CommunityProfileDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityProfileDisplayData.swift; sourceTree = "<group>"; };
 		5A4CBEBE2308D13A0056E710 /* Date+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Additions.swift"; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 			children = (
 				5A9B913922EBEB0600996712 /* Info.plist */,
 				5A8A55C324A6DA0E00A57A4E /* StarColorTests.swift */,
+				5A373E8724A6DCCA00FCDBDE /* ReleaseStatusTests.swift */,
 			);
 			path = iOSLayeredSampleTests;
 			sourceTree = "<group>";
@@ -695,6 +698,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A8A55C424A6DA0E00A57A4E /* StarColorTests.swift in Sources */,
+				5A373E8824A6DCCA00FCDBDE /* ReleaseStatusTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
