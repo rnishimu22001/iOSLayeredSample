@@ -35,6 +35,7 @@
 		5A667EA723129FF900C8E190 /* CollaboratorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A667EA623129FF900C8E190 /* CollaboratorRepository.swift */; };
 		5A74E1662307F20600EFEA7C /* RepositoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A74E1652307F20600EFEA7C /* RepositoryData.swift */; };
 		5A8957432308279B00A6099E /* RepositoryDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8957422308279B00A6099E /* RepositoryDisplayData.swift */; };
+		5A8A55C424A6DA0E00A57A4E /* StarColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8A55C324A6DA0E00A57A4E /* StarColorTests.swift */; };
 		5A923504232CEF7A001E5735 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A923503232CEF7A001E5735 /* Repository.swift */; };
 		5A923506232CEF86001E5735 /* Release.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A923505232CEF86001E5735 /* Release.swift */; };
 		5A923508232CEF91001E5735 /* CommunityProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A923507232CEF91001E5735 /* CommunityProfile.swift */; };
@@ -123,6 +124,7 @@
 		5A667EA623129FF900C8E190 /* CollaboratorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorRepository.swift; sourceTree = "<group>"; };
 		5A74E1652307F20600EFEA7C /* RepositoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryData.swift; sourceTree = "<group>"; };
 		5A8957422308279B00A6099E /* RepositoryDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDisplayData.swift; sourceTree = "<group>"; };
+		5A8A55C324A6DA0E00A57A4E /* StarColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarColorTests.swift; sourceTree = "<group>"; };
 		5A923503232CEF7A001E5735 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		5A923505232CEF86001E5735 /* Release.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Release.swift; sourceTree = "<group>"; };
 		5A923507232CEF91001E5735 /* CommunityProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityProfile.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 			children = (
 				5A9B913722EBEB0600996712 /* iOSLayeredSampleTests.swift */,
 				5A9B913922EBEB0600996712 /* Info.plist */,
+				5A8A55C324A6DA0E00A57A4E /* StarColorTests.swift */,
 			);
 			path = iOSLayeredSampleTests;
 			sourceTree = "<group>";
@@ -694,6 +697,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A8A55C424A6DA0E00A57A4E /* StarColorTests.swift in Sources */,
 				5A9B913822EBEB0600996712 /* iOSLayeredSampleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
