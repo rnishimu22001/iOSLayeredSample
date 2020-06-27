@@ -50,7 +50,6 @@
 		5A9B912822EBEB0500996712 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A9B912622EBEB0500996712 /* Main.storyboard */; };
 		5A9B912A22EBEB0600996712 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A9B912922EBEB0600996712 /* Assets.xcassets */; };
 		5A9B912D22EBEB0600996712 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A9B912B22EBEB0600996712 /* LaunchScreen.storyboard */; };
-		5A9B913822EBEB0600996712 /* iOSLayeredSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9B913722EBEB0600996712 /* iOSLayeredSampleTests.swift */; };
 		5A9C6D1322EFB5F800C41CB0 /* RequestErrorReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9C6D1222EFB5F800C41CB0 /* RequestErrorReason.swift */; };
 		5A9EFC832311353300490D92 /* UISearchBarDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC822311353300490D92 /* UISearchBarDelegateProxy.swift */; };
 		5A9EFC852311637100490D92 /* DispatchQueue+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC842311637100490D92 /* DispatchQueue+Additions.swift */; };
@@ -141,7 +140,6 @@
 		5A9B912C22EBEB0600996712 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5A9B912E22EBEB0600996712 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A9B913322EBEB0600996712 /* iOSLayeredSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSLayeredSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A9B913722EBEB0600996712 /* iOSLayeredSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSLayeredSampleTests.swift; sourceTree = "<group>"; };
 		5A9B913922EBEB0600996712 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A9C6D1222EFB5F800C41CB0 /* RequestErrorReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestErrorReason.swift; sourceTree = "<group>"; };
 		5A9EFC822311353300490D92 /* UISearchBarDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarDelegateProxy.swift; sourceTree = "<group>"; };
@@ -367,7 +365,6 @@
 		5A9B913622EBEB0600996712 /* iOSLayeredSampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				5A9B913722EBEB0600996712 /* iOSLayeredSampleTests.swift */,
 				5A9B913922EBEB0600996712 /* Info.plist */,
 				5A8A55C324A6DA0E00A57A4E /* StarColorTests.swift */,
 			);
@@ -698,7 +695,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A8A55C424A6DA0E00A57A4E /* StarColorTests.swift in Sources */,
-				5A9B913822EBEB0600996712 /* iOSLayeredSampleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
