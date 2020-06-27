@@ -8,12 +8,12 @@
 
 struct BranchDisplayData {
     let name: String
-    let shouldHiddenProtected: Bool
+    let shouldHideProtected: Bool
 }
 
 extension BranchDisplayData {
     init(with branch: Branch) {
         self.name = branch.name
-        self.shouldHiddenProtected = !branch.isProtected
+        self.shouldHideProtected = !branch.isProtected
     }
 }

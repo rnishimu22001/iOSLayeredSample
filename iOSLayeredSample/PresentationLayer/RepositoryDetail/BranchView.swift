@@ -34,6 +34,6 @@ final class BranchView: UIView {
     
     func setup(_ branch: BranchDisplayData) {
         name.text = branch.name
-        protected.isHidden = branch.shouldHiddenProtected
+        protected.isHidden = branch.shouldHideProtected
     }
 }
