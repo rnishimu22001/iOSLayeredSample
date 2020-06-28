@@ -58,6 +58,8 @@
 		5A9EFC8823123F5500490D92 /* StarCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC8723123F5500490D92 /* StarCount.swift */; };
 		5A9EFC8B2312409400490D92 /* StarColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EFC8A2312409400490D92 /* StarColor+Extension.swift */; };
 		5AA2E69724A83C100065453D /* ErrorReasonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA2E69624A83C100065453D /* ErrorReasonTests.swift */; };
+		5AA2E69A24A869FA0065453D /* SearchListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA2E69924A869FA0065453D /* SearchListViewModelTests.swift */; };
+		5AA2E69D24A86B300065453D /* MockSearchListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA2E69C24A86B300065453D /* MockSearchListUseCase.swift */; };
 		5AA7E3E02331E45A0011CE1B /* CollaboratorTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AA7E3DF2331E45A0011CE1B /* CollaboratorTitleView.xib */; };
 		5AA7E3E22331E4690011CE1B /* CollaboratorTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7E3E12331E4690011CE1B /* CollaboratorTitleView.swift */; };
 		5AA7E3E423320BD00011CE1B /* DetailContributorTitleDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7E3E323320BD00011CE1B /* DetailContributorTitleDisplayData.swift */; };
@@ -152,6 +154,8 @@
 		5A9EFC8723123F5500490D92 /* StarCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarCount.swift; sourceTree = "<group>"; };
 		5A9EFC8A2312409400490D92 /* StarColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StarColor+Extension.swift"; sourceTree = "<group>"; };
 		5AA2E69624A83C100065453D /* ErrorReasonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorReasonTests.swift; sourceTree = "<group>"; };
+		5AA2E69924A869FA0065453D /* SearchListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewModelTests.swift; sourceTree = "<group>"; };
+		5AA2E69C24A86B300065453D /* MockSearchListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchListUseCase.swift; sourceTree = "<group>"; };
 		5AA7E3DF2331E45A0011CE1B /* CollaboratorTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollaboratorTitleView.xib; sourceTree = "<group>"; };
 		5AA7E3E12331E4690011CE1B /* CollaboratorTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorTitleView.swift; sourceTree = "<group>"; };
 		5AA7E3E323320BD00011CE1B /* DetailContributorTitleDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContributorTitleDisplayData.swift; sourceTree = "<group>"; };
@@ -373,6 +377,8 @@
 		5A9B913622EBEB0600996712 /* iOSLayeredSampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				5AA2E69B24A86A630065453D /* TestDouble */,
+				5AA2E69824A868730065453D /* Application */,
 				5AA2E69524A83BC20065453D /* Data */,
 				5AA2E69424A83BAF0065453D /* Domain */,
 				5A9B913922EBEB0600996712 /* Info.plist */,
@@ -450,6 +456,22 @@
 				5AA2E69624A83C100065453D /* ErrorReasonTests.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		5AA2E69824A868730065453D /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				5AA2E69924A869FA0065453D /* SearchListViewModelTests.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		5AA2E69B24A86A630065453D /* TestDouble */ = {
+			isa = PBXGroup;
+			children = (
+				5AA2E69C24A86B300065453D /* MockSearchListUseCase.swift */,
+			);
+			path = TestDouble;
 			sourceTree = "<group>";
 		};
 		5AA7671D231B975E002BDFDE /* APIRequestClient */ = {
@@ -721,8 +743,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A8A55C424A6DA0E00A57A4E /* StarColorTests.swift in Sources */,
+				5AA2E69D24A86B300065453D /* MockSearchListUseCase.swift in Sources */,
 				5AA2E69724A83C100065453D /* ErrorReasonTests.swift in Sources */,
 				5A373E8824A6DCCA00FCDBDE /* ReleaseStatusTests.swift in Sources */,
+				5AA2E69A24A869FA0065453D /* SearchListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
