@@ -6,7 +6,7 @@
 //  Copyright © 2019 rnishimu22001. All rights reserved.
 //
 
-enum StarColor {
+enum StarCount {
     case red
     case lightGray
     

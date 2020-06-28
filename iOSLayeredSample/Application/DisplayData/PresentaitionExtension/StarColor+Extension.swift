@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension StarColor {
+extension StarCount {
     var color: UIColor {
         switch self {
         case .red:

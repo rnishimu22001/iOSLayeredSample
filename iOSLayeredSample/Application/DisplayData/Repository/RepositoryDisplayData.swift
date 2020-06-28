@@ -11,7 +11,7 @@ import UIKit
 struct RepositoryDisplayData: TableViewDisplayable {
     
     let starCount: String
-    let starColor: StarColor
+    let starColor: StarCount
     let name: String
     let descpription: String
     
@@ -19,7 +19,7 @@ struct RepositoryDisplayData: TableViewDisplayable {
         name = repository.fullName
         descpription = repository.description ?? ""
         starCount = repository.starCount.description
-        starColor = StarColor(with: repository.starCount)
+        starColor = StarCount(with: repository.starCount)
     }
 }
 
