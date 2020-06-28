@@ -11,14 +11,14 @@ import Foundation
 enum ErrorReason: Error {
     
     typealias ErrorCode = Int
-    case clinetError /// 400
+    case clientError /// 400
     case serverError /// 500
     case general
     
     init(with code: ErrorCode) {
         switch code {
         case 400..<500:
-            self = .clinetError
+            self = .clientError
         case _ where (500..<600).contains(code):
             self = .serverError
         default:

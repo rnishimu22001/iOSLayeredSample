@@ -14,10 +14,10 @@ final class ErrorReasonTests: XCTestCase {
     
     func testInit() {
         XCTContext.runActivity(named: "400番台", block: { _ in
-            XCTAssertEqual(ErrorReason(with: 404), .clinetError, "400の場合はリクエストが不正")
+            XCTAssertEqual(ErrorReason(with: 404), .clientError, "400の場合はリクエストが不正など")
         })
         XCTContext.runActivity(named: "500番台", block: { _ in
-            XCTAssertEqual(ErrorReason(with: 503), .serverError, "500の場合はサーバー側")
+            XCTAssertEqual(ErrorReason(with: 503), .serverError, "500の場合はサーバー側での障害など")
         })
         XCTContext.runActivity(named: "その他", block: { _ in
             XCTAssertEqual(ErrorReason(with: 100), .general, "判別できない場合はgeneral")
