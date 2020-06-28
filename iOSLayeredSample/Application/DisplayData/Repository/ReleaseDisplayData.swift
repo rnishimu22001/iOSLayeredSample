@@ -9,7 +9,6 @@
 import UIKit
 
 extension ReleaseStatus {
-    
     var color: UIColor {
         switch self {
         case .draft:

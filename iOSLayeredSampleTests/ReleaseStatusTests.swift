@@ -9,13 +9,8 @@
 import XCTest
 @testable import iOSLayeredSample
 
+// MARK: Domain Layer
 final class ReleaseStatusTests: XCTestCase {
-    
-    func testReleaseStatusColor() {
-        XCTAssertEqual(ReleaseStatus.draft.color, .secondaryLabel)
-        XCTAssertEqual(ReleaseStatus.prerelease.color, .black)
-        XCTAssertEqual(ReleaseStatus.release.color, .green)
-    }
     
     func testStatusInit() {
         XCTContext.runActivity(named: "draftかつ、prereleaseの場合", block: { _ in
@@ -27,5 +22,14 @@ final class ReleaseStatusTests: XCTestCase {
         XCTContext.runActivity(named: "draft,prereleaseどちらでもない場合", block: { _ in
             XCTAssertEqual(ReleaseStatus(isDraft: false, isPrerelease: false), .release, "releaseになる")
         })
+    }
+}
+
+// MARK: Presentation Layer
+extension ReleaseStatusTests {
+    func testReleaseStatusColor() {
+        XCTAssertEqual(ReleaseStatus.draft.color, .secondaryLabel)
+        XCTAssertEqual(ReleaseStatus.prerelease.color, .black)
+        XCTAssertEqual(ReleaseStatus.release.color, .green)
     }
 }
