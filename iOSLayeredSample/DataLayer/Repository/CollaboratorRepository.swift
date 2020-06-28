@@ -20,6 +20,7 @@ struct CollaboratorRepository: CollaboratorRepositoryProtocol {
     init(client: CollaboratorsClientProtocol = CollaboratorsClient()) {
         self.client = client
     }
+    
     func reload(repositoy fullName: String) -> PassthroughSubject<[Collaborator], Error> {
         let subject = PassthroughSubject<[Collaborator], Error>()
         client.requestCollaborators(repository: fullName) { result, response in
