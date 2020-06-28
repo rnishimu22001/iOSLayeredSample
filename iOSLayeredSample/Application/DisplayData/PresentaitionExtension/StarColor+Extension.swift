@@ -11,9 +11,9 @@ import UIKit
 extension StarCount {
     var color: UIColor {
         switch self {
-        case .red:
+        case .many:
             return .red
-        case .lightGray:
+        case .few:
             return .lightGray
         }
     }

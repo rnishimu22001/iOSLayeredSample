@@ -1,5 +1,5 @@
 //
-//  StarColor.swift
+//  StarCount.swift
 //  iOSLayeredSample
 //
 //  Created by rnishimu on 2019/08/25.
@@ -7,15 +7,15 @@
 //
 
 enum StarCount {
-    case red
-    case lightGray
+    case many
+    case few
     
     init(with count: Int) {
         switch count {
         case 10000...Int.max:
-            self = .red
+            self = .many
         case 0..<10000:
-            self = .lightGray
+            self = .few
         default:
             fatalError()
         }
