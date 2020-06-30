@@ -25,13 +25,11 @@ final class DetailViewModel: DetailViewModelProtocol {
     private(set) var otherModulesCancellable: AnyCancellable?
     private(set) var profileCancellable: AnyCancellable?
     /// Collaboratorの表示数
-    let displayCollaboratorsCount: Int
+    private let displayCollaboratorsCount = 5
     let repositoryFullName: String
     
     init(repositoryFullName: String,
-         maxCollaboratorsCount: Int = 5,
          useCase: DetailUseCaseProtocol = DetailUseCase()) {
-        self.displayCollaboratorsCount = maxCollaboratorsCount
         self.repositoryFullName = repositoryFullName
         self.useCase = useCase
     }
