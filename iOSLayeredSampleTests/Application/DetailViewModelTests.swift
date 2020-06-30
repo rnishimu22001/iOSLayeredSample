@@ -10,6 +10,6 @@ import Combine
 import XCTest
 @testable import iOSLayeredSample
 
-final class SearchListViewModelTests: XCTestCase {
+final class DetailViewModelTests: XCTestCase {
 
 }
