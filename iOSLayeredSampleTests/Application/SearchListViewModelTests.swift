@@ -41,7 +41,7 @@ final class SearchListViewModelTests: XCTestCase {
                 mock.stubbedUpdateResult.send(completion: .finished)
                 // Then
                 XCTAssertEqual(target.status.value, .browsable, "リクエスト完了後はstatusはbrowsable")
-                XCTAssertEqual(target.contents.value.filter { $0 is RepositoryDisplayData }.count, 3, "リポジトリの表示用データが3件")
+                XCTAssertEqual(target.contents.value.filter { $0 is RepositoryDisplayData }.count, dummyRepositories.count, "リポジトリの表示用データが3件")
                 XCTAssertTrue(target.contents.value.last is LoadingDisplayData, "末尾にローディングのデータが追加される")
                 XCTAssertEqual(target.contents.value.filter { $0 is LoadingDisplayData }.count, 1, "末尾にローディングのデータは1件であること")
             })
@@ -55,7 +55,7 @@ final class SearchListViewModelTests: XCTestCase {
                 mock.stubbedUpdateResult.send(completion: .finished)
                 // Then
                 XCTAssertEqual(target.status.value, .browsable, "リクエスト完了後はstatusはbrowsable")
-                XCTAssertEqual(target.contents.value.filter { $0 is RepositoryDisplayData }.count, 3, "リポジトリの表示用データが3件")
+                XCTAssertEqual(target.contents.value.filter { $0 is RepositoryDisplayData }.count, dummyRepositories.count, "リポジトリの表示用データが3件")
                 XCTAssertEqual(target.contents.value.filter { $0 is LoadingDisplayData }.count, 0, "末尾にローディングのデータが追加されない")
             })
         })
