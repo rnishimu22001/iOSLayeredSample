@@ -12,7 +12,7 @@ import Combine
 final class SearchListViewController: UIViewController {
     
     var searchListView: SearchListViewProtocol!
-    var viewModel: SearchListViewModelProtocol!
+    var viewModel: SearchListViewModelProtocol = SearchListViewModel()
     let delegateProxy: UISearchBarDelegateProxyProtocol =  UISearchBarDelegateProxy()
     lazy var navigator: Navigator = {
         UINavigatorImplementation(navigation: self.navigationController)
@@ -22,7 +22,6 @@ final class SearchListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchListView = SearchListView(parentView: self.view)
-        viewModel = SearchListViewModel()
         searchListView.delegate = self
         sink()
         navigationController?.navigationBar.prefersLargeTitles = true
