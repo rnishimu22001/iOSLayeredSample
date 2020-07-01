@@ -64,10 +64,28 @@ final class DetailViewModelTests: XCTestCase {
                                                               lastUpdate: "2020-07-01"))
             // Then
             XCTAssertEqual(container.profile.invokedReloadCount, 1)
-            XCTAssertTrue(container.target.contents.value[0] is CommunityProfileDisplayData, "一番上にCommunityProfileが表示されること")
-            XCTAssertTrue(container.target.contents.value[1] is LoadingDisplayData, "その他のモジュールがロードされていないのでロード中の表示がされること")
+            XCTAssertTrue(container.target.contents.value.first is CommunityProfileDisplayData, "一番上にCommunityProfileが表示されること")
+            XCTAssertTrue(container.target.contents.value.last is LoadingDisplayData, "その他のモジュールがロードされていないのでロード中の表示がされること")
             XCTAssertEqual(container.target.contents.value.count, 2, "Community情報とロード中の表示の二つが表示される")
             XCTAssertEqual(container.target.status.value, .browsable, "ステータスが表示可能で更新されること")
+        })
+        XCTContext.runActivity(named: "OhterModulesリクエスト成功後にProfileのリクエストが成功", block: { _ in
+            // Given
+            let container = Container()
+            // When
+            container.target.reload()
+            container.branch.stubbedReloadBranchesResult.send(branches)
+            container.release.stubbedReloadLatestReleaseResult.send(release)
+            container.collaborator.stubbedReloadResult.send(collaborators)
+            container.profile.stubbedReloadResult.send(CommunityProfile(name: "test",
+                                                                        license: nil,
+                                                                        repositoryDescription: "this is test",
+                                                                        lastUpdate: "2020-07-01"))
+            // Then
+            XCTAssertTrue(container.target.contents.value.first is CommunityProfileDisplayData, "Profileのデータが1番目に表示されること")
+            XCTAssertTrue(container.target.contents.value.filter { $0 is LoadingDisplayData }.isEmpty, "Loadingの表示が含まれない")
+            XCTAssertEqual(container.target.contents.value.count, 5)
+            
         })
         XCTContext.runActivity(named: "リクエスト失敗", block: { _ in
             // Given
