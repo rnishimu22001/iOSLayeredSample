@@ -62,6 +62,10 @@
 		5AA2E69724A83C100065453D /* ErrorReasonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA2E69624A83C100065453D /* ErrorReasonTests.swift */; };
 		5AA2E69A24A869FA0065453D /* SearchListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA2E69924A869FA0065453D /* SearchListViewModelTests.swift */; };
 		5AA2E69D24A86B300065453D /* MockSearchListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA2E69C24A86B300065453D /* MockSearchListUseCase.swift */; };
+		5AA7532724AC63CA003D5282 /* MockBranchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7532624AC63CA003D5282 /* MockBranchRepository.swift */; };
+		5AA7532924AC641C003D5282 /* MockCommunityProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7532824AC641C003D5282 /* MockCommunityProfileRepository.swift */; };
+		5AA7532B24AC64EF003D5282 /* MockReleaseReposiotry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7532A24AC64EF003D5282 /* MockReleaseReposiotry.swift */; };
+		5AA7532D24AC653D003D5282 /* MockCollaboratorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7532C24AC653D003D5282 /* MockCollaboratorRepository.swift */; };
 		5AA7E3E02331E45A0011CE1B /* CollaboratorTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AA7E3DF2331E45A0011CE1B /* CollaboratorTitleView.xib */; };
 		5AA7E3E22331E4690011CE1B /* CollaboratorTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7E3E12331E4690011CE1B /* CollaboratorTitleView.swift */; };
 		5AA7E3E423320BD00011CE1B /* DetailContributorTitleDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7E3E323320BD00011CE1B /* DetailContributorTitleDisplayData.swift */; };
@@ -160,6 +164,10 @@
 		5AA2E69624A83C100065453D /* ErrorReasonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorReasonTests.swift; sourceTree = "<group>"; };
 		5AA2E69924A869FA0065453D /* SearchListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewModelTests.swift; sourceTree = "<group>"; };
 		5AA2E69C24A86B300065453D /* MockSearchListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchListUseCase.swift; sourceTree = "<group>"; };
+		5AA7532624AC63CA003D5282 /* MockBranchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBranchRepository.swift; sourceTree = "<group>"; };
+		5AA7532824AC641C003D5282 /* MockCommunityProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCommunityProfileRepository.swift; sourceTree = "<group>"; };
+		5AA7532A24AC64EF003D5282 /* MockReleaseReposiotry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockReleaseReposiotry.swift; sourceTree = "<group>"; };
+		5AA7532C24AC653D003D5282 /* MockCollaboratorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCollaboratorRepository.swift; sourceTree = "<group>"; };
 		5AA7E3DF2331E45A0011CE1B /* CollaboratorTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollaboratorTitleView.xib; sourceTree = "<group>"; };
 		5AA7E3E12331E4690011CE1B /* CollaboratorTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorTitleView.swift; sourceTree = "<group>"; };
 		5AA7E3E323320BD00011CE1B /* DetailContributorTitleDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContributorTitleDisplayData.swift; sourceTree = "<group>"; };
@@ -476,6 +484,10 @@
 			children = (
 				5AA2E69C24A86B300065453D /* MockSearchListUseCase.swift */,
 				5A5EDBA124AAFA9C0081CBED /* MockDetailUseCase.swift */,
+				5AA7532624AC63CA003D5282 /* MockBranchRepository.swift */,
+				5AA7532824AC641C003D5282 /* MockCommunityProfileRepository.swift */,
+				5AA7532A24AC64EF003D5282 /* MockReleaseReposiotry.swift */,
+				5AA7532C24AC653D003D5282 /* MockCollaboratorRepository.swift */,
 			);
 			path = TestDouble;
 			sourceTree = "<group>";
@@ -750,10 +762,14 @@
 			files = (
 				5A8A55C424A6DA0E00A57A4E /* StarColorTests.swift in Sources */,
 				5AA2E69D24A86B300065453D /* MockSearchListUseCase.swift in Sources */,
+				5AA7532924AC641C003D5282 /* MockCommunityProfileRepository.swift in Sources */,
+				5AA7532B24AC64EF003D5282 /* MockReleaseReposiotry.swift in Sources */,
 				5AA2E69724A83C100065453D /* ErrorReasonTests.swift in Sources */,
 				5A373E8824A6DCCA00FCDBDE /* ReleaseStatusTests.swift in Sources */,
 				5AA2E69A24A869FA0065453D /* SearchListViewModelTests.swift in Sources */,
+				5AA7532724AC63CA003D5282 /* MockBranchRepository.swift in Sources */,
 				5A5EDBA224AAFA9C0081CBED /* MockDetailUseCase.swift in Sources */,
+				5AA7532D24AC653D003D5282 /* MockCollaboratorRepository.swift in Sources */,
 				5A5EDBA024AAF9510081CBED /* DetailViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
