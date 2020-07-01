@@ -29,6 +29,7 @@ final class DetailViewModelTests: XCTestCase {
                                      useCase: useCase)
         }
     }
+    
     let branches = [Branch(name: "test", isProtected: false)]
     let release = Release(tagName: "test", releaseDesciption: nil, publishedDate: "today", isDraft: false, isPreRelease: false)
     let collaborators = [Collaborator(isAdmin: true, icon: URL(string: "https://test.com")!, name: "test1"),
@@ -153,6 +154,22 @@ final class DetailViewModelTests: XCTestCase {
             XCTAssertTrue(container.target.contents.value.filter { $0 is CollaboratorsDisplayData }.isEmpty, "データが追加されないこと")
             XCTAssertTrue(container.target.contents.value.filter { $0 is DetailContributorTitleDisplayData }.isEmpty, "ヘッダーデータが追加されないこと")
             
+        })
+        XCTContext.runActivity(named: "Profileのリクエスト成功後にOtherModulesのリクエストが成功", block: { _ in
+            // Given
+            let container = Container()
+            // When
+            container.target.reload()
+            container.profile.stubbedReloadResult.send(CommunityProfile(name: "test",
+                                                                        license: nil,
+                                                                        repositoryDescription: "this is test",
+                                                                        lastUpdate: "2020-07-01"))
+            container.branch.stubbedReloadBranchesResult.send(branches)
+            container.release.stubbedReloadLatestReleaseResult.send(release)
+            container.collaborator.stubbedReloadResult.send(collaborators)
+            
+            // Then
+            XCTAssertTrue(container.target.contents.value.filter { $0 is LoadingDisplayData }.isEmpty, "Loadingの表示が含まれない")
         })
     }
 }
