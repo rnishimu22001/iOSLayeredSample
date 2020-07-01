@@ -16,11 +16,11 @@ final class MockDetailUseCase: DetailUseCaseProtocol {
     var invokedReloadCount = 0
     var invokedReloadParameters: (fullName: String, Void)?
     var invokedReloadParametersList = [(fullName: String, Void)]()
-    var stubbedReloadResult: (profile: PassthroughSubject<CommunityProfile, Error>, otherModules: Publishers.Zip3<Publishers.Catch<Publishers.Map<PassthroughSubject<Release, Error>, Release?>, Just<Release?>>, Publishers.Catch<PassthroughSubject<[Collaborator], Error>, Just<[Collaborator]>>, Publishers.Catch<PassthroughSubject<[Branch], Error>, Just<[Branch]>>>)!
+    var stubbedReloadResult: (profile: PassthroughSubject<CommunityProfile, Error>, otherModules: Publishers.Zip3<AnyPublisher<Release?, Just<Release?>.Failure>, AnyPublisher<[Collaborator], Just<[Collaborator]>.Failure>, AnyPublisher<[Branch], Just<[Branch]>.Failure>>)!
 
     func reload(repository fullName: String) ->
         (profile: PassthroughSubject<CommunityProfile, Error>,
-            otherModules: Publishers.Zip3<Publishers.Catch<Publishers.Map<PassthroughSubject<Release, Error>, Release?>, Just<Release?>>, Publishers.Catch<PassthroughSubject<[Collaborator], Error>, Just<[Collaborator]>>, Publishers.Catch<PassthroughSubject<[Branch], Error>, Just<[Branch]>>>) {
+            otherModules: Publishers.Zip3<AnyPublisher<Release?, Just<Release?>.Failure>, AnyPublisher<[Collaborator], Just<[Collaborator]>.Failure>, AnyPublisher<[Branch], Just<[Branch]>.Failure>>) {
         invokedReload = true
         invokedReloadCount += 1
         invokedReloadParameters = (fullName, ())

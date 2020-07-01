@@ -38,7 +38,9 @@ final class DetailViewModel: DetailViewModelProtocol {
         status.value = .loading
         let publishers = useCase.reload(repository: repositoryFullName)
         otherModulesCancellable = publishers.otherModules.sink(receiveValue: { [weak self] others in
-            self?.didLoad(latestRelease: others.0, collaborators: others.1, branches: others.2)
+            self?.didLoad(latestRelease: others.0,
+                          collaborators: others.1,
+                          branches: others.2)
         })
         
         profileCancellable = publishers.profile.sink(receiveCompletion: { [weak self] result in
