@@ -32,7 +32,15 @@ final class DetailViewModelTests: XCTestCase {
     let branches = [Branch(name: "test", isProtected: false)]
     let release = Release(tagName: "test", releaseDesciption: nil, publishedDate: "today", isDraft: false, isPreRelease: false)
     let collaborators = [Collaborator(isAdmin: true, icon: URL(string: "https://test.com")!, name: "test1"),
-                         Collaborator(isAdmin: false, icon: URL(string: "https://test.com")!, name: "test2")]
+                         Collaborator(isAdmin: false, icon: URL(string: "https://test.com")!, name: "test2"),
+    
+                         Collaborator(isAdmin: true, icon: URL(string: "https://test.com")!, name: "test3"),
+    
+                         Collaborator(isAdmin: true, icon: URL(string: "https://test.com")!, name: "test4"),
+    
+                         Collaborator(isAdmin: true, icon: URL(string: "https://test.com")!, name: "test5"),
+    
+                         Collaborator(isAdmin: true, icon: URL(string: "https://test.com")!, name: "test6")]
     
     func testInitalized() {
         // Given When
@@ -117,6 +125,7 @@ final class DetailViewModelTests: XCTestCase {
             XCTAssertTrue(container.target.contents.value[1] is ReleaseDisplayData, "Releaseの情報が2番目に表示されること")
             XCTAssertTrue(container.target.contents.value[2] is DetailContributorTitleDisplayData, "Collaboratorのヘッダーが3番目に表示されること")
             XCTAssertTrue(container.target.contents.value[3] is CollaboratorsDisplayData, "Collaboratorの情報が4番目以降に表示されること")
+            XCTAssertEqual((container.target.contents.value[3] as? CollaboratorsDisplayData)!.collaborators.count, 5, "Collaboratorsの表示データが最大5件に制限されること")
             XCTAssertEqual(container.target.contents.value.count, 4, "指定された数の表示データが追加されること")
             XCTAssertEqual(container.target.status.value, .loading, "ステータスが更新がないこと")
         })
