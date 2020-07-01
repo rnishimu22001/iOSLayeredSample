@@ -12,7 +12,9 @@ import Combine
 final class DetailViewController: UIViewController {
        
     var detailView: DetailViewProtocol!
-    var viewModel: DetailViewModelProtocol!
+    lazy var viewModel: DetailViewModelProtocol = {
+        DetailViewModel(repositoryFullName: repositoryFullName)
+    }()
     var repositoryFullName: String = ""
     private var cancellables: [AnyCancellable] = []
     
@@ -21,7 +23,6 @@ final class DetailViewController: UIViewController {
         navigationItem.title = repositoryFullName
         navigationItem.backBarButtonItem?.title = ""
         detailView = DetailPresenter(with: view)
-        viewModel = DetailViewModel(repositoryFullName: repositoryFullName)
         self.sink()
         viewModel.reload()
     }
