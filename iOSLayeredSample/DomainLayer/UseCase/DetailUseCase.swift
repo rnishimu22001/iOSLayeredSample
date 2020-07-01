@@ -41,7 +41,18 @@ final class DetailUseCase: DetailUseCaseProtocol {
         otherModules: Publishers.Zip3<AnyPublisher<Release?, Just<Release?>.Failure>, AnyPublisher<[Collaborator], Just<[Collaborator]>.Failure>, AnyPublisher<[Branch], Just<[Branch]>.Failure>>) {
        
         let profileSubject = profileRepository.reload(repository: fullName)
-        let releaseSubject = releaseRepository
+        let releaseSubject = reloadLatestRelease(repository: fullName)
+        let collaboratorSubject = reloadCollaborator(repository: fullName)
+        let branchesSubject = reloadBranches(repository: fullName)
+        
+        let otherModulesSubject = releaseSubject
+            .zip(collaboratorSubject, branchesSubject)
+            
+        return (profile: profileSubject, otherModules: otherModulesSubject)
+    }
+    
+    private func reloadLatestRelease(repository fullName: String) -> AnyPublisher<Release?, Just<Release?>.Failure> {
+        releaseRepository
             .reloadLatestRelease(repository: fullName)
             .map({ (release) -> Release? in
                 return release
@@ -50,8 +61,11 @@ final class DetailUseCase: DetailUseCaseProtocol {
                 return Just(nil)
             })
             .eraseToAnyPublisher()
+    }
+    
+    private func reloadCollaborator(repository fullName: String) -> AnyPublisher<[Collaborator], Just<[Collaborator]>.Failure> {
         let displayCollaboratorsCount = self.displayCollaboratorsCount
-        let collaboratorSubject = collaboratorRepository
+        return collaboratorRepository
             .reload(repositoy: fullName)
             .map({ collaborators in
                 return Array(collaborators.prefix(displayCollaboratorsCount))
@@ -60,18 +74,14 @@ final class DetailUseCase: DetailUseCaseProtocol {
                 return Just([])
             })
             .eraseToAnyPublisher()
-        
-        let branchesSubject = branchRepository
+    }
+    
+    private func reloadBranches(repository fullName: String) -> AnyPublisher<[Branch], Just<[Branch]>.Failure> {
+        branchRepository
             .reloadBranches(inRepositoy: fullName)
             .catch({ (_) -> Just<[Branch]> in
                 return Just([])
             })
             .eraseToAnyPublisher()
-        
-        let otherModulesSubject = releaseSubject
-            .zip(collaboratorSubject, branchesSubject)
-            
-        return (profile: profileSubject, otherModules: otherModulesSubject)
     }
 }
-
