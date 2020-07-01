@@ -56,7 +56,8 @@ final class DetailViewModel: DetailViewModelProtocol {
 }
 
 extension DetailViewModel {
-    func didLoad(latestRelease: Release?, collaborators: [Collaborator], branches: [Branch]) {
+    
+    private func didLoad(latestRelease: Release?, collaborators: [Collaborator], branches: [Branch]) {
         var filterd = contents.value.filter { !($0 is LoadingDisplayData) }
         
         if let first = branches.first {
@@ -75,7 +76,7 @@ extension DetailViewModel {
         otherModulesCancellable = nil
     }
     
-    func didLoad(profile: CommunityProfile) {
+    private func didLoad(profile: CommunityProfile) {
         let display = CommunityProfileDisplayData(with: profile)
         contents.value.insert(display, at: contents.value.startIndex)
         if otherModulesCancellable != nil {
