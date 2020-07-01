@@ -14,6 +14,9 @@ final class SearchListViewController: UIViewController {
     var searchListView: SearchListViewProtocol!
     var viewModel: SearchListViewModelProtocol!
     let delegateProxy: UISearchBarDelegateProxyProtocol =  UISearchBarDelegateProxy()
+    lazy var navigator: Navigator = {
+        UINavigatorImplementation(navigation: self.navigationController)
+    }()
     private var cancellables: [AnyCancellable] = []
     
     override func viewDidLoad() {
@@ -57,6 +60,6 @@ extension SearchListViewController: SearchListViewDelegate {
         }
         let viewController = DetailViewController()
         viewController.repositoryFullName = repository.name
-        self.navigationController?.pushViewController(viewController, animated: true)
+        navigator.push(viewControler: viewController)
     }
 }

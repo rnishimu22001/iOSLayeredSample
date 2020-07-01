@@ -93,6 +93,10 @@
 		5ACA0910234886DF001B4D73 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA090F234886DF001B4D73 /* Branch.swift */; };
 		5ACA091223488C65001B4D73 /* BranchDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA091123488C65001B4D73 /* BranchDisplayData.swift */; };
 		5ACA091423488D40001B4D73 /* BranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA091323488D40001B4D73 /* BranchView.swift */; };
+		5ADAD2E824ACD42200762324 /* SpyNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADAD2E724ACD42200762324 /* SpyNavigator.swift */; };
+		5ADAD2EA24ACD45500762324 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADAD2E924ACD45500762324 /* Navigator.swift */; };
+		5ADAD2ED24ACD5F800762324 /* SearchListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADAD2EC24ACD5F800762324 /* SearchListViewControllerTests.swift */; };
+		5ADAD2EF24ACD60700762324 /* MockSearchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADAD2EE24ACD60700762324 /* MockSearchListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,6 +199,10 @@
 		5ACA090F234886DF001B4D73 /* Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
 		5ACA091123488C65001B4D73 /* BranchDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchDisplayData.swift; sourceTree = "<group>"; };
 		5ACA091323488D40001B4D73 /* BranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchView.swift; sourceTree = "<group>"; };
+		5ADAD2E724ACD42200762324 /* SpyNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyNavigator.swift; sourceTree = "<group>"; };
+		5ADAD2E924ACD45500762324 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
+		5ADAD2EC24ACD5F800762324 /* SearchListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewControllerTests.swift; sourceTree = "<group>"; };
+		5ADAD2EE24ACD60700762324 /* MockSearchListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -390,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				5AA2E69B24A86A630065453D /* TestDouble */,
+				5ADAD2EB24ACD5E600762324 /* Presentation */,
 				5AA2E69824A868730065453D /* Application */,
 				5AA2E69524A83BC20065453D /* Data */,
 				5AA2E69424A83BAF0065453D /* Domain */,
@@ -488,6 +497,8 @@
 				5AA7532824AC641C003D5282 /* MockCommunityProfileRepository.swift */,
 				5AA7532A24AC64EF003D5282 /* MockReleaseReposiotry.swift */,
 				5AA7532C24AC653D003D5282 /* MockCollaboratorRepository.swift */,
+				5ADAD2E724ACD42200762324 /* SpyNavigator.swift */,
+				5ADAD2EE24ACD60700762324 /* MockSearchListViewModel.swift */,
 			);
 			path = TestDouble;
 			sourceTree = "<group>";
@@ -525,6 +536,7 @@
 			isa = PBXGroup;
 			children = (
 				5A9EFC8C231257A300490D92 /* View */,
+				5ADAD2E924ACD45500762324 /* Navigator.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -573,6 +585,14 @@
 				5A9EFC842311637100490D92 /* DispatchQueue+Additions.swift */,
 			);
 			path = Additions;
+			sourceTree = "<group>";
+		};
+		5ADAD2EB24ACD5E600762324 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				5ADAD2EC24ACD5F800762324 /* SearchListViewControllerTests.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -703,6 +723,7 @@
 				5AADA60C22EC1720001BA1AD /* APISettings.swift in Sources */,
 				5ACA091223488C65001B4D73 /* BranchDisplayData.swift in Sources */,
 				5A923504232CEF7A001E5735 /* Repository.swift in Sources */,
+				5ADAD2EA24ACD45500762324 /* Navigator.swift in Sources */,
 				5A8957432308279B00A6099E /* RepositoryDisplayData.swift in Sources */,
 				5A662C5923083F9500BD0403 /* CollaboratorsClient.swift in Sources */,
 				5A662C5123083D2E00BD0403 /* DetailViewController.swift in Sources */,
@@ -764,7 +785,10 @@
 				5AA2E69D24A86B300065453D /* MockSearchListUseCase.swift in Sources */,
 				5AA7532924AC641C003D5282 /* MockCommunityProfileRepository.swift in Sources */,
 				5AA7532B24AC64EF003D5282 /* MockReleaseReposiotry.swift in Sources */,
+				5ADAD2E824ACD42200762324 /* SpyNavigator.swift in Sources */,
 				5AA2E69724A83C100065453D /* ErrorReasonTests.swift in Sources */,
+				5ADAD2EF24ACD60700762324 /* MockSearchListViewModel.swift in Sources */,
+				5ADAD2ED24ACD5F800762324 /* SearchListViewControllerTests.swift in Sources */,
 				5A373E8824A6DCCA00FCDBDE /* ReleaseStatusTests.swift in Sources */,
 				5AA2E69A24A869FA0065453D /* SearchListViewModelTests.swift in Sources */,
 				5AA7532724AC63CA003D5282 /* MockBranchRepository.swift in Sources */,
