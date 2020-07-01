@@ -16,13 +16,24 @@ final class DetailViewModelTests: XCTestCase {
     
     func testReload() {
         // Given
-        let useCase = MockDetailUseCase()
+        let profile = MockCommunityProfileRepository()
+        let release = MockReleaseReposiotry()
+        let collaborator = MockCollaboratorRepository()
+        let branch = MockBranchesRepository()
+        let useCase = DetailUseCase(profileRepository: profile,
+                                    releaseRepository: release,
+                                    collaboratorRepository: collaborator,
+                                    branchRepository: branch)
         let target = DetailViewModel(repositoryFullName: repositoryName,
                                      useCase: useCase)
         // When
         target.reload()
         // Then
-        XCTAssertEqual(useCase.invokedReloadCount, 1, "reloadのメソッドが呼ばれること")
+        // 各Repositoryが一回reloadのメソッドが呼ばれること
+        XCTAssertEqual(profile.invokedReloadCount, 1)
+        XCTAssertEqual(branch.invokedReloadBranchesCount, 1)
+        XCTAssertEqual(collaborator.invokedReloadCount, 1)
+        XCTAssertEqual(release.invokedReloadLatestReleaseCount, 1)
         
     }
 

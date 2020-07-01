@@ -15,7 +15,7 @@ final class MockReleaseReposiotry: ReleaseRepositoryProtocol {
     var invokedReloadLatestReleaseCount = 0
     var invokedReloadLatestReleaseParameters: (fullName: String, Void)?
     var invokedReloadLatestReleaseParametersList = [(fullName: String, Void)]()
-    var stubbedReloadLatestReleaseResult: PassthroughSubject<Release, Error>!
+    var stubbedReloadLatestReleaseResult: PassthroughSubject<Release, Error> = .init()
 
     func reloadLatestRelease(repository fullName: String) -> PassthroughSubject<Release, Error> {
         invokedReloadLatestRelease = true

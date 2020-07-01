@@ -15,7 +15,7 @@ final class MockBranchesRepository: BranchesRepositoryProtocol {
     var invokedReloadBranchesCount = 0
     var invokedReloadBranchesParameters: (fullName: String, Void)?
     var invokedReloadBranchesParametersList = [(fullName: String, Void)]()
-    var stubbedReloadBranchesResult: PassthroughSubject<[Branch], Error>!
+    var stubbedReloadBranchesResult: PassthroughSubject<[Branch], Error> = .init()
 
     func reloadBranches(inRepositoy fullName: String) -> PassthroughSubject<[Branch], Error> {
         invokedReloadBranches = true

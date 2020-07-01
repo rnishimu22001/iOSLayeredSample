@@ -16,6 +16,7 @@ final class MockCommunityProfileRepository: CommunityProfileRepositoryProtocol {
     var invokedReloadParameters: (fullName: String, Void)?
     var invokedReloadParametersList = [(fullName: String, Void)]()
     var stubbedReloadResult: PassthroughSubject<CommunityProfile, Error>!
+        = .init()
 
     func reload(repository fullName: String) -> PassthroughSubject<CommunityProfile, Error> {
         invokedReload = true

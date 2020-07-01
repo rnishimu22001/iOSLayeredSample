@@ -15,7 +15,7 @@ final class MockCollaboratorRepository: CollaboratorRepositoryProtocol {
     var invokedReloadCount = 0
     var invokedReloadParameters: (fullName: String, Void)?
     var invokedReloadParametersList = [(fullName: String, Void)]()
-    var stubbedReloadResult: PassthroughSubject<[Collaborator], Error>!
+    var stubbedReloadResult: PassthroughSubject<[Collaborator], Error> = .init()
 
     func reload(repositoy fullName: String) -> PassthroughSubject<[Collaborator], Error> {
         invokedReload = true
