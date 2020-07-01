@@ -24,8 +24,6 @@ final class DetailViewModel: DetailViewModelProtocol {
     
     private(set) var otherModulesCancellable: AnyCancellable?
     private(set) var profileCancellable: AnyCancellable?
-    /// Collaboratorの表示数
-    private let displayCollaboratorsCount = 5
     let repositoryFullName: String
     
     init(repositoryFullName: String,
@@ -70,8 +68,7 @@ extension DetailViewModel {
         }
         if !collaborators.isEmpty {
             filterd.append(DetailContributorTitleDisplayData())
-            let filterdCollaborators = collaborators.prefix(displayCollaboratorsCount)
-            filterd.append(CollaboratorsDisplayData(with: Array(filterdCollaborators)))
+            filterd.append(CollaboratorsDisplayData(with: collaborators))
         }
         
         contents.value = filterd

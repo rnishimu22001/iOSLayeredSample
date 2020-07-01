@@ -22,6 +22,9 @@ final class DetailUseCase: DetailUseCaseProtocol {
     let releaseRepository: ReleaseRepositoryProtocol
     let collaboratorRepository: CollaboratorRepositoryProtocol
     let branchRepository: BranchesRepositoryProtocol
+    
+    /// Collaboratorの表示数
+    private let displayCollaboratorsCount = 5
 
     init(profileRepository: CommunityProfileRepositoryProtocol = CommunityProfileRepository(),
          releaseRepository: ReleaseRepositoryProtocol = ReleaseRepository(),
@@ -38,21 +41,35 @@ final class DetailUseCase: DetailUseCaseProtocol {
         otherModules: Publishers.Zip3<AnyPublisher<Release?, Just<Release?>.Failure>, AnyPublisher<[Collaborator], Just<[Collaborator]>.Failure>, AnyPublisher<[Branch], Just<[Branch]>.Failure>>) {
        
         let profileSubject = profileRepository.reload(repository: fullName)
-        let releaseSubject = releaseRepository.reloadLatestRelease(repository: fullName).map({ (release) -> Release? in
-            return release
-        }).catch({ (_) -> Just<Release?> in
-            return Just(nil)
-        }).eraseToAnyPublisher()
+        let releaseSubject = releaseRepository
+            .reloadLatestRelease(repository: fullName)
+            .map({ (release) -> Release? in
+                return release
+            })
+            .catch({ (_) -> Just<Release?> in
+                return Just(nil)
+            })
+            .eraseToAnyPublisher()
+        let displayCollaboratorsCount = self.displayCollaboratorsCount
+        let collaboratorSubject = collaboratorRepository
+            .reload(repositoy: fullName)
+            .map({ collaborators in
+                return Array(collaborators.prefix(displayCollaboratorsCount))
+            })
+            .catch({ (_) -> Just<[Collaborator]> in
+                return Just([])
+            })
+            .eraseToAnyPublisher()
         
-        let collaboratorSubject = collaboratorRepository.reload(repositoy: fullName).catch({ (_) -> Just<[Collaborator]> in
-            return Just([])
-        }).eraseToAnyPublisher()
+        let branchesSubject = branchRepository
+            .reloadBranches(inRepositoy: fullName)
+            .catch({ (_) -> Just<[Branch]> in
+                return Just([])
+            })
+            .eraseToAnyPublisher()
         
-        let branchesSubject = branchRepository.reloadBranches(inRepositoy: fullName).catch({ (_) -> Just<[Branch]> in
-            return Just([])
-        }).eraseToAnyPublisher()
-        
-        let otherModulesSubject =  releaseSubject.zip(collaboratorSubject, branchesSubject)
+        let otherModulesSubject = releaseSubject
+            .zip(collaboratorSubject, branchesSubject)
             
         return (profile: profileSubject, otherModules: otherModulesSubject)
     }
