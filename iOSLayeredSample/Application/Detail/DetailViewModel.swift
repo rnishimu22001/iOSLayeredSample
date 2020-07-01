@@ -73,14 +73,16 @@ extension DetailViewModel {
         }
         
         contents.value = filterd
+        otherModulesCancellable = nil
     }
     
     func didLoad(profile: CommunityProfile) {
         let display = CommunityProfileDisplayData(with: profile)
         contents.value.insert(display, at: contents.value.startIndex)
-        if self.otherModulesCancellable != nil {
+        if otherModulesCancellable != nil {
             contents.value.append(LoadingDisplayData(nextLink: nil))
         }
         status.value = .browsable
+        profileCancellable = nil
     }
 }

@@ -118,9 +118,9 @@ final class DetailViewModelTests: XCTestCase {
             XCTAssertTrue(container.target.contents.value[2] is DetailContributorTitleDisplayData, "Collaboratorのヘッダーが3番目に表示されること")
             XCTAssertTrue(container.target.contents.value[3] is CollaboratorsDisplayData, "Collaboratorの情報が4番目以降に表示されること")
             XCTAssertEqual(container.target.contents.value.count, 4, "指定された数の表示データが追加されること")
-            XCTAssertEqual(container.target.status.value, .loading, "ステータスが更新されないこと")
+            XCTAssertEqual(container.target.status.value, .loading, "ステータスが更新がないこと")
         })
-        XCTContext.runActivity(named: "OtherModulesのみリクエスト失敗", block: { _ in
+        XCTContext.runActivity(named: "OtherModulesすべてのリクエスト失敗", block: { _ in
             // Given
             let container = Container()
             // When
@@ -130,7 +130,20 @@ final class DetailViewModelTests: XCTestCase {
             container.release.stubbedReloadLatestReleaseResult.send(completion: .failure(ErrorReason.general))
             // Then
             XCTAssertTrue(container.target.contents.value.isEmpty, "エラーの場合はデータ更新が起こらないこと")
-            XCTAssertEqual(container.target.status.value, .loading, "ステータスが更新されないこと")
+            XCTAssertEqual(container.target.status.value, .loading, "ステータスが更新に影響がないこと")
+        })
+        XCTContext.runActivity(named: "OtherModulesのCollaboratorsのみリクエスト失敗", block: { _ in
+            // Given
+            let container = Container()
+            // When
+            container.target.reload()
+            container.collaborator.stubbedReloadResult.send(completion: .failure(ErrorReason.general))
+            container.branch.stubbedReloadBranchesResult.send(branches)
+            container.release.stubbedReloadLatestReleaseResult.send(release)
+            // Then
+            XCTAssertTrue(container.target.contents.value.filter { $0 is CollaboratorsDisplayData }.isEmpty, "データが追加されないこと")
+            XCTAssertTrue(container.target.contents.value.filter { $0 is DetailContributorTitleDisplayData }.isEmpty, "ヘッダーデータが追加されないこと")
+            
         })
     }
 }
