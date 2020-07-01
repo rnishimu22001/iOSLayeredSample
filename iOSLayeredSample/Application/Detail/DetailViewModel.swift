@@ -20,11 +20,11 @@ protocol DetailViewModelProtocol {
 final class DetailViewModel: DetailViewModelProtocol {
     let status: CurrentValueSubject<ContentsStatus, Never> = .init(.initalized)
     let contents: CurrentValueSubject<[Any], Never> = .init([])
-    private(set) var useCase: DetailUseCaseProtocol
+    private var useCase: DetailUseCaseProtocol
     
-    private(set) var otherModulesCancellable: AnyCancellable?
-    private(set) var profileCancellable: AnyCancellable?
-    let repositoryFullName: String
+    private var otherModulesCancellable: AnyCancellable?
+    private var profileCancellable: AnyCancellable?
+    private let repositoryFullName: String
     
     init(repositoryFullName: String,
          useCase: DetailUseCaseProtocol = DetailUseCase()) {

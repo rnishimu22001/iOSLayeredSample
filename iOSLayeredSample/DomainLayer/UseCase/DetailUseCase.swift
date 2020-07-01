@@ -18,10 +18,10 @@ protocol DetailUseCaseProtocol {
 
 final class DetailUseCase: DetailUseCaseProtocol {
    
-    let profileRepository: CommunityProfileRepositoryProtocol
-    let releaseRepository: ReleaseRepositoryProtocol
-    let collaboratorRepository: CollaboratorRepositoryProtocol
-    let branchRepository: BranchesRepositoryProtocol
+    private let profileRepository: CommunityProfileRepositoryProtocol
+    private let releaseRepository: ReleaseRepositoryProtocol
+    private let collaboratorRepository: CollaboratorRepositoryProtocol
+    private let branchRepository: BranchesRepositoryProtocol
     
     /// Collaboratorの表示数
     private let displayCollaboratorsCount = 5
