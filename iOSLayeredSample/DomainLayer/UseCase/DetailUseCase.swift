@@ -10,7 +10,7 @@ import Foundation
 import Combine
 
 protocol DetailUseCaseProtocol {
-    /// ページの再読み込み時に呼ばれる
+    /// ページの再読み込みに必要なデータを集めて、利用可能なものを通知する
     func reload(repository fullName: String) ->
         (profile: PassthroughSubject<CommunityProfile, Error>,
         otherModules: Publishers.Zip3<AnyPublisher<Release?, Just<Release?>.Failure>, AnyPublisher<[Collaborator], Just<[Collaborator]>.Failure>, AnyPublisher<[Branch], Just<[Branch]>.Failure>>)
