@@ -6,8 +6,6 @@
 //  Copyright © 2020 rnishimu22001. All rights reserved.
 //
 
-
-
 import Combine
 import XCTest
 @testable import iOSLayeredSample
