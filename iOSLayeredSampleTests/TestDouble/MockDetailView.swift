@@ -17,23 +17,27 @@ final class MockDetailView: DetailViewProtocol {
     var invokedUpdateContentsCount = 0
     var invokedUpdateContentsParameters: (contents: [Any], Void)?
     var invokedUpdateContentsParametersList = [(contents: [Any], Void)]()
+    var invokedUpdateContentsCompletion: (([Any]) -> Void)?
 
     func update(contents: [Any]) {
         invokedUpdateContents = true
         invokedUpdateContentsCount += 1
         invokedUpdateContentsParameters = (contents, ())
         invokedUpdateContentsParametersList.append((contents, ()))
+        invokedUpdateContentsCompletion?(contents)
     }
 
     var invokedUpdateStatus = false
     var invokedUpdateStatusCount = 0
     var invokedUpdateStatusParameters: (status: ContentsStatus, Void)?
     var invokedUpdateStatusParametersList = [(status: ContentsStatus, Void)]()
+    var invokedUpdateStatusCompletion: ((ContentsStatus) -> Void)?
 
     func update(status: ContentsStatus) {
         invokedUpdateStatus = true
         invokedUpdateStatusCount += 1
         invokedUpdateStatusParameters = (status, ())
         invokedUpdateStatusParametersList.append((status, ()))
+        invokedUpdateStatusCompletion?(status)
     }
 }
