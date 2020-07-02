@@ -27,8 +27,7 @@ final class DetailViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = repositoryFullName
         navigationItem.backBarButtonItem?.title = ""
-        
-        self.sink()
+        sink()
         viewModel.reload()
     }
     
