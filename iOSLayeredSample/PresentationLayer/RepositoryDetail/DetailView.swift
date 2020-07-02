@@ -26,6 +26,7 @@ final class DetailPresenter: NSObject, DetailViewProtocol {
         Bundle.main.loadNibNamed(type(of: self).className, owner: self, options: nil)
         superView.addSubview(view)
         view.frame = superView.frame
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         // self.loading.indicator.startAnimating()
     }
     

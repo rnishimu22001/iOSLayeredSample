@@ -18,11 +18,16 @@ final class DetailViewController: UIViewController {
     var repositoryFullName: String = ""
     private var cancellables: [AnyCancellable] = []
     
+    override func loadView() {
+        super.loadView()
+        detailView = DetailPresenter(with: view)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = repositoryFullName
         navigationItem.backBarButtonItem?.title = ""
-        detailView = DetailPresenter(with: view)
+        
         self.sink()
         viewModel.reload()
     }

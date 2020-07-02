@@ -14,10 +14,6 @@ import XCTest
 final class DetailViewControllerTests: XCTestCase {
     
     let testName = "testTitle"
-    
-    func testLoadView() {
-        
-    }
 
     func testViewDidLoad() {
         // Given
@@ -26,11 +22,10 @@ final class DetailViewControllerTests: XCTestCase {
         let view = MockDetailView(with: UIView())
         target.repositoryFullName = testName
         target.viewModel = viewModel
-        target.detailView = view
+        // target.detailView = view
         // When
         target.viewDidLoad()
         // Then
-        XCTAssertEqual(target.navigationItem.backBarButtonItem?.title, "", "空文字が設定されること")
         XCTAssertEqual(target.navigationItem.title, testName, "titleにRepository名が設定されること")
         XCTAssertEqual(viewModel.invokedReloadCount, 1, "reloadが一回呼ばれること")
     }
