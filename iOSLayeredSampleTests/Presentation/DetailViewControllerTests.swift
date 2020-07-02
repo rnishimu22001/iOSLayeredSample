@@ -22,7 +22,7 @@ final class DetailViewControllerTests: XCTestCase {
         let view = MockDetailView(with: UIView())
         target.repositoryFullName = testName
         target.viewModel = viewModel
-        // target.detailView = view
+        target.detailView = view
         // When
         target.viewDidLoad()
         // Then
