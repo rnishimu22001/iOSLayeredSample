@@ -10,6 +10,7 @@
 		5A1CB3F924AD6E1500D32543 /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1CB3F824AD6E1500D32543 /* DetailViewControllerTests.swift */; };
 		5A1CB3FB24AD6E6500D32543 /* MockDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1CB3FA24AD6E6500D32543 /* MockDetailViewModel.swift */; };
 		5A1CB3FD24AD6F2300D32543 /* MockDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1CB3FC24AD6F2300D32543 /* MockDetailView.swift */; };
+		5A1CB3FF24AD90B200D32543 /* SwiftUIDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1CB3FE24AD90B200D32543 /* SwiftUIDetailView.swift */; };
 		5A373E8824A6DCCA00FCDBDE /* ReleaseStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A373E8724A6DCCA00FCDBDE /* ReleaseStatusTests.swift */; };
 		5A373E8A24A6DF3100FCDBDE /* ReleaseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A373E8924A6DF3100FCDBDE /* ReleaseStatus.swift */; };
 		5A4CBEBB2308CAA30056E710 /* CollaboratorDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CBEBA2308CAA30056E710 /* CollaboratorDisplayData.swift */; };
@@ -116,6 +117,7 @@
 		5A1CB3F824AD6E1500D32543 /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
 		5A1CB3FA24AD6E6500D32543 /* MockDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDetailViewModel.swift; sourceTree = "<group>"; };
 		5A1CB3FC24AD6F2300D32543 /* MockDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDetailView.swift; sourceTree = "<group>"; };
+		5A1CB3FE24AD90B200D32543 /* SwiftUIDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDetailView.swift; sourceTree = "<group>"; };
 		5A373E8724A6DCCA00FCDBDE /* ReleaseStatusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseStatusTests.swift; sourceTree = "<group>"; };
 		5A373E8924A6DF3100FCDBDE /* ReleaseStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseStatus.swift; sourceTree = "<group>"; };
 		5A4CBEBA2308CAA30056E710 /* CollaboratorDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorDisplayData.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				5AA7E3E12331E4690011CE1B /* CollaboratorTitleView.swift */,
 				5ACA091323488D40001B4D73 /* BranchView.swift */,
 				5AA8374C237819FE00B059DC /* BranchView.xib */,
+				5A1CB3FE24AD90B200D32543 /* SwiftUIDetailView.swift */,
 			);
 			path = RepositoryDetail;
 			sourceTree = "<group>";
@@ -753,6 +756,7 @@
 				5A940D18230933ED00BD0A08 /* DetailViewModel.swift in Sources */,
 				5A662C61230842BB00BD0403 /* CollaboratorData.swift in Sources */,
 				5A61EECE22EF208B00054B92 /* SearchListUseCase.swift in Sources */,
+				5A1CB3FF24AD90B200D32543 /* SwiftUIDetailView.swift in Sources */,
 				5ACA0910234886DF001B4D73 /* Branch.swift in Sources */,
 				5A9B912122EBEB0500996712 /* AppDelegate.swift in Sources */,
 				5A662C5323083DA700BD0403 /* DetailView.swift in Sources */,

@@ -6,6 +6,7 @@
 //  Copyright © 2019 rnishimu22001. All rights reserved.
 //
 
+import SwiftUI
 import UIKit
 import Combine
 
@@ -57,8 +58,7 @@ extension SearchListViewController: SearchListViewDelegate {
         guard let repository = viewModel.repositoryInList(at: index) else {
             return
         }
-        let viewController = DetailViewController()
-        viewController.repositoryFullName = repository.name
+        let viewController = UIHostingController(rootView: DetailView(reposiotryName: repository.name))
         navigator.push(viewControler: viewController)
     }
 }

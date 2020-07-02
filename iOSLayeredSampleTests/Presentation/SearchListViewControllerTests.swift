@@ -6,6 +6,7 @@
 //  Copyright © 2020 rnishimu22001. All rights reserved.
 //
 
+import SwiftUI
 import Combine
 import XCTest
 @testable import iOSLayeredSample
@@ -27,7 +28,6 @@ final class SearchListViewControllerTest: XCTestCase {
                               didSelectRepositoryListAt: 0)
         // Then
         XCTAssertEqual(navigator.invokedPushCount, 1, "画面が一回pushされること")
-        XCTAssertTrue(navigator.invokedPushParametersList.first!.viewControler is DetailViewController, "詳細画面がpushされること")
-        XCTAssertEqual((navigator.invokedPushParametersList.first!.viewControler as?  DetailViewController)!.repositoryFullName, repositoryName, "Repository名が代入されていること")
+        XCTAssertTrue(navigator.invokedPushParametersList.first!.viewControler is UIHostingController<DetailView>, "詳細画面がpushされること")
     }
 }
