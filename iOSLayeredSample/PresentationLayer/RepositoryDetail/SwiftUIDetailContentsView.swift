@@ -24,13 +24,17 @@ struct SwiftUICommunityProfileView: View {
         VStack {
             HStack {
                 Text("Last Update:").padding(layout.margin)
+                    .font(.subheadline)
                 Text("Date").padding(layout.margin)
+                    .font(.subheadline)
                 Spacer()
             }
             HStack {
                 Text("License:")
+                    .font(.subheadline)
                     .padding(layout.margin)
                 Text("Any")
+                    .font(.subheadline)
                     .padding(layout.margin / 2)
                     .colorInvert()
                     .background(Color.gray)
@@ -39,6 +43,7 @@ struct SwiftUICommunityProfileView: View {
             }
             HStack {
                 Text("description here")
+                    .font(.body)
                     .padding(layout.margin)
                     .multilineTextAlignment(.leading)
                 Spacer(minLength: layout.margin)

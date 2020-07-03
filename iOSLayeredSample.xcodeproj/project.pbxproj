@@ -25,8 +25,9 @@
 		5A4CBECF2308E94F0056E710 /* CollaboratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CBECE2308E94F0056E710 /* CollaboratorView.swift */; };
 		5A5EDBA024AAF9510081CBED /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5EDB9F24AAF9510081CBED /* DetailViewModelTests.swift */; };
 		5A5EDBA224AAFA9C0081CBED /* MockDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5EDBA124AAFA9C0081CBED /* MockDetailUseCase.swift */; };
-		5A60854324AF0961003AC3A2 /* DetailContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60854224AF0961003AC3A2 /* DetailContentsView.swift */; };
+		5A60854324AF0961003AC3A2 /* SwiftUIDetailContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60854224AF0961003AC3A2 /* SwiftUIDetailContentsView.swift */; };
 		5A60854524AF1275003AC3A2 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60854424AF1275003AC3A2 /* Layout.swift */; };
+		5A60854724AF170B003AC3A2 /* SwiftUIReleaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60854624AF170B003AC3A2 /* SwiftUIReleaseView.swift */; };
 		5A61EECE22EF208B00054B92 /* SearchListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A61EECD22EF208B00054B92 /* SearchListUseCase.swift */; };
 		5A61EED222EF265B00054B92 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A61EED122EF265B00054B92 /* SearchRepository.swift */; };
 		5A61EED422EF271B00054B92 /* HTTPRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A61EED322EF271B00054B92 /* HTTPRequestable.swift */; };
@@ -134,8 +135,9 @@
 		5A4CBECE2308E94F0056E710 /* CollaboratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorView.swift; sourceTree = "<group>"; };
 		5A5EDB9F24AAF9510081CBED /* DetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
 		5A5EDBA124AAFA9C0081CBED /* MockDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDetailUseCase.swift; sourceTree = "<group>"; };
-		5A60854224AF0961003AC3A2 /* DetailContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentsView.swift; sourceTree = "<group>"; };
+		5A60854224AF0961003AC3A2 /* SwiftUIDetailContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDetailContentsView.swift; sourceTree = "<group>"; };
 		5A60854424AF1275003AC3A2 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		5A60854624AF170B003AC3A2 /* SwiftUIReleaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIReleaseView.swift; sourceTree = "<group>"; };
 		5A61EECD22EF208B00054B92 /* SearchListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListUseCase.swift; sourceTree = "<group>"; };
 		5A61EED122EF265B00054B92 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
 		5A61EED322EF271B00054B92 /* HTTPRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestable.swift; sourceTree = "<group>"; };
@@ -312,7 +314,8 @@
 				5ACA091323488D40001B4D73 /* BranchView.swift */,
 				5AA8374C237819FE00B059DC /* BranchView.xib */,
 				5A1CB3FE24AD90B200D32543 /* SwiftUIDetailView.swift */,
-				5A60854224AF0961003AC3A2 /* DetailContentsView.swift */,
+				5A60854224AF0961003AC3A2 /* SwiftUIDetailContentsView.swift */,
+				5A60854624AF170B003AC3A2 /* SwiftUIReleaseView.swift */,
 			);
 			path = RepositoryDetail;
 			sourceTree = "<group>";
@@ -777,7 +780,7 @@
 				5AB6D67222F542E1008C3D14 /* ContentsStatus.swift in Sources */,
 				5A9400122301AEDD005A549D /* UIView+Additions.swift in Sources */,
 				5AB6D67022F5419A008C3D14 /* Displayable.swift in Sources */,
-				5A60854324AF0961003AC3A2 /* DetailContentsView.swift in Sources */,
+				5A60854324AF0961003AC3A2 /* SwiftUIDetailContentsView.swift in Sources */,
 				5A4CBEBB2308CAA30056E710 /* CollaboratorDisplayData.swift in Sources */,
 				5AADA61C22EC1F47001BA1AD /* NSObject+Additions.swift in Sources */,
 				5ACA090C2348836F001B4D73 /* BranchesRequestClient.swift in Sources */,
@@ -792,6 +795,7 @@
 				5A9B912322EBEB0500996712 /* SceneDelegate.swift in Sources */,
 				5A61EED222EF265B00054B92 /* SearchRepository.swift in Sources */,
 				5A923508232CEF91001E5735 /* CommunityProfile.swift in Sources */,
+				5A60854724AF170B003AC3A2 /* SwiftUIReleaseView.swift in Sources */,
 				5A9400102301A32D005A549D /* GitHubAPIResponseHeader.swift in Sources */,
 				5A662C5723083F6A00BD0403 /* ReleaseClient.swift in Sources */,
 				5AADA60822EC16CC001BA1AD /* SearchListViewController.swift in Sources */,
