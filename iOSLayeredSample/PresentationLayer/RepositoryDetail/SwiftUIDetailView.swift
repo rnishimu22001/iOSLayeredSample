@@ -12,22 +12,23 @@ import UIKit
 struct DetailView: View {
     
     private let viewModel: DetailViewModelProtocol
+    let repositoryName: String
     
-    init(viewModel: DetailViewModelProtocol) {
-        self.viewModel = viewModel
-    }
-    
-    init(reposiotryName: String) {
-        self.init(viewModel: DetailViewModel(repositoryFullName: reposiotryName))
+    init(repositoryName: String) {
+        self.repositoryName = repositoryName
+        self.viewModel = DetailViewModel(repositoryFullName: repositoryName)
     }
     
     var body: some View {
-        Text("hello")
+        NavigationView {
+            SwiftUIDetailContentsView()
+        }
+        .navigationBarTitle(repositoryName)
     }
 }
 
 struct SwiftUIDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+        DetailView(repositoryName: "test")
     }
 }

@@ -58,7 +58,7 @@ extension SearchListViewController: SearchListViewDelegate {
         guard let repository = viewModel.repositoryInList(at: index) else {
             return
         }
-        let viewController = UIHostingController(rootView: DetailView(reposiotryName: repository.name))
+        let viewController = UIHostingController(rootView: DetailView(repositoryName: repository.name))
         navigator.push(viewControler: viewController)
     }
 }
