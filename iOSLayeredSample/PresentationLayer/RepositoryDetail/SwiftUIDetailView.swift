@@ -21,7 +21,9 @@ struct DetailView: View {
     
     var body: some View {
         NavigationView {
-            SwiftUIDetailContentsView()
+            ScrollView {
+                SwiftUIDetailContentsView()
+            }
         }
         .navigationBarTitle(repositoryName)
     }
