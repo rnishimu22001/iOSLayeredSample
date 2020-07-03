@@ -28,6 +28,7 @@
 		5A60854324AF0961003AC3A2 /* SwiftUIDetailContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60854224AF0961003AC3A2 /* SwiftUIDetailContentsView.swift */; };
 		5A60854524AF1275003AC3A2 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60854424AF1275003AC3A2 /* Layout.swift */; };
 		5A60854724AF170B003AC3A2 /* SwiftUIReleaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60854624AF170B003AC3A2 /* SwiftUIReleaseView.swift */; };
+		5A60854924AF1B54003AC3A2 /* SwiftUIBranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60854824AF1B54003AC3A2 /* SwiftUIBranchView.swift */; };
 		5A61EECE22EF208B00054B92 /* SearchListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A61EECD22EF208B00054B92 /* SearchListUseCase.swift */; };
 		5A61EED222EF265B00054B92 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A61EED122EF265B00054B92 /* SearchRepository.swift */; };
 		5A61EED422EF271B00054B92 /* HTTPRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A61EED322EF271B00054B92 /* HTTPRequestable.swift */; };
@@ -138,6 +139,7 @@
 		5A60854224AF0961003AC3A2 /* SwiftUIDetailContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDetailContentsView.swift; sourceTree = "<group>"; };
 		5A60854424AF1275003AC3A2 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		5A60854624AF170B003AC3A2 /* SwiftUIReleaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIReleaseView.swift; sourceTree = "<group>"; };
+		5A60854824AF1B54003AC3A2 /* SwiftUIBranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIBranchView.swift; sourceTree = "<group>"; };
 		5A61EECD22EF208B00054B92 /* SearchListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListUseCase.swift; sourceTree = "<group>"; };
 		5A61EED122EF265B00054B92 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
 		5A61EED322EF271B00054B92 /* HTTPRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestable.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				5A1CB3FE24AD90B200D32543 /* SwiftUIDetailView.swift */,
 				5A60854224AF0961003AC3A2 /* SwiftUIDetailContentsView.swift */,
 				5A60854624AF170B003AC3A2 /* SwiftUIReleaseView.swift */,
+				5A60854824AF1B54003AC3A2 /* SwiftUIBranchView.swift */,
 			);
 			path = RepositoryDetail;
 			sourceTree = "<group>";
@@ -739,6 +742,7 @@
 				5AA7E3E22331E4690011CE1B /* CollaboratorTitleView.swift in Sources */,
 				5A662C5D230841F400BD0403 /* ReleaseData.swift in Sources */,
 				5AB6D67622F59D7E008C3D14 /* LoadingCell.swift in Sources */,
+				5A60854924AF1B54003AC3A2 /* SwiftUIBranchView.swift in Sources */,
 				5A9EFC832311353300490D92 /* UISearchBarDelegateProxy.swift in Sources */,
 				5A940D1A2309349400BD0A08 /* DetailUseCase.swift in Sources */,
 				5AADA60C22EC1720001BA1AD /* APISettings.swift in Sources */,

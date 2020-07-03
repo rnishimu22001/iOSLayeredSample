@@ -26,7 +26,7 @@ struct SwiftUICommunityProfileView: View {
                 Text("Last Update:").padding(layout.margin)
                     .font(.subheadline)
                 Text("Date").padding(layout.margin)
-                    .font(.subheadline)
+                    .font(.body)
                 Spacer()
             }
             HStack {
@@ -34,7 +34,7 @@ struct SwiftUICommunityProfileView: View {
                     .font(.subheadline)
                     .padding(layout.margin)
                 Text("Any")
-                    .font(.subheadline)
+                    .font(.body)
                     .padding(layout.margin / 2)
                     .colorInvert()
                     .background(Color.gray)

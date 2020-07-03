@@ -23,7 +23,11 @@ struct DetailView: View {
         NavigationView {
             ScrollView {
                 SwiftUIDetailContentsView()
+                Spacer()
                 SwiftUIReleaseView()
+                Spacer()
+                SwiftUIBranchView()
+                Spacer()
             }
         }
         .navigationBarTitle(repositoryName)
