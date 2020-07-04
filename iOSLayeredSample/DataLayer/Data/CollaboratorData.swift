@@ -8,6 +8,9 @@
 
 import Foundation
 
+// API document here
+// https://developer.github.com/v3/repos/collaborators/
+
 // MARK: - Collaborator
 struct CollaboratorData: Codable {
     

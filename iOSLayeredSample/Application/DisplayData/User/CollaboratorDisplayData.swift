@@ -8,8 +8,9 @@
 
 import Foundation
 
-struct CollaboratorDisplayData {
-    
+struct CollaboratorDisplayData: Identifiable {
+   
+    let id = UUID()
     let hasAdminBadge: Bool
     let icon: URL
     let name: String
