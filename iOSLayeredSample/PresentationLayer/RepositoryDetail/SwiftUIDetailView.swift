@@ -20,15 +20,12 @@ struct DetailView: View {
     }
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                SwiftUIDetailContentsView()
-                Spacer()
-                SwiftUIReleaseView()
-                Spacer()
-                SwiftUIBranchView()
-                Spacer()
-            }
+        ScrollView {
+            SwiftUIDetailContentsView()
+            SwiftUIReleaseView()
+            SwiftUIBranchView()
+            SwiftUICollaboratorsView()
+            Spacer()
         }
         .navigationBarTitle(repositoryName)
     }
