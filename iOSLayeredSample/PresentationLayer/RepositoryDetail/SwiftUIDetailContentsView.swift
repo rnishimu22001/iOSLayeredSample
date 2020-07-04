@@ -18,35 +18,33 @@ struct SwiftUIDetailContentsView: View {
 
 struct SwiftUICommunityProfileView: View {
     
-    let layout = Layout()
-    
     var body: some View {
         VStack {
             HStack {
-                Text("Last Update:").padding(layout.margin)
+                Text("Last Update:").padding(Layout.margin)
                     .font(.subheadline)
-                Text("Date").padding(layout.margin)
+                Text("Date").padding(Layout.margin)
                     .font(.body)
                 Spacer()
             }
             HStack {
                 Text("License:")
                     .font(.subheadline)
-                    .padding(layout.margin)
+                    .padding(Layout.margin)
                 Text("Any")
                     .font(.body)
-                    .padding(layout.margin / 2)
+                    .padding(Layout.margin / 2)
                     .colorInvert()
                     .background(Color.gray)
-                    .padding(layout.margin / 2)
+                    .padding(Layout.margin / 2)
                 Spacer()
             }
             HStack {
                 Text("description here")
                     .font(.body)
-                    .padding(layout.margin)
+                    .padding(Layout.margin)
                     .multilineTextAlignment(.leading)
-                Spacer(minLength: layout.margin)
+                Spacer(minLength: Layout.margin)
             }
         }
     }

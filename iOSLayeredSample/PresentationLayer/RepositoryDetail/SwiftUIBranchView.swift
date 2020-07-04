@@ -10,23 +10,21 @@ import SwiftUI
 
 struct SwiftUIBranchView: View {
     
-    let layout = Layout()
-    
     var body: some View {
         HStack {
             Text("Branch Name:")
-                .padding(layout.margin)
+                .padding(Layout.margin)
                 .font(.subheadline)
             Text("Branch name here")
-                .padding(layout.margin)
+                .padding(Layout.margin)
                 .font(.body)
             Text("protected")
                 .font(.body)
                 .colorInvert()
-                .padding(layout.margin / 2)
+                .padding(Layout.margin / 2)
                 .background(Color.blue)
-                .padding(layout.margin / 2)
-            Spacer(minLength: layout.margin)
+                .padding(Layout.margin / 2)
+            Spacer(minLength: Layout.margin)
         }
     }
 }

@@ -10,40 +10,38 @@ import SwiftUI
 
 struct SwiftUIReleaseView: View {
     
-    let layout = Layout()
-    
     var body: some View {
         HStack {
             VStack {
                 HStack {
                     Text("Latest Release:")
                         .font(.subheadline)
-                        .padding(layout.margin)
+                        .padding(Layout.margin)
                     Text("tag here")
                         .font(.body)
-                        .padding(layout.margin)
+                        .padding(Layout.margin)
                     Text("status here")
                         .font(.body)
-                        .padding(layout.margin / 2)
+                        .padding(Layout.margin / 2)
                         .colorInvert()
                         .background(Color.gray)
-                        .padding(layout.margin / 2)
+                        .padding(Layout.margin / 2)
                     Spacer(minLength: 8)
                 }
                 HStack {
                     Text("Date:")
                         .font(.subheadline)
-                        .padding(layout.margin)
+                        .padding(Layout.margin)
                     Text("Release date here")
                         .font(.subheadline)
-                        .padding(layout.margin)
+                        .padding(Layout.margin)
                     Spacer(minLength: 8)
                     
                 }
                 HStack {
                     Text("description here")
                         .font(.body)
-                        .padding(layout.margin)
+                        .padding(Layout.margin)
                     Spacer(minLength: 8)
                 }
             }

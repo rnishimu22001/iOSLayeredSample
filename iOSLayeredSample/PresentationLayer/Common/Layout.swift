@@ -10,5 +10,5 @@ import Foundation
 import UIKit
 
 struct Layout {
-    let margin: CGFloat = 8.0
+    static let margin: CGFloat = 8.0
 }

@@ -10,18 +10,16 @@ import SwiftUI
 
 struct SwiftUICollaboratorsView: View {
    
-    let layout = Layout()
     var collaborators: [CollaboratorDisplayData] = [
         CollaboratorDisplayData(with: Collaborator(isAdmin: false, icon: URL(string: "https://avatars1.githubusercontent.com/u/25366111?s=400&v=4")!, name: "rnishimu22001"))
     ]
     
     struct TitleView: View {
-        let layout = Layout()
         var body: some View {
             HStack {
                 Text("Collaborators")
-                    .padding(layout.margin)
-                Spacer(minLength: layout.margin)
+                    .padding(Layout.margin)
+                Spacer(minLength: Layout.margin)
             }
         }
     }
@@ -33,9 +31,9 @@ struct SwiftUICollaboratorsView: View {
                 ForEach(collaborators) { collaborator in
                     HStack {
                         Image(systemName: "photo")
-                            .padding(self.layout.margin)
+                            .padding(Layout.margin)
                         Text("Collaborator's name here")
-                        Spacer(minLength: self.layout.margin)
+                        Spacer(minLength: Layout.margin)
                     }
                 }
             }
