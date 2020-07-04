@@ -11,7 +11,7 @@ import Foundation
 
 struct SeparatorView: View {
     var body: some View {
-        EmptyView()
+        Divider()
             .background(Color.gray)
             .padding(EdgeInsets(top: 0, leading: Layout.margin, bottom: 0, trailing: Layout.margin))
     }

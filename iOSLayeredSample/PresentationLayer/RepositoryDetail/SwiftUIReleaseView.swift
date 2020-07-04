@@ -15,10 +15,10 @@ struct SwiftUIReleaseView: View {
             VStack {
                 HStack {
                     Text("Latest Release:")
-                        .font(.subheadline)
+                        .font(.headline)
                         .padding(Layout.margin)
                     Text("tag here")
-                        .font(.body)
+                        .font(.headline)
                         .padding(Layout.margin)
                     Text("status here")
                         .font(.body)

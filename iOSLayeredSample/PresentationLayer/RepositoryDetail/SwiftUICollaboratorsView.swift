@@ -18,6 +18,7 @@ struct SwiftUICollaboratorsView: View {
         var body: some View {
             HStack {
                 Text("Collaborators")
+                    .font(.headline)
                     .padding(Layout.margin)
                 Spacer(minLength: Layout.margin)
             }
