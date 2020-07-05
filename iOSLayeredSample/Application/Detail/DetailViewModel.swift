@@ -21,6 +21,14 @@ protocol DetailViewModelProtocol {
 final class DetailViewModel: ObservableObject, DetailViewModelProtocol {
     @Published var status: ContentsStatus = .initalized
     @Published var contents: [Any] = []
+    
+    // MARK: Contents Modules
+    @Published var profile: CommunityProfileDisplayData?
+    @Published var release: ReleaseDisplayData?
+    @Published var branch: BranchDisplayData?
+    @Published var collaborators: CollaboratorsDisplayData?
+    @Published var pagingLoading: LoadingDisplayData?
+    
     private var useCase: DetailUseCaseProtocol
     
     private var otherModulesCancellable: AnyCancellable?
