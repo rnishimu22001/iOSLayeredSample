@@ -8,7 +8,9 @@
 
 import UIKit
 
-struct LoadingDisplayData: TableViewDisplayable {
+struct LoadingDisplayData: TableViewDisplayable, Identifiable {
+    
+    let id = UUID()
     let nextLink: URL?
     static var tableViewCellClass: UITableViewCell.Type {
         return LoadingCell.self

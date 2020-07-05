@@ -6,7 +6,10 @@
 //  Copyright © 2019 rnishimu22001. All rights reserved.
 //
 
-struct BranchDisplayData {
+import Foundation
+
+struct BranchDisplayData: Identifiable {
+    let id = UUID()
     let name: String
     let shouldHideProtected: Bool
 }

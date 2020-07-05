@@ -10,26 +10,8 @@ import Combine
 @testable import iOSLayeredSample
 
 final class MockDetailViewModel: DetailViewModelProtocol {
-
-    var invokedStatusGetter = false
-    var invokedStatusGetterCount = 0
-    var stubbedStatus: CurrentValueSubject<ContentsStatus, Never> = .init(.initalized)
-
-    var status: CurrentValueSubject<ContentsStatus, Never> {
-        invokedStatusGetter = true
-        invokedStatusGetterCount += 1
-        return stubbedStatus
-    }
-
-    var invokedContentsGetter = false
-    var invokedContentsGetterCount = 0
-    var stubbedContents: CurrentValueSubject<[Any], Never> = .init([])
-
-    var contents: CurrentValueSubject<[Any], Never> {
-        invokedContentsGetter = true
-        invokedContentsGetterCount += 1
-        return stubbedContents
-    }
+    var status: ContentsStatus = .initalized
+    var contents: [Any] = []
 
     var invokedReload = false
     var invokedReloadCount = 0

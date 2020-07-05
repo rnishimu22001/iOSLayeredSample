@@ -21,7 +21,8 @@ extension ReleaseStatus {
     }
 }
 
-struct ReleaseDisplayData {
+struct ReleaseDisplayData: Identifiable {
+    let id = UUID()
     let tagName: String
     let releaseDesciption: String
     let status: ReleaseStatus

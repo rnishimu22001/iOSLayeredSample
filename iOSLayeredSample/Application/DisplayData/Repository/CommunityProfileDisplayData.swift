@@ -8,7 +8,10 @@
 
 import Foundation
 
-struct CommunityProfileDisplayData {
+struct CommunityProfileDisplayData: Identifiable {
+   
+    let id = UUID()
+    
     let name: String
     let license: String
     let repositoryDescription: String

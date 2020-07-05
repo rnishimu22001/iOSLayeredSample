@@ -13,10 +13,11 @@ struct SwiftUIDetailContentsView: View {
     var contents: [Any]
     
     var body: some View {
-        ForEach(contents.indices) { index in
-            self.contentView(with: self.contents[index])
-            SeparatorView()
-        }
+        EmptyView()
+//        ForEach(contents, id: \.self) { content in
+//            self.contentView(with: content)
+//            SeparatorView()
+//        }
     }
     
     private func contentView(with content: Any) -> AnyView {

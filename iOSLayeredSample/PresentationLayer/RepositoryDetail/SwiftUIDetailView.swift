@@ -23,29 +23,6 @@ struct DetailView: View {
     @ViewBuilder
     var body: some View {
         ScrollView {
-
-//                    ForEach($viewModel.contents) { content in
-//                        switch content {
-//                        case let content
-//                            SwiftUIDetailContentsView()
-//                            SeparatorView()
-//
-//                            SwiftUIReleaseView()
-//                            SeparatorView()
-//                            SwiftUIBranchView()
-//                            SeparatorView()
-//                            SwiftUICollaboratorsView()
-//                        }
-//
-//                    }
-//                    Divider()
-//                    Spacer()
-//                Text("browsable")
-//            case .error:
-//                Text("error")
-//            case .initalized, .loading:
-//                Text("loading")
-//            }
             statusView
         }
         .navigationBarTitle(repositoryName)
@@ -54,7 +31,7 @@ struct DetailView: View {
     private var statusView: AnyView {
         switch viewModel.status {
         case .browsable:
-            return AnyView(Text("browsable"))
+            return AnyView(SwiftUIDetailContentsView(contents: viewModel.contents))
         case .error:
             return AnyView(Text("error"))
         case .initalized, .loading:
