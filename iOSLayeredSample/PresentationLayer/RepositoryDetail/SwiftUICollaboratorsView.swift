@@ -9,12 +9,9 @@
 import SwiftUI
 
 struct SwiftUICollaboratorsView: View {
-   
-    var collaborators: [CollaboratorDisplayData] = [
-        CollaboratorDisplayData(with: Collaborator(isAdmin: false, icon: URL(string: "https://avatars1.githubusercontent.com/u/25366111?s=400&v=4")!, name: "rnishimu22001")),
-        CollaboratorDisplayData(with: Collaborator(isAdmin: true, icon: URL(string: "https://avatars1.githubusercontent.com/u/25366111?s=400&v=4")!, name: "rnishimu22001"))
-    ]
     
+    let collaborators: CollaboratorsDisplayData
+   
     struct TitleView: View {
         var body: some View {
             HStack {
@@ -30,12 +27,12 @@ struct SwiftUICollaboratorsView: View {
         VStack {
             TitleView()
             VStack {
-                ForEach(collaborators) { collaborator in
+                ForEach(collaborators.collaborators) { collaborator in
                     if !collaborator.hasAdminBadge {
                         HStack {
                             Image(systemName: "photo")
                                 .padding(Layout.margin)
-                            Text("Collaborator's name here")
+                            Text(collaborator.name)
                             Spacer(minLength: Layout.margin)
                         }
                     } else {

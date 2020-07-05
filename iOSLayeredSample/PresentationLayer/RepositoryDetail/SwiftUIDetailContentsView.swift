@@ -22,14 +22,14 @@ struct SwiftUIDetailContentsView: View {
     private func contentView(with content: Any) -> AnyView {
         switch content {
         case let profile as CommunityProfileDisplayData:
-            return AnyView(SwiftUICommunityProfileView())
+            return AnyView(SwiftUICommunityProfileView(profile: profile))
         case let release as ReleaseDisplayData:
-            return AnyView(SwiftUIReleaseView())
+            return AnyView(SwiftUIReleaseView(release: release))
         case let branch as BranchDisplayData:
-            return AnyView(SwiftUIBranchView())
+            return AnyView(SwiftUIBranchView(branch: branch))
         case let collaborators as CollaboratorsDisplayData:
-            return AnyView(SwiftUICollaboratorsView())
-        case let loading as LoadingDisplayData:
+            return AnyView(SwiftUICollaboratorsView(collaborators: collaborators))
+        case is LoadingDisplayData:
             return AnyView(EmptyView())
         default:
             assertionFailure("未設定のデータ型です")

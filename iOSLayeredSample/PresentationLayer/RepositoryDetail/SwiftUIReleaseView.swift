@@ -10,6 +10,8 @@ import SwiftUI
 
 struct SwiftUIReleaseView: View {
     
+    let release: ReleaseDisplayData
+    
     var body: some View {
         HStack {
             VStack {
@@ -17,14 +19,14 @@ struct SwiftUIReleaseView: View {
                     Text("Latest Release:")
                         .font(.headline)
                         .padding(Layout.margin)
-                    Text("tag here")
+                    Text(release.tagName)
                         .font(.headline)
                         .padding(Layout.margin)
-                    Text("status here")
+                    Text(release.status.rawValue)
                         .font(.body)
                         .padding(Layout.margin / 2)
                         .colorInvert()
-                        .background(Color.gray)
+                        .background(Color(release.status.color))
                         .padding(Layout.margin / 2)
                     Spacer(minLength: 8)
                 }
@@ -32,25 +34,19 @@ struct SwiftUIReleaseView: View {
                     Text("Date:")
                         .font(.subheadline)
                         .padding(Layout.margin)
-                    Text("Release date here")
+                    Text(release.publishedDate)
                         .font(.subheadline)
                         .padding(Layout.margin)
                     Spacer(minLength: 8)
                     
                 }
                 HStack {
-                    Text("description here")
+                    Text(release.releaseDesciption)
                         .font(.body)
                         .padding(Layout.margin)
                     Spacer(minLength: 8)
                 }
             }
         }
-    }
-}
-
-struct SwiftUIReleaseView_Previews: PreviewProvider {
-    static var previews: some View {
-        SwiftUIReleaseView()
     }
 }
