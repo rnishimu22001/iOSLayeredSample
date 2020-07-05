@@ -47,7 +47,10 @@ final class DetailViewModelTests: XCTestCase {
         // Given When
         let target = DetailViewModel(repositoryFullName: "test")
         // Then
-        XCTAssertTrue(target.contents.isEmpty, "初期化時は空")
+        XCTAssertNil(target.profile, "初期化時はnil")
+        XCTAssertNil(target.release, "初期化時はnil")
+        XCTAssertNil(target.collaborators, "初期化時はnil")
+        XCTAssertNil(target.branch, "初期化時はnil")
         XCTAssertEqual(target.status, .initalized, "最初は初期化状態になること")
     }
     
@@ -57,7 +60,6 @@ final class DetailViewModelTests: XCTestCase {
         // When
         container.target.reload()
         // Then
-        XCTAssertTrue(container.target.contents.isEmpty, "reloadでは表示データは追加されない")
         XCTAssertEqual(container.target.status, .loading, "reload後はloadingの表示になること")
     }
     
@@ -126,7 +128,7 @@ final class DetailViewModelTests: XCTestCase {
             XCTAssertNotNil(container.target.release, "Releaseの情報が更新されること")
             XCTAssertNotNil(container.target.collaborators, "Collaboratorが更新されること")
             XCTAssertEqual(container.target.collaborators!.collaborators.count, 5, "Collaboratorsの表示データが最大5件に制限されること")
-            XCTAssertNil(container.target.pagingLoading, "ロード中の情報が更新されないこと")
+            XCTAssertNil(container.target.pagingLoading, "ロード中の情報が消えること")
             XCTAssertEqual(container.target.status, .loading, "ステータスが更新がないこと")
         })
         XCTContext.runActivity(named: "OtherModulesすべてのリクエスト失敗", block: { _ in

@@ -28,10 +28,44 @@ struct DetailView: View {
         .navigationBarTitle(repositoryName)
     }
     
+    private var contentsView: some View {
+        VStack {
+            if viewModel.profile != nil {
+                SwiftUICommunityProfileView(profile: viewModel.profile!)
+                SeparatorView()
+            } else {
+                EmptyView()
+            }
+            if viewModel.release != nil {
+                SwiftUIReleaseView(release: viewModel.release!)
+                SeparatorView()
+            } else {
+                EmptyView()
+            }
+            if viewModel.branch != nil {
+                SwiftUIBranchView(branch: viewModel.branch!)
+                SeparatorView()
+            } else {
+                EmptyView()
+            }
+            if viewModel.collaborators != nil {
+                SwiftUICollaboratorsView(collaborators: viewModel.collaborators!)
+                SeparatorView()
+            } else {
+                EmptyView()
+            }
+            if viewModel.pagingLoading != nil {
+                AnyView(EmptyView())
+            } else {
+                EmptyView()
+            }
+        }
+    }
+    
     private var statusView: AnyView {
         switch viewModel.status {
         case .browsable:
-            return AnyView(SwiftUIDetailContentsView(contents: viewModel.contents))
+            return AnyView(contentsView)
         case .error:
             return AnyView(Text("error"))
         case .initalized, .loading:

@@ -9,18 +9,9 @@
 import Foundation
 import Combine
 
-protocol DetailViewModelProtocol {
-    /// 表示状態
-    var status: ContentsStatus { get }
-    /// 表示するコンテンツ
-    var contents: [Any] { get }
-    /// 表示のリロード
-    func reload()
-}
-
-final class DetailViewModel: ObservableObject, DetailViewModelProtocol {
+final class DetailViewModel: ObservableObject {
+    
     @Published var status: ContentsStatus = .initalized
-    @Published var contents: [Any] = []
     
     // MARK: Contents Modules
     @Published var profile: CommunityProfileDisplayData?
@@ -72,22 +63,22 @@ final class DetailViewModel: ObservableObject, DetailViewModelProtocol {
 extension DetailViewModel {
     
     private func didLoad(latestRelease: Release?, collaborators: [Collaborator], branches: [Branch]) {
-        var filterd = contents.filter { !($0 is LoadingDisplayData) }
-        
-        if let first = branches.first {
-            filterd.append(BranchDisplayData(with: first))
-        }
-        
-        if let release = latestRelease {
-            filterd.append(ReleaseDisplayData(with: release, status: ReleaseStatus(isDraft: release.isDraft, isPrerelease: release.isPreRelease)))
-        }
-        if !collaborators.isEmpty {
-            filterd.append(DetailContributorTitleDisplayData())
-            filterd.append(CollaboratorsDisplayData(with: collaborators))
-        }
         otherModulesCancellable = nil
         DispatchQueue.asyncAtMain { [weak self] in
-            self?.contents = filterd
+            guard let self = self else {
+                return
+            }
+            self.pagingLoading = nil
+            if let first = branches.first {
+                self.branch = BranchDisplayData(with: first)
+            }
+            
+            if let release = latestRelease {
+                self.release = ReleaseDisplayData(with: release, status: ReleaseStatus(isDraft: release.isDraft, isPrerelease: release.isPreRelease))
+            }
+            if !collaborators.isEmpty {
+                self.collaborators = CollaboratorsDisplayData(with: collaborators)
+            }
         }
     }
     
@@ -98,9 +89,9 @@ extension DetailViewModel {
             guard let self = self else {
                 return
             }
-            self.contents.insert(display, at: self.contents.startIndex)
+            self.profile = display
             if self.otherModulesCancellable != nil {
-                self.contents.append(LoadingDisplayData(nextLink: nil))
+                self.pagingLoading = LoadingDisplayData(nextLink: nil)
             }
             self.status = .browsable
         }

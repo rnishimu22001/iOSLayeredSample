@@ -13,39 +13,37 @@ struct SwiftUIReleaseView: View {
     let release: ReleaseDisplayData
     
     var body: some View {
-        HStack {
-            VStack {
-                HStack {
-                    Text("Latest Release:")
-                        .font(.headline)
-                        .padding(Layout.margin)
-                    Text(release.tagName)
-                        .font(.headline)
-                        .padding(Layout.margin)
-                    Text(release.status.rawValue)
-                        .font(.body)
-                        .padding(Layout.margin / 2)
-                        .colorInvert()
-                        .background(Color(release.status.color))
-                        .padding(Layout.margin / 2)
-                    Spacer(minLength: 8)
-                }
-                HStack {
-                    Text("Date:")
-                        .font(.subheadline)
-                        .padding(Layout.margin)
-                    Text(release.publishedDate)
-                        .font(.subheadline)
-                        .padding(Layout.margin)
-                    Spacer(minLength: 8)
-                    
-                }
-                HStack {
-                    Text(release.releaseDesciption)
-                        .font(.body)
-                        .padding(Layout.margin)
-                    Spacer(minLength: 8)
-                }
+        VStack {
+            HStack {
+                Text("Latest Release:")
+                    .font(.headline)
+                    .padding(Layout.margin)
+                Text(release.tagName)
+                    .font(.headline)
+                    .padding(Layout.margin)
+                Text(release.status.rawValue)
+                    .font(.body)
+                    .padding(Layout.margin / 2)
+                    .colorInvert()
+                    .background(Color(release.status.color))
+                    .padding(Layout.margin / 2)
+                Spacer(minLength: 8)
+            }
+            HStack {
+                Text("Date:")
+                    .font(.subheadline)
+                    .padding(Layout.margin)
+                Text(release.publishedDate)
+                    .font(.subheadline)
+                    .padding(Layout.margin)
+                Spacer(minLength: 8)
+                
+            }
+            HStack {
+                Text(release.releaseDesciption)
+                    .font(.body)
+                    .padding(Layout.margin)
+                Spacer(minLength: 8)
             }
         }
     }

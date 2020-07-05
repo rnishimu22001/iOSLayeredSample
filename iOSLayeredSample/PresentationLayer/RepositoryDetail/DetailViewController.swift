@@ -12,7 +12,7 @@ import Combine
 final class DetailViewController: UIViewController {
        
     var detailView: DetailViewProtocol!
-    lazy var viewModel: DetailViewModelProtocol = {
+    lazy var viewModel = {
         DetailViewModel(repositoryFullName: repositoryFullName)
     }()
     var repositoryFullName: String = ""
