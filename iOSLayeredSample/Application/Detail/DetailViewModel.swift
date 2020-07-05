@@ -6,20 +6,21 @@
 //  Copyright © 2019 rnishimu22001. All rights reserved.
 //
 
+import Foundation
 import Combine
 
 protocol DetailViewModelProtocol {
     /// 表示状態
-    var status: CurrentValueSubject<ContentsStatus, Never> { get }
+    var status: ContentsStatus { get }
     /// 表示するコンテンツ
-    var contents: CurrentValueSubject<[Any], Never> { get }
+    var contents: [Any] { get }
     /// 表示のリロード
     func reload()
 }
 
-final class DetailViewModel: DetailViewModelProtocol {
-    let status: CurrentValueSubject<ContentsStatus, Never> = .init(.initalized)
-    let contents: CurrentValueSubject<[Any], Never> = .init([])
+final class DetailViewModel: ObservableObject, DetailViewModelProtocol {
+    @Published var status: ContentsStatus = .initalized
+    @Published var contents: [Any] = []
     private var useCase: DetailUseCaseProtocol
     
     private var otherModulesCancellable: AnyCancellable?
@@ -33,7 +34,7 @@ final class DetailViewModel: DetailViewModelProtocol {
     }
     
     func reload() {
-        status.value = .loading
+        status = .loading
         let publishers = useCase.reload(repository: repositoryFullName)
         otherModulesCancellable = publishers.otherModules.sink(receiveValue: { [weak self] others in
             self?.didLoad(latestRelease: others.0,
@@ -42,13 +43,18 @@ final class DetailViewModel: DetailViewModelProtocol {
         })
         
         profileCancellable = publishers.profile.sink(receiveCompletion: { [weak self] result in
-            switch result {
-            case .failure:
-                self?.status.value = .error
-            case .finished:
-                self?.status.value = .browsable
-            }
             self?.profileCancellable = nil
+            DispatchQueue.asyncAtMain { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                switch result {
+                case .failure:
+                    self.status = .error
+                case .finished:
+                    self.status = .browsable
+                }
+            }
         }, receiveValue: { [weak self] profile in
             self?.didLoad(profile: profile)
         })
@@ -58,7 +64,7 @@ final class DetailViewModel: DetailViewModelProtocol {
 extension DetailViewModel {
     
     private func didLoad(latestRelease: Release?, collaborators: [Collaborator], branches: [Branch]) {
-        var filterd = contents.value.filter { !($0 is LoadingDisplayData) }
+        var filterd = contents.filter { !($0 is LoadingDisplayData) }
         
         if let first = branches.first {
             filterd.append(BranchDisplayData(with: first))
@@ -71,18 +77,24 @@ extension DetailViewModel {
             filterd.append(DetailContributorTitleDisplayData())
             filterd.append(CollaboratorsDisplayData(with: collaborators))
         }
-        
-        contents.value = filterd
         otherModulesCancellable = nil
+        DispatchQueue.asyncAtMain { [weak self] in
+            self?.contents = filterd
+        }
     }
     
     private func didLoad(profile: CommunityProfile) {
         let display = CommunityProfileDisplayData(with: profile)
-        contents.value.insert(display, at: contents.value.startIndex)
-        if otherModulesCancellable != nil {
-            contents.value.append(LoadingDisplayData(nextLink: nil))
-        }
-        status.value = .browsable
         profileCancellable = nil
+        DispatchQueue.asyncAtMain { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.contents.insert(display, at: self.contents.startIndex)
+            if self.otherModulesCancellable != nil {
+                self.contents.append(LoadingDisplayData(nextLink: nil))
+            }
+            self.status = .browsable
+        }
     }
 }

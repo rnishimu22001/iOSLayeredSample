@@ -9,21 +9,45 @@
 import SwiftUI
 
 struct SwiftUIDetailContentsView: View {
+    
+    var contents: [Any]
+    
     var body: some View {
-        VStack {
-            SwiftUICommunityProfileView()
+        ForEach(contents.indices) { index in
+            self.contentView(with: self.contents[index])
+            SeparatorView()
+        }
+    }
+    
+    private func contentView(with content: Any) -> AnyView {
+        switch content {
+        case let profile as CommunityProfileDisplayData:
+            return AnyView(SwiftUICommunityProfileView())
+        case let release as ReleaseDisplayData:
+            return AnyView(SwiftUIReleaseView())
+        case let branch as BranchDisplayData:
+            return AnyView(SwiftUIBranchView())
+        case let collaborators as CollaboratorsDisplayData:
+            return AnyView(SwiftUICollaboratorsView())
+        case let loading as LoadingDisplayData:
+            return AnyView(EmptyView())
+        default:
+            assertionFailure("未設定のデータ型です")
+            return AnyView(EmptyView())
         }
     }
 }
 
 struct SwiftUICommunityProfileView: View {
     
+    let profile: CommunityProfileDisplayData
+    
     var body: some View {
         VStack {
             HStack {
                 Text("Last Update:").padding(Layout.margin)
                     .font(.subheadline)
-                Text("Date").padding(Layout.margin)
+                Text(profile.lastUpdate).padding(Layout.margin)
                     .font(.body)
                 Spacer()
             }
@@ -31,7 +55,7 @@ struct SwiftUICommunityProfileView: View {
                 Text("License:")
                     .font(.subheadline)
                     .padding(Layout.margin)
-                Text("Any")
+                Text(profile.license)
                     .font(.body)
                     .padding(Layout.margin / 2)
                     .colorInvert()
@@ -40,7 +64,7 @@ struct SwiftUICommunityProfileView: View {
                 Spacer()
             }
             HStack {
-                Text("description here")
+                Text(profile.repositoryDescription)
                     .font(.body)
                     .padding(Layout.margin)
                     .multilineTextAlignment(.leading)
@@ -52,6 +76,6 @@ struct SwiftUICommunityProfileView: View {
 
 struct DetailContentsView_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUIDetailContentsView()
+        SwiftUIDetailContentsView(contents: [])
     }
 }

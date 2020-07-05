@@ -32,17 +32,17 @@ final class DetailViewController: UIViewController {
     }
     
     private func sink() {
-        let statusCancellable = viewModel.status.sink { [weak self] status in
-            DispatchQueue.asyncAtMain {
-                self?.detailView.update(status: status)
-            }
-        }
-        let contentsCancellable = viewModel.contents.sink { [weak self] contents in
-            DispatchQueue.asyncAtMain {
-                self?.detailView.update(contents: contents)
-            }
-        }
-        cancellables.append(statusCancellable)
-        cancellables.append(contentsCancellable)
+//        let statusCancellable = viewModel.status.sink { [weak self] status in
+//            DispatchQueue.asyncAtMain {
+//                self?.detailView.update(status: status)
+//            }
+//        }
+//        let contentsCancellable = viewModel.contents.sink { [weak self] contents in
+//            DispatchQueue.asyncAtMain {
+//                self?.detailView.update(contents: contents)
+//            }
+//        }
+//        cancellables.append(statusCancellable)
+//        cancellables.append(contentsCancellable)
     }
 }
