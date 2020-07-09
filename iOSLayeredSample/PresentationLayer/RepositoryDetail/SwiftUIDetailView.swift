@@ -55,7 +55,7 @@ struct DetailView: View {
                 EmptyView()
             }
             if viewModel.pagingLoading != nil {
-                AnyView(EmptyView())
+                SwiftUILoadingView()
             } else {
                 EmptyView()
             }
@@ -69,7 +69,7 @@ struct DetailView: View {
         case .error:
             return AnyView(Text("error"))
         case .initalized, .loading:
-            return AnyView(Text("loading"))
+            return AnyView(SwiftUILoadingView())
         }
     }
 }
