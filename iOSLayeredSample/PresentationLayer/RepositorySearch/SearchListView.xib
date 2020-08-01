@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17140" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17115"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -29,7 +31,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUN-5j-8eb">
                             <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="↑ Could you input repository search query on navigation searchbar" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCV-Vu-Ewq">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="↑ Input repository search query on navigation searchbar" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCV-Vu-Ewq">
                                     <rect key="frame" x="57" y="388.5" width="300" height="41"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="300" id="8uj-of-WZr"/>
@@ -52,7 +54,7 @@
                                     <rect key="frame" x="197" y="399" width="20" height="20"/>
                                 </activityIndicatorView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="oFb-l9-t7k" firstAttribute="centerY" secondItem="IUi-kb-hen" secondAttribute="centerY" id="iDN-hZ-VzX"/>
                                 <constraint firstItem="oFb-l9-t7k" firstAttribute="centerX" secondItem="IUi-kb-hen" secondAttribute="centerX" id="sSv-AF-wQl"/>
@@ -62,19 +64,20 @@
                             <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opps! something error happened" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6MO-M2-LaL">
-                                    <rect key="frame" x="80" y="398.5" width="254" height="21"/>
+                                    <rect key="frame" x="80.5" y="398.5" width="253" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="6MO-M2-LaL" firstAttribute="centerY" secondItem="qQh-MK-CO0" secondAttribute="centerY" id="ew9-R2-btC"/>
                                 <constraint firstItem="6MO-M2-LaL" firstAttribute="centerX" secondItem="qQh-MK-CO0" secondAttribute="centerX" id="g6A-jS-GaS"/>
                             </constraints>
                         </view>
                     </subviews>
+                    <viewLayoutGuide key="safeArea" id="msc-qn-hWo"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="IUi-kb-hen" firstAttribute="leading" secondItem="msc-qn-hWo" secondAttribute="leading" id="0wN-ni-Erm"/>
@@ -90,24 +93,28 @@
                         <constraint firstItem="mUN-5j-8eb" firstAttribute="leading" secondItem="msc-qn-hWo" secondAttribute="leading" id="hAi-WO-yfd"/>
                         <constraint firstItem="mUN-5j-8eb" firstAttribute="top" secondItem="msc-qn-hWo" secondAttribute="top" id="z4F-B1-uOY"/>
                     </constraints>
-                    <viewLayoutGuide key="safeArea" id="msc-qn-hWo"/>
                     <viewLayoutGuide key="contentLayoutGuide" id="lJK-dw-Tbz"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="Y7l-GW-ImH"/>
                 </scrollView>
                 <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lj8-6W-AGo">
                     <rect key="frame" x="0.0" y="39" width="414" height="818"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <viewLayoutGuide key="safeArea" id="ohX-3f-F8b"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="ohX-3f-F8b" firstAttribute="trailing" secondItem="lj8-6W-AGo" secondAttribute="trailing" id="0Q7-99-i2u"/>
                 <constraint firstItem="ohX-3f-F8b" firstAttribute="bottom" secondItem="lj8-6W-AGo" secondAttribute="bottom" constant="5" id="HXL-vX-V24"/>
                 <constraint firstItem="ohX-3f-F8b" firstAttribute="top" secondItem="lj8-6W-AGo" secondAttribute="top" constant="5" id="OvE-gx-j42"/>
                 <constraint firstItem="lj8-6W-AGo" firstAttribute="leading" secondItem="ohX-3f-F8b" secondAttribute="leading" id="Ybc-U4-guJ"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ohX-3f-F8b"/>
             <point key="canvasLocation" x="83" y="-195"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
