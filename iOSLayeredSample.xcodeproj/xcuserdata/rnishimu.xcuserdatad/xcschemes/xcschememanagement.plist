@@ -7,7 +7,7 @@
 		<key>iOSLayeredSample.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<key>iOSLayeredSampleWidgetExtension.xcscheme_^#shared#^_</key>
 		<dict>
@@ -23,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>5A9B913222EBEB0600996712</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5ADFAF4824D50D4100422901</key>
 		<dict>
 			<key>primary</key>
 			<true/>

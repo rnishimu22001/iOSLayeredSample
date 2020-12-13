@@ -110,8 +110,6 @@
 		5ADFAF4E24D50D4100422901 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ADFAF4D24D50D4100422901 /* SwiftUI.framework */; };
 		5ADFAF5124D50D4100422901 /* iOSLayeredSampleWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFAF5024D50D4100422901 /* iOSLayeredSampleWidget.swift */; };
 		5ADFAF5424D50D4300422901 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5ADFAF5324D50D4300422901 /* Assets.xcassets */; };
-		5ADFAF5624D50D4300422901 /* iOSLayeredSampleWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFAF5224D50D4100422901 /* iOSLayeredSampleWidget.intentdefinition */; };
-		5ADFAF5724D50D4300422901 /* iOSLayeredSampleWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFAF5224D50D4100422901 /* iOSLayeredSampleWidget.intentdefinition */; };
 		5ADFAF5A24D50D4300422901 /* iOSLayeredSampleWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5ADFAF4924D50D4100422901 /* iOSLayeredSampleWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -253,7 +251,6 @@
 		5ADFAF4B24D50D4100422901 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		5ADFAF4D24D50D4100422901 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		5ADFAF5024D50D4100422901 /* iOSLayeredSampleWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSLayeredSampleWidget.swift; sourceTree = "<group>"; };
-		5ADFAF5224D50D4100422901 /* iOSLayeredSampleWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = iOSLayeredSampleWidget.intentdefinition; sourceTree = "<group>"; };
 		5ADFAF5324D50D4300422901 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5ADFAF5524D50D4300422901 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -682,7 +679,6 @@
 			isa = PBXGroup;
 			children = (
 				5ADFAF5024D50D4100422901 /* iOSLayeredSampleWidget.swift */,
-				5ADFAF5224D50D4100422901 /* iOSLayeredSampleWidget.intentdefinition */,
 				5ADFAF5324D50D4300422901 /* Assets.xcassets */,
 				5ADFAF5524D50D4300422901 /* Info.plist */,
 			);
@@ -848,7 +844,6 @@
 				5A9EFC832311353300490D92 /* UISearchBarDelegateProxy.swift in Sources */,
 				5A940D1A2309349400BD0A08 /* DetailUseCase.swift in Sources */,
 				5AADA60C22EC1720001BA1AD /* APISettings.swift in Sources */,
-				5ADFAF5724D50D4300422901 /* iOSLayeredSampleWidget.intentdefinition in Sources */,
 				5ACA091223488C65001B4D73 /* BranchDisplayData.swift in Sources */,
 				5A923504232CEF7A001E5735 /* Repository.swift in Sources */,
 				5ADAD2EA24ACD45500762324 /* Navigator.swift in Sources */,
@@ -938,7 +933,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5ADFAF5124D50D4100422901 /* iOSLayeredSampleWidget.swift in Sources */,
-				5ADFAF5624D50D4300422901 /* iOSLayeredSampleWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

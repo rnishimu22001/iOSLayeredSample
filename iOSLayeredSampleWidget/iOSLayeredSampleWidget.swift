@@ -10,37 +10,25 @@ import WidgetKit
 import SwiftUI
 import Intents
 
-struct Provider: IntentTimelineProvider {
-    public func snapshot(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration)
-        completion(entry)
+struct Provider: TimelineProvider {
+    
+    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
+        completion(.init(date: Date()))
     }
-
-    public func timeline(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
-        }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+    
+    func placeholder(in context: Context) -> SimpleEntry {
+        .init(date: Date())
+    }
+    
+    func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
+        let entry: SimpleEntry = .init(date: Date())
+        let timeline: Timeline<SimpleEntry> = .init(entries: [entry], policy: .never)
         completion(timeline)
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     public let date: Date
-    public let configuration: ConfigurationIntent
-}
-
-struct PlaceholderView : View {
-    var body: some View {
-        Text("Placeholder View")
-    }
 }
 
 struct iOSLayeredSampleWidgetEntryView : View {
@@ -56,17 +44,17 @@ struct iOSLayeredSampleWidget: Widget {
     private let kind: String = "iOSLayeredSampleWidget"
 
     public var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider(), placeholder: PlaceholderView()) { entry in
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
             iOSLayeredSampleWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
+        .configurationDisplayName(kind)
         .description("This is an example widget.")
     }
 }
 
 struct iOSLayeredSampleWidget_Previews: PreviewProvider {
     static var previews: some View {
-        iOSLayeredSampleWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+        iOSLayeredSampleWidgetEntryView(entry: SimpleEntry(date: Date()))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
