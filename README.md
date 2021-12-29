@@ -31,12 +31,12 @@ iOSのレイヤードアーキテクチャを採用したサンプルアプリ�
 
 #### この層で解決したいこと
 
-UIKitなどのOSが提供する表示に関する処理をこの層にとどめる
+UIKitやSwiftUIなどOSが提供する表示に関する処理をこの層にとどめる
 
 #### 責務
 
-* OSからのイベントとユーザーイベントをApplicationLayerに通知する
-* ApplicationLayerに通知された更新データを元にUIの表示更新
+* OSからのイベントやユーザー操作のイベントが発生した場合はApplicationLayerに通知する
+* ApplicationLayerから通知された更新データを元にUIの表示更新
 
 ### ApplicationLayer
 
@@ -47,8 +47,8 @@ DomainLayerからシステムの表示の関心を切り離す
 #### 責務
 
 * DomainLayerのメソッドの実行結果に応じて画面の状態を判断する
-* PresentationLayerで利用するデータ型にデータを加工する
-* 更新をPresentationLayerに通知する
+* PresentationLayerで利用する表示データの型にデータを加工する
+* 表示データの更新をPresentationLayerに通知する
 
 ### DomainLayer
 
