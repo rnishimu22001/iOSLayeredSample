@@ -106,11 +106,6 @@
 		5ADAD2EA24ACD45500762324 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADAD2E924ACD45500762324 /* Navigator.swift */; };
 		5ADAD2ED24ACD5F800762324 /* SearchListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADAD2EC24ACD5F800762324 /* SearchListViewControllerTests.swift */; };
 		5ADAD2EF24ACD60700762324 /* MockSearchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADAD2EE24ACD60700762324 /* MockSearchListViewModel.swift */; };
-		5ADFAF4C24D50D4100422901 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ADFAF4B24D50D4100422901 /* WidgetKit.framework */; };
-		5ADFAF4E24D50D4100422901 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ADFAF4D24D50D4100422901 /* SwiftUI.framework */; };
-		5ADFAF5124D50D4100422901 /* iOSLayeredSampleWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFAF5024D50D4100422901 /* iOSLayeredSampleWidget.swift */; };
-		5ADFAF5424D50D4300422901 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5ADFAF5324D50D4300422901 /* Assets.xcassets */; };
-		5ADFAF5A24D50D4300422901 /* iOSLayeredSampleWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5ADFAF4924D50D4100422901 /* iOSLayeredSampleWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,13 +116,6 @@
 			remoteGlobalIDString = 5A9B911C22EBEB0500996712;
 			remoteInfo = iOSLayeredSample;
 		};
-		5ADFAF5824D50D4300422901 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5A9B911522EBEB0500996712 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5ADFAF4824D50D4100422901;
-			remoteInfo = iOSLayeredSampleWidgetExtension;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -137,7 +125,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				5ADFAF5A24D50D4300422901 /* iOSLayeredSampleWidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,12 +234,7 @@
 		5ADAD2E924ACD45500762324 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		5ADAD2EC24ACD5F800762324 /* SearchListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewControllerTests.swift; sourceTree = "<group>"; };
 		5ADAD2EE24ACD60700762324 /* MockSearchListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchListViewModel.swift; sourceTree = "<group>"; };
-		5ADFAF4924D50D4100422901 /* iOSLayeredSampleWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iOSLayeredSampleWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		5ADFAF4B24D50D4100422901 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		5ADFAF4D24D50D4100422901 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		5ADFAF5024D50D4100422901 /* iOSLayeredSampleWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSLayeredSampleWidget.swift; sourceTree = "<group>"; };
-		5ADFAF5324D50D4300422901 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5ADFAF5524D50D4300422901 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,15 +250,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5ADFAF4624D50D4100422901 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5ADFAF4E24D50D4100422901 /* SwiftUI.framework in Frameworks */,
-				5ADFAF4C24D50D4100422901 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,7 +399,6 @@
 			children = (
 				5A9B911F22EBEB0500996712 /* iOSLayeredSample */,
 				5A9B913622EBEB0600996712 /* iOSLayeredSampleTests */,
-				5ADFAF4F24D50D4100422901 /* iOSLayeredSampleWidget */,
 				5ADFAF4A24D50D4100422901 /* Frameworks */,
 				5A9B911E22EBEB0500996712 /* Products */,
 			);
@@ -437,7 +409,6 @@
 			children = (
 				5A9B911D22EBEB0500996712 /* iOSLayeredSample.app */,
 				5A9B913322EBEB0600996712 /* iOSLayeredSampleTests.xctest */,
-				5ADFAF4924D50D4100422901 /* iOSLayeredSampleWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -669,20 +640,9 @@
 		5ADFAF4A24D50D4100422901 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5ADFAF4B24D50D4100422901 /* WidgetKit.framework */,
 				5ADFAF4D24D50D4100422901 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5ADFAF4F24D50D4100422901 /* iOSLayeredSampleWidget */ = {
-			isa = PBXGroup;
-			children = (
-				5ADFAF5024D50D4100422901 /* iOSLayeredSampleWidget.swift */,
-				5ADFAF5324D50D4300422901 /* Assets.xcassets */,
-				5ADFAF5524D50D4300422901 /* Info.plist */,
-			);
-			path = iOSLayeredSampleWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -700,7 +660,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				5ADFAF5924D50D4300422901 /* PBXTargetDependency */,
 			);
 			name = iOSLayeredSample;
 			packageProductDependencies = (
@@ -728,23 +687,6 @@
 			productReference = 5A9B913322EBEB0600996712 /* iOSLayeredSampleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		5ADFAF4824D50D4100422901 /* iOSLayeredSampleWidgetExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5ADFAF5E24D50D4300422901 /* Build configuration list for PBXNativeTarget "iOSLayeredSampleWidgetExtension" */;
-			buildPhases = (
-				5ADFAF4524D50D4100422901 /* Sources */,
-				5ADFAF4624D50D4100422901 /* Frameworks */,
-				5ADFAF4724D50D4100422901 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = iOSLayeredSampleWidgetExtension;
-			productName = iOSLayeredSampleWidgetExtension;
-			productReference = 5ADFAF4924D50D4100422901 /* iOSLayeredSampleWidgetExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -761,9 +703,6 @@
 					5A9B913222EBEB0600996712 = {
 						CreatedOnToolsVersion = 11.0;
 						TestTargetID = 5A9B911C22EBEB0500996712;
-					};
-					5ADFAF4824D50D4100422901 = {
-						CreatedOnToolsVersion = 12.0;
 					};
 				};
 			};
@@ -785,7 +724,6 @@
 			targets = (
 				5A9B911C22EBEB0500996712 /* iOSLayeredSample */,
 				5A9B913222EBEB0600996712 /* iOSLayeredSampleTests */,
-				5ADFAF4824D50D4100422901 /* iOSLayeredSampleWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -815,14 +753,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5ADFAF4724D50D4100422901 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5ADFAF5424D50D4300422901 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -928,14 +858,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5ADFAF4524D50D4100422901 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5ADFAF5124D50D4100422901 /* iOSLayeredSampleWidget.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -943,11 +865,6 @@
 			isa = PBXTargetDependency;
 			target = 5A9B911C22EBEB0500996712 /* iOSLayeredSample */;
 			targetProxy = 5A9B913422EBEB0600996712 /* PBXContainerItemProxy */;
-		};
-		5ADFAF5924D50D4300422901 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5ADFAF4824D50D4100422901 /* iOSLayeredSampleWidgetExtension */;
-			targetProxy = 5ADFAF5824D50D4300422901 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1163,50 +1080,6 @@
 			};
 			name = Release;
 		};
-		5ADFAF5C24D50D4300422901 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = iOSLayeredSampleWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = jp.co.rnishimu22001.iOSLayeredSample.iOSLayeredSampleWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		5ADFAF5D24D50D4300422901 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = iOSLayeredSampleWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = jp.co.rnishimu22001.iOSLayeredSample.iOSLayeredSampleWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1233,15 +1106,6 @@
 			buildConfigurations = (
 				5A9B914022EBEB0600996712 /* Debug */,
 				5A9B914122EBEB0600996712 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5ADFAF5E24D50D4300422901 /* Build configuration list for PBXNativeTarget "iOSLayeredSampleWidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5ADFAF5C24D50D4300422901 /* Debug */,
-				5ADFAF5D24D50D4300422901 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
